@@ -666,9 +666,10 @@ export default function RestaurantMap({
     }
 
     // Highlight marker đang được chọn
+    // Giữ nguyên kích thước, chỉ thay đổi màu và viền
     marker.setStyle({
-      radius: 12,
-      weight: 3,
+      radius: 7,
+      weight: 2,
       color: '#f59e0b',
       fillColor: '#fbbf24',
     })
