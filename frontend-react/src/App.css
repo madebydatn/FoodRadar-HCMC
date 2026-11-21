@@ -383,9 +383,9 @@
 }
 
 .search-box:focus-within {
-  border-color: var(--primary);
+  border-color: #dce8f0;
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(35, 137, 213, 0.1);
+  box-shadow: none;
 }
 
 .search-icon {
@@ -885,10 +885,10 @@
   .main-layout {
     gap: 10px;
   }
-
+  
   .map-panel {
-    height: clamp(290px, 42vh, 390px);
-    min-height: 290px;
+    height: clamp(420px, 65vh, 600px);
+    min-height: 420px;
     border-radius: 12px;
   }
 
