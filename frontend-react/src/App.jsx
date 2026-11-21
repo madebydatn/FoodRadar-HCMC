@@ -4,6 +4,64 @@ import { getRestaurants } from './services/restaurantService'
 import RestaurantMap from './features/map/RestaurantMap'
 import './App.css'
 
+// Chuyển giờ HH:mm hoặc HH:mm:ss thành số phút trong ngày
+function parseTimeToMinutes(time) {
+  if (typeof time !== 'string') return null
+
+  const match = time.trim().match(/^([01]\d|2[0-3]):([0-5]\d)(?::[0-5]\d)?$/)
+
+  if (!match) return null
+
+  return Number(match[1]) * 60 + Number(match[2])
+}
+
+// Lấy số phút hiện tại theo múi giờ Việt Nam
+function getVietnamMinutes(date) {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Ho_Chi_Minh',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).formatToParts(date)
+
+  const hour = Number(parts.find((part) => part.type === 'hour')?.value)
+  const minute = Number(parts.find((part) => part.type === 'minute')?.value)
+
+  return hour * 60 + minute
+}
+
+// Tính trạng thái quán: open, closed hoặc unknown
+function getRestaurantStatus(restaurant, now) {
+  const operating = restaurant.operating || {}
+
+  const openTime = parseTimeToMinutes(operating.open_time)
+  const closeTime = parseTimeToMinutes(operating.close_time)
+
+  // Thiếu giờ hoặc giờ không hợp lệ: chưa rõ
+  if (openTime === null || closeTime === null) {
+    return 'unknown'
+  }
+
+  // Giờ mở và đóng giống nhau: không đủ thông tin để kết luận
+  if (openTime === closeTime) {
+    return 'unknown'
+  }
+
+  const currentMinutes = getVietnamMinutes(now)
+
+  // Quán hoạt động trong cùng một ngày
+  if (openTime < closeTime) {
+    return currentMinutes >= openTime && currentMinutes < closeTime
+      ? 'open'
+      : 'closed'
+  }
+
+  // Quán hoạt động qua đêm, ví dụ 18:00 - 02:00
+  return currentMinutes >= openTime || currentMinutes < closeTime
+    ? 'open'
+    : 'closed'
+}
+
 function App() {
   const [restaurants, setRestaurants] = useState([])
   const [loading, setLoading] = useState(true)
@@ -13,7 +71,7 @@ function App() {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null)
   const [currentTime, setCurrentTime] = useState(new Date())
 
-  // Đồng hồ thời gian thực
+  // Đồng hồ và trạng thái quán tự cập nhật mỗi giây
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date())
@@ -38,9 +96,17 @@ function App() {
       .finally(() => setLoading(false))
   }, [])
 
+  // Tính trạng thái từ giờ hoạt động, không dùng is_open của API
+  const restaurantsWithStatus = useMemo(() => {
+    return restaurants.map((item) => ({
+      ...item,
+      operatingStatus: getRestaurantStatus(item, currentTime),
+    }))
+  }, [restaurants, currentTime])
+
   // Lọc và tìm kiếm nhà hàng
   const filteredRestaurants = useMemo(() => {
-    return restaurants.filter((item) => {
+    return restaurantsWithStatus.filter((item) => {
       const keyword = search.trim().toLowerCase()
 
       const searchFields = [
@@ -56,12 +122,12 @@ function App() {
 
       const matchesStatus =
         status === 'all' ||
-        (status === 'open' && item.is_open === true) ||
-        (status === 'closed' && item.is_open === false)
+        (status === 'open' && item.operatingStatus === 'open') ||
+        (status === 'closed' && item.operatingStatus === 'closed')
 
       return matchesSearch && matchesStatus
     })
-  }, [restaurants, search, status])
+  }, [restaurantsWithStatus, search, status])
 
   const getRestaurantId = (item) =>
     String(item.restaurant_id ?? item.id ?? '')
@@ -197,6 +263,13 @@ function App() {
                 const isSelected =
                   selectedId !== '' && id === selectedId
 
+                const statusClass = item.operatingStatus
+                const statusText = {
+                  open: 'Đang mở',
+                  closed: 'Đã đóng',
+                  unknown: 'Chưa rõ giờ',
+                }[statusClass]
+
                 return (
                   <article
                     className={`restaurant-card ${
@@ -217,9 +290,9 @@ function App() {
                     <div className="restaurant-card-top">
                       <strong>{item.name || 'Quán ăn'}</strong>
 
-                      <span className={item.is_open ? 'open' : 'closed'}>
+                      <span className={statusClass}>
                         <span className="status-dot" />
-                        {item.is_open ? 'Đang mở' : 'Đã đóng'}
+                        {statusText}
                       </span>
                     </div>
 
