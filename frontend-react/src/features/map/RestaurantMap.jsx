@@ -231,26 +231,38 @@ export default function RestaurantMap({
     userLocationLayer.current = L.layerGroup().addTo(map)
     mapInstance.current = map
 
-    // Tự căn giữa toàn bộ popup trong vùng bản đồ
-    map.on('popupopen', ({ popup }) => {
-      const popupElement = popup.getElement()
-      if (!popupElement) return
-    
-      const center = () => {
+  // Căn giữa khung popup, không căn giữa marker
+  map.on('popupopen', ({ popup }) => {
+    const popupElement = popup.getElement()
+    if (!popupElement) return
+  
+    const centerPopup = () => {
+      requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           if (!popupElement.isConnected) return
-    
+  
+          // Chỉ lấy phần khung nội dung, không tính mũi nhọn popup
+          const popupBox = popupElement.querySelector(
+            '.leaflet-popup-content-wrapper'
+          )
+  
+          if (!popupBox) return
+  
           const mapRect = map.getContainer().getBoundingClientRect()
-          const popupRect = popupElement.getBoundingClientRect()
-    
-          const offsetX =
-            popupRect.left + popupRect.width / 2 -
-            (mapRect.left + mapRect.width / 2)
-    
-          const offsetY =
-            popupRect.top + popupRect.height / 2 -
-            (mapRect.top + mapRect.height / 2)
-    
+          const popupRect = popupBox.getBoundingClientRect()
+  
+          // Tâm khung popup
+          const popupCenterX = popupRect.left + popupRect.width / 2
+          const popupCenterY = popupRect.top + popupRect.height / 2
+  
+          // Tâm vùng bản đồ
+          const mapCenterX = mapRect.left + mapRect.width / 2
+          const mapCenterY = mapRect.top + mapRect.height / 2
+  
+          // Khoảng cách cần dịch chuyển
+          const offsetX = popupCenterX - mapCenterX
+          const offsetY = popupCenterY - mapCenterY
+  
           if (Math.abs(offsetX) > 2 || Math.abs(offsetY) > 2) {
             map.panBy([offsetX, offsetY], {
               animate: true,
@@ -258,13 +270,15 @@ export default function RestaurantMap({
             })
           }
         })
-      }
-    
-      center()
-    
-      const image = popupElement.querySelector('.food-popup-image')
-      image?.addEventListener('load', center, { once: true })
-    })
+      })
+    }
+  
+    centerPopup()
+  
+    // Căn giữa lại sau khi ảnh quán tải xong
+    const image = popupElement.querySelector('.food-popup-image')
+    image?.addEventListener('load', centerPopup, { once: true })
+  })
 
     requestAnimationFrame(() => {
       map.invalidateSize()
@@ -543,17 +557,15 @@ export default function RestaurantMap({
       fillColor: '#fbbf24',
     })
   
-    // Đưa vị trí quán vào chính giữa bản đồ
+   // Di chuyển bản đồ đến vị trí quán
     map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 16), {
       duration: 0.7,
     })
-
-    // Mở popup sau khi bản đồ di chuyển xong
+    
+    // Chỉ mở popup sau khi bản đồ di chuyển xong
     map.once('moveend', () => {
       marker.openPopup()
     })
-  
-    marker.openPopup()
   
   }, [selectedRestaurant])
 
