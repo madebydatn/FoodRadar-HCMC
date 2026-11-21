@@ -273,8 +273,12 @@ export default function RestaurantMap({
       })
     }
   
+    // Căn giữa ngay khi popup mở
     centerPopup()
-  
+
+    // Căn giữa lại sau khi bản đồ hoàn tất di chuyển
+    map.once('moveend', centerPopup)
+
     // Căn giữa lại sau khi ảnh quán tải xong
     const image = popupElement.querySelector('.food-popup-image')
     image?.addEventListener('load', centerPopup, { once: true })
