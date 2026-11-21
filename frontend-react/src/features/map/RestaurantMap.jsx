@@ -276,11 +276,14 @@ export default function RestaurantMap({
     // Căn giữa ngay khi popup mở
     centerPopup()
 
-    // Căn giữa lại sau khi bản đồ hoàn tất di chuyển
-    map.once('moveend', centerPopup)
-
     // Căn giữa lại sau khi ảnh quán tải xong
     const image = popupElement.querySelector('.food-popup-image')
+    
+    if (image && image.dataset.loaded !== 'true') {
+      image.dataset.loaded = 'true'
+      image.src = image.dataset.bannerUrl || image.dataset.logoUrl
+    }
+    
     image?.addEventListener('load', centerPopup, { once: true })
   })
 
@@ -415,32 +418,21 @@ export default function RestaurantMap({
       marker.options.restaurantId = id
       marker.options.operatingStatus = operatingStatus
       
-      const popup = createRestaurantPopup(restaurant, operatingStatus)
-
-      marker.bindPopup(popup, {
+      const popupContent = createRestaurantPopup(restaurant, operatingStatus)
+      
+      const popup = L.popup({
         className: 'foodradar-popup',
         minWidth: 220,
         maxWidth: 270,
         autoPan: false,
         closeButton: true,
-      })
-
+      }).setContent(popupContent)
+      
+      // Lưu popup vào marker để mở thủ công sau khi bản đồ di chuyển
+      marker.options.restaurantPopup = popup
+      
       marker.on('click', () => {
-        // Đóng popup Leaflet tự mở khi vừa bấm marker
-        marker.closePopup()
-
-        // Chọn quán để luồng selectedRestaurant xử lý
         onSelectRestaurant?.(restaurant)
-      })
-
-      // Chỉ tải ảnh của quán đang được mở popup
-      marker.on('popupopen', () => {
-        const image = popup.querySelector('.food-popup-image')
-
-        if (!image || image.dataset.loaded === 'true') return
-
-        image.dataset.loaded = 'true'
-        image.src = image.dataset.bannerUrl || image.dataset.logoUrl
       })
 
       marker.addTo(markersLayer.current)
@@ -565,15 +557,34 @@ export default function RestaurantMap({
       fillColor: '#fbbf24',
     })
   
-   // Di chuyển bản đồ đến vị trí quán
-    map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 16), {
-      duration: 0.7,
-    })
+    // Mở popup thủ công sau khi bản đồ di chuyển xong
+    const openRestaurantPopup = () => {
+      const popup = marker.options.restaurantPopup
     
-    // Chỉ mở popup sau khi bản đồ di chuyển xong
-    map.once('moveend', () => {
-      marker.openPopup()
-    })
+      if (!popup) return
+    
+      popup
+        .setLatLng(marker.getLatLng())
+        .openOn(map)
+    }
+    
+    const targetZoom = Math.max(map.getZoom(), 16)
+    const currentCenter = map.getCenter()
+    const markerPosition = marker.getLatLng()
+    
+    // Nếu bản đồ đã ở đúng vị trí thì mở popup ngay
+    if (
+      currentCenter.distanceTo(markerPosition) < 1 &&
+      map.getZoom() >= targetZoom
+    ) {
+      openRestaurantPopup()
+    } else {
+      map.once('moveend', openRestaurantPopup)
+    
+      map.flyTo(markerPosition, targetZoom, {
+        duration: 0.7,
+      })
+    }
   
   }, [selectedRestaurant])
 
