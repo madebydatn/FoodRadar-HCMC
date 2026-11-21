@@ -70,13 +70,23 @@ function App() {
   const [status, setStatus] = useState('open')
   const [selectedRestaurant, setSelectedRestaurant] = useState(null)
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [statusTime, setStatusTime] = useState(new Date())
 
-  // Đồng hồ và trạng thái quán tự cập nhật mỗi giây
+  // Đồng hồ cập nhật mỗi giây
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date())
     }, 1000)
-
+  
+    return () => clearInterval(timer)
+  }, [])
+  
+  // Trạng thái hoạt động chỉ tính lại mỗi phút
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setStatusTime(new Date())
+    }, 60000)
+  
     return () => clearInterval(timer)
   }, [])
 
@@ -100,9 +110,9 @@ function App() {
   const restaurantsWithStatus = useMemo(() => {
     return restaurants.map((item) => ({
       ...item,
-      operatingStatus: getRestaurantStatus(item, currentTime),
+      operatingStatus: getRestaurantStatus(item, statusTime),
     }))
-  }, [restaurants, currentTime])
+  }, [restaurants, statusTime])
 
   // Lọc và tìm kiếm nhà hàng
   const filteredRestaurants = useMemo(() => {
