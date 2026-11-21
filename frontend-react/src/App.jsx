@@ -123,7 +123,8 @@ function App() {
       const matchesStatus =
         status === 'all' ||
         (status === 'open' && item.operatingStatus === 'open') ||
-        (status === 'closed' && item.operatingStatus === 'closed')
+        (status === 'closed' && item.operatingStatus === 'closed') ||
+        (status === 'unknown' && item.operatingStatus === 'unknown')
 
       return matchesSearch && matchesStatus
     })
@@ -230,7 +231,7 @@ function App() {
                 >
                   Tất cả
                 </button>
-
+              
                 <button
                   className={status === 'open' ? 'active' : ''}
                   onClick={() => setStatus('open')}
@@ -238,13 +239,21 @@ function App() {
                 >
                   Đang mở
                 </button>
-
+              
                 <button
                   className={status === 'closed' ? 'active' : ''}
                   onClick={() => setStatus('closed')}
                   type="button"
                 >
                   Đã đóng
+                </button>
+              
+                <button
+                  className={status === 'unknown' ? 'active' : ''}
+                  onClick={() => setStatus('unknown')}
+                  type="button"
+                >
+                  Chưa rõ giờ
                 </button>
               </div>
 
