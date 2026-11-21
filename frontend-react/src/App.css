@@ -1401,3 +1401,55 @@
   }
 }
 
+/* ========================================
+   HEADER RIGHT - DESKTOP & MOBILE
+======================================== */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.header-clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 12px;
+  background: #eef4f8;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--primary-dark);
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.clock-icon {
+  font-size: 17px;
+}
+
+/* Điện thoại: đồng hồ nằm trên tổng số quán */
+@media (max-width: 600px) {
+  .header-right {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .header-clock {
+    padding: 5px 7px;
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .clock-icon {
+    font-size: 13px;
+  }
+}
+
