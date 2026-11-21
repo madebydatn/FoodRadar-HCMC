@@ -70,6 +70,7 @@ function App() {
   const [status, setStatus] = useState('open')
   const [selectedRestaurant, setSelectedRestaurant] = useState(null)
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [statusTime, setStatusTime] = useState(new Date())
   const mapPanelRef = useRef(null)
   
   // Chọn quán và tự cuộn lên bản đồ trên điện thoại
