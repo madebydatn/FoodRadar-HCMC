@@ -621,7 +621,8 @@
 }
 
 .restaurant-card .open,
-.restaurant-card .closed {
+.restaurant-card .closed,
+.restaurant-card .unknown {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -643,6 +644,10 @@
 .restaurant-card .closed {
   background: #edf1f5;
   color: #64788a;
+}
+
+.restaurant-card .closed .status-dot {
+  background: #ef4444;
 }
 
 /* Trạng thái chưa rõ giờ hoạt động */
@@ -1032,11 +1037,12 @@
     font-size: 11px;
   }
 
-  .restaurant-card .open,
-  .restaurant-card .closed {
-    padding: 4px 6px;
-    font-size: 8px;
-  }
+   .restaurant-card .open,
+   .restaurant-card .closed,
+   .restaurant-card .unknown {
+      padding: 4px 6px;
+      font-size: 8px;
+   }
 
   .restaurant-address {
     font-size: 9px;
