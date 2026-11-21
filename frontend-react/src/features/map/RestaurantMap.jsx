@@ -231,6 +231,41 @@ export default function RestaurantMap({
     userLocationLayer.current = L.layerGroup().addTo(map)
     mapInstance.current = map
 
+    // Tự căn giữa toàn bộ popup trong vùng bản đồ
+    map.on('popupopen', ({ popup }) => {
+      const popupElement = popup.getElement()
+      if (!popupElement) return
+    
+      const center = () => {
+        requestAnimationFrame(() => {
+          if (!popupElement.isConnected) return
+    
+          const mapRect = map.getContainer().getBoundingClientRect()
+          const popupRect = popupElement.getBoundingClientRect()
+    
+          const offsetX =
+            popupRect.left + popupRect.width / 2 -
+            (mapRect.left + mapRect.width / 2)
+    
+          const offsetY =
+            popupRect.top + popupRect.height / 2 -
+            (mapRect.top + mapRect.height / 2)
+    
+          if (Math.abs(offsetX) > 2 || Math.abs(offsetY) > 2) {
+            map.panBy([offsetX, offsetY], {
+              animate: true,
+              duration: 0.25,
+            })
+          }
+        })
+      }
+    
+      center()
+    
+      const image = popupElement.querySelector('.food-popup-image')
+      image?.addEventListener('load', center, { once: true })
+    })
+
     requestAnimationFrame(() => {
       map.invalidateSize()
     })
