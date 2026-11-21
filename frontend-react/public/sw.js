@@ -1,6 +1,6 @@
 
 const CACHE_PREFIX = 'foodradar-'
-const CACHE_VERSION = 'v7'
+const CACHE_VERSION = 'v8'
 const CACHE_NAME = `${CACHE_PREFIX}${CACHE_VERSION}`
 
 // Tự xác định thư mục gốc của ứng dụng.
@@ -12,7 +12,7 @@ const APP_SHELL = [
   'index.html',
   'manifest.json',
   'restaurants.json',
-  'favicon.png',
+  'favicon.svg',
   'icon-192.png',
   'icon-512.png',
 ].map(path => new URL(path, APP_SCOPE).href)
