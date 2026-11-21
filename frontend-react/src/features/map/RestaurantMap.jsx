@@ -368,7 +368,7 @@ export default function RestaurantMap({
         className: 'foodradar-popup',
         minWidth: 220,
         maxWidth: 270,
-        autoPan: true,
+        autoPan: false,
         closeButton: true,
       })
 
@@ -508,8 +508,14 @@ export default function RestaurantMap({
       fillColor: '#fbbf24',
     })
   
+    // Đưa vị trí quán vào chính giữa bản đồ
     map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 16), {
       duration: 0.7,
+    })
+
+    // Mở popup sau khi bản đồ di chuyển xong
+    map.once('moveend', () => {
+      marker.openPopup()
     })
   
     marker.openPopup()
