@@ -322,6 +322,7 @@ export default function RestaurantMap({
       })
       
       marker.options.restaurantId = id
+      marker.options.operatingStatus = operatingStatus
       
       const popup = createRestaurantPopup(restaurant, operatingStatus)
 
@@ -407,15 +408,11 @@ export default function RestaurantMap({
   // Chọn quán ăn và zoom bản đồ
   useEffect(() => {
     const map = mapInstance.current
-
+  
     if (!map) return
-
-    // Khôi phục style mặc định cho tất cả marker
+  
+    // Khôi phục style mặc định cho các marker
     markersById.current.forEach((item) => {
-      const restaurant = restaurants.find(
-        (r, index) => getId(r, index) === item.options.restaurantId
-      )
-
       const statusColors = {
         open: {
           color: '#16865b',
@@ -430,10 +427,11 @@ export default function RestaurantMap({
           fillColor: '#f59e0b',
         },
       }
-      
+  
       const markerColor =
-        statusColors[restaurant?.operatingStatus] || statusColors.unknown
-      
+        statusColors[item.options.operatingStatus] ||
+        statusColors.unknown
+  
       item.setStyle({
         radius: 7,
         weight: 1,
@@ -441,18 +439,19 @@ export default function RestaurantMap({
         fillColor: markerColor.fillColor,
       })
     })
-
-    // Nếu không có quán được chọn thì dừng tại đây
+  
     if (!selectedRestaurant) return
-
+  
     const selectedId = String(
-      selectedRestaurant.restaurant_id ?? selectedRestaurant.id ?? ''
+      selectedRestaurant.restaurant_id ??
+      selectedRestaurant.id ??
+      ''
     )
-
+  
     const marker = markersById.current.get(selectedId)
-
+  
     if (!marker) return
-
+  
     // Highlight marker được chọn
     marker.setStyle({
       radius: 12,
@@ -460,13 +459,14 @@ export default function RestaurantMap({
       color: '#f59e0b',
       fillColor: '#fbbf24',
     })
-
+  
     map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 16), {
       duration: 0.7,
     })
-
+  
     marker.openPopup()
-  }, [selectedRestaurant, restaurants])
+  
+  }, [selectedRestaurant])
 
   return (
     <div className="map-container">
