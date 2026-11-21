@@ -1,6 +1,8 @@
 
 export async function getRestaurants() {
-  const response = await fetch('/restaurants.json', {
+  const restaurantUrl = `${import.meta.env.BASE_URL}restaurants.json`
+
+  const response = await fetch(restaurantUrl, {
     cache: 'no-store',
   })
 
