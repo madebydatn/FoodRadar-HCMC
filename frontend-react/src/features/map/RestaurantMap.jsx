@@ -426,6 +426,10 @@ export default function RestaurantMap({
       })
 
       marker.on('click', () => {
+        // Đóng popup Leaflet tự mở khi vừa bấm marker
+        marker.closePopup()
+
+        // Chọn quán để luồng selectedRestaurant xử lý
         onSelectRestaurant?.(restaurant)
       })
 
