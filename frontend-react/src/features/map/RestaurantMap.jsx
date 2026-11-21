@@ -55,6 +55,44 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
 
   header.append(name, status)
   popup.append(header)
+  
+  // Chỉ tải ảnh khi popup của quán thực sự được mở
+  const bannerId = restaurant.banner_mms_img_id
+  const logoId = restaurant.logo_mms_img_id
+
+  if (bannerId || logoId) {
+    const image = document.createElement('img')
+    image.className = 'food-popup-image'
+    image.alt = restaurant.name
+      ? `Ảnh ${restaurant.name}`
+      : 'Ảnh quán ăn'
+    image.loading = 'lazy'
+
+    image.dataset.bannerUrl = bannerId
+      ? `https://down-tx-vn.img.susercontent.com/${bannerId}@resize_ss640x400!@crop_w640_h400_cT`
+      : ''
+
+    image.dataset.logoUrl = logoId
+      ? `https://down-tx-vn.img.susercontent.com/${logoId}@resize_ss640x400!@crop_w640_h400_cT`
+      : ''
+
+    image.onerror = () => {
+      const fallbackUrl = image.dataset.logoUrl
+
+      if (
+        fallbackUrl &&
+        image.dataset.triedLogo !== 'true' &&
+        image.src !== fallbackUrl
+      ) {
+        image.dataset.triedLogo = 'true'
+        image.src = fallbackUrl
+      } else {
+        image.remove()
+      }
+    }
+
+    popup.append(image)
+  }
 
   const address = document.createElement('div')
   address.className = 'food-popup-address'
@@ -336,6 +374,16 @@ export default function RestaurantMap({
 
       marker.on('click', () => {
         onSelectRestaurant?.(restaurant)
+      })
+
+      // Chỉ tải ảnh của quán đang được mở popup
+      marker.on('popupopen', () => {
+        const image = popup.querySelector('.food-popup-image')
+
+        if (!image || image.dataset.loaded === 'true') return
+
+        image.dataset.loaded = 'true'
+        image.src = image.dataset.bannerUrl || image.dataset.logoUrl
       })
 
       marker.addTo(markersLayer.current)
