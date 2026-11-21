@@ -1,0 +1,180 @@
+
+/* ========================================
+   FOODRADAR - GLOBAL STYLE
+   Light Blue / Responsive
+======================================== */
+
+:root {
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+
+  color: #183b56;
+  background: #f0f8ff;
+  color-scheme: light;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Primary colors */
+  --primary: #2389d5;
+  --primary-dark: #176da7;
+  --primary-soft: #e7f4fc;
+
+  /* Text colors */
+  --text: #183b56;
+  --muted: #748b9e;
+
+  /* Surface colors */
+  --background: #f0f8ff;
+  --surface: #ffffff;
+  --border: #dceaf4;
+
+  /* Shadows */
+  --shadow: 0 7px 24px rgba(35, 91, 130, 0.08);
+}
+
+/* RESET */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+
+  background: var(--background);
+  color: var(--text);
+
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+/* TYPOGRAPHY */
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+select,
+textarea {
+  color: var(--text);
+}
+
+a {
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+::selection {
+  color: #ffffff;
+  background: var(--primary);
+}
+
+/* FOCUS */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* LEAFLET */
+
+.leaflet-container {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: #e8f2f8;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 11px;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* SCROLLBAR */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c2d8e8 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #c2d8e8;
+}
+
+/* DESKTOP: LOCK VIEWPORT */
+
+@media (min-width: 901px) {
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+/* MOBILE / TABLET */
+
+@media (max-width: 900px) {
+  html,
+  body,
+  #root {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  body {
+    font-size: 13px;
+  }
+}
