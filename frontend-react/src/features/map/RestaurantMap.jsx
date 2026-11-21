@@ -19,11 +19,11 @@ const formatTime = (time) => {
 }
 
 // Tạo nội dung popup quán ăn
-const createRestaurantPopup = (restaurant, isOpen) => {
+
+const createRestaurantPopup = (restaurant, operatingStatus) => {
   const popup = document.createElement('div')
   popup.className = 'food-popup'
 
-  // Header: tên quán và trạng thái
   const header = document.createElement('div')
   header.className = 'food-popup-header'
 
@@ -32,21 +32,35 @@ const createRestaurantPopup = (restaurant, isOpen) => {
   name.textContent = restaurant.name || 'Quán ăn'
 
   const status = document.createElement('span')
-  status.className = isOpen
-    ? 'food-popup-status is-open'
-    : 'food-popup-status is-closed'
-  status.textContent = isOpen ? 'Đang mở' : 'Đã đóng'
+  const statusInfo = {
+    open: {
+      className: 'is-open',
+      text: 'Đang mở',
+    },
+    closed: {
+      className: 'is-closed',
+      text: 'Đã đóng',
+    },
+    unknown: {
+      className: 'is-unknown',
+      text: 'Chưa rõ giờ',
+    },
+  }[operatingStatus] || {
+    className: 'is-unknown',
+    text: 'Chưa rõ giờ',
+  }
+
+  status.className = `food-popup-status ${statusInfo.className}`
+  status.textContent = statusInfo.text
 
   header.append(name, status)
   popup.append(header)
 
-  // Địa chỉ
   const address = document.createElement('div')
   address.className = 'food-popup-address'
   address.textContent = restaurant.address || 'Chưa có địa chỉ'
   popup.append(address)
 
-  // Loại hình quán
   const categories = Array.isArray(restaurant.categories)
     ? restaurant.categories.filter(Boolean)
     : []
@@ -58,7 +72,6 @@ const createRestaurantPopup = (restaurant, isOpen) => {
     popup.append(category)
   }
 
-  // Thời gian hoạt động
   const operating = restaurant.operating || {}
   const openTime = formatTime(operating.open_time)
   const closeTime = formatTime(operating.close_time)
@@ -82,7 +95,6 @@ const createRestaurantPopup = (restaurant, isOpen) => {
   hours.append(clockIcon, hoursText)
   popup.append(hours)
 
-  // Đánh giá và số lượt đánh giá
   const rating = Number(restaurant.rating)
 
   if (Number.isFinite(rating) && rating > 0) {
@@ -110,8 +122,6 @@ const createRestaurantPopup = (restaurant, isOpen) => {
     popup.append(ratingRow)
   }
 
-  // Link xem quán ăn
-  // Ưu tiên url vì restaurant_url trong dữ liệu hiện tại chỉ là slug
   const url = restaurant.url || restaurant.restaurant_url
 
   if (typeof url === 'string') {
@@ -284,20 +294,36 @@ export default function RestaurantMap({
       }
 
       const id = getId(restaurant, index)
-      const isOpen = restaurant.is_open === true
-
+      const operatingStatus = restaurant.operatingStatus || 'unknown'
+      
+      const statusColors = {
+        open: {
+          color: '#16865b',
+          fillColor: '#22a06b',
+        },
+        closed: {
+          color: '#dc2626',
+          fillColor: '#ef4444',
+        },
+        unknown: {
+          color: '#d97706',
+          fillColor: '#f59e0b',
+        },
+      }
+      
+      const markerColor = statusColors[operatingStatus] || statusColors.unknown
+      
       const marker = L.circleMarker([lat, lng], {
         radius: 7,
-        color: isOpen ? '#16865b' : '#64748b',
-        fillColor: isOpen ? '#22a06b' : '#64748b',
+        color: markerColor.color,
+        fillColor: markerColor.fillColor,
         fillOpacity: 0.9,
         weight: 1,
       })
-
+      
       marker.options.restaurantId = id
-
-      // Popup thông tin quán ăn
-      const popup = createRestaurantPopup(restaurant, isOpen)
+      
+      const popup = createRestaurantPopup(restaurant, operatingStatus)
 
       marker.bindPopup(popup, {
         className: 'foodradar-popup',
@@ -347,7 +373,7 @@ export default function RestaurantMap({
         let intensity = 1
 
         if (heatMode === 'open') {
-          intensity = restaurant.is_open === true ? 1 : 0.2
+          intensity = restaurant.operatingStatus === 'open' ? 1 : 0.2
         }
 
         if (heatMode === 'quality') {
@@ -390,11 +416,29 @@ export default function RestaurantMap({
         (r, index) => getId(r, index) === item.options.restaurantId
       )
 
+      const statusColors = {
+        open: {
+          color: '#16865b',
+          fillColor: '#22a06b',
+        },
+        closed: {
+          color: '#dc2626',
+          fillColor: '#ef4444',
+        },
+        unknown: {
+          color: '#d97706',
+          fillColor: '#f59e0b',
+        },
+      }
+      
+      const markerColor =
+        statusColors[restaurant?.operatingStatus] || statusColors.unknown
+      
       item.setStyle({
         radius: 7,
         weight: 1,
-        color: restaurant?.is_open === true ? '#16865b' : '#64748b',
-        fillColor: restaurant?.is_open === true ? '#22a06b' : '#64748b',
+        color: markerColor.color,
+        fillColor: markerColor.fillColor,
       })
     })
 
