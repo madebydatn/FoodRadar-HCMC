@@ -29,14 +29,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: Frontend/package-lock.json
+          cache-dependency-path: frontend-react/package-lock.json
 
       - name: Install dependencies
-        working-directory: Frontend
+        working-directory: frontend-react
         run: npm ci
 
       - name: Build React
-        working-directory: Frontend
+        working-directory: frontend-react
         run: npm run build
 
       - name: Setup GitHub Pages
@@ -45,7 +45,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Frontend/dist
+          path: frontend-react/dist
 
   deploy:
     environment:
