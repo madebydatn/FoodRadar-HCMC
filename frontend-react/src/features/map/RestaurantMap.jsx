@@ -33,7 +33,10 @@ const STATUS_COLORS = {
   },
 }
 
-// Tạo nội dung popup quán ăn
+// =====================================================
+// TẠO NỘI DUNG POPUP
+// =====================================================
+
 const createRestaurantPopup = (restaurant, operatingStatus) => {
   const popup = document.createElement('div')
   popup.className = 'food-popup'
@@ -71,7 +74,7 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
   header.append(name, status)
   popup.append(header)
 
-  // Chỉ tải ảnh khi popup thực sự được mở
+  // Chỉ tải ảnh khi popup được mở
   const bannerId = restaurant.banner_mms_img_id
   const logoId = restaurant.logo_mms_img_id
 
@@ -209,10 +212,16 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
   return popup
 }
 
-// Căn giữa KHUNG NỘI DUNG popup theo tâm bản đồ
+// =====================================================
+// CĂN GIỮA TOÀN BỘ KHUNG POPUP THEO TÂM BẢN ĐỒ
+// =====================================================
+
 const centerPopupInMap = (map, popup) => {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
+      // Không căn giữa popup đã đóng hoặc bị thay thế
+      if (!map.hasLayer(popup)) return
+
       const popupElement = popup.getElement()
 
       if (!popupElement || !popupElement.isConnected) return
@@ -235,21 +244,22 @@ const centerPopupInMap = (map, popup) => {
       const offsetX = popupCenterX - mapCenterX
       const offsetY = popupCenterY - mapCenterY
 
-      if (
-        Math.abs(offsetX) > 2 ||
-        Math.abs(offsetY) > 2
-      ) {
+      if (Math.abs(offsetX) > 2 || Math.abs(offsetY) > 2) {
+        // Di chuyển bản đồ để đưa tâm khung popup về tâm bản đồ
         map.panBy(
           [offsetX, offsetY],
           {
-            animate: true,
-            duration: 0.25,
+            animate: false,
           }
         )
       }
     })
   })
 }
+
+// =====================================================
+// COMPONENT BẢN ĐỒ
+// =====================================================
 
 export default function RestaurantMap({
   restaurants = [],
@@ -265,8 +275,14 @@ export default function RestaurantMap({
   const heatLayer = useRef(null)
   const userLocationLayer = useRef(null)
 
-  // Luôn sử dụng callback mới nhất mà không phải tạo lại marker
+  // Callback mới nhất từ component cha
   const onSelectRestaurantRef = useRef(onSelectRestaurant)
+
+  // Theo dõi sự kiện di chuyển đang chờ
+  const pendingMoveHandlerRef = useRef(null)
+
+  // Đảm bảo bấm lại đúng quán đang chọn vẫn kích hoạt xử lý
+  const [selectionVersion, setSelectionVersion] = useState(0)
 
   const [showHeatmap, setShowHeatmap] = useState(false)
   const [heatMode, setHeatMode] = useState('density')
@@ -291,10 +307,17 @@ export default function RestaurantMap({
     mapInstance.current = map
 
     // Click nền bản đồ để bỏ chọn quán
-    // Marker đã tắt bubblingMouseEvents nên không bị xung đột
     map.on('click', () => {
-      onSelectRestaurantRef.current?.(null)
+      // Hủy sự kiện di chuyển đang chờ mở popup
+      if (pendingMoveHandlerRef.current) {
+        map.off('moveend', pendingMoveHandlerRef.current)
+        pendingMoveHandlerRef.current = null
+      }
+
+      map.stop()
       map.closePopup()
+
+      onSelectRestaurantRef.current?.(null)
     })
 
     L.control.zoom({
@@ -312,7 +335,7 @@ export default function RestaurantMap({
     markersLayer.current = L.layerGroup().addTo(map)
     userLocationLayer.current = L.layerGroup().addTo(map)
 
-    // Khi popup mở, căn giữa khung nội dung
+    // Khi popup mở: tải ảnh và căn giữa khung popup
     map.on('popupopen', ({ popup }) => {
       const popupElement = popup.getElement()
 
@@ -322,7 +345,6 @@ export default function RestaurantMap({
         '.food-popup-image'
       )
 
-      // Theo dõi tải ảnh để căn giữa lại sau khi kích thước thay đổi
       if (image) {
         image.addEventListener(
           'load',
@@ -347,6 +369,11 @@ export default function RestaurantMap({
     })
 
     return () => {
+      if (pendingMoveHandlerRef.current) {
+        map.off('moveend', pendingMoveHandlerRef.current)
+        pendingMoveHandlerRef.current = null
+      }
+
       map.remove()
 
       mapInstance.current = null
@@ -359,46 +386,7 @@ export default function RestaurantMap({
   }, [])
 
   // =====================================================
-  // 2. MỞ POPUP CHO MỘT MARKER
-  // =====================================================
-
-  const openRestaurantPopup = (marker) => {
-    const map = mapInstance.current
-
-    if (!map || !marker) return
-
-    const popup = marker.options.restaurantPopup
-
-    if (!popup) return
-
-    // Đóng popup cũ
-    map.closePopup()
-
-    popup.setLatLng(marker.getLatLng())
-
-    // Mở popup ngay, không chờ selectedRestaurant
-    popup.openOn(map)
-
-    // Nếu zoom chưa đủ thì phóng to đến quán
-    if (map.getZoom() < 16) {
-      map.once('moveend', () => {
-        centerPopupInMap(map, popup)
-      })
-
-      map.flyTo(
-        marker.getLatLng(),
-        16,
-        {
-          duration: 0.7,
-        }
-      )
-    } else {
-      centerPopupInMap(map, popup)
-    }
-  }
-
-  // =====================================================
-  // 3. ĐỊNH VỊ VỊ TRÍ HIỆN TẠI
+  // 2. ĐỊNH VỊ VỊ TRÍ HIỆN TẠI
   // =====================================================
 
   const handleLocateMe = () => {
@@ -467,7 +455,7 @@ export default function RestaurantMap({
   }
 
   // =====================================================
-  // 4. CẬP NHẬT MARKER
+  // 3. TẠO VÀ CẬP NHẬT MARKER
   // =====================================================
 
   useEffect(() => {
@@ -514,8 +502,7 @@ export default function RestaurantMap({
           fillOpacity: 0.9,
           weight: 1,
 
-          // QUAN TRỌNG:
-          // Không cho click marker lan lên sự kiện click bản đồ
+          // Ngăn click marker lan lên sự kiện click bản đồ
           bubblingMouseEvents: false,
         }
       )
@@ -538,13 +525,14 @@ export default function RestaurantMap({
 
       marker.options.restaurantPopup = popup
 
-      // Click trực tiếp marker
+      // QUAN TRỌNG:
+      // Click marker chỉ cập nhật quán được chọn.
+      // Không mở popup hoặc flyTo tại đây.
+      // Toàn bộ xử lý được thực hiện ở useEffect phía dưới.
       marker.on('click', () => {
-        // Cập nhật trạng thái chọn ở component cha
         onSelectRestaurantRef.current?.(restaurant)
 
-        // Chủ động mở popup, không phụ thuộc useEffect bên ngoài
-        openRestaurantPopup(marker)
+        setSelectionVersion((version) => version + 1)
       })
 
       marker.addTo(markersLayer.current)
@@ -554,7 +542,7 @@ export default function RestaurantMap({
   }, [restaurants])
 
   // =====================================================
-  // 5. CẬP NHẬT HEATMAP
+  // 4. CẬP NHẬT HEATMAP
   // =====================================================
 
   useEffect(() => {
@@ -628,13 +616,21 @@ export default function RestaurantMap({
   }, [restaurants, showHeatmap, heatMode])
 
   // =====================================================
-  // 6. CHỌN QUÁN TỪ DANH SÁCH BÊN NGOÀI
+  // 5. XỬ LÝ CHỌN QUÁN - CHỈ MỘT LUỒNG DUY NHẤT
   // =====================================================
 
   useEffect(() => {
     const map = mapInstance.current
 
     if (!map) return
+
+    // Hủy chuyển động và sự kiện mở popup cũ
+    if (pendingMoveHandlerRef.current) {
+      map.off('moveend', pendingMoveHandlerRef.current)
+      pendingMoveHandlerRef.current = null
+    }
+
+    map.stop()
 
     // Khôi phục màu mặc định cho tất cả marker
     markersById.current.forEach((marker) => {
@@ -650,7 +646,7 @@ export default function RestaurantMap({
       })
     })
 
-    // Bỏ chọn
+    // Không có quán được chọn
     if (!selectedRestaurant) {
       map.closePopup()
       return
@@ -664,7 +660,10 @@ export default function RestaurantMap({
 
     const marker = markersById.current.get(selectedId)
 
-    if (!marker) return
+    if (!marker) {
+      map.closePopup()
+      return
+    }
 
     // Highlight marker đang được chọn
     marker.setStyle({
@@ -678,30 +677,44 @@ export default function RestaurantMap({
 
     if (!popup) return
 
+    const markerPosition = marker.getLatLng()
     const targetZoom = Math.max(map.getZoom(), 16)
 
-    const markerPosition = marker.getLatLng()
-    const currentCenter = map.getCenter()
+    // Đóng popup cũ trước khi xử lý popup mới
+    map.closePopup()
 
-    // Nếu đã ở đúng vị trí và đủ zoom thì mở ngay
-    if (
-      currentCenter.distanceTo(markerPosition) < 1 &&
-      map.getZoom() >= targetZoom
-    ) {
-      popup.setLatLng(markerPosition).openOn(map)
+    // Chỉ mở popup sau khi bản đồ đã di chuyển xong
+    const openPopupAfterMove = () => {
+      pendingMoveHandlerRef.current = null
+
+      // Kiểm tra marker vẫn còn trên bản đồ
+      if (!map.hasLayer(marker)) return
+
+      popup
+        .setLatLng(marker.getLatLng())
+        .openOn(map)
+
+      centerPopupInMap(map, popup)
+    }
+
+    const currentCenter = map.getCenter()
+    const distance = currentCenter.distanceTo(markerPosition)
+
+    // Đã ở đúng vị trí và đủ zoom: mở popup ngay
+    if (distance < 1 && map.getZoom() >= targetZoom) {
+      popup
+        .setLatLng(markerPosition)
+        .openOn(map)
 
       centerPopupInMap(map, popup)
 
       return
     }
 
-    // Chuyển đến vị trí quán trước
-    // Sau khi di chuyển xong mới mở popup
-    map.once('moveend', () => {
-      popup.setLatLng(marker.getLatLng()).openOn(map)
+    // Chưa đúng vị trí: di chuyển bản đồ trước
+    pendingMoveHandlerRef.current = openPopupAfterMove
 
-      centerPopupInMap(map, popup)
-    })
+    map.once('moveend', openPopupAfterMove)
 
     map.flyTo(
       markerPosition,
@@ -710,10 +723,20 @@ export default function RestaurantMap({
         duration: 0.7,
       }
     )
-  }, [selectedRestaurant])
+
+    // Hủy listener cũ khi quán được chọn thay đổi
+    return () => {
+      if (pendingMoveHandlerRef.current === openPopupAfterMove) {
+        map.off('moveend', openPopupAfterMove)
+        pendingMoveHandlerRef.current = null
+      }
+
+      map.stop()
+    }
+  }, [selectedRestaurant, restaurants, selectionVersion])
 
   // =====================================================
-  // 7. GIAO DIỆN
+  // 6. GIAO DIỆN
   // =====================================================
 
   return (
