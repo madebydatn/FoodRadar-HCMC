@@ -1496,3 +1496,13 @@
   display: none !important;
 }
 
+/* ========================================
+   MOBILE - AUTO SCROLL TO MAP
+======================================== */
+
+@media (max-width: 600px) {
+  .map-panel {
+    scroll-margin-top: 10px;
+  }
+}
+
