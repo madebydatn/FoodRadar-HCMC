@@ -1,5 +1,5 @@
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { getRestaurants } from './services/restaurantService'
 import RestaurantMap from './features/map/RestaurantMap'
 import './App.css'
@@ -70,7 +70,21 @@ function App() {
   const [status, setStatus] = useState('open')
   const [selectedRestaurant, setSelectedRestaurant] = useState(null)
   const [currentTime, setCurrentTime] = useState(new Date())
-  const [statusTime, setStatusTime] = useState(new Date())
+  const mapPanelRef = useRef(null)
+  
+  // Chọn quán và tự cuộn lên bản đồ trên điện thoại
+  const handleSelectRestaurant = (item) => {
+    setSelectedRestaurant(item)
+  
+    if (window.matchMedia('(max-width: 600px)').matches) {
+      requestAnimationFrame(() => {
+        mapPanelRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      })
+    }
+  }
 
   // Đồng hồ cập nhật mỗi giây
   useEffect(() => {
@@ -187,7 +201,7 @@ function App() {
 
       {!loading && !error && (
         <section className="main-layout">
-          <div className="map-panel">
+          <div className="map-panel" ref={mapPanelRef}>
             <div className="panel-label">
               <span className="live-dot" />
               BẢN ĐỒ KHÁM PHÁ
@@ -295,14 +309,14 @@ function App() {
                       isSelected ? 'selected' : ''
                     }`}
                     key={`${id || 'restaurant'}-${index}`}
-                    onClick={() => setSelectedRestaurant(item)}
+                    onClick={() => handleSelectRestaurant(item)}
                     tabIndex={0}
                     role="button"
                     aria-pressed={isSelected}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault()
-                        setSelectedRestaurant(item)
+                        handleSelectRestaurant(item)
                       }
                     }}
                   >
