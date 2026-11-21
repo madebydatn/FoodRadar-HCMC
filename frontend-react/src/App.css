@@ -1278,6 +1278,17 @@
   font-size: 11px;
 }
 
+/* Ảnh quán trong popup bản đồ */
+.food-popup-image {
+  display: block;
+  width: 100%;
+  max-height: 145px;
+  margin-top: 9px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f1f5f8;
+}
+
 /* Tên quán và trạng thái */
 .food-popup-header {
   display: flex;
