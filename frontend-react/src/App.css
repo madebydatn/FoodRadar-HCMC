@@ -1197,3 +1197,207 @@
   }
 
 }
+
+/* ========================================
+   FOODRADAR - RESTAURANT MAP POPUP
+======================================== */
+
+.leaflet-popup.foodradar-popup {
+  margin-bottom: 12px;
+}
+
+.leaflet-popup.foodradar-popup .leaflet-popup-content-wrapper {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #dce8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 28px rgba(25, 65, 95, 0.18);
+}
+
+.leaflet-popup.foodradar-popup .leaflet-popup-content {
+  width: 240px !important;
+  max-width: calc(100vw - 64px);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.leaflet-popup.foodradar-popup .leaflet-popup-tip {
+  background: #ffffff;
+  box-shadow: 3px 3px 8px rgba(25, 65, 95, 0.08);
+}
+
+.leaflet-popup.foodradar-popup .leaflet-popup-close-button {
+  top: 7px;
+  right: 8px;
+  z-index: 2;
+  color: #8298aa;
+  font-size: 19px;
+}
+
+.food-popup {
+  padding: 13px 14px 12px;
+  color: #31536e;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+/* Tên quán và trạng thái */
+.food-popup-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding-right: 15px;
+}
+
+.food-popup-name {
+  min-width: 0;
+  color: #173c5a;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.food-popup-status {
+  flex-shrink: 0;
+  padding: 4px 7px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.food-popup-status.is-open {
+  background: #e8f7ee;
+  color: #16865b;
+}
+
+.food-popup-status.is-closed {
+  background: #f1f3f5;
+  color: #64748b;
+}
+
+/* Địa chỉ */
+.food-popup-address {
+  display: -webkit-box;
+  margin-top: 7px;
+  overflow: hidden;
+  color: #647b8e;
+  font-size: 10px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Loại hình */
+.food-popup-category {
+  margin-top: 5px;
+  color: #8298aa;
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+/* Thời gian hoạt động */
+.food-popup-hours {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 7px 8px;
+  border-radius: 7px;
+  background: #f1f7fb;
+  color: #31536e;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.food-popup-icon {
+  flex-shrink: 0;
+  color: #2389d5;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.food-popup-hours.hours-unavailable {
+  background: #f5f6f7;
+  color: #8298aa;
+  font-weight: 500;
+}
+
+/* Đánh giá */
+.food-popup-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 9px;
+  color: #31536e;
+  font-size: 10px;
+}
+
+.food-popup-star {
+  color: #e9a23b;
+  font-size: 14px;
+}
+
+.food-popup-rating strong {
+  color: #173c5a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.food-popup-review {
+  color: #8298aa;
+  font-size: 9px;
+}
+
+/* Liên kết */
+.food-popup-link {
+  display: block;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #edf2f6;
+  color: #1685d1 !important;
+  font-size: 10px;
+  font-weight: 750;
+  text-align: right;
+  text-decoration: none !important;
+}
+
+.food-popup-link:hover {
+  color: #105f9b !important;
+  text-decoration: underline !important;
+}
+
+/* Tối ưu điện thoại */
+@media (max-width: 600px) {
+  .leaflet-popup.foodradar-popup .leaflet-popup-content {
+    width: 220px !important;
+    max-width: calc(100vw - 55px);
+  }
+
+  .food-popup {
+    padding: 11px 12px 10px;
+  }
+
+  .food-popup-name {
+    font-size: 12px;
+  }
+
+  .food-popup-status {
+    padding: 3px 6px;
+    font-size: 8px;
+  }
+
+  .food-popup-address {
+    font-size: 9px;
+  }
+
+  .food-popup-hours {
+    margin-top: 8px;
+    padding: 6px 7px;
+  }
+}
+
