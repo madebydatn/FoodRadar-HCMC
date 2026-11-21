@@ -77,7 +77,7 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
   header.append(name, status)
   popup.append(header)
 
-  // Ảnh chỉ tải khi popup được mở
+  // Ảnh
   const bannerId = restaurant.banner_mms_img_id
   const logoId = restaurant.logo_mms_img_id
 
@@ -90,6 +90,12 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
       : 'Ảnh quán ăn'
 
     image.loading = 'lazy'
+
+    // Giữ trước chiều cao ảnh để popup không thay đổi
+    // kích thước khi ảnh tải xong.
+    image.style.width = '100%'
+    image.style.height = '145px'
+    image.style.objectFit = 'cover'
 
     image.dataset.bannerUrl = bannerId
       ? `https://down-tx-vn.img.susercontent.com/${bannerId}@resize_ss640x400!@crop_w640_h400_cT`
@@ -110,7 +116,8 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
         image.dataset.triedLogo = 'true'
         image.src = fallbackUrl
       } else {
-        image.remove()
+        // Giữ nguyên không gian ảnh để popup không đổi chiều cao.
+        image.style.visibility = 'hidden'
       }
     }
 
@@ -221,57 +228,58 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
 }
 
 // =====================================================
-// ĐIỀU CHỈNH VỊ TRÍ BẰNG CÁCH DI CHUYỂN BẢN ĐỒ
+// TÍNH TÂM BẢN ĐỒ ĐÍCH CHO POPUP
 // =====================================================
 
-// Popup luôn bám theo marker.
-// Hàm này chỉ di chuyển bản đồ để đưa tâm popup
-// về tâm vùng hiển thị của bản đồ.
+// Không đưa marker vào tâm bản đồ trước.
+//
+// Đo khoảng cách từ marker đến tâm popup,
+// sau đó tính trực tiếp tâm bản đồ cần đến.
+//
+// Kết quả: popup nằm giữa bản đồ ngay sau một lần flyTo.
 
-const repositionMapForPopup = (map, popup) => {
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      if (!map.hasLayer(popup)) return
+const calculatePopupTargetCenter = (
+  map,
+  marker,
+  popup,
+  targetZoom
+) => {
+  const popupElement = popup.getElement()
 
-      const popupElement = popup.getElement()
+  if (!popupElement || !popupElement.isConnected) {
+    return null
+  }
 
-      if (!popupElement || !popupElement.isConnected) return
+  const mapRect = map.getContainer().getBoundingClientRect()
+  const popupRect = popupElement.getBoundingClientRect()
 
-      const popupBox = popupElement.querySelector(
-        '.leaflet-popup-content-wrapper'
-      )
+  const markerPoint = map.latLngToContainerPoint(
+    marker.getLatLng()
+  )
 
-      if (!popupBox) return
+  // Tâm toàn bộ popup, tính theo tọa độ bên trong bản đồ.
+  const popupCenterX =
+    (popupRect.left + popupRect.right) / 2 - mapRect.left
 
-      const mapRect = map.getContainer().getBoundingClientRect()
-      const popupRect = popupBox.getBoundingClientRect()
+  const popupCenterY =
+    (popupRect.top + popupRect.bottom) / 2 - mapRect.top
 
-      const mapCenterX = mapRect.left + mapRect.width / 2
-      const mapCenterY = mapRect.top + mapRect.height / 2
+  // Độ lệch giữa tâm popup và vị trí marker.
+  const offsetX = popupCenterX - markerPoint.x
+  const offsetY = popupCenterY - markerPoint.y
 
-      const popupCenterX = popupRect.left + popupRect.width / 2
-      const popupCenterY = popupRect.top + popupRect.height / 2
+  // Tọa độ pixel của marker ở mức zoom đích.
+  const markerProjected = map.project(
+    marker.getLatLng(),
+    targetZoom
+  )
 
-      const offsetX = popupCenterX - mapCenterX
-      const offsetY = popupCenterY - mapCenterY
+  // Tâm bản đồ mới = vị trí marker + độ lệch popup.
+  const targetProjected = markerProjected.add(
+    L.point(offsetX, offsetY)
+  )
 
-      if (Math.abs(offsetX) < 2 && Math.abs(offsetY) < 2) {
-        return
-      }
-
-      // Leaflet panBy di chuyển bản đồ theo hướng ngược
-      // với hướng dịch chuyển của marker trên màn hình.
-      // Popup và marker vì vậy luôn di chuyển cùng nhau.
-      map.panBy(
-        [offsetX, offsetY],
-        {
-          animate: true,
-          duration: 0.35,
-          easeLinearity: 0.25,
-        }
-      )
-    })
-  })
+  return map.unproject(targetProjected, targetZoom)
 }
 
 // =====================================================
@@ -348,7 +356,7 @@ export default function RestaurantMap({
     markersLayer.current = L.layerGroup().addTo(map)
     userLocationLayer.current = L.layerGroup().addTo(map)
 
-    // Khi popup mở: tải ảnh và điều chỉnh vị trí bản đồ
+    // Popup mở: chỉ tải ảnh, không tự di chuyển bản đồ.
     map.on('popupopen', ({ popup }) => {
       const popupElement = popup.getElement()
 
@@ -358,26 +366,13 @@ export default function RestaurantMap({
         '.food-popup-image'
       )
 
-      if (image) {
-        image.addEventListener(
-          'load',
-          () => {
-            repositionMapForPopup(map, popup)
-          },
-          { once: true }
-        )
+      if (image && image.dataset.loaded !== 'true') {
+        image.dataset.loaded = 'true'
 
-        if (image.dataset.loaded !== 'true') {
-          image.dataset.loaded = 'true'
-
-          image.src =
-            image.dataset.bannerUrl ||
-            image.dataset.logoUrl
-        }
+        image.src =
+          image.dataset.bannerUrl ||
+          image.dataset.logoUrl
       }
-
-      // Căn theo kích thước popup hiện tại
-      repositionMapForPopup(map, popup)
     })
 
     requestAnimationFrame(() => {
@@ -540,7 +535,7 @@ export default function RestaurantMap({
       marker.options.restaurantPopup = popup
 
       // Marker chỉ cập nhật lựa chọn.
-      // Không tự mở popup hoặc di chuyển bản đồ tại đây.
+      // Không tự mở popup hoặc di chuyển bản đồ.
       marker.on('click', () => {
         onSelectRestaurantRef.current?.(restaurant)
 
@@ -636,6 +631,9 @@ export default function RestaurantMap({
 
     if (!map) return
 
+    let cancelled = false
+    let animationFrameId = null
+
     // Hủy chuyển động và listener cũ
     if (pendingMoveHandlerRef.current) {
       map.off('moveend', pendingMoveHandlerRef.current)
@@ -676,7 +674,7 @@ export default function RestaurantMap({
 
     if (!marker) return
 
-    // Highlight marker nhưng giữ kích thước cố định
+    // Highlight marker, giữ kích thước cố định
     marker.setStyle({
       radius: 7,
       weight: 2,
@@ -688,63 +686,85 @@ export default function RestaurantMap({
 
     if (!popup) return
 
-    const markerPosition = marker.getLatLng()
-
-    // Không tự động zoom out.
-    // Nếu đang zoom nhỏ thì đưa về ít nhất mức 16.
     const targetZoom = Math.max(map.getZoom(), 16)
 
-    let cancelled = false
+    // Mở popup tại vị trí hiện tại để Leaflet tạo DOM.
+    // Không pan hoặc flyTo marker vào tâm bản đồ.
+    popup
+      .setLatLng(marker.getLatLng())
+      .openOn(map)
 
-    const openPopupAfterMove = () => {
-      pendingMoveHandlerRef.current = null
+    const popupElement = popup.getElement()
 
+    if (!popupElement) return
+
+    // Ẩn popup trong lúc đo và di chuyển.
+    // Marker vẫn hiển thị và di chuyển bình thường.
+    popupElement.style.visibility = 'hidden'
+
+    animationFrameId = requestAnimationFrame(() => {
       if (cancelled || !map.hasLayer(marker)) return
 
-      popup
-        .setLatLng(marker.getLatLng())
-        .openOn(map)
+      const targetCenter = calculatePopupTargetCenter(
+        map,
+        marker,
+        popup,
+        targetZoom
+      )
 
-      // popupopen sẽ tự tính kích thước và điều chỉnh
-      // vị trí bản đồ để marker đến vị trí phù hợp.
-    }
-
-    const currentCenter = map.getCenter()
-    const distance = currentCenter.distanceTo(markerPosition)
-
-    // Nếu đã ở gần vị trí quán và đủ zoom
-    if (
-      distance < 1 &&
-      map.getZoom() >= targetZoom
-    ) {
-      popup
-        .setLatLng(markerPosition)
-        .openOn(map)
-
-      return () => {
-        cancelled = true
+      if (!targetCenter) {
+        popupElement.style.visibility = 'visible'
+        return
       }
-    }
 
-    // Di chuyển đến quán trước, sau đó mở popup.
-    pendingMoveHandlerRef.current = openPopupAfterMove
+      const currentCenter = map.getCenter()
 
-    map.once('moveend', openPopupAfterMove)
+      const distance = currentCenter.distanceTo(targetCenter)
+      const zoomDifference = Math.abs(map.getZoom() - targetZoom)
 
-    map.flyTo(
-      markerPosition,
-      targetZoom,
-      {
-        duration: 0.7,
-        easeLinearity: 0.25,
+      // Đã ở đúng vị trí thì không cần chuyển động.
+      if (distance < 0.5 && zoomDifference < 0.01) {
+        popupElement.style.visibility = 'visible'
+        return
       }
-    )
+
+      // Chỉ có một lần di chuyển:
+      // đến thẳng tâm bản đồ đã tính cho popup.
+      const showPopupAfterMove = () => {
+        pendingMoveHandlerRef.current = null
+
+        if (cancelled) return
+
+        const currentPopupElement = popup.getElement()
+
+        if (currentPopupElement) {
+          currentPopupElement.style.visibility = 'visible'
+        }
+      }
+
+      pendingMoveHandlerRef.current = showPopupAfterMove
+
+      map.once('moveend', showPopupAfterMove)
+
+      map.flyTo(
+        targetCenter,
+        targetZoom,
+        {
+          duration: 0.7,
+          easeLinearity: 0.25,
+        }
+      )
+    })
 
     return () => {
       cancelled = true
 
-      if (pendingMoveHandlerRef.current === openPopupAfterMove) {
-        map.off('moveend', openPopupAfterMove)
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+      }
+
+      if (pendingMoveHandlerRef.current) {
+        map.off('moveend', pendingMoveHandlerRef.current)
         pendingMoveHandlerRef.current = null
       }
 
