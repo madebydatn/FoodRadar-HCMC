@@ -9,6 +9,133 @@ const GEOAPIFY_API_KEY = '3f76474ea82c43a1bda50def5e4b66a6'
 const getId = (restaurant, index) =>
   String(restaurant.restaurant_id ?? restaurant.id ?? `index-${index}`)
 
+// Chuyển giờ dạng 09:00:00 thành 09:00
+const formatTime = (time) => {
+  if (typeof time !== 'string') return ''
+
+  const match = time.match(/^([01]\d|2[0-3]):([0-5]\d)/)
+
+  return match ? `${match[1]}:${match[2]}` : ''
+}
+
+// Tạo nội dung popup quán ăn
+const createRestaurantPopup = (restaurant, isOpen) => {
+  const popup = document.createElement('div')
+  popup.className = 'food-popup'
+
+  // Header: tên quán và trạng thái
+  const header = document.createElement('div')
+  header.className = 'food-popup-header'
+
+  const name = document.createElement('strong')
+  name.className = 'food-popup-name'
+  name.textContent = restaurant.name || 'Quán ăn'
+
+  const status = document.createElement('span')
+  status.className = isOpen
+    ? 'food-popup-status is-open'
+    : 'food-popup-status is-closed'
+  status.textContent = isOpen ? 'Đang mở' : 'Đã đóng'
+
+  header.append(name, status)
+  popup.append(header)
+
+  // Địa chỉ
+  const address = document.createElement('div')
+  address.className = 'food-popup-address'
+  address.textContent = restaurant.address || 'Chưa có địa chỉ'
+  popup.append(address)
+
+  // Loại hình quán
+  const categories = Array.isArray(restaurant.categories)
+    ? restaurant.categories.filter(Boolean)
+    : []
+
+  if (categories.length > 0) {
+    const category = document.createElement('div')
+    category.className = 'food-popup-category'
+    category.textContent = categories.join(' · ')
+    popup.append(category)
+  }
+
+  // Thời gian hoạt động
+  const operating = restaurant.operating || {}
+  const openTime = formatTime(operating.open_time)
+  const closeTime = formatTime(operating.close_time)
+
+  const hours = document.createElement('div')
+  hours.className = 'food-popup-hours'
+
+  const clockIcon = document.createElement('span')
+  clockIcon.className = 'food-popup-icon'
+  clockIcon.textContent = '◷'
+
+  const hoursText = document.createElement('span')
+
+  if (openTime && closeTime) {
+    hoursText.textContent = `${openTime} – ${closeTime}`
+  } else {
+    hoursText.textContent = 'Chưa cập nhật giờ hoạt động'
+    hours.classList.add('hours-unavailable')
+  }
+
+  hours.append(clockIcon, hoursText)
+  popup.append(hours)
+
+  // Đánh giá và số lượt đánh giá
+  const rating = Number(restaurant.rating)
+
+  if (Number.isFinite(rating) && rating > 0) {
+    const ratingRow = document.createElement('div')
+    ratingRow.className = 'food-popup-rating'
+
+    const star = document.createElement('span')
+    star.className = 'food-popup-star'
+    star.textContent = '★'
+
+    const ratingText = document.createElement('strong')
+    ratingText.textContent = rating.toFixed(1)
+
+    ratingRow.append(star, ratingText)
+
+    const totalReview = Number(restaurant.total_review)
+
+    if (Number.isFinite(totalReview) && totalReview > 0) {
+      const reviewText = document.createElement('span')
+      reviewText.className = 'food-popup-review'
+      reviewText.textContent = `(${totalReview.toLocaleString('vi-VN')} đánh giá)`
+      ratingRow.append(reviewText)
+    }
+
+    popup.append(ratingRow)
+  }
+
+  // Link xem quán ăn
+  // Ưu tiên url vì restaurant_url trong dữ liệu hiện tại chỉ là slug
+  const url = restaurant.url || restaurant.restaurant_url
+
+  if (typeof url === 'string') {
+    try {
+      const safeUrl = new URL(url)
+
+      if (['http:', 'https:'].includes(safeUrl.protocol)) {
+        const link = document.createElement('a')
+        link.className = 'food-popup-link'
+        link.href = safeUrl.href
+        link.target = '_blank'
+        link.rel = 'noopener noreferrer'
+        link.textContent = 'Xem quán ăn →'
+
+        popup.append(link)
+      }
+    } catch {
+      // Bỏ qua URL không hợp lệ
+    }
+  }
+
+  return popup
+}
+
 export default function RestaurantMap({
   restaurants,
   selectedRestaurant,
@@ -169,48 +296,16 @@ export default function RestaurantMap({
 
       marker.options.restaurantId = id
 
-      // Tạo popup an toàn bằng DOM
-      const popup = document.createElement('div')
+      // Popup thông tin quán ăn
+      const popup = createRestaurantPopup(restaurant, isOpen)
 
-      const name = document.createElement('strong')
-      name.textContent = restaurant.name || 'Quán ăn'
-
-      const address = document.createElement('p')
-      address.textContent = restaurant.address || 'Chưa có địa chỉ'
-
-      const status = document.createElement('p')
-      status.textContent = isOpen ? 'Đang mở' : 'Đã đóng'
-
-      popup.append(name, address, status)
-
-      const rating = Number(restaurant.rating)
-
-      if (Number.isFinite(rating) && rating > 0) {
-        const ratingElement = document.createElement('p')
-        ratingElement.textContent = `Đánh giá: ${rating}`
-        popup.append(ratingElement)
-      }
-
-      const url = restaurant.restaurant_url || restaurant.url
-
-      if (typeof url === 'string') {
-        try {
-          const safeUrl = new URL(url)
-
-          if (['http:', 'https:'].includes(safeUrl.protocol)) {
-            const link = document.createElement('a')
-            link.href = safeUrl.href
-            link.target = '_blank'
-            link.rel = 'noopener noreferrer'
-            link.textContent = 'Xem quán ăn'
-            popup.append(link)
-          }
-        } catch {
-          // Bỏ qua URL không hợp lệ
-        }
-      }
-
-      marker.bindPopup(popup)
+      marker.bindPopup(popup, {
+        className: 'foodradar-popup',
+        minWidth: 220,
+        maxWidth: 270,
+        autoPan: true,
+        closeButton: true,
+      })
 
       marker.on('click', () => {
         onSelectRestaurant?.(restaurant)
