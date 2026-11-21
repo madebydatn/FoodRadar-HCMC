@@ -408,6 +408,24 @@
   font-size: 12px;
 }
 
+/* Tắt hoàn toàn viền focus riêng của ô tìm kiếm */
+.search-box input:focus,
+.search-box input:focus-visible,
+.search-box input:active {
+  outline: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Không tạo quầng sáng quanh khung tìm kiếm */
+.search-box:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #dce8f0;
+  background: #fff;
+}
+
 .search-box input::placeholder {
   color: #9aabba;
 }
