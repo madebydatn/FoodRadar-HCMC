@@ -172,7 +172,7 @@ export default function RestaurantMap({
     }).addTo(map)
 
     L.tileLayer(
-      `https://maps.geoapify.com/v1/tile/positron/{z}/{x}/{y}.png?apiKey=${GEOAPIFY_API_KEY}`,
+      `https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=${GEOAPIFY_API_KEY}`,
       {
         attribution: '© OpenStreetMap © Geoapify',
         maxZoom: 20,
