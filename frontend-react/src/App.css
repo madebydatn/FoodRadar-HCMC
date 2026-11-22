@@ -1517,3 +1517,124 @@
   }
 }
 
+/* ========================================
+   HEADER WEATHER
+======================================== */
+
+.header-right {
+  gap: 10px;
+}
+
+.header-weather {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 150px;
+  max-width: 220px;
+  padding: 6px 11px;
+  border: 1px solid #d5e8f5;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(40, 95, 130, 0.05);
+}
+
+.weather-icon {
+  flex: 0 0 auto;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.weather-info strong {
+  color: var(--primary-dark);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.weather-info span {
+  overflow: hidden;
+  color: #45657d;
+  font-size: 10px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.weather-info small {
+  overflow: hidden;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Điện thoại */
+@media (max-width: 600px) {
+  .header-right {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .header-weather {
+    min-width: 0;
+    max-width: 128px;
+    gap: 5px;
+    padding: 5px 6px;
+  }
+
+  .weather-icon {
+    font-size: 19px;
+  }
+
+  .weather-info strong {
+    font-size: 13px;
+  }
+
+  .weather-info span,
+  .weather-info small {
+    max-width: 78px;
+    font-size: 8px;
+  }
+
+  .header-clock {
+    padding: 5px 6px;
+    font-size: 10px;
+  }
+}
+
+/* Điện thoại nhỏ */
+@media (max-width: 380px) {
+  .header-weather {
+    max-width: 108px;
+    gap: 4px;
+    padding: 4px 5px;
+  }
+
+  .weather-icon {
+    font-size: 17px;
+  }
+
+  .weather-info strong {
+    font-size: 12px;
+  }
+
+  .weather-info span,
+  .weather-info small {
+    max-width: 65px;
+    font-size: 7px;
+  }
+
+  .header-clock {
+    padding: 4px 5px;
+    font-size: 9px;
+  }
+}
+
