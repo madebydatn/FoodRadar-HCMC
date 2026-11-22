@@ -749,8 +749,16 @@ export default function RestaurantMap({
       map.once('moveend', showPopupAfterMove)
 
       console.log('BEFORE FLYTO:', map.getZoom(), 'TARGET:', targetZoom) //log datn
-      map.setView(targetCenter, targetZoom, {
+      // Bước 1: Đưa bản đồ về zoom đích ngay lập tức
+      map.setZoom(targetZoom, {
         animate: false,
+      })
+      
+      // Bước 2: Di chuyển tâm bản đồ mượt mà
+      map.panTo(targetCenter, {
+        animate: true,
+        duration: 0.7,
+        easeLinearity: 0.25,
       })
     })
 
