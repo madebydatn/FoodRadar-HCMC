@@ -489,7 +489,6 @@ function App() {
 
             <div className="panel-footer">
               <strong>FoodRadar HCMC</strong>
-              <span>Khám phá ẩm thực địa phương</span>
               <span className="footer-credit">Made by DatN</span>
             </div>
           </aside>
