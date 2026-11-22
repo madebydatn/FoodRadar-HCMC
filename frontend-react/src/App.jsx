@@ -265,7 +265,12 @@ function App() {
     <main className="app">
       <header className="app-header">
         <div className="brand">
-          <div className="brand-mark">F</div>
+          <div className="brand-mark">
+          <img
+            src="./logo-web-512.svg"
+            alt="FoodRadar"
+          />
+        </div>
 
           <div className="brand-info">
             <h1>FoodRadar HCMC</h1>
