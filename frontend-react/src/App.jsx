@@ -267,7 +267,7 @@ function App() {
         <div className="brand">
           <div className="brand-mark">
           <img
-            src="./logo-web-512.svg"
+            src="./logo-web-512.png"
             alt="FoodRadar"
           />
         </div>
