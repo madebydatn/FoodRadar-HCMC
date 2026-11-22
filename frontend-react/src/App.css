@@ -5,7 +5,7 @@
 ======================================== */
 
 /* ========================================
-   APP
+   APP & HEADER
 ======================================== */
 
 .app {
@@ -16,27 +16,20 @@
   min-height: 0;
   margin: 0 auto;
   padding: 12px 20px 16px;
-
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
-
-/* ========================================
-   HEADER
-======================================== */
 
 .app-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-
   flex: 0 0 auto;
   min-height: 64px;
   margin-bottom: 12px;
   padding: 0 2px 10px;
-
   border-bottom: 1px solid var(--border);
 }
 
@@ -51,18 +44,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-
+  flex: 0 0 40px;
   width: 40px;
   height: 40px;
-
   border-radius: 12px;
   background: linear-gradient(135deg, #2389d5, #1765a5);
   color: #fff;
-
   font-size: 21px;
   font-weight: 850;
-
   box-shadow: 0 4px 12px rgba(31, 111, 174, 0.2);
 }
 
@@ -91,7 +80,6 @@
   align-items: flex-end;
   justify-content: center;
   flex-shrink: 0;
-
   padding: 7px 15px;
   border: 1px solid #d5e8f5;
   border-radius: 11px;
@@ -114,6 +102,111 @@
 }
 
 /* ========================================
+   HEADER RIGHT - WEATHER & CLOCK
+======================================== */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.header-weather,
+.header-clock {
+  box-sizing: border-box;
+  width: 190px;
+  min-height: 64px;
+  padding: 8px 12px;
+  border: 1px solid #d5e8f5;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(40, 95, 130, 0.05);
+}
+
+.header-weather {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.weather-icon {
+  flex: 0 0 auto;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.weather-info,
+.clock-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.weather-info {
+  line-height: 1.25;
+}
+
+.weather-info strong {
+  color: var(--primary-dark);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.weather-info span {
+  overflow: hidden;
+  color: #45657d;
+  font-size: 10px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.weather-info small {
+  overflow: hidden;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-clock {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  color: var(--primary-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.clock-icon {
+  flex: 0 0 auto;
+  font-size: 25px;
+}
+
+.clock-info {
+  gap: 4px;
+}
+
+.clock-time {
+  color: var(--primary-dark);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.clock-date {
+  color: #45657d;
+  font-size: 10px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+/* ========================================
    MAIN LAYOUT - DESKTOP
 ======================================== */
 
@@ -121,11 +214,9 @@
   display: grid;
   grid-template-columns: minmax(0, 1.85fr) minmax(340px, 0.9fr);
   gap: 16px;
-
   flex: 1 1 auto;
   min-width: 0;
   min-height: 0;
-
   align-items: stretch;
 }
 
@@ -139,14 +230,12 @@
   min-width: 0;
   min-height: 0;
   overflow: hidden;
-
   border: 1px solid var(--border);
   border-radius: 15px;
   background: #e8f2f8;
   box-shadow: var(--shadow);
 }
 
-/* Chỉ áp dụng cho vùng bản đồ */
 .map-panel > .map-container {
   position: relative;
   width: 100%;
@@ -161,31 +250,24 @@
   min-height: 0 !important;
 }
 
-/* Nhãn bản đồ */
 .panel-label {
   position: absolute;
   top: 14px;
   left: 14px;
   z-index: 1100;
-
   display: inline-flex;
   align-items: center;
   gap: 7px;
-
   width: fit-content;
   height: auto;
-
   padding: 7px 10px;
   border: 1px solid rgba(215, 230, 241, 0.95);
   border-radius: 9px;
-
   background: rgba(255, 255, 255, 0.95);
   color: #31536e;
-
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.6px;
-
   box-shadow: 0 3px 12px rgba(25, 65, 95, 0.1);
   pointer-events: none;
 }
@@ -212,13 +294,11 @@
   top: 12px;
   right: 12px;
   z-index: 1100;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   gap: 5px;
-
   max-width: calc(100% - 150px);
 }
 
@@ -226,17 +306,13 @@
 .map-tools select {
   min-height: 30px;
   padding: 5px 9px;
-
   border: 1px solid #d8e5ee;
   border-radius: 8px;
-
   background: rgba(255, 255, 255, 0.97);
   color: #31536e;
-
   font-family: inherit;
   font-size: 10px;
   font-weight: 650;
-
   cursor: pointer;
   box-shadow: 0 2px 7px rgba(25, 65, 95, 0.09);
   transition: all 0.2s ease;
@@ -268,27 +344,25 @@
   white-space: nowrap;
 }
 
-/* Thông báo lỗi định vị */
 .map-location-error {
   position: absolute;
   right: 12px;
   bottom: 12px;
   z-index: 1100;
-
   max-width: min(280px, calc(100% - 24px));
   padding: 7px 10px;
-
   border: 1px solid #f3cccc;
   border-radius: 8px;
-
   background: rgba(255, 255, 255, 0.96);
   color: #bd3838;
-
   font-size: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Leaflet zoom control */
+/* ========================================
+   LEAFLET CONTROLS
+======================================== */
+
 .leaflet-bottom.leaflet-left {
   z-index: 900;
 }
@@ -314,23 +388,16 @@
 .restaurant-panel {
   display: flex;
   flex-direction: column;
-
   height: 100%;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
-
   padding: 14px;
-
   border: 1px solid var(--border);
   border-radius: 15px;
   background: var(--surface);
   box-shadow: var(--shadow);
 }
-
-/* ========================================
-   FIXED PANEL HEADER
-======================================== */
 
 .restaurant-panel-header {
   flex: 0 0 auto;
@@ -371,21 +438,19 @@
   display: flex;
   align-items: center;
   gap: 9px;
-
   height: 40px;
   padding: 0 12px;
-
   border: 1px solid #dce8f0;
   border-radius: 10px;
-
   background: #f7fbfe;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .search-box:focus-within {
+  outline: none !important;
   border-color: #dce8f0;
   background: #fff;
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .search-icon {
@@ -399,35 +464,29 @@
   width: 100%;
   min-width: 0;
   height: 100%;
-
   border: none;
   outline: none;
   background: transparent;
-
   color: var(--text);
   font-size: 12px;
 }
 
-/* Tắt hoàn toàn viền focus riêng của ô tìm kiếm */
 .search-box input:focus,
 .search-box input:focus-visible,
 .search-box input:active {
   outline: none !important;
-  outline-color: transparent !important;
   box-shadow: none !important;
   border: none !important;
 }
 
-/* Không tạo quầng sáng quanh khung tìm kiếm */
-.search-box:focus-within {
-  outline: none !important;
-  box-shadow: none !important;
-  border-color: #dce8f0;
-  background: #fff;
-}
-
 .search-box input::placeholder {
   color: #9aabba;
+}
+
+.search-box input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  display: none !important;
 }
 
 .clear-search {
@@ -435,15 +494,12 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-
   width: 26px;
   height: 26px;
-
   border: none;
   border-radius: 7px;
   background: transparent;
   color: #8298aa;
-
   font-size: 21px;
   cursor: pointer;
 }
@@ -467,16 +523,12 @@
   flex: 1;
   min-height: 34px;
   padding: 6px 5px;
-
   border: 1px solid #dce7ef;
   border-radius: 9px;
-
   background: #fff;
   color: #60798d;
-
   font-size: 10px;
   font-weight: 650;
-
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -502,7 +554,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-
   padding: 11px 0 10px;
   border-bottom: 1px solid #eaf0f5;
 }
@@ -516,18 +567,16 @@
 .result-count {
   flex-shrink: 0;
   padding: 4px 9px;
-
   border-radius: 20px;
   background: #edf6fc;
   color: #52738d;
-
   font-size: 10px;
   font-weight: 650;
   white-space: nowrap;
 }
 
 /* ========================================
-   SCROLLABLE RESTAURANT LIST
+   RESTAURANT LIST
 ======================================== */
 
 .restaurant-list {
@@ -535,9 +584,7 @@
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
-
   padding: 4px 5px 5px 0;
-
   scrollbar-width: thin;
   scrollbar-color: #c2d8e8 transparent;
   overscroll-behavior: contain;
@@ -559,11 +606,9 @@
 .restaurant-card {
   padding: 11px 10px;
   margin: 4px 0;
-
   border: 1px solid transparent;
   border-bottom-color: #eaf0f5;
   border-radius: 9px;
-
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
 }
@@ -579,10 +624,10 @@
 }
 
 .restaurant-card.selected {
+  padding-left: 8px;
   border-color: #b6d9ef;
   border-left: 3px solid var(--primary);
   background: #edf7fd;
-  padding-left: 8px;
 }
 
 .restaurant-card-top {
@@ -605,10 +650,8 @@
   display: flex;
   align-items: flex-start;
   gap: 5px;
-
   margin: 6px 0;
   color: #778c9d;
-
   font-size: 10px;
   line-height: 1.5;
 }
@@ -627,10 +670,8 @@
   align-items: center;
   gap: 5px;
   flex-shrink: 0;
-
   padding: 4px 7px;
   border-radius: 20px;
-
   font-size: 9px;
   font-weight: 700;
   white-space: nowrap;
@@ -650,7 +691,6 @@
   background: #ef4444;
 }
 
-/* Trạng thái chưa rõ giờ hoạt động */
 .restaurant-card .unknown {
   background: #fff7e6;
   color: #b7791f;
@@ -660,7 +700,6 @@
   background: #f59e0b;
 }
 
-/* Trạng thái trên popup bản đồ */
 .food-popup-status.is-unknown {
   background: #fff7e6;
   color: #b7791f;
@@ -681,7 +720,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   min-height: 180px;
   padding: 30px 15px;
   text-align: center;
@@ -713,11 +751,9 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 4px 8px;
-
   flex: 0 0 auto;
   padding-top: 9px;
   margin-top: 5px;
-
   border-top: 1px solid #eaf0f5;
   color: #71899b;
   font-size: 9px;
@@ -750,10 +786,8 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-
   flex: 1;
   min-height: 200px;
-
   color: var(--muted);
   font-size: 13px;
 }
@@ -769,10 +803,8 @@
 .loading-spinner {
   width: 22px;
   height: 22px;
-
   border: 3px solid #d9eaf5;
   border-top-color: var(--primary);
-
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -781,6 +813,183 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* ========================================
+   RESTAURANT MAP POPUP
+======================================== */
+
+.leaflet-popup.foodradar-popup {
+  margin-bottom: 12px;
+}
+
+.leaflet-popup.foodradar-popup .leaflet-popup-content-wrapper {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #dce8f0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(25, 65, 95, 0.18);
+}
+
+.leaflet-popup.foodradar-popup .leaflet-popup-content {
+  width: 240px !important;
+  max-width: calc(100vw - 64px);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.leaflet-popup.foodradar-popup .leaflet-popup-tip {
+  background: #fff;
+  box-shadow: 3px 3px 8px rgba(25, 65, 95, 0.08);
+}
+
+.leaflet-popup.foodradar-popup .leaflet-popup-close-button {
+  top: 7px;
+  right: 8px;
+  z-index: 2;
+  color: #8298aa;
+  font-size: 19px;
+}
+
+.food-popup {
+  padding: 13px 14px 12px;
+  color: #31536e;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.food-popup-image {
+  display: block;
+  width: 100%;
+  max-height: 145px;
+  margin-top: 9px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f1f5f8;
+}
+
+.food-popup-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding-right: 15px;
+}
+
+.food-popup-name {
+  min-width: 0;
+  color: #173c5a;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.food-popup-status {
+  flex-shrink: 0;
+  padding: 4px 7px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.food-popup-status.is-open {
+  background: #e8f7ee;
+  color: #16865b;
+}
+
+.food-popup-status.is-closed {
+  background: #f1f3f5;
+  color: #64748b;
+}
+
+.food-popup-address {
+  display: -webkit-box;
+  margin-top: 7px;
+  overflow: hidden;
+  color: #647b8e;
+  font-size: 10px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.food-popup-category {
+  margin-top: 5px;
+  color: #8298aa;
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.food-popup-hours {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 7px 8px;
+  border-radius: 7px;
+  background: #f1f7fb;
+  color: #31536e;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.food-popup-icon {
+  flex-shrink: 0;
+  color: #2389d5;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.food-popup-hours.hours-unavailable {
+  background: #f5f6f7;
+  color: #8298aa;
+  font-weight: 500;
+}
+
+.food-popup-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 9px;
+  color: #31536e;
+  font-size: 10px;
+}
+
+.food-popup-star {
+  color: #e9a23b;
+  font-size: 14px;
+}
+
+.food-popup-rating strong {
+  color: #173c5a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.food-popup-review {
+  color: #8298aa;
+  font-size: 9px;
+}
+
+.food-popup-link {
+  display: block;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #edf2f6;
+  color: #1685d1 !important;
+  font-size: 10px;
+  font-weight: 750;
+  text-align: right;
+  text-decoration: none !important;
+}
+
+.food-popup-link:hover {
+  color: #105f9b !important;
+  text-decoration: underline !important;
 }
 
 /* ========================================
@@ -818,6 +1027,77 @@
 }
 
 /* ========================================
+   SHORT DESKTOP VIEWPORT
+======================================== */
+
+@media (min-width: 901px) and (max-height: 700px) {
+  .app {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .app-header {
+    min-height: 53px;
+    margin-bottom: 8px;
+    padding-bottom: 7px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .app-header h1 {
+    font-size: 21px;
+  }
+
+  .restaurant-panel {
+    padding: 10px;
+  }
+
+  .discovery-heading {
+    margin-bottom: 7px;
+  }
+
+  .discovery-heading h2 {
+    font-size: 16px;
+  }
+
+  .search-box {
+    height: 38px;
+  }
+
+  .filter-buttons {
+    margin: 7px 0 4px;
+  }
+
+  .filter-buttons button {
+    min-height: 31px;
+    padding: 5px;
+  }
+
+  .list-heading {
+    padding: 8px 0;
+  }
+
+  .restaurant-card {
+    padding: 8px;
+    margin: 3px 0;
+  }
+
+  .panel-footer {
+    padding-top: 6px;
+  }
+
+  .map-tool,
+  .map-tools select {
+    min-height: 28px;
+    padding: 4px 7px;
+  }
+}
+
+/* ========================================
    TABLET
 ======================================== */
 
@@ -847,18 +1127,10 @@
     min-height: 320px;
   }
 
-  .map-panel > .map-container {
-    height: 100%;
-  }
-
   .restaurant-panel {
     flex: 0 0 auto;
     height: 580px;
     min-height: 480px;
-  }
-
-  .restaurant-list {
-    min-height: 0;
   }
 }
 
@@ -885,6 +1157,7 @@
   .brand-mark {
     width: 35px;
     height: 35px;
+    flex-basis: 35px;
     border-radius: 10px;
     font-size: 19px;
   }
@@ -920,15 +1193,12 @@
   .main-layout {
     gap: 10px;
   }
-  
+
   .map-panel {
     height: clamp(420px, 65vh, 600px);
     min-height: 420px;
     border-radius: 12px;
-  }
-
-  .map-panel > .map-container {
-    height: 100%;
+    scroll-margin-top: 10px;
   }
 
   .panel-label {
@@ -1037,24 +1307,103 @@
     font-size: 11px;
   }
 
-   .restaurant-card .open,
-   .restaurant-card .closed,
-   .restaurant-card .unknown {
-      padding: 4px 6px;
-      font-size: 8px;
-   }
+  .restaurant-card .open,
+  .restaurant-card .closed,
+  .restaurant-card .unknown {
+    padding: 4px 6px;
+    font-size: 8px;
+  }
 
   .restaurant-address {
     font-size: 9px;
   }
 
   .panel-footer {
-    font-size: 8px;
     padding-top: 8px;
+    font-size: 8px;
   }
 
   .panel-footer .footer-credit {
     font-size: 8px;
+  }
+
+  /* Header weather and clock */
+  .header-right {
+    gap: 6px;
+  }
+
+  .header-weather,
+  .header-clock {
+    width: 128px;
+    min-height: 56px;
+    padding: 5px 6px;
+    border-radius: 8px;
+  }
+
+  .header-weather {
+    gap: 5px;
+  }
+
+  .weather-icon {
+    font-size: 19px;
+  }
+
+  .weather-info strong {
+    font-size: 13px;
+  }
+
+  .weather-info span,
+  .weather-info small {
+    max-width: 78px;
+    font-size: 8px;
+  }
+
+  .header-clock {
+    gap: 5px;
+  }
+
+  .clock-icon {
+    font-size: 19px;
+  }
+
+  .clock-info {
+    gap: 3px;
+  }
+
+  .clock-time {
+    font-size: 11px;
+  }
+
+  .clock-date {
+    font-size: 8px;
+  }
+
+  /* Popup on mobile */
+  .leaflet-popup.foodradar-popup .leaflet-popup-content {
+    width: 220px !important;
+    max-width: calc(100vw - 55px);
+  }
+
+  .food-popup {
+    padding: 11px 12px 10px;
+  }
+
+  .food-popup-name {
+    font-size: 12px;
+  }
+
+  .food-popup-status {
+    padding: 3px 6px;
+    font-size: 8px;
+  }
+
+  .food-popup-address {
+    font-size: 9px;
+  }
+
+  .food-popup-hours {
+    margin-top: 8px;
+    padding: 6px 7px;
   }
 }
 
@@ -1107,647 +1456,7 @@
   .filter-buttons button {
     font-size: 9px;
   }
-}
 
-/* ========================================
-   SHORT DESKTOP VIEWPORT
-======================================== */
-
-@media (min-width: 901px) and (max-height: 700px) {
-  .app {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-
-  .app-header {
-    min-height: 53px;
-    margin-bottom: 8px;
-    padding-bottom: 7px;
-  }
-
-  .brand-mark {
-    width: 34px;
-    height: 34px;
-  }
-
-  .app-header h1 {
-    font-size: 21px;
-  }
-
-  .restaurant-panel {
-    padding: 10px;
-  }
-
-  .discovery-heading {
-    margin-bottom: 7px;
-  }
-
-  .discovery-heading h2 {
-    font-size: 16px;
-  }
-
-  .search-box {
-    height: 38px;
-  }
-
-  .filter-buttons {
-    margin: 7px 0 4px;
-  }
-
-  .filter-buttons button {
-    min-height: 31px;
-    padding: 5px;
-  }
-
-  .list-heading {
-    padding: 8px 0;
-  }
-
-  .restaurant-card {
-    padding: 8px;
-    margin: 3px 0;
-  }
-
-  .panel-footer {
-    padding-top: 6px;
-  }
-
-  .map-tool,
-  .map-tools select {
-    min-height: 28px;
-    padding: 4px 7px;
-  }
-
-  
-/* Header: thông tin bên phải */
-  .header-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 14px;
-    flex-shrink: 0;
-  }
-
-  /* Đồng hồ thời gian thực */
-  .header-clock {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    padding: 7px 12px;
-    background: #eef4f8;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--primary-dark);
-    font-size: 14px;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .clock-icon {
-    font-size: 17px;
-  }
-
-  /* Điện thoại */
-  @media (max-width: 600px) {
-    .app-header {
-      flex-wrap: nowrap;
-      gap: 8px;
-    }
-
-    .header-right {
-      gap: 7px;
-    }
-
-    .header-clock {
-      padding: 5px 7px;
-      font-size: 11px;
-      gap: 4px;
-    }
-
-    .clock-icon {
-      font-size: 13px;
-    }
-  }
-
-}
-
-/* ========================================
-   FOODRADAR - RESTAURANT MAP POPUP
-======================================== */
-
-.leaflet-popup.foodradar-popup {
-  margin-bottom: 12px;
-}
-
-.leaflet-popup.foodradar-popup .leaflet-popup-content-wrapper {
-  padding: 0;
-  overflow: hidden;
-  border: 1px solid #dce8f0;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 8px 28px rgba(25, 65, 95, 0.18);
-}
-
-.leaflet-popup.foodradar-popup .leaflet-popup-content {
-  width: 240px !important;
-  max-width: calc(100vw - 64px);
-  margin: 0;
-  line-height: 1.4;
-}
-
-.leaflet-popup.foodradar-popup .leaflet-popup-tip {
-  background: #ffffff;
-  box-shadow: 3px 3px 8px rgba(25, 65, 95, 0.08);
-}
-
-.leaflet-popup.foodradar-popup .leaflet-popup-close-button {
-  top: 7px;
-  right: 8px;
-  z-index: 2;
-  color: #8298aa;
-  font-size: 19px;
-}
-
-.food-popup {
-  padding: 13px 14px 12px;
-  color: #31536e;
-  font-family: inherit;
-  font-size: 11px;
-}
-
-/* Ảnh quán trong popup bản đồ */
-.food-popup-image {
-  display: block;
-  width: 100%;
-  max-height: 145px;
-  margin-top: 9px;
-  border-radius: 8px;
-  object-fit: cover;
-  background: #f1f5f8;
-}
-
-/* Tên quán và trạng thái */
-.food-popup-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-  padding-right: 15px;
-}
-
-.food-popup-name {
-  min-width: 0;
-  color: #173c5a;
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1.4;
-  overflow-wrap: anywhere;
-}
-
-.food-popup-status {
-  flex-shrink: 0;
-  padding: 4px 7px;
-  border-radius: 20px;
-  font-size: 9px;
-  font-weight: 750;
-  white-space: nowrap;
-}
-
-.food-popup-status.is-open {
-  background: #e8f7ee;
-  color: #16865b;
-}
-
-.food-popup-status.is-closed {
-  background: #f1f3f5;
-  color: #64748b;
-}
-
-/* Địa chỉ */
-.food-popup-address {
-  display: -webkit-box;
-  margin-top: 7px;
-  overflow: hidden;
-  color: #647b8e;
-  font-size: 10px;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-/* Loại hình */
-.food-popup-category {
-  margin-top: 5px;
-  color: #8298aa;
-  font-size: 9px;
-  line-height: 1.4;
-}
-
-/* Thời gian hoạt động */
-.food-popup-hours {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 10px;
-  padding: 7px 8px;
-  border-radius: 7px;
-  background: #f1f7fb;
-  color: #31536e;
-  font-size: 10px;
-  font-weight: 700;
-}
-
-.food-popup-icon {
-  flex-shrink: 0;
-  color: #2389d5;
-  font-size: 17px;
-  line-height: 1;
-}
-
-.food-popup-hours.hours-unavailable {
-  background: #f5f6f7;
-  color: #8298aa;
-  font-weight: 500;
-}
-
-/* Đánh giá */
-.food-popup-rating {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 9px;
-  color: #31536e;
-  font-size: 10px;
-}
-
-.food-popup-star {
-  color: #e9a23b;
-  font-size: 14px;
-}
-
-.food-popup-rating strong {
-  color: #173c5a;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.food-popup-review {
-  color: #8298aa;
-  font-size: 9px;
-}
-
-/* Liên kết */
-.food-popup-link {
-  display: block;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid #edf2f6;
-  color: #1685d1 !important;
-  font-size: 10px;
-  font-weight: 750;
-  text-align: right;
-  text-decoration: none !important;
-}
-
-.food-popup-link:hover {
-  color: #105f9b !important;
-  text-decoration: underline !important;
-}
-
-/* Tối ưu điện thoại */
-@media (max-width: 600px) {
-  .leaflet-popup.foodradar-popup .leaflet-popup-content {
-    width: 220px !important;
-    max-width: calc(100vw - 55px);
-  }
-
-  .food-popup {
-    padding: 11px 12px 10px;
-  }
-
-  .food-popup-name {
-    font-size: 12px;
-  }
-
-  .food-popup-status {
-    padding: 3px 6px;
-    font-size: 8px;
-  }
-
-  .food-popup-address {
-    font-size: 9px;
-  }
-
-  .food-popup-hours {
-    margin-top: 8px;
-    padding: 6px 7px;
-  }
-}
-
-/* ========================================
-   HEADER RIGHT - DESKTOP & MOBILE
-======================================== */
-
-.header-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 14px;
-  flex-shrink: 0;
-}
-
-.header-clock {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 7px 12px;
-  background: #eef4f8;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--primary-dark);
-  font-size: 14px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.clock-icon {
-  font-size: 17px;
-}
-
-/* Điện thoại: đồng hồ nằm trên tổng số quán */
-@media (max-width: 600px) {
-  .header-right {
-    flex-direction: column-reverse;
-    align-items: flex-end;
-    gap: 6px;
-  }
-
-  .header-clock {
-    padding: 5px 7px;
-    font-size: 11px;
-    gap: 4px;
-  }
-
-  .clock-icon {
-    font-size: 13px;
-  }
-}
-
-/* Ẩn nút X mặc định của trình duyệt, giữ nút X của FoodRadar */
-.search-box input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  display: none !important;
-}
-
-/* ========================================
-   MOBILE - AUTO SCROLL TO MAP
-======================================== */
-
-@media (max-width: 600px) {
-  .map-panel {
-    scroll-margin-top: 10px;
-  }
-}
-
-/* ========================================
-   HEADER WEATHER
-======================================== */
-
-.header-right {
-  gap: 10px;
-}
-
-.header-weather {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  min-width: 150px;
-  max-width: 220px;
-  padding: 6px 11px;
-  border: 1px solid #d5e8f5;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 3px 12px rgba(40, 95, 130, 0.05);
-}
-
-.weather-icon {
-  flex: 0 0 auto;
-  font-size: 25px;
-  line-height: 1;
-}
-
-.weather-info {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  line-height: 1.25;
-}
-
-.weather-info strong {
-  color: var(--primary-dark);
-  font-size: 17px;
-  font-weight: 800;
-}
-
-.weather-info span {
-  overflow: hidden;
-  color: #45657d;
-  font-size: 10px;
-  font-weight: 650;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.weather-info small {
-  overflow: hidden;
-  margin-top: 2px;
-  color: var(--muted);
-  font-size: 9px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Điện thoại */
-@media (max-width: 600px) {
-  .header-right {
-    flex-direction: row;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .header-weather {
-    min-width: 0;
-    max-width: 128px;
-    gap: 5px;
-    padding: 5px 6px;
-  }
-
-  .weather-icon {
-    font-size: 19px;
-  }
-
-  .weather-info strong {
-    font-size: 13px;
-  }
-
-  .weather-info span,
-  .weather-info small {
-    max-width: 78px;
-    font-size: 8px;
-  }
-
-  .header-clock {
-    padding: 5px 6px;
-    font-size: 10px;
-  }
-}
-
-/* Điện thoại nhỏ */
-@media (max-width: 380px) {
-  .header-weather {
-    max-width: 108px;
-    gap: 4px;
-    padding: 4px 5px;
-  }
-
-  .weather-icon {
-    font-size: 17px;
-  }
-
-  .weather-info strong {
-    font-size: 12px;
-  }
-
-  .weather-info span,
-  .weather-info small {
-    max-width: 65px;
-    font-size: 7px;
-  }
-
-  .header-clock {
-    padding: 4px 5px;
-    font-size: 9px;
-  }
-}
-
-
-/* ========================================
-   HEADER - CÂN ĐỐI THỜI GIAN VÀ THỜI TIẾT
-======================================== */
-
-.header-weather,
-.header-clock {
-  box-sizing: border-box;
-  width: 190px;
-  min-height: 64px;
-  padding: 8px 12px;
-  border: 1px solid #d5e8f5;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 3px 12px rgba(40, 95, 130, 0.05);
-}
-
-/* Khung thời tiết */
-.header-weather {
-  gap: 9px;
-}
-
-/* Khung thời gian */
-.header-clock {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  color: var(--primary-dark);
-}
-
-.clock-icon {
-  flex-shrink: 0;
-  font-size: 25px;
-}
-
-.clock-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-
-.clock-time {
-  color: var(--primary-dark);
-  font-size: 17px;
-  font-weight: 800;
-  line-height: 1.2;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-.clock-date {
-  color: #45657d;
-  font-size: 10px;
-  font-weight: 650;
-  white-space: nowrap;
-}
-
-/* Điện thoại */
-@media (max-width: 600px) {
-  .header-weather,
-  .header-clock {
-    width: 128px;
-    min-height: 56px;
-    padding: 5px 6px;
-    border-radius: 8px;
-  }
-
-  .header-weather {
-    gap: 5px;
-  }
-
-  .weather-icon {
-    font-size: 19px;
-  }
-
-  .weather-info strong {
-    font-size: 13px;
-  }
-
-  .weather-info span,
-  .weather-info small {
-    max-width: 78px;
-    font-size: 8px;
-  }
-
-  .header-clock {
-    gap: 5px;
-  }
-
-  .clock-icon {
-    font-size: 19px;
-  }
-
-  .clock-info {
-    gap: 3px;
-  }
-
-  .clock-time {
-    font-size: 11px;
-  }
-
-  .clock-date {
-    font-size: 8px;
-  }
-}
-
-/* Điện thoại nhỏ */
-@media (max-width: 380px) {
   .header-weather,
   .header-clock {
     width: 108px;
@@ -1755,6 +1464,14 @@
     padding: 4px 5px;
   }
 
+  .weather-icon {
+    font-size: 17px;
+  }
+
+  .weather-info strong {
+    font-size: 12px;
+  }
+
   .weather-info span,
   .weather-info small {
     max-width: 65px;
@@ -1773,5 +1490,3 @@
     font-size: 7px;
   }
 }
-
-
