@@ -242,8 +242,7 @@ const calculatePopupTargetCenter = (
   map,
   marker,
   popup,
-  targetZoom,
-  markerOffsetY = 0
+  targetZoom
 ) => {
   const popupElement = popup.getElement()
 
@@ -251,33 +250,23 @@ const calculatePopupTargetCenter = (
     return null
   }
 
-  const mapRect = map.getContainer().getBoundingClientRect()
-  const popupRect = popupElement.getBoundingClientRect()
+  const mapSize = map.getSize()
 
-  const markerPoint = map.latLngToContainerPoint(
-    marker.getLatLng()
-  )
+  const popupHeight = popupElement.offsetHeight
+  const popupWidth = popupElement.offsetWidth
 
-  // Tâm toàn bộ popup, tính theo tọa độ bên trong bản đồ.
-  const popupCenterX =
-    (popupRect.left + popupRect.right) / 2 - mapRect.left
+  // Popup Leaflet nằm phía trên marker.
+  // Đưa tâm popup vào tâm bản đồ.
+  const offsetX = 0
+  const offsetY = popupHeight / 2
 
-  const popupCenterY =
-    (popupRect.top + popupRect.bottom) / 2 - mapRect.top
-
-  // Độ lệch giữa tâm popup và vị trí marker.
-  const offsetX = popupCenterX - markerPoint.x
-  const offsetY = popupCenterY - markerPoint.y
-
-  // Tọa độ pixel của marker ở mức zoom đích.
   const markerProjected = map.project(
     marker.getLatLng(),
     targetZoom
   )
 
-  // Tâm bản đồ mới = vị trí marker + độ lệch popup.
   const targetProjected = markerProjected.add(
-    L.point(offsetX, offsetY - markerOffsetY)
+    L.point(offsetX, offsetY)
   )
 
   return map.unproject(targetProjected, targetZoom)
@@ -726,22 +715,12 @@ export default function RestaurantMap({
     animationFrameId = requestAnimationFrame(() => {
       if (cancelled || !map.hasLayer(marker)) return
 
-    const currentZoom = map.getZoom()
-    
-    const markerOffsetY =
-      selectionSource === 'map'
-        ? 0
-        : currentZoom >= 16
-          ? 45
-          : 45 + (16 - currentZoom) * 15
-    
-    const targetCenter = calculatePopupTargetCenter(
-      map,
-      marker,
-      popup,
-      targetZoom,
-      markerOffsetY
-    )
+      const targetCenter = calculatePopupTargetCenter(
+        map,
+        marker,
+        popup,
+        targetZoom
+      )
 
       if (!targetCenter) {
         popupElement.style.visibility = 'visible'
