@@ -779,7 +779,6 @@
 }
 
 .panel-footer .footer-credit {
-  grid-column: 1 / -1;
   color: #176da7;
   text-align: right;
   font-size: 9px;
