@@ -290,6 +290,7 @@ export default function RestaurantMap({
   restaurants = [],
   selectedRestaurant,
   onSelectRestaurant,
+  onUserLocationChange,
 }) {
   const mapRef = useRef(null)
   const mapInstance = useRef(null)
@@ -442,6 +443,12 @@ export default function RestaurantMap({
           .bindPopup('Vị trí hiện tại của bạn')
           .addTo(userLocationLayer.current)
       }
+
+      // Gửi tọa độ GPS về App để cập nhật thời tiết
+      onUserLocationChange?.({
+        latitude: event.latlng.lat,
+        longitude: event.latlng.lng,
+      })
 
       map.flyTo(
         event.latlng,
