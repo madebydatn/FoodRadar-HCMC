@@ -725,14 +725,8 @@ export default function RestaurantMap({
     animationFrameId = requestAnimationFrame(() => {
       if (cancelled || !map.hasLayer(marker)) return
 
-    const currentZoom = map.getZoom()
-    
     const markerOffsetY =
-      selectionSource === 'map'
-        ? 0
-        : currentZoom >= 16
-          ? 45
-          : 45 + (16 - currentZoom) * 15
+      selectionSource === 'map' ? 0 : 150  
     
     const targetCenter = calculatePopupTargetCenter(
       map,
