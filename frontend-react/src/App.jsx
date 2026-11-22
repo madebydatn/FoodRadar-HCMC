@@ -139,6 +139,13 @@ function App() {
     hour12: false
   })
   
+  const dateText = currentTime.toLocaleDateString('vi-VN', {
+    timeZone: 'Asia/Ho_Chi_Minh',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  })
+  
   // ========================================
   // THỜI TIẾT
   // ========================================
@@ -292,8 +299,13 @@ function App() {
 
           <div className="header-clock">
             <span className="clock-icon">◷</span>
-            <span>{clockText}</span>
+          
+            <div className="clock-info">
+              <strong className="clock-time">{clockText}</strong>
+              <span className="clock-date">{dateText}</span>
+            </div>
           </div>
+          
         </div>
       </header>
 
