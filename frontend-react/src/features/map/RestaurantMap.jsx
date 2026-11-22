@@ -242,7 +242,8 @@ const calculatePopupTargetCenter = (
   map,
   marker,
   popup,
-  targetZoom
+  targetZoom,
+  markerOffsetY = 0
 ) => {
   const popupElement = popup.getElement()
 
@@ -276,7 +277,7 @@ const calculatePopupTargetCenter = (
 
   // Tâm bản đồ mới = vị trí marker + độ lệch popup.
   const targetProjected = markerProjected.add(
-    L.point(offsetX, offsetY)
+    L.point(offsetX, offsetY - markerOffsetY)
   )
 
   return map.unproject(targetProjected, targetZoom)
@@ -725,12 +726,16 @@ export default function RestaurantMap({
     animationFrameId = requestAnimationFrame(() => {
       if (cancelled || !map.hasLayer(marker)) return
 
-      const targetCenter = calculatePopupTargetCenter(
-        map,
-        marker,
-        popup,
-        targetZoom
-      )
+    const markerOffsetY =
+      selectionSource === 'map' ? 0 : 45
+    
+    const targetCenter = calculatePopupTargetCenter(
+      map,
+      marker,
+      popup,
+      targetZoom,
+      markerOffsetY
+    )
 
       if (!targetCenter) {
         popupElement.style.visibility = 'visible'
