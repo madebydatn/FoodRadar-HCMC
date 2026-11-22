@@ -302,6 +302,9 @@ export default function RestaurantMap({
 
   const onSelectRestaurantRef = useRef(onSelectRestaurant)
 
+  // Xác định quán được chọn từ marker trên bản đồ
+  const selectionSourceRef = useRef(null)
+
   const pendingMoveHandlerRef = useRef(null)
 
   const [selectionVersion, setSelectionVersion] = useState(0)
@@ -537,8 +540,10 @@ export default function RestaurantMap({
       // Marker chỉ cập nhật lựa chọn.
       // Không tự mở popup hoặc di chuyển bản đồ.
       marker.on('click', () => {
+        selectionSourceRef.current = 'map'
+      
         onSelectRestaurantRef.current?.(restaurant)
-
+      
         setSelectionVersion((version) => version + 1)
       })
 
@@ -686,15 +691,21 @@ export default function RestaurantMap({
 
     if (!popup) return
 
-    const targetZoom = Math.max(map.getZoom(), 16)
+    // Click marker trên bản đồ: giữ nguyên zoom hiện tại.
+    // Chọn từ danh sách: giữ hành vi cũ, tối thiểu zoom 16.
+    const selectionSource = selectionSourceRef.current
+    selectionSourceRef.current = null
+    
+    const targetZoom =
+      selectionSource === 'map'
+        ? map.getZoom()
+        : Math.max(map.getZoom(), 16)
 
     // Mở popup tại vị trí hiện tại để Leaflet tạo DOM.
     // Không pan hoặc flyTo marker vào tâm bản đồ.
-    console.log('BEFORE POPUP:', map.getZoom()) //log check datn
     popup
       .setLatLng(marker.getLatLng())
       .openOn(map)
-    console.log('AFTER POPUP:', map.getZoom()) //log check datn
     
     const popupElement = popup.getElement()
 
@@ -748,13 +759,7 @@ export default function RestaurantMap({
 
       map.once('moveend', showPopupAfterMove)
 
-      console.log('BEFORE FLYTO:', map.getZoom(), 'TARGET:', targetZoom) //log datn
-      // Bước 1: Đưa bản đồ về zoom đích ngay lập tức
-      map.setZoom(targetZoom, {
-        animate: false,
-      })
-      
-      // Bước 2: Di chuyển tâm bản đồ mượt mà
+      // Chỉ di chuyển tâm bản đồ, tuyệt đối không thay đổi zoom.
       map.panTo(targetCenter, {
         animate: true,
         duration: 0.7,
