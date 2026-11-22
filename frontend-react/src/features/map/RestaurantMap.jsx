@@ -749,14 +749,9 @@ export default function RestaurantMap({
       map.once('moveend', showPopupAfterMove)
 
       console.log('BEFORE FLYTO:', map.getZoom(), 'TARGET:', targetZoom) //log datn
-      map.flyTo(
-        targetCenter,
-        targetZoom,
-        {
-          duration: 0.7,
-          easeLinearity: 0.25,
-        }
-      )
+      map.setView(targetCenter, targetZoom, {
+        animate: false,
+      })
     })
 
     return () => {
