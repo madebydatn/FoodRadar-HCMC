@@ -11,10 +11,10 @@ const APP_SHELL = [
   '',
   'index.html',
   'manifest.json',
-  'restaurants.json',
-  'favicon.svg',
-  'icon-192.png',
-  'icon-512.png',
+  'favicon-48.png',
+  'icon-apple-180.png',
+  'icon-pwa-192.png',
+  'icon-pwa-512.png',
 ].map(path => new URL(path, APP_SCOPE).href)
 
 // Chỉ cache response hợp lệ, cùng origin và thành công.
