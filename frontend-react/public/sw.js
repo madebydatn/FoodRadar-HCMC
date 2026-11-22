@@ -1,6 +1,6 @@
 
 const CACHE_PREFIX = 'foodradar-'
-const CACHE_VERSION = 'v8'
+const CACHE_VERSION = 'v9'
 const CACHE_NAME = `${CACHE_PREFIX}${CACHE_VERSION}`
 
 // Tự xác định thư mục gốc của ứng dụng.
