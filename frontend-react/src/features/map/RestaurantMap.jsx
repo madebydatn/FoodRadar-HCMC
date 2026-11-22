@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react'
 import L from 'leaflet'
 import { HeatLayer } from 'leaflet.heat'
@@ -242,7 +241,8 @@ const calculatePopupTargetCenter = (
   map,
   marker,
   popup,
-  targetZoom
+  targetZoom,
+  markerOffsetY = 0
 ) => {
   const popupElement = popup.getElement()
 
@@ -250,23 +250,33 @@ const calculatePopupTargetCenter = (
     return null
   }
 
-  const mapSize = map.getSize()
+  const mapRect = map.getContainer().getBoundingClientRect()
+  const popupRect = popupElement.getBoundingClientRect()
 
-  const popupHeight = popupElement.offsetHeight
-  const popupWidth = popupElement.offsetWidth
+  const markerPoint = map.latLngToContainerPoint(
+    marker.getLatLng()
+  )
 
-  // Popup Leaflet nằm phía trên marker.
-  // Đưa tâm popup vào tâm bản đồ.
-  const offsetX = 0
-  const offsetY = popupHeight / 2
+  // Tâm toàn bộ popup, tính theo tọa độ bên trong bản đồ.
+  const popupCenterX =
+    (popupRect.left + popupRect.right) / 2 - mapRect.left
 
+  const popupCenterY =
+    (popupRect.top + popupRect.bottom) / 2 - mapRect.top
+
+  // Độ lệch giữa tâm popup và vị trí marker.
+  const offsetX = popupCenterX - markerPoint.x
+  const offsetY = popupCenterY - markerPoint.y
+
+  // Tọa độ pixel của marker ở mức zoom đích.
   const markerProjected = map.project(
     marker.getLatLng(),
     targetZoom
   )
 
+  // Tâm bản đồ mới = vị trí marker + độ lệch popup.
   const targetProjected = markerProjected.add(
-    L.point(offsetX, offsetY)
+    L.point(offsetX, offsetY - markerOffsetY)
   )
 
   return map.unproject(targetProjected, targetZoom)
@@ -715,11 +725,21 @@ export default function RestaurantMap({
     animationFrameId = requestAnimationFrame(() => {
       if (cancelled || !map.hasLayer(marker)) return
 
+    const currentZoom = map.getZoom()
+    
+    const markerOffsetY =
+      selectionSource === 'map'
+        ? 0
+        : currentZoom >= 16
+          ? 45
+          : 45 + (16 - currentZoom) * 15
+    
     const targetCenter = calculatePopupTargetCenter(
       map,
       marker,
       popup,
-      targetZoom
+      targetZoom,
+      markerOffsetY
     )
 
       if (!targetCenter) {
