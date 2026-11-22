@@ -34,6 +34,27 @@
   --shadow: 0 7px 24px rgba(35, 91, 130, 0.08);
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Primary colors */
+  --primary: #38bdf8;
+  --primary-dark: #60a5fa;
+  --primary-soft: rgba(56, 189, 248, 0.15);
+
+  /* Text colors */
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+
+  /* Surface colors */
+  --background: #0b1320;
+  --surface: #131e32;
+  --border: #1e293b;
+
+  /* Shadows */
+  --shadow: 0 7px 24px rgba(0, 0, 0, 0.4);
+}
+
 /* RESET */
 
 * {

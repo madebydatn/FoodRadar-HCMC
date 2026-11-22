@@ -98,6 +98,39 @@ function App() {
   const [weather, setWeather] = useState(null)
   const [weatherError, setWeatherError] = useState('')
   const mapPanelRef = useRef(null)
+
+  // Quản lý chế độ sáng / tối (Light / Dark mode)
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem('foodradar-theme')
+      if (saved === 'dark' || saved === 'light') return saved
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
+    } catch {
+      return 'light'
+    }
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    try {
+      localStorage.setItem('foodradar-theme', theme)
+    } catch {
+      // Bỏ qua lỗi nếu localStorage bị hạn chế
+    }
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute(
+        'content',
+        theme === 'dark' ? '#0b1320' : '#ffffff'
+      )
+    }
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+  }
   
   // Chọn quán và tự cuộn lên bản đồ trên điện thoại
   const handleSelectRestaurant = (item) => {
@@ -273,7 +306,28 @@ function App() {
         </div>
 
           <div className="brand-info">
-            <h1>FoodRadar HCMC</h1>
+            <div className="brand-title-row">
+              <h1>FoodRadar HCMC</h1>
+              <button
+                type="button"
+                className="theme-toggle mobile-theme-toggle"
+                onClick={toggleTheme}
+                title={
+                  theme === 'dark'
+                    ? 'Chuyển sang giao diện sáng'
+                    : 'Chuyển sang giao diện tối'
+                }
+                aria-label={
+                  theme === 'dark'
+                    ? 'Chuyển sang giao diện sáng'
+                    : 'Chuyển sang giao diện tối'
+                }
+              >
+                <span className="theme-toggle-icon" aria-hidden="true">
+                  {theme === 'dark' ? '🌙' : '☀️'}
+                </span>
+              </button>
+            </div>
             <p>Khám phá địa điểm ăn uống tại TP. Hồ Chí Minh</p>
           </div>
         </div>
@@ -310,7 +364,26 @@ function App() {
               <span className="clock-date">{dateText}</span>
             </div>
           </div>
-          
+
+          <button
+            type="button"
+            className="theme-toggle desktop-theme-toggle"
+            onClick={toggleTheme}
+            title={
+              theme === 'dark'
+                ? 'Chuyển sang giao diện sáng'
+                : 'Chuyển sang giao diện tối'
+            }
+            aria-label={
+              theme === 'dark'
+                ? 'Chuyển sang giao diện sáng'
+                : 'Chuyển sang giao diện tối'
+            }
+          >
+            <span className="theme-toggle-icon" aria-hidden="true">
+              {theme === 'dark' ? '🌙' : '☀️'}
+            </span>
+          </button>
         </div>
       </header>
 
