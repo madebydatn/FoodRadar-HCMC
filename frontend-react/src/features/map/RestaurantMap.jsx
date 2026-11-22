@@ -690,10 +690,12 @@ export default function RestaurantMap({
 
     // Mở popup tại vị trí hiện tại để Leaflet tạo DOM.
     // Không pan hoặc flyTo marker vào tâm bản đồ.
+    console.log('BEFORE POPUP:', map.getZoom()) //log check datn
     popup
       .setLatLng(marker.getLatLng())
       .openOn(map)
-
+    console.log('AFTER POPUP:', map.getZoom()) //log check datn
+    
     const popupElement = popup.getElement()
 
     if (!popupElement) return
@@ -746,6 +748,7 @@ export default function RestaurantMap({
 
       map.once('moveend', showPopupAfterMove)
 
+      console.log('BEFORE FLYTO:', map.getZoom(), 'TARGET:', targetZoom) //log datn
       map.flyTo(
         targetCenter,
         targetZoom,
