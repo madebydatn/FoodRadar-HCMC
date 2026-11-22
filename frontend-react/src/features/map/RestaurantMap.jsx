@@ -715,12 +715,12 @@ export default function RestaurantMap({
     animationFrameId = requestAnimationFrame(() => {
       if (cancelled || !map.hasLayer(marker)) return
 
-      const targetCenter = calculatePopupTargetCenter(
-        map,
-        marker,
-        popup,
-        targetZoom
-      )
+    const targetCenter = calculatePopupTargetCenter(
+      map,
+      marker,
+      popup,
+      targetZoom
+    )
 
       if (!targetCenter) {
         popupElement.style.visibility = 'visible'
