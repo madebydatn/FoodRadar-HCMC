@@ -4,6 +4,29 @@ import { getRestaurants } from './services/restaurantService'
 import RestaurantMap from './features/map/RestaurantMap'
 import './App.css'
 
+// Tọa độ mặc định của TP. Hồ Chí Minh
+const DEFAULT_WEATHER_LOCATION = {
+  latitude: 10.8231,
+  longitude: 106.6297,
+  label: 'TP. Hồ Chí Minh',
+}
+
+// Chuyển mã thời tiết WMO thành mô tả tiếng Việt
+function getWeatherDescription(code, isDay) {
+  if (code === 0) return { icon: isDay ? '☀️' : '🌙', description: 'Trời quang' }
+  if (code === 1) return { icon: isDay ? '🌤️' : '🌙', description: 'Ít mây' }
+  if (code === 2) return { icon: '⛅', description: 'Có mây' }
+  if (code === 3) return { icon: '☁️', description: 'Nhiều mây' }
+  if (code === 45 || code === 48) return { icon: '🌫️', description: 'Sương mù' }
+  if ([51, 53, 55, 56, 57].includes(code)) return { icon: '🌦️', description: 'Mưa phùn' }
+  if ([61, 63, 65, 66, 67].includes(code)) return { icon: '🌧️', description: 'Có mưa' }
+  if ([71, 73, 75, 77, 85, 86].includes(code)) return { icon: '❄️', description: 'Tuyết' }
+  if ([80, 81, 82].includes(code)) return { icon: '🌧️', description: 'Mưa rào' }
+  if ([95, 96, 99].includes(code)) return { icon: '⛈️', description: 'Dông' }
+
+  return { icon: '🌡️', description: 'Thời tiết hiện tại' }
+}
+
 // Chuyển giờ HH:mm hoặc HH:mm:ss thành số phút trong ngày
 function parseTimeToMinutes(time) {
   if (typeof time !== 'string') return null
@@ -71,6 +94,9 @@ function App() {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null)
   const [currentTime, setCurrentTime] = useState(new Date())
   const [statusTime, setStatusTime] = useState(new Date())
+  const [weatherLocation, setWeatherLocation] = useState(DEFAULT_WEATHER_LOCATION)
+  const [weather, setWeather] = useState(null)
+  const [weatherError, setWeatherError] = useState('')
   const mapPanelRef = useRef(null)
   
   // Chọn quán và tự cuộn lên bản đồ trên điện thoại
@@ -112,6 +138,72 @@ function App() {
     second: '2-digit',
     hour12: false
   })
+  
+  // ========================================
+  // THỜI TIẾT
+  // ========================================
+  useEffect(() => {
+    const controller = new AbortController()
+  
+    const loadWeather = async () => {
+      try {
+        setWeatherError('')
+  
+        const params = new URLSearchParams({
+          latitude: String(weatherLocation.latitude),
+          longitude: String(weatherLocation.longitude),
+          current: 'temperature_2m,weather_code,is_day',
+          timezone: 'auto',
+        })
+  
+        const response = await fetch(
+          `https://api.open-meteo.com/v1/forecast?${params.toString()}`,
+          { signal: controller.signal }
+        )
+  
+        if (!response.ok) {
+          throw new Error('Không thể tải dữ liệu thời tiết')
+        }
+  
+        const data = await response.json()
+        const current = data.current
+  
+        if (
+          !current ||
+          !Number.isFinite(Number(current.temperature_2m)) ||
+          !Number.isFinite(Number(current.weather_code))
+        ) {
+          throw new Error('Dữ liệu thời tiết không hợp lệ')
+        }
+  
+        const condition = getWeatherDescription(
+          Number(current.weather_code),
+          Number(current.is_day) === 1
+        )
+  
+        setWeather({
+          temperature: Math.round(Number(current.temperature_2m)),
+          icon: condition.icon,
+          description: condition.description,
+        })
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          setWeatherError('Chưa tải được thời tiết')
+        }
+      }
+    }
+  
+    // Tải ngay lần đầu
+    loadWeather()
+  
+    // Cập nhật mỗi 10 phút
+    const timer = setInterval(loadWeather, 600000)
+  
+    return () => {
+      controller.abort()
+      clearInterval(timer)
+    }
+  }, [weatherLocation])
 
   // Tải dữ liệu nhà hàng
   useEffect(() => {
@@ -175,9 +267,27 @@ function App() {
         </div>
 
         <div className="header-right">
-          <div className="total-count">
-            <strong>{restaurants.length.toLocaleString('vi-VN')}</strong>
-            <span>Quán ăn</span>
+          <div
+            className="header-weather"
+            title={weatherError || `Thời tiết tại ${weatherLocation.label}`}
+            aria-live="polite"
+          >
+            <span className="weather-icon">
+              {weather?.icon || '🌤️'}
+            </span>
+          
+            <div className="weather-info">
+              <strong>
+                {weather ? `${weather.temperature}°C` : '--°C'}
+              </strong>
+          
+              <span>
+                {weather?.description ||
+                  (weatherError ? 'Không có dữ liệu' : 'Đang tải thời tiết')}
+              </span>
+          
+              <small>{weatherLocation.label}</small>
+            </div>
           </div>
 
           <div className="header-clock">
@@ -212,6 +322,13 @@ function App() {
               restaurants={filteredRestaurants}
               selectedRestaurant={selectedRestaurant}
               onSelectRestaurant={setSelectedRestaurant}
+              onUserLocationChange={(location) =>
+                setWeatherLocation({
+                  latitude: location.latitude,
+                  longitude: location.longitude,
+                  label: 'Vị trí của tôi',
+                })
+              }
             />
           </div>
 
