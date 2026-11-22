@@ -145,6 +145,10 @@ select:focus-visible {
   background: #e8f2f8;
 }
 
+[data-theme="dark"] .leaflet-container {
+  background: #0b1320;
+}
+
 .leaflet-popup-content-wrapper {
   border-radius: 11px;
 }
@@ -162,6 +166,10 @@ select:focus-visible {
   scrollbar-color: #c2d8e8 transparent;
 }
 
+[data-theme="dark"] * {
+  scrollbar-color: #334155 transparent;
+}
+
 *::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -170,6 +178,10 @@ select:focus-visible {
 *::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: #c2d8e8;
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb {
+  background: #334155;
 }
 
 /* DESKTOP: LOCK VIEWPORT */

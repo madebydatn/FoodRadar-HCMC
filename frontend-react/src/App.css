@@ -218,12 +218,6 @@
    THEME TOGGLE BUTTON
 ======================================== */
 
-.brand-title-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -271,14 +265,15 @@
 
 .mobile-theme-toggle {
   display: none;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 9px;
+  margin-left: auto;
 }
 
 .mobile-theme-toggle .theme-toggle-icon {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* ========================================
@@ -1252,15 +1247,9 @@
   }
 
    .brand-info {
-   flex: 1;
-   min-width: 0;
+     flex: 1;
+     min-width: 0;
    }
-
-  .brand-title-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
 
   .desktop-theme-toggle {
     display: none !important;
@@ -1268,6 +1257,7 @@
 
   .mobile-theme-toggle {
     display: inline-flex !important;
+    margin-left: auto;
   }
 
   .app-header h1 {
@@ -1754,14 +1744,31 @@
   color: #cbd5e1;
 }
 
+[data-theme="dark"] .loading-spinner {
+  border-color: #1e293b;
+  border-top-color: var(--primary);
+}
+
 [data-theme="dark"] .map-panel {
-  background: #0a0f1d;
+  background: #0b1320;
   border-color: var(--border);
 }
 
-/* Biến đổi tile map Leaflet sang chế độ tối bảo toàn marker/popup/heatmap */
+[data-theme="dark"] .leaflet-container {
+  background: #0b1320 !important;
+}
+
+[data-theme="dark"] .leaflet-tile {
+  background-color: #0b1320 !important;
+}
+
+[data-theme="dark"] .leaflet-tile-container {
+  background-color: #0b1320;
+}
+
+/* Biến đổi tile map Leaflet sang chế độ tối dễ nhìn, bảo toàn nhãn đường, marker, popup và heatmap */
 [data-theme="dark"] .leaflet-tile-pane {
-  filter: brightness(0.65) invert(1) contrast(3) hue-rotate(200deg) saturate(0.35);
+  filter: brightness(0.78) invert(1) contrast(1.2) hue-rotate(190deg) saturate(0.4);
 }
 
 [data-theme="dark"] .panel-label {
@@ -1973,6 +1980,10 @@
   color: #cbd5e1;
 }
 
+[data-theme="dark"] .food-popup-image {
+  background: #1e293b;
+}
+
 [data-theme="dark"] .food-popup-name {
   color: #f8fafc;
 }
@@ -2003,6 +2014,10 @@
 [data-theme="dark"] .food-popup-hours {
   background: #1e293b;
   color: #e2e8f0;
+}
+
+[data-theme="dark"] .food-popup-icon {
+  color: var(--primary);
 }
 
 [data-theme="dark"] .food-popup-hours.hours-unavailable {

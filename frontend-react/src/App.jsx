@@ -101,15 +101,20 @@ function App() {
 
   // Quản lý chế độ sáng / tối (Light / Dark mode)
   const [theme, setTheme] = useState(() => {
-    try {
-      const saved = localStorage.getItem('foodradar-theme')
-      if (saved === 'dark' || saved === 'light') return saved
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-    } catch {
-      return 'light'
-    }
+    return (
+      document.documentElement.getAttribute('data-theme') ||
+      (() => {
+        try {
+          const saved = localStorage.getItem('foodradar-theme')
+          if (saved === 'dark' || saved === 'light') return saved
+          return window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light'
+        } catch {
+          return 'light'
+        }
+      })()
+    )
   })
 
   useEffect(() => {
@@ -306,30 +311,29 @@ function App() {
         </div>
 
           <div className="brand-info">
-            <div className="brand-title-row">
-              <h1>FoodRadar HCMC</h1>
-              <button
-                type="button"
-                className="theme-toggle mobile-theme-toggle"
-                onClick={toggleTheme}
-                title={
-                  theme === 'dark'
-                    ? 'Chuyển sang giao diện sáng'
-                    : 'Chuyển sang giao diện tối'
-                }
-                aria-label={
-                  theme === 'dark'
-                    ? 'Chuyển sang giao diện sáng'
-                    : 'Chuyển sang giao diện tối'
-                }
-              >
-                <span className="theme-toggle-icon" aria-hidden="true">
-                  {theme === 'dark' ? '🌙' : '☀️'}
-                </span>
-              </button>
-            </div>
+            <h1>FoodRadar HCMC</h1>
             <p>Khám phá địa điểm ăn uống tại TP. Hồ Chí Minh</p>
           </div>
+
+          <button
+            type="button"
+            className="theme-toggle mobile-theme-toggle"
+            onClick={toggleTheme}
+            title={
+              theme === 'dark'
+                ? 'Chuyển sang giao diện sáng'
+                : 'Chuyển sang giao diện tối'
+            }
+            aria-label={
+              theme === 'dark'
+                ? 'Chuyển sang giao diện sáng'
+                : 'Chuyển sang giao diện tối'
+            }
+          >
+            <span className="theme-toggle-icon" aria-hidden="true">
+              {theme === 'dark' ? '🌙' : '☀️'}
+            </span>
+          </button>
         </div>
 
         <div className="header-right">

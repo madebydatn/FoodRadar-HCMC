@@ -17,6 +17,29 @@
     <link rel="manifest" href="./manifest.json" />
 
     <title>FoodRadar - Khám phá quán ăn</title>
+
+    <!-- Khởi tạo chế độ sáng/tối trước khi render để tránh nháy giao diện (FOUC) -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('foodradar-theme');
+          var theme =
+            saved === 'dark' || saved === 'light'
+              ? saved
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) {
+            meta.setAttribute(
+              'content',
+              theme === 'dark' ? '#0b1320' : '#ffffff'
+            );
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>
