@@ -1638,3 +1638,140 @@
   }
 }
 
+
+/* ========================================
+   HEADER - CÂN ĐỐI THỜI GIAN VÀ THỜI TIẾT
+======================================== */
+
+.header-weather,
+.header-clock {
+  box-sizing: border-box;
+  width: 190px;
+  min-height: 64px;
+  padding: 8px 12px;
+  border: 1px solid #d5e8f5;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(40, 95, 130, 0.05);
+}
+
+/* Khung thời tiết */
+.header-weather {
+  gap: 9px;
+}
+
+/* Khung thời gian */
+.header-clock {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  color: var(--primary-dark);
+}
+
+.clock-icon {
+  flex-shrink: 0;
+  font-size: 25px;
+}
+
+.clock-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.clock-time {
+  color: var(--primary-dark);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.clock-date {
+  color: #45657d;
+  font-size: 10px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+/* Điện thoại */
+@media (max-width: 600px) {
+  .header-weather,
+  .header-clock {
+    width: 128px;
+    min-height: 56px;
+    padding: 5px 6px;
+    border-radius: 8px;
+  }
+
+  .header-weather {
+    gap: 5px;
+  }
+
+  .weather-icon {
+    font-size: 19px;
+  }
+
+  .weather-info strong {
+    font-size: 13px;
+  }
+
+  .weather-info span,
+  .weather-info small {
+    max-width: 78px;
+    font-size: 8px;
+  }
+
+  .header-clock {
+    gap: 5px;
+  }
+
+  .clock-icon {
+    font-size: 19px;
+  }
+
+  .clock-info {
+    gap: 3px;
+  }
+
+  .clock-time {
+    font-size: 11px;
+  }
+
+  .clock-date {
+    font-size: 8px;
+  }
+}
+
+/* Điện thoại nhỏ */
+@media (max-width: 380px) {
+  .header-weather,
+  .header-clock {
+    width: 108px;
+    min-height: 52px;
+    padding: 4px 5px;
+  }
+
+  .weather-info span,
+  .weather-info small {
+    max-width: 65px;
+    font-size: 7px;
+  }
+
+  .clock-icon {
+    font-size: 16px;
+  }
+
+  .clock-time {
+    font-size: 9px;
+  }
+
+  .clock-date {
+    font-size: 7px;
+  }
+}
+
+
