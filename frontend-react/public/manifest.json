@@ -1,24 +1,24 @@
 
 {
-  "id": "/FoodRadar-HCMC/",
+  "id": "./",
   "name": "FoodRadar HCMC",
   "short_name": "FoodRadar",
   "description": "Bản đồ quán ăn đang mở dành cho tài xế",
-  "start_url": "/FoodRadar-HCMC/",
-  "scope": "/FoodRadar-HCMC/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#101820",
   "theme_color": "#101820",
   "icons": [
     {
-      "src": "/FoodRadar-HCMC/icon-192.png",
+      "src": "./icon-pwa-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/FoodRadar-HCMC/icon-512.png",
+      "src": "./icon-pwa-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
