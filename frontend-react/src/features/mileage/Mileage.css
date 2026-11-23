@@ -297,14 +297,3 @@
   color: #ff9999;
 }
 
-.mileage-table td:last-child {
-  text-align: center;
-  vertical-align: middle;
-}
-
-.mileage-table td:last-child .mileage-user-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
