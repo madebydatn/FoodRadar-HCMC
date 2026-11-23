@@ -1,0 +1,12 @@
+name = "foodradar-mileage-api"
+main = "worker/src/index.js"
+compatibility_date = "2026-11-23"
+
+[vars]
+FRONTEND_ORIGINS = "https://madebydatn.github.io,http://localhost:5173"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "foodradar-mileage"
+database_id = "18dde69a-8fe2-45ca-ad0c-e3dc603ad45c"
+migrations_dir = "migrations"
