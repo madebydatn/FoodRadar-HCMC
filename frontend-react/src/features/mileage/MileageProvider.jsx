@@ -336,6 +336,24 @@ function MileagePanel({ onClose }) {
     setAllShifts(shiftResult.shifts || [])
   }, [token, selectedUser])
 
+  const deleteShift = async (shift) => {
+    if (!window.confirm(`Xóa ca làm việc của ${shift.username}?`)) return
+
+    setBusy(true)
+    setError('')
+    setMessage('')
+
+    try {
+      const result = await mileageApi.deleteShift(token, shift.id)
+      await loadAdmin()
+      setMessage(result.message || 'Đã xóa ca làm việc.')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setBusy(false)
+    }
+  }
+  
   useEffect(() => {
     if (!message && !error) return undefined
     const timer = window.setTimeout(() => { setMessage(''); setError('') }, 4500)
@@ -528,11 +546,39 @@ function MileagePanel({ onClose }) {
             </div>
             <div className="mileage-table-wrap">
               <table className="mileage-table">
-                <thead><tr><th>Tài khoản</th><th>Bắt đầu</th><th>Kết thúc</th><th>Km</th><th>Trạng thái</th></tr></thead>
-                <tbody>{allShifts.map((shift) => <tr key={shift.id}>
-                  <td>{shift.username}</td><td>{formatDateTime(shift.started_at)}</td><td>{formatDateTime(shift.ended_at)}</td>
-                  <td>{formatKm(shift.distance_km)}</td><td>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</td>
-                </tr>)}</tbody>
+                <thead>
+                  <tr>
+                    <th>Tài khoản</th>
+                    <th>Bắt đầu</th>
+                    <th>Kết thúc</th>
+                    <th>Km</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {allShifts.map((shift) => (
+                    <tr key={shift.id}>
+                      <td>{shift.username}</td>
+                      <td>{formatDateTime(shift.started_at)}</td>
+                      <td>{formatDateTime(shift.ended_at)}</td>
+                      <td>{formatKm(shift.distance_km)}</td>
+                      <td>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</td>
+                      <td>
+                        {shift.status === 'completed' && (
+                          <button
+                            type="button"
+                            className="mileage-delete-history-button"
+                            disabled={busy}
+                            onClick={() => deleteShift(shift)}
+                          >
+                            Xóa
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>
