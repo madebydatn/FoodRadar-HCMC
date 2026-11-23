@@ -2219,3 +2219,51 @@
     flex-basis: 27px;
   }
 }
+
+/* FIX HEADER MOBILE - tránh che khuất các nút */
+@media (max-width: 600px) {
+  .app-header {
+    display: flex;
+    flex-wrap: wrap !important;
+    align-items: center;
+    width: 100%;
+    overflow: visible;
+    gap: 8px;
+  }
+
+  .brand {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .header-right {
+    display: flex;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap !important;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: visible;
+    gap: 6px;
+  }
+
+  .mileage-header-controls {
+    flex: 0 0 auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .header-weather,
+  .header-clock {
+    flex: 1 1 105px;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .desktop-theme-toggle {
+    flex: 0 0 32px;
+  }
+}
