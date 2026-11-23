@@ -275,3 +275,24 @@
   }
 }
 
+.mileage-user-actions .mileage-delete-history-button {
+  border-color: #f0c3c3;
+  background: #fff3f3;
+  color: #c62828;
+}
+
+.mileage-user-actions .mileage-delete-history-button:hover {
+  border-color: #d64545;
+  background: #ffe5e5;
+}
+
+.mileage-user-actions .mileage-delete-history-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+[data-theme="dark"] .mileage-user-actions .mileage-delete-history-button {
+  border-color: #713b43;
+  background: #351f27;
+  color: #ff9999;
+}
