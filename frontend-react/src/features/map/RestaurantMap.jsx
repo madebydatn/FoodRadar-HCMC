@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react'
 import L from 'leaflet'
 import { HeatLayer } from 'leaflet.heat'
@@ -18,6 +19,29 @@ const formatTime = (time) => {
   const match = time.match(/^([01]\d|2[0-3]):([0-5]\d)/)
 
   return match ? `${match[1]}:${match[2]}` : ''
+}
+
+// Chuyển số lượt đánh giá về dạng số.
+// Hỗ trợ số dạng 1,234 hoặc chuỗi "1,234+".
+const getReviewCount = (restaurant) => {
+  const value = restaurant.total_review
+
+  if (typeof value === 'number') {
+    return Number.isFinite(value) && value > 0 ? value : 0
+  }
+
+  if (typeof value === 'string') {
+    const normalized = value
+      .trim()
+      .replace(/,/g, '')
+      .replace(/\+/g, '')
+
+    const count = Number(normalized)
+
+    return Number.isFinite(count) && count > 0 ? count : 0
+  }
+
+  return 0
 }
 
 const STATUS_COLORS = {
@@ -548,9 +572,9 @@ export default function RestaurantMap({
       // Không tự mở popup hoặc di chuyển bản đồ.
       marker.on('click', () => {
         selectionSourceRef.current = 'map'
-      
+
         onSelectRestaurantRef.current?.(restaurant)
-      
+
         setSelectionVersion((version) => version + 1)
       })
 
@@ -576,6 +600,13 @@ export default function RestaurantMap({
 
     if (!showHeatmap) return
 
+    // Tìm số lượt đánh giá lớn nhất trong danh sách quán.
+    // Dùng làm mốc chuẩn hóa cường độ nhiệt.
+    const maxReviewCount = Math.max(
+      0,
+      ...restaurants.map(getReviewCount)
+    )
+
     const points = restaurants
       .map((restaurant) => {
         const lat = Number(
@@ -587,6 +618,7 @@ export default function RestaurantMap({
         )
 
         const rating = Number(restaurant.rating)
+        const reviewCount = getReviewCount(restaurant)
 
         if (
           !Number.isFinite(lat) ||
@@ -610,6 +642,17 @@ export default function RestaurantMap({
           intensity = Number.isFinite(rating)
             ? Math.max(0.1, Math.min(rating / 5, 1))
             : 0.2
+        }
+
+        // Chế độ lượt đánh giá:
+        // Chuẩn hóa theo logarit để hạn chế chênh lệch
+        // quá lớn giữa quán có nhiều và ít đánh giá.
+        if (heatMode === 'reviews') {
+          intensity =
+            reviewCount > 0 && maxReviewCount > 0
+              ? Math.log1p(reviewCount) /
+                Math.log1p(maxReviewCount)
+              : 0.05
         }
 
         return [lat, lng, intensity]
@@ -702,7 +745,7 @@ export default function RestaurantMap({
     // Chọn từ danh sách: giữ hành vi cũ, tối thiểu zoom 16.
     const selectionSource = selectionSourceRef.current
     selectionSourceRef.current = null
-    
+
     const targetZoom =
       selectionSource === 'map'
         ? map.getZoom()
@@ -713,7 +756,7 @@ export default function RestaurantMap({
     popup
       .setLatLng(marker.getLatLng())
       .openOn(map)
-    
+
     const popupElement = popup.getElement()
 
     if (!popupElement) return
@@ -725,22 +768,22 @@ export default function RestaurantMap({
     animationFrameId = requestAnimationFrame(() => {
       if (cancelled || !map.hasLayer(marker)) return
 
-    const currentZoom = map.getZoom()
-    
-    const markerOffsetY =
-      selectionSource === 'map'
-        ? 0
-        : currentZoom >= 16
-          ? 45
-          : 45 + (16 - currentZoom) * 15
-    
-    const targetCenter = calculatePopupTargetCenter(
-      map,
-      marker,
-      popup,
-      targetZoom,
-      markerOffsetY
-    )
+      const currentZoom = map.getZoom()
+
+      const markerOffsetY =
+        selectionSource === 'map'
+          ? 0
+          : currentZoom >= 16
+            ? 45
+            : 45 + (16 - currentZoom) * 15
+
+      const targetCenter = calculatePopupTargetCenter(
+        map,
+        marker,
+        popup,
+        targetZoom,
+        markerOffsetY
+      )
 
       if (!targetCenter) {
         popupElement.style.visibility = 'visible'
@@ -847,6 +890,7 @@ export default function RestaurantMap({
             <option value="density">Mật độ</option>
             <option value="open">Đang mở</option>
             <option value="quality">Chất lượng</option>
+            <option value="reviews">Lượt đánh giá</option>
           </select>
         )}
 
