@@ -300,6 +300,33 @@ function MileagePanel({ onClose }) {
     setHistory(result.shifts || [])
   }, [token])
 
+  const deleteHistory = async (account) => {
+    const confirmed = window.confirm(
+      `Bạn có chắc muốn xóa toàn bộ lịch sử ca đã kết thúc của ${account.username}?\n\nCa đang chạy sẽ được giữ nguyên. Tài khoản và quyền đăng nhập không bị ảnh hưởng.`
+    )
+  
+    if (!confirmed) return
+  
+    setBusy(true)
+    setError('')
+    setMessage('')
+  
+    try {
+      const result = await mileageApi.deleteCompletedShifts(
+        token,
+        account.id
+      )
+  
+      await loadAdmin()
+  
+      setMessage(result.message)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setBusy(false)
+    }
+  }
+
   const loadAdmin = useCallback(async () => {
     const [stats, accountResult, shiftResult] = await Promise.all([
       mileageApi.adminOverview(token), mileageApi.adminUsers(token), mileageApi.adminShifts(token, selectedUser),
@@ -475,6 +502,15 @@ function MileagePanel({ onClose }) {
                     <button type="button" disabled={busy || account.id === user.id} onClick={() => updateAccount(account, { status: account.status === 'active' ? 'locked' : 'active' })}>{account.status === 'active' ? 'Khóa' : 'Mở khóa'}</button>
                     <button type="button" disabled={busy || account.id === user.id} onClick={() => updateAccount(account, { role: account.role === 'admin' ? 'user' : 'admin' })}>{account.role === 'admin' ? 'Hạ quyền' : 'Cấp admin'}</button>
                     <button type="button" onClick={() => setSelectedUser(account.id)}>Xem ca</button>
+                    <button
+                      type="button"
+                      className="mileage-delete-history-button"
+                      disabled={busy}
+                      onClick={() => deleteHistory(account)}
+                    >
+                      Xóa lịch sử
+                    </button>
+                    
                   </div>
                   <div className="mileage-reset-row">
                     <input type="password" autoComplete="new-password" minLength="8" placeholder="Mật khẩu mới (ít nhất 8 ký tự)" value={resetPasswords[account.id] || ''} onChange={(event) => setResetPasswords((current) => ({ ...current, [account.id]: event.target.value }))} />
