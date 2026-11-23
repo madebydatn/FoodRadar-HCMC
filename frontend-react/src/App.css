@@ -1250,13 +1250,13 @@
      min-width: 0;
    }
 
-  .desktop-theme-toggle {
+  /* Dùng nút theme nằm trong .header-right; tránh hiện hai nút cùng lúc. */
+  .mobile-theme-toggle {
     display: none !important;
   }
 
-  .mobile-theme-toggle {
+  .desktop-theme-toggle {
     display: inline-flex !important;
-    margin-left: auto;
   }
 
   .app-header h1 {
@@ -1489,57 +1489,6 @@
   }
 
   .panel-footer .footer-credit {
-    font-size: 8px;
-  }
-
-  /* Header weather and clock */
-  .header-right {
-    gap: 6px;
-  }
-
-  .header-weather,
-  .header-clock {
-    width: 128px;
-    min-height: 56px;
-    padding: 5px 6px;
-    border-radius: 8px;
-  }
-
-  .header-weather {
-    gap: 5px;
-  }
-
-  .weather-icon {
-    font-size: 19px;
-  }
-
-  .weather-info strong {
-    font-size: 13px;
-  }
-
-  .weather-info span,
-  .weather-info small {
-    max-width: 78px;
-    font-size: 8px;
-  }
-
-  .header-clock {
-    gap: 5px;
-  }
-
-  .clock-icon {
-    font-size: 19px;
-  }
-
-  .clock-info {
-    gap: 3px;
-  }
-
-  .clock-time {
-    font-size: 11px;
-  }
-
-  .clock-date {
     font-size: 8px;
   }
 
@@ -2037,7 +1986,11 @@
   color: var(--primary-dark) !important;
 }
 
-/* HEADER REFINEMENT */
+/* ========================================
+   HEADER RESPONSIVE REFINEMENT
+   Một bộ quy tắc thống nhất cho desktop / tablet / mobile
+======================================== */
+
 .app-header {
   gap: 14px;
 }
@@ -2048,6 +2001,7 @@
   justify-content: flex-end;
   gap: 7px;
   min-width: 0;
+  flex-shrink: 1;
 }
 
 .header-weather,
@@ -2082,7 +2036,6 @@
   font-size: 8px;
 }
 
-/* Nút giao diện tối nhỏ gọn */
 .desktop-theme-toggle {
   width: 34px;
   min-height: 34px;
@@ -2094,176 +2047,208 @@
   font-size: 16px;
 }
 
-@media (max-width: 1200px) {
-  .header-weather,
-  .header-clock {
-    min-width: 102px;
-  }
-}
-
-@media (max-width: 900px) {
-  .header-right {
+@media (min-width: 601px) and (max-width: 900px) {
+  .app-header {
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 6px;
-    flex: 0 0 100%;
+    align-items: center;
+  }
+
+  .brand {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .header-right {
+    flex: 1 1 100%;
     width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .mileage-header-controls {
+    flex: 0 0 100%;
   }
 
   .header-weather,
   .header-clock {
     flex: 1 1 0;
     min-width: 0;
-    min-height: 46px;
-    padding: 5px 7px;
-  }
-
-  .desktop-theme-toggle {
-    width: 32px;
-    min-height: 32px;
-    flex: 0 0 32px;
+    min-height: 44px;
   }
 }
 
 @media (max-width: 600px) {
   .app-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-width: 0;
     gap: 8px;
+    overflow: visible;
   }
 
   .brand {
+    display: flex;
     flex: 0 0 100%;
     width: 100%;
+    min-width: 0;
   }
 
+  /* Tránh nút theme kép: chỉ dùng nút trong header-right. */
   .mobile-theme-toggle {
     display: none !important;
   }
 
-  .desktop-theme-toggle {
-    display: inline-flex !important;
+  .header-right {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 32px;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-content: stretch;
+    gap: 6px;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
   }
 
-  .header-right {
-    flex-wrap: nowrap;
+  /* Kilomet / đăng nhập chiếm một hàng riêng phía trên. */
+  .mileage-header-controls {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 5px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .header-weather {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .header-clock {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .desktop-theme-toggle {
+    display: inline-flex !important;
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: end;
+    align-self: center;
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    min-height: 32px;
+    flex: none;
+    padding: 0;
+    border-radius: 8px;
+  }
+
+  .desktop-theme-toggle .theme-toggle-icon {
+    font-size: 15px;
   }
 
   .header-weather,
   .header-clock {
-    flex: 1 1 0;
-    width: auto;
+    display: flex;
+    align-items: center;
+    width: 100%;
     min-width: 0;
-    max-width: none;
-    min-height: 43px;
-    padding: 4px 5px;
+    max-width: 100%;
+    min-height: 48px;
+    margin: 0;
+    padding: 5px 6px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .header-weather,
+  .header-clock {
+    gap: 5px;
   }
 
   .weather-icon,
   .clock-icon {
-    font-size: 16px;
+    flex: 0 0 auto;
+    font-size: 17px;
+  }
+
+  .weather-info,
+  .clock-info {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .weather-info strong {
+    font-size: 12px;
+  }
+
+  .weather-info span,
+  .weather-info small {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    font-size: 7px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .clock-info {
+    gap: 3px;
+  }
+
+  .clock-time {
+    font-size: 10px;
+  }
+
+  .clock-date {
+    overflow: hidden;
+    font-size: 7px;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-right {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 29px;
+    gap: 4px;
+  }
+
+  .header-weather,
+  .header-clock {
+    min-height: 45px;
+    padding: 4px 5px;
+  }
+
+  .desktop-theme-toggle {
+    width: 29px;
+    min-width: 29px;
+    height: 29px;
+    min-height: 29px;
+  }
+
+  .weather-icon,
+  .clock-icon {
+    font-size: 15px;
   }
 
   .weather-info strong {
     font-size: 11px;
   }
 
-  .weather-info span,
-  .weather-info small {
-    font-size: 7px;
-  }
-
   .clock-time {
     font-size: 9px;
-  }
-
-  .clock-date {
-    font-size: 7px;
-  }
-
-  .desktop-theme-toggle {
-    width: 29px;
-    min-height: 29px;
-    flex: 0 0 29px;
-    border-radius: 8px;
-  }
-
-  .desktop-theme-toggle .theme-toggle-icon {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 380px) {
-  .header-right {
-    gap: 4px;
-  }
-
-  .header-weather,
-  .header-clock {
-    padding: 3px 4px;
-  }
-
-  .mileage-header-button {
-    min-height: 31px !important;
-    padding: 5px 7px !important;
-    font-size: 9px !important;
-  }
-
-  .mileage-header-controls {
-    gap: 4px !important;
-  }
-
-  .desktop-theme-toggle {
-    width: 27px;
-    min-height: 27px;
-    flex-basis: 27px;
-  }
-}
-
-/* FIX HEADER MOBILE - tránh che khuất các nút */
-@media (max-width: 600px) {
-  .app-header {
-    display: flex;
-    flex-wrap: wrap !important;
-    align-items: center;
-    width: 100%;
-    overflow: visible;
-    gap: 8px;
-  }
-
-  .brand {
-    flex: 0 0 100%;
-    width: 100%;
-    min-width: 0;
-  }
-
-  .header-right {
-    display: flex;
-    flex: 0 0 100%;
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    flex-wrap: wrap !important;
-    justify-content: flex-start;
-    align-items: center;
-    overflow: visible;
-    gap: 6px;
-  }
-
-  .mileage-header-controls {
-    flex: 0 0 auto;
-    max-width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .header-weather,
-  .header-clock {
-    flex: 1 1 105px;
-    min-width: 0;
-    max-width: none;
-  }
-
-  .desktop-theme-toggle {
-    flex: 0 0 32px;
   }
 }
