@@ -131,6 +131,30 @@ export function MileageProvider({ children }) {
   const [loading, setLoading] = useState(true)
   const [currentShift, setCurrentShift] = useState(null)
   const [globalError, setGlobalError] = useState('')
+  
+  useEffect(() => {
+    const handleAuthExpired = (event) => {
+      setToken('')
+      setUser(null)
+      setCurrentShift(null)
+      setGlobalError(
+        event.detail?.message ||
+        'Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.'
+      )
+    }
+  
+    window.addEventListener(
+      'foodradar-mileage-auth-expired',
+      handleAuthExpired
+    )
+  
+    return () => {
+      window.removeEventListener(
+        'foodradar-mileage-auth-expired',
+        handleAuthExpired
+      )
+    }
+  }, [])
 
   const refreshCurrentShift = useCallback(async (activeToken = token) => {
     if (!activeToken) {
