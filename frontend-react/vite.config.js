@@ -15,7 +15,7 @@ const restaurantPlugin = {
   name: 'foodradar-restaurants',
 
   configureServer(server) {
-    server.middlewares.use('/restaurants.json', (req, res) => {
+    server.middlewares.use('/FoodRadar-HCMC/restaurants.json', (req, res) => {
       if (!existsSync(restaurantFile)) {
         res.statusCode = 404
         res.end('Không tìm thấy restaurants.json')
