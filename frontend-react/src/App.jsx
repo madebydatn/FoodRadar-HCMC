@@ -338,6 +338,8 @@ function App() {
         </div>
 
         <div className="header-right">
+          <MileageHeader />
+        
           <div
             className="header-weather"
             title={weatherError || `Thời tiết tại ${weatherLocation.label}`}
@@ -346,20 +348,47 @@ function App() {
             <span className="weather-icon">
               {weather?.icon || '🌤️'}
             </span>
-          
+        
             <div className="weather-info">
               <strong>
                 {weather ? `${weather.temperature}°C` : '--°C'}
               </strong>
-          
               <span>
                 {weather?.description ||
                   (weatherError ? 'Không có dữ liệu' : 'Đang tải thời tiết')}
               </span>
-          
               <small>{weatherLocation.label}</small>
             </div>
           </div>
+        
+          <div className="header-clock">
+            <span className="clock-icon">◷</span>
+            <div className="clock-info">
+              <strong className="clock-time">{clockText}</strong>
+              <span className="clock-date">{dateText}</span>
+            </div>
+          </div>
+        
+          <button
+            type="button"
+            className="theme-toggle desktop-theme-toggle"
+            onClick={toggleTheme}
+            title={
+              theme === 'dark'
+                ? 'Chuyển sang giao diện sáng'
+                : 'Chuyển sang giao diện tối'
+            }
+            aria-label={
+              theme === 'dark'
+                ? 'Chuyển sang giao diện sáng'
+                : 'Chuyển sang giao diện tối'
+            }
+          >
+            <span className="theme-toggle-icon" aria-hidden="true">
+              {theme === 'dark' ? '🌙' : '☀️'}
+            </span>
+          </button>
+        </div>
 
           <div className="header-clock">
             <span className="clock-icon">◷</span>
