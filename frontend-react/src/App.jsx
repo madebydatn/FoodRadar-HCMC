@@ -389,38 +389,6 @@ function App() {
             </span>
           </button>
         </div>
-
-          <div className="header-clock">
-            <span className="clock-icon">◷</span>
-          
-            <div className="clock-info">
-              <strong className="clock-time">{clockText}</strong>
-              <span className="clock-date">{dateText}</span>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            className="theme-toggle desktop-theme-toggle"
-            onClick={toggleTheme}
-            title={
-              theme === 'dark'
-                ? 'Chuyển sang giao diện sáng'
-                : 'Chuyển sang giao diện tối'
-            }
-            aria-label={
-              theme === 'dark'
-                ? 'Chuyển sang giao diện sáng'
-                : 'Chuyển sang giao diện tối'
-            }
-          >
-            <span className="theme-toggle-icon" aria-hidden="true">
-              {theme === 'dark' ? '🌙' : '☀️'}
-            </span>
-          </button>
-
-          <MileageHeader />      
-        </div>
       </header>
 
       {loading && (
