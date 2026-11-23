@@ -186,16 +186,11 @@ export function MileageProvider({ children }) {
     login, register, logout, startShift, endShift, refreshCurrentShift,
   }), [token, user, loading, currentShift, globalError, login, register, logout, startShift, endShift, refreshCurrentShift])
 
-  if (loading) {
-    return <div className="mileage-loading-screen"><span className="mileage-spinner" />Đang kiểm tra phiên đăng nhập...</div>
-  }
-
-  return (
-    <MileageContext.Provider value={value}>
-      {user ? children : <AuthScreen />}
-    </MileageContext.Provider>
-  )
-}
+return (
+  <MileageContext.Provider value={value}>
+    {children}
+  </MileageContext.Provider>
+)
 
 function useMileage() {
   const value = useContext(MileageContext)
