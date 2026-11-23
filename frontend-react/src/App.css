@@ -1759,6 +1759,7 @@
 }
 
 [data-theme="dark"] .leaflet-tile {
+  filter: brightness(0.78) invert(1) contrast(1.2) hue-rotate(190deg) saturate(0.4);
   background-color: #0b1320 !important;
 }
 
