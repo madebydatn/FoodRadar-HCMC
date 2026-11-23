@@ -1762,15 +1762,6 @@
   background-color: #0b1320 !important;
 }
 
-[data-theme="dark"] .leaflet-tile-container {
-  background-color: #0b1320;
-}
-
-/* Biến đổi tile map Leaflet sang chế độ tối dễ nhìn, bảo toàn nhãn đường, marker, popup và heatmap */
-[data-theme="dark"] .leaflet-tile-pane {
-  filter: brightness(0.78) invert(1) contrast(1.2) hue-rotate(190deg) saturate(0.4);
-}
-
 [data-theme="dark"] .panel-label {
   border-color: var(--border);
   background: rgba(19, 30, 50, 0.95);
