@@ -278,8 +278,14 @@ async function handleStartShift(request, env, auth) {
       INSERT INTO shifts (id, user_id, start_km, started_at, status, created_at, updated_at)
       VALUES (?, ?, ?, ?, 'active', ?, ?)
     `).bind(id, auth.user.id, Number(body.start_km), now, now, now).run()
-  } catch {
-    return fail('Bạn đang có một ca chưa kết thúc. Hãy kết thúc ca hiện tại trước.', 409)
+  } catch (error) {
+    // Chỉ xử lý lỗi đã tồn tại ca active.
+    if (String(error?.message || '').includes('UNIQUE constraint failed: shifts.user_id')) {
+      return fail('Bạn đang có một ca chưa kết thúc. Hãy kết thúc ca hiện tại trước.', 409)
+    }
+
+    // Lỗi database khác chuyển đến handler chung (HTTP 500).
+    throw error
   }
   const shift = await env.DB.prepare('SELECT * FROM shifts WHERE id = ?').bind(id).first()
   return json({ shift }, 201)
