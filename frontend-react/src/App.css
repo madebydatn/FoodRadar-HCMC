@@ -2252,3 +2252,128 @@
     font-size: 9px;
   }
 }
+
+/* ========================================
+   FOODRADAR - HEADER & MAP SPACING
+======================================== */
+
+/* DESKTOP: Nút Kilomet cao bằng thời tiết và thời gian */
+@media (min-width: 901px) {
+  .mileage-header-button,
+  .mileage-logout-button {
+    box-sizing: border-box;
+    height: 42px;
+    min-height: 42px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+/* MOBILE: Sắp xếp lại header */
+@media (max-width: 600px) {
+
+  /* Hàng thông tin phía trên */
+  .header-right {
+    grid-template-rows: 38px auto;
+    row-gap: 5px;
+    column-gap: 5px;
+  }
+
+  .header-weather {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .header-clock {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .desktop-theme-toggle {
+    grid-column: 3;
+    grid-row: 1;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+  }
+
+  /* Thu gọn thời tiết và thời gian */
+  .header-weather,
+  .header-clock {
+    height: 38px;
+    min-height: 38px;
+    padding: 3px 5px;
+    gap: 4px;
+  }
+
+  .weather-icon,
+  .clock-icon {
+    font-size: 15px;
+  }
+
+  .weather-info strong,
+  .clock-time {
+    font-size: 10px;
+    line-height: 1.1;
+  }
+
+  .weather-info span,
+  .weather-info small,
+  .clock-date {
+    font-size: 7px;
+    line-height: 1.1;
+  }
+
+  /* Nút Kilomet xuống hàng thứ hai */
+  .mileage-header-controls {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-top: 0;
+  }
+
+  .mileage-header-button,
+  .mileage-logout-button {
+    height: 30px;
+    min-height: 30px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 9px;
+  }
+
+  /* Thu nhỏ bản đồ */
+  .map-panel {
+    height: clamp(340px, 50vh, 420px);
+    min-height: 340px;
+  }
+}
+
+/* Màn hình điện thoại nhỏ */
+@media (max-width: 380px) {
+
+  .header-right {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 28px;
+    grid-template-rows: 36px auto;
+  }
+
+  .header-weather,
+  .header-clock {
+    height: 36px;
+    min-height: 36px;
+    padding: 3px 4px;
+  }
+
+  .desktop-theme-toggle {
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    min-height: 28px;
+  }
+
+  .map-panel {
+    height: clamp(320px, 47vh, 390px);
+    min-height: 320px;
+  }
+}
