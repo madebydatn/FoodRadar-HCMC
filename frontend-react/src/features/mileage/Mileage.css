@@ -50,15 +50,67 @@
 .mileage-spinner { width: 22px; height: 22px; border: 3px solid #d9eaf5; border-top-color: #2389d5; border-radius: 50%; animation: mileage-spin .8s linear infinite; }
 @keyframes mileage-spin { to { transform: rotate(360deg); } }
 
-.mileage-header-controls { display: flex; align-items: center; gap: 7px; min-width: 0; }
-.mileage-header-button, .mileage-logout-button {
-  min-height: 34px; padding: 6px 10px; border: 1px solid #d5e8f5; border-radius: 8px;
-  background: #fff; color: #31536e; font: inherit; font-size: 10px; font-weight: 750; cursor: pointer;
+
+.mileage-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.mileage-header-button,
+.mileage-logout-button {
+  box-sizing: border-box;
+  min-height: 64px;
+  padding: 8px 14px;
+  border: 1px solid #d5e8f5;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  box-shadow: 0 3px 12px rgba(40, 95, 130, 0.05);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.mileage-header-button:hover,
+.mileage-logout-button:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.mileage-header-button:focus-visible,
+.mileage-logout-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.mileage-header-button.has-active-shift {
+  border-color: #a7dfbd;
+  background: #edf9f1;
+  color: #16834b;
+}
+
+.mileage-header-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mileage-header-user {
+  max-width: 115px;
+  overflow: hidden;
+  color: var(--muted, #748b9e);
+  font-size: 10px;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
-.mileage-header-button.has-active-shift { border-color: #a7dfbd; background: #edf9f1; color: #16834b; }
-.mileage-header-user { max-width: 115px; overflow: hidden; color: var(--muted, #748b9e); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
-.mileage-logout-button { color: #a63a3a; }
+
+.mileage-logout-button {
+  color: #a63a3a;
+}
 
 .mileage-modal-backdrop {
   position: fixed; inset: 0; z-index: 3000; display: flex; align-items: center; justify-content: center;
