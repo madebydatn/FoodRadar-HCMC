@@ -573,6 +573,9 @@ function MileagePanel({ onClose }) {
                                 style={{
                                   color: '#c62828',
                                   cursor: busy ? 'not-allowed' : 'pointer',
+                                  display: 'inline',
+                                  verticalAlign: 'baseline',
+                                  lineHeight: 'inherit',
                                 }}
                               >
                                 Xóa
