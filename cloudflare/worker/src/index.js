@@ -90,7 +90,7 @@ function corsHeaders(request, env) {
   const allowed = getAllowedOrigins(env)
   const headers = {
     'Vary': 'Origin',
-    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Bootstrap-Secret',
     'Access-Control-Max-Age': '86400',
     'X-Content-Type-Options': 'nosniff',
@@ -370,6 +370,41 @@ async function handleAdminShifts(env, url) {
   return json({ shifts: result.results || [] })
 }
 
+async function handleAdminCompletedShiftDelete(env, auth, userId) {
+  const target = await env.DB.prepare(
+    'SELECT id, username FROM users WHERE id = ?'
+  ).bind(userId).first()
+
+  if (!target) return fail('Không tìm thấy tài khoản.', 404)
+
+  // Chỉ xóa ca đã kết thúc.
+  const result = await env.DB.prepare(`
+    DELETE FROM shifts
+    WHERE user_id = ?
+      AND status = 'completed'
+  `).bind(userId).run()
+
+  const deletedCount = Number(result.meta?.changes || 0)
+
+  await writeAudit(
+    env,
+    auth.user.id,
+    'completed_shifts_deleted',
+    userId,
+    {
+      deleted_count: deletedCount,
+      target_username: target.username,
+      includes_active_shifts: false,
+    }
+  )
+
+  return json({
+    success: true,
+    deleted_count: deletedCount,
+    message: `Đã xóa ${deletedCount} ca đã kết thúc của ${target.username}.`,
+  })
+}
+
 async function handleAdminUserUpdate(request, env, auth, userId) {
   const body = await readJson(request)
   const target = await env.DB.prepare('SELECT id, username, role, status FROM users WHERE id = ?').bind(userId).first()
@@ -477,6 +512,16 @@ export default {
             else if (method === 'GET' && path === '/api/admin/overview') response = await handleAdminOverview(env)
             else if (method === 'GET' && path === '/api/admin/users') response = await handleAdminUsers(env)
             else if (method === 'GET' && path === '/api/admin/shifts') response = await handleAdminShifts(env, url)
+            else if (
+              method === 'DELETE' &&
+              path.match(/^\/api\/admin\/users\/[^/]+\/shifts\/completed$/)
+            ) {
+              response = await handleAdminCompletedShiftDelete(
+                env,
+                auth,
+                path.split('/')[4]
+              )
+            }
             else if (method === 'PATCH' && path.match(/^\/api\/admin\/users\/[^/]+$/)) {
               response = await handleAdminUserUpdate(request, env, auth, path.split('/')[4])
             } else if (method === 'PUT' && path.match(/^\/api\/admin\/users\/[^/]+\/password$/)) {
