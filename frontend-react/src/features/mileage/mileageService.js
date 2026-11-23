@@ -37,7 +37,31 @@ async function request(path, { method = 'GET', body, token, bootstrapSecret } = 
   }
 
   const data = await response.json().catch(() => ({}))
-  if (!response.ok) throw new Error(data.error || `Yêu cầu thất bại (${response.status}).`)
+  
+  if (!response.ok) {
+    if (response.status === 401 && token) {
+      const message = 'Phiên đăng nhập đã hết hạn hoặc bị thu hồi. Vui lòng đăng nhập lại.'
+  
+      try {
+        storeToken('')
+      } catch {
+        // Bỏ qua nếu trình duyệt không cho phép xóa sessionStorage
+      }
+  
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(
+          new CustomEvent('foodradar-mileage-auth-expired', {
+            detail: { message },
+          })
+        )
+      }
+  
+      throw new Error(message)
+    }
+  
+    throw new Error(data.error || `Yêu cầu thất bại (${response.status}).`)
+  }
+  
   return data
 }
 
