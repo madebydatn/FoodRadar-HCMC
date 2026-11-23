@@ -37,6 +37,8 @@ jobs:
 
       - name: Build React
         working-directory: frontend-react
+        env:
+          VITE_MILEAGE_API_URL: ${{ vars.VITE_MILEAGE_API_URL }}
         run: npm run build
 
       - name: Setup GitHub Pages
