@@ -2,6 +2,7 @@
 import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
+import { MileageProvider } from './features/mileage/MileageProvider.jsx'
 import './index.css'
 
 function Root() {
@@ -15,7 +16,11 @@ function Root() {
     }
   }, [])
 
-  return <App />
+  return (
+    <MileageProvider>
+      <App />
+    </MileageProvider>
+  )
 }
 
 createRoot(document.getElementById('root')).render(
