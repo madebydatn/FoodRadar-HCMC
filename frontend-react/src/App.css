@@ -2037,3 +2037,186 @@
 [data-theme="dark"] .food-popup-link:hover {
   color: var(--primary-dark) !important;
 }
+
+/* HEADER REFINEMENT */
+.app-header {
+  gap: 14px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  min-width: 0;
+}
+
+.header-weather,
+.header-clock {
+  width: auto;
+  min-width: 112px;
+  min-height: 42px;
+  padding: 5px 9px;
+  border-radius: 9px;
+}
+
+.header-weather {
+  gap: 6px;
+}
+
+.weather-icon,
+.clock-icon {
+  font-size: 19px;
+}
+
+.weather-info strong,
+.clock-time {
+  font-size: 13px;
+}
+
+.weather-info span {
+  font-size: 9px;
+}
+
+.weather-info small,
+.clock-date {
+  font-size: 8px;
+}
+
+/* Nút giao diện tối nhỏ gọn */
+.desktop-theme-toggle {
+  width: 34px;
+  min-height: 34px;
+  flex: 0 0 34px;
+  border-radius: 9px;
+}
+
+.desktop-theme-toggle .theme-toggle-icon {
+  font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+  .header-weather,
+  .header-clock {
+    min-width: 102px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .header-weather,
+  .header-clock {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 46px;
+    padding: 5px 7px;
+  }
+
+  .desktop-theme-toggle {
+    width: 32px;
+    min-height: 32px;
+    flex: 0 0 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    gap: 8px;
+  }
+
+  .brand {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .mobile-theme-toggle {
+    display: none !important;
+  }
+
+  .desktop-theme-toggle {
+    display: inline-flex !important;
+  }
+
+  .header-right {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .header-weather,
+  .header-clock {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    min-height: 43px;
+    padding: 4px 5px;
+  }
+
+  .weather-icon,
+  .clock-icon {
+    font-size: 16px;
+  }
+
+  .weather-info strong {
+    font-size: 11px;
+  }
+
+  .weather-info span,
+  .weather-info small {
+    font-size: 7px;
+  }
+
+  .clock-time {
+    font-size: 9px;
+  }
+
+  .clock-date {
+    font-size: 7px;
+  }
+
+  .desktop-theme-toggle {
+    width: 29px;
+    min-height: 29px;
+    flex: 0 0 29px;
+    border-radius: 8px;
+  }
+
+  .desktop-theme-toggle .theme-toggle-icon {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-right {
+    gap: 4px;
+  }
+
+  .header-weather,
+  .header-clock {
+    padding: 3px 4px;
+  }
+
+  .mileage-header-button {
+    min-height: 31px !important;
+    padding: 5px 7px !important;
+    font-size: 9px !important;
+  }
+
+  .mileage-header-controls {
+    gap: 4px !important;
+  }
+
+  .desktop-theme-toggle {
+    width: 27px;
+    min-height: 27px;
+    flex-basis: 27px;
+  }
+}
