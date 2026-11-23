@@ -296,4 +296,8 @@
   background: #351f27;
   color: #ff9999;
 }
-
+.mileage-table th,
+.mileage-table td {
+  text-align: center;
+  vertical-align: middle;
+}
