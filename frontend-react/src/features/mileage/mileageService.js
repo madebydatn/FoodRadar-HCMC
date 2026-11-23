@@ -97,4 +97,12 @@ export const mileageApi = {
       token,
     }
   ),
+  deleteShift: (token, shiftId) =>
+  request(
+    `/admin/shifts/${encodeURIComponent(shiftId)}`,
+    {
+      method: 'DELETE',
+      token,
+    }
+  ),
 }
