@@ -89,4 +89,12 @@ export const mileageApi = {
   resetPassword: (token, userId, password) => request(`/admin/users/${encodeURIComponent(userId)}/password`, {
     method: 'PUT', token, body: { password },
   }),
+  deleteCompletedShifts: (token, userId) =>
+  request(
+    `/admin/users/${encodeURIComponent(userId)}/shifts/completed`,
+    {
+      method: 'DELETE',
+      token,
+    }
+  ),
 }
