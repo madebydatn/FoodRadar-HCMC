@@ -4,7 +4,7 @@ import './Mileage.css'
 
 const MileageContext = createContext(null)
 
-function AuthScreen() {
+function AuthScreen({ onClose }) {
   const [mode, setMode] = useState('login')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -16,14 +16,18 @@ function AuthScreen() {
   const submit = async (event) => {
     event.preventDefault()
     setError('')
+
     if (mode === 'register' && password !== confirmPassword) {
       setError('Mật khẩu nhập lại không khớp.')
       return
     }
+
     setBusy(true)
     try {
       if (mode === 'register') await register(username.trim(), password)
       else await login(username.trim(), password)
+
+      onClose()
     } catch (err) {
       setError(err.message)
     } finally {
@@ -32,67 +36,94 @@ function AuthScreen() {
   }
 
   return (
-    <main className="mileage-auth-page">
-      <form className="mileage-auth-card" onSubmit={submit}>
-        <div className="mileage-auth-brand">FoodRadar <span>HCMC</span></div>
-        <h1>{mode === 'login' ? 'Đăng nhập' : 'Tạo tài khoản'}</h1>
-        <p className="mileage-muted">Đăng nhập để sử dụng FoodRadar và quản lý kilomet ca làm việc.</p>
-        {globalError && <div className="mileage-alert mileage-alert-error">{globalError}</div>}
-        <label htmlFor="mileage-username">Tên đăng nhập</label>
-        <input
-          id="mileage-username"
-          autoComplete="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          minLength={3}
-          maxLength={24}
-          pattern="[A-Za-z0-9._-]{3,24}"
-          required
-          placeholder="Ví dụ: nguyenvana"
-        />
-        <label htmlFor="mileage-password">Mật khẩu</label>
-        <input
-          id="mileage-password"
-          type="password"
-          autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          minLength={8}
-          maxLength={128}
-          required
-          placeholder="Tối thiểu 8 ký tự"
-        />
-        {mode === 'register' && (
-          <>
-            <label htmlFor="mileage-confirm-password">Nhập lại mật khẩu</label>
-            <input
-              id="mileage-confirm-password"
-              type="password"
-              autoComplete="new-password"
-              value={confirmPassword}
-              onChange={(event) => setConfirmPassword(event.target.value)}
-              minLength={8}
-              maxLength={128}
-              required
-              placeholder="Nhập lại mật khẩu"
-            />
-            <small className="mileage-hint">Username gồm 3–24 ký tự: chữ, số, dấu chấm, gạch dưới hoặc gạch ngang.</small>
-          </>
-        )}
-        {error && <div className="mileage-alert mileage-alert-error" role="alert">{error}</div>}
-        <button className="mileage-primary-button" type="submit" disabled={busy}>
-          {busy ? 'Đang xử lý...' : mode === 'login' ? 'Đăng nhập' : 'Đăng ký và sử dụng ngay'}
-        </button>
-        <div className="mileage-auth-switch">
-          {mode === 'login' ? 'Chưa có tài khoản?' : 'Đã có tài khoản?'}{' '}
-          <button type="button" onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError('') }}>
-            {mode === 'login' ? 'Đăng ký' : 'Đăng nhập'}
+    <div className="mileage-modal-backdrop" onMouseDown={(event) => {
+      if (event.target === event.currentTarget) onClose()
+    }}>
+      <section className="mileage-modal mileage-auth-modal" role="dialog" aria-modal="true" aria-labelledby="mileage-auth-title">
+        <button
+          className="mileage-close-button mileage-auth-close"
+          type="button"
+          onClick={onClose}
+          aria-label="Đóng"
+        >×</button>
+
+        <form className="mileage-auth-card" onSubmit={submit}>
+          <div className="mileage-auth-brand">FoodRadar <span>HCMC</span></div>
+          <h1 id="mileage-auth-title">{mode === 'login' ? 'Đăng nhập' : 'Tạo tài khoản'}</h1>
+          <p className="mileage-muted">Đăng nhập để quản lý kilomet ca làm việc.</p>
+
+          {globalError && <div className="mileage-alert mileage-alert-error">{globalError}</div>}
+
+          <label htmlFor="mileage-username">Tên đăng nhập</label>
+          <input
+            id="mileage-username"
+            autoComplete="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            minLength={3}
+            maxLength={24}
+            pattern="[A-Za-z0-9._-]{3,24}"
+            required
+            placeholder="Ví dụ: nguyenvana"
+          />
+
+          <label htmlFor="mileage-password">Mật khẩu</label>
+          <input
+            id="mileage-password"
+            type="password"
+            autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            minLength={8}
+            maxLength={128}
+            required
+            placeholder="Tối thiểu 8 ký tự"
+          />
+
+          {mode === 'register' && (
+            <>
+              <label htmlFor="mileage-confirm-password">Nhập lại mật khẩu</label>
+              <input
+                id="mileage-confirm-password"
+                type="password"
+                autoComplete="new-password"
+                value={confirmPassword}
+                onChange={(event) => setConfirmPassword(event.target.value)}
+                minLength={8}
+                maxLength={128}
+                required
+                placeholder="Nhập lại mật khẩu"
+              />
+              <small className="mileage-hint">
+                Username gồm 3–24 ký tự: chữ, số, dấu chấm, gạch dưới hoặc gạch ngang.
+              </small>
+            </>
+          )}
+
+          {error && <div className="mileage-alert mileage-alert-error" role="alert">{error}</div>}
+
+          <button className="mileage-primary-button" type="submit" disabled={busy}>
+            {busy ? 'Đang xử lý...' : mode === 'login' ? 'Đăng nhập' : 'Đăng ký và sử dụng ngay'}
           </button>
-        </div>
-      </form>
-    </main>
+
+          <div className="mileage-auth-switch">
+            {mode === 'login' ? 'Chưa có tài khoản?' : 'Đã có tài khoản?'}{' '}
+            <button
+              type="button"
+              onClick={() => {
+                setMode(mode === 'login' ? 'register' : 'login')
+                setError('')
+              }}
+            >
+              {mode === 'login' ? 'Đăng ký' : 'Đăng nhập'}
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
   )
 }
+
 
 export function MileageProvider({ children }) {
   const [token, setToken] = useState(() => getStoredToken())
@@ -186,11 +217,12 @@ export function MileageProvider({ children }) {
     login, register, logout, startShift, endShift, refreshCurrentShift,
   }), [token, user, loading, currentShift, globalError, login, register, logout, startShift, endShift, refreshCurrentShift])
 
-return (
-  <MileageContext.Provider value={value}>
-    {children}
-  </MileageContext.Provider>
-)
+  return (
+    <MileageContext.Provider value={value}>
+      {children}
+    </MileageContext.Provider>
+  )
+}
 
 function useMileage() {
   const value = useContext(MileageContext)
@@ -450,19 +482,42 @@ function MileagePanel({ onClose }) {
   )
 }
 
+
 export function MileageHeader() {
-  const { user, logout, currentShift } = useMileage()
+  const { user, logout, currentShift, loading } = useMileage()
   const [open, setOpen] = useState(false)
+
   return (
     <>
       <div className="mileage-header-controls">
-        <button className={`mileage-header-button ${currentShift ? 'has-active-shift' : ''}`} type="button" onClick={() => setOpen(true)}>
-          <span aria-hidden="true">◷</span> {currentShift ? 'Đang trong ca' : 'Kilomet'}
+        <button
+          className={`mileage-header-button ${user && currentShift ? 'has-active-shift' : ''}`}
+          type="button"
+          disabled={loading}
+          onClick={() => setOpen(true)}
+        >
+          <span aria-hidden="true">◷</span>{' '}
+          {loading ? 'Đang tải...' : currentShift ? 'Đang trong ca' : 'Kilomet'}
         </button>
-        <span className="mileage-header-user" title={user.username}>{user.username}{user.role === 'admin' ? ' · Admin' : ''}</span>
-        <button className="mileage-logout-button" type="button" onClick={logout}>Đăng xuất</button>
+
+        {user && (
+          <>
+            <span className="mileage-header-user" title={user.username}>
+              {user.username}{user.role === 'admin' ? ' · Admin' : ''}
+            </span>
+            <button className="mileage-logout-button" type="button" onClick={logout}>
+              Đăng xuất
+            </button>
+          </>
+        )}
       </div>
-      {open && <MileagePanel onClose={() => setOpen(false)} />}
+
+      {open && (
+        user
+          ? <MileagePanel onClose={() => setOpen(false)} />
+          : <AuthScreen onClose={() => setOpen(false)} />
+      )}
     </>
   )
 }
+
