@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { getRestaurants } from './services/restaurantService'
 import RestaurantMap from './features/map/RestaurantMap'
+import { MileageHeader } from './features/mileage/MileageProvider'
 import './App.css'
 
 // Tọa độ mặc định của TP. Hồ Chí Minh
@@ -388,6 +389,8 @@ function App() {
               {theme === 'dark' ? '🌙' : '☀️'}
             </span>
           </button>
+
+          <MileageHeader />      
         </div>
       </header>
 
