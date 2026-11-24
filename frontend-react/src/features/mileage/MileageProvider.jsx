@@ -202,8 +202,14 @@ export function MileageProvider({ children }) {
     return result.shift
   }, [token])
 
-  const endShift = useCallback(async (shiftId, endKm) => {
-    const result = await mileageApi.endShift(token, shiftId, endKm)
+  const endShift = useCallback(async (shiftId, endKm, quoteToken) => {
+    const result = await mileageApi.endShift(
+      token,
+      shiftId,
+      endKm,
+      quoteToken
+    )
+  
     setCurrentShift(null)
     return result.shift
   }, [token])
@@ -254,6 +260,21 @@ function useMileage() {
   return value
 }
 
+function formatVnd(value) {
+  if (value === null || value === undefined || value === '') return '—'
+
+  return `${Math.round(Number(value)).toLocaleString('vi-VN')} đ`
+}
+
+function formatFuel(value) {
+  if (value === null || value === undefined || value === '') return '—'
+
+  return `${Number(value).toLocaleString('vi-VN', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })} lít`
+}
+
 function formatKm(value) {
   if (value === null || value === undefined || value === '') return '—'
   return `${Number(value).toLocaleString('vi-VN', { maximumFractionDigits: 1 })} km`
@@ -295,10 +316,37 @@ function MileagePanel({ onClose }) {
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
 
+  const [vehicle, setVehicle] = useState(null)
+  const [vehicleName, setVehicleName] = useState('')
+  const [fuelType, setFuelType] = useState('Xăng E5 RON 92 Mức 2')
+  const [fuelEfficiency, setFuelEfficiency] = useState('')
+  const [vehicleBusy, setVehicleBusy] = useState(false)
+  
+  const [preview, setPreview] = useState(null)
+  const [manualMode, setManualMode] = useState(false)
+  const [manualPrice, setManualPrice] = useState('')
+
   const loadHistory = useCallback(async () => {
     const result = await mileageApi.shifts(token, 200)
     setHistory(result.shifts || [])
   }, [token])
+
+  const loadVehicle = useCallback(async () => {
+    const result = await mileageApi.getVehicle(token)
+    const saved = result.vehicle
+  
+    setVehicle(saved)
+  
+    if (saved) {
+      setVehicleName(saved.vehicle_name || '')
+      setFuelType(saved.fuel_type)
+      setFuelEfficiency(String(saved.fuel_efficiency))
+    }
+  }, [token])
+  
+  useEffect(() => {
+    loadVehicle().catch((err) => setError(err.message))
+  }, [loadVehicle])
 
   const deleteHistory = async (account) => {
     const confirmed = window.confirm(
@@ -376,6 +424,37 @@ function MileagePanel({ onClose }) {
     return () => { cancelled = true }
   }, [tab, user.role, loadHistory, loadAdmin])
 
+  const handleSaveVehicle = async (event) => {
+    event.preventDefault()
+    
+    const efficiency = Number(fuelEfficiency)
+  
+    if (!Number.isFinite(efficiency) || efficiency <= 0) {
+      setError('Mức tiêu hao phải lớn hơn 0 km/lít.')
+      return
+    }
+  
+    setVehicleBusy(true)
+    setError('')
+    setMessage('')
+  
+    try {
+      const result = await mileageApi.saveVehicle(token, {
+        vehicle_name: vehicleName.trim(),
+        fuel_type: fuelType,
+        fuel_efficiency: efficiency,
+      })
+  
+      setVehicle(result.vehicle)
+      setMessage('Đã lưu cấu hình xe.')
+      setPreview(null)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setVehicleBusy(false)
+    }
+  }
+
   const handleStart = async (event) => {
     event.preventDefault()
     setBusy(true); setError(''); setMessage('')
@@ -389,14 +468,105 @@ function MileagePanel({ onClose }) {
 
   const handleEnd = async (event) => {
     event.preventDefault()
-    setBusy(true); setError(''); setMessage('')
+  
+    setBusy(true)
+    setError('')
+    setMessage('')
+    setPreview(null)
+  
     try {
-      const shift = await endShift(currentShift.id, Number(endKm))
+      const result = await mileageApi.previewFuel(
+        token,
+        currentShift.id,
+        Number(endKm)
+      )
+  
+      if (!result.price_available) {
+        setManualMode(true)
+        setError(
+          `${result.error} Bạn có thể nhập giá nhiên liệu thủ công.`
+        )
+        return
+      }
+  
+      setManualMode(false)
+      setPreview(result)
+    } catch (err) {
+      setManualMode(true)
+      setError(err.message)
+    } finally {
+      setBusy(false)
+    }
+  }
+  
+  const handleManualPreview = async () => {
+    const price = Number(manualPrice)
+  
+    if (!Number.isFinite(price) || price <= 0) {
+      setError('Giá nhiên liệu phải lớn hơn 0.')
+      return
+    }
+  
+    setBusy(true)
+    setError('')
+    setPreview(null)
+  
+    try {
+      const result = await mileageApi.previewFuel(
+        token,
+        currentShift.id,
+        Number(endKm),
+        price
+      )
+  
+      if (!result.price_available) {
+        throw new Error(result.error || 'Không thể tính chi phí.')
+      }
+  
+      setPreview(result)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setBusy(false)
+    }
+  }
+  
+  const handleConfirmEnd = async () => {
+    if (!preview?.quote_token) {
+      setError('Vui lòng xem trước chi phí trước khi xác nhận.')
+      return
+    }
+  
+    setBusy(true)
+    setError('')
+  
+    try {
+      const shift = await endShift(
+        currentShift.id,
+        Number(endKm),
+        preview.quote_token
+      )
+  
       setEndKm('')
-      setMessage(`Đã kết thúc ca. Quãng đường: ${formatKm(shift.distance_km)}.`)
+      setPreview(null)
+      setManualPrice('')
+      setManualMode(false)
+  
+      setMessage(
+        `Đã kết thúc ca. Quãng đường: ${formatKm(shift.distance_km)}. Chi phí nhiên liệu: ${formatVnd(shift.fuel_cost)}.`
+      )
+  
       await loadHistory()
-    } catch (err) { setError(err.message) }
-    finally { setBusy(false) }
+    } catch (err) {
+      setError(err.message)
+  
+      if (err.message.includes('Cấu hình xe đã thay đổi')) {
+        setPreview(null)
+        setManualMode(false)
+      }
+    } finally {
+      setBusy(false)
+    }
   }
 
   const updateAccount = async (target, changes) => {
@@ -447,6 +617,65 @@ function MileagePanel({ onClose }) {
 
         {tab === 'shift' && (
           <div className="mileage-panel-body">
+
+            <form className="mileage-vehicle-card" onSubmit={handleSaveVehicle}>
+              <div className="mileage-section-title">
+                <strong>Cấu hình xe mặc định</strong>
+                <span>{vehicle ? 'Đã cấu hình' : 'Chưa cấu hình'}</span>
+              </div>
+            
+              <label htmlFor="mileage-vehicle-name">Tên xe (không bắt buộc)</label>
+              <input
+                id="mileage-vehicle-name"
+                value={vehicleName}
+                onChange={(event) => setVehicleName(event.target.value)}
+                maxLength={80}
+                placeholder="Ví dụ: Honda Vision"
+              />
+            
+              <label htmlFor="mileage-fuel-type">Loại nhiên liệu</label>
+              <select
+                id="mileage-fuel-type"
+                value={fuelType}
+                onChange={(event) => {
+                  setFuelType(event.target.value)
+                  setPreview(null)
+                }}
+              >
+                <option value="Dầu hỏa 2-K">Dầu hỏa 2-K</option>
+                <option value="DO 0,001S Mức 5">DO 0,001S Mức 5</option>
+                <option value="DO 0,05S Mức 2">DO 0,05S Mức 2</option>
+                <option value="Xăng E10 RON 95 Mức 3">Xăng E10 RON 95 Mức 3</option>
+                <option value="Xăng E10 RON 95 Mức 5">Xăng E10 RON 95 Mức 5</option>
+                <option value="Xăng E5 RON 92 Mức 2">Xăng E5 RON 92 Mức 2</option>
+              </select>
+            
+              <label htmlFor="mileage-fuel-efficiency">
+                Mức tiêu hao (km/lít)
+              </label>
+              <input
+                id="mileage-fuel-efficiency"
+                type="number"
+                min="0.01"
+                step="0.01"
+                required
+                value={fuelEfficiency}
+                onChange={(event) => {
+                  setFuelEfficiency(event.target.value)
+                  setPreview(null)
+                }}
+                placeholder="Ví dụ: 45"
+              />
+            
+              <button
+                className="mileage-primary-button"
+                type="submit"
+                disabled={vehicleBusy}
+              >
+                {vehicleBusy ? 'Đang lưu...' : 'Lưu cấu hình xe'}
+              </button>
+            </form>
+           
             {currentShift ? (
               <>
                 <div className="mileage-status-line"><span className="mileage-status-dot" />Đang trong ca làm việc</div>
@@ -454,20 +683,148 @@ function MileagePanel({ onClose }) {
                   <div><span>Kilomet đầu ca</span><strong>{formatKm(currentShift.start_km)}</strong></div>
                   <div><span>Bắt đầu lúc</span><strong>{formatDateTime(currentShift.started_at)}</strong></div>
                 </div>
-                <form className="mileage-form" onSubmit={handleEnd}>
-                  <label htmlFor="mileage-end-km">Kilomet hiện tại khi kết thúc ca</label>
-                  <input id="mileage-end-km" type="number" inputMode="decimal" min={currentShift.start_km} max="10000000" step="0.1" required value={endKm} onChange={(event) => setEndKm(event.target.value)} placeholder="Ví dụ: 12642.5" />
-                  <button className="mileage-danger-button" type="submit" disabled={busy || endKm === ''}>{busy ? 'Đang lưu...' : 'Kết thúc ca'}</button>
-                </form>
+                  <form className="mileage-form" onSubmit={handleEnd}>
+                    <label htmlFor="mileage-end-km">
+                      Kilomet hiện tại khi kết thúc ca
+                    </label>
+                  
+                    <input
+                      id="mileage-end-km"
+                      type="number"
+                      inputMode="decimal"
+                      min={currentShift.start_km}
+                      max="10000000"
+                      step="0.1"
+                      required
+                      value={endKm}
+                      onChange={(event) => {
+                        setEndKm(event.target.value)
+                        setPreview(null)
+                      }}
+                      placeholder="Ví dụ: 12642.5"
+                    />
+                  
+                    <button
+                      className="mileage-primary-button"
+                      type="submit"
+                      disabled={busy || endKm === ''}
+                    >
+                      {busy ? 'Đang tính...' : 'Xem trước chi phí'}
+                    </button>
+                  </form>
+                  
+                  {manualMode && (
+                    <div className="mileage-manual-price">
+                      <label htmlFor="mileage-manual-price">
+                        Giá nhiên liệu thủ công (đồng/lít)
+                      </label>
+                  
+                      <input
+                        id="mileage-manual-price"
+                        type="number"
+                        min="1"
+                        step="1"
+                        value={manualPrice}
+                        onChange={(event) => {
+                          setManualPrice(event.target.value)
+                          setPreview(null)
+                        }}
+                        placeholder="Ví dụ: 20000"
+                      />
+                  
+                      <button
+                        type="button"
+                        className="mileage-primary-button"
+                        disabled={busy || manualPrice === ''}
+                        onClick={handleManualPreview}
+                      >
+                        Tính lại chi phí
+                      </button>
+                    </div>
+                  )}
+                  
+                  {preview?.preview && (
+                    <div className="mileage-preview-card">
+                      <h3>Xem trước chi phí ca làm việc</h3>
+                  
+                      {preview.preview.fuel_price_source === 'api' && (
+                        <button
+                          type="button"
+                          className="mileage-manual-edit-button"
+                          onClick={() => {
+                            setManualPrice(String(preview.preview.fuel_price))
+                            setManualMode(true)
+                            setPreview(null)
+                          }}
+                        >
+                          Chỉnh sửa giá thủ công
+                        </button>
+                      )}
+
+                      <div>
+                        <span>Loại nhiên liệu</span>
+                        <strong>{preview.preview.fuel_type}</strong>
+                      </div>
+                  
+                      <div>
+                        <span>Quãng đường</span>
+                        <strong>{formatKm(preview.preview.distance_km)}</strong>
+                      </div>
+                  
+                      <div>
+                        <span>Mức tiêu hao</span>
+                        <strong>{preview.preview.fuel_efficiency} km/lít</strong>
+                      </div>
+                  
+                      <div>
+                        <span>Giá nhiên liệu</span>
+                        <strong>{formatVnd(preview.preview.fuel_price)}/lít</strong>
+                      </div>
+                  
+                      <div>
+                        <span>Nhiên liệu tiêu thụ</span>
+                        <strong>{formatFuel(preview.preview.fuel_consumed)}</strong>
+                      </div>
+                  
+                      <div>
+                        <span>Nguồn giá</span>
+                        <strong>
+                          {preview.preview.fuel_price_source === 'api'
+                            ? 'API giá xăng'
+                            : 'Nhập thủ công'}
+                        </strong>
+                      </div>
+                  
+                      <div className="mileage-preview-total">
+                        <span>Chi phí nhiên liệu</span>
+                        <strong>{formatVnd(preview.preview.fuel_cost)}</strong>
+                      </div>
+                  
+                      <button
+                        type="button"
+                        className="mileage-danger-button"
+                        disabled={busy}
+                        onClick={handleConfirmEnd}
+                      >
+                        {busy ? 'Đang xác nhận...' : 'Xác nhận kết thúc ca'}
+                      </button>
+                    </div>
+                  )}
+
                 <p className="mileage-hint">Không thể kết thúc ca bằng số kilomet nhỏ hơn số đầu ca. Bạn chỉ có thể mở ca mới sau khi chốt ca hiện tại.</p>
               </>
             ) : (
               <>
                 <div className="mileage-empty-state"><span>◷</span><strong>Bạn chưa bắt đầu ca nào</strong><p>Nhập số kilomet trên đồng hồ xe để bắt đầu ca mới.</p></div>
+                {!vehicle && (
+                  <p className="mileage-hint">
+                    Bạn cần lưu cấu hình xe trước khi bắt đầu ca làm việc.
+                  </p>
+                )}
                 <form className="mileage-form" onSubmit={handleStart}>
                   <label htmlFor="mileage-start-km">Kilomet hiện tại khi bắt đầu ca</label>
                   <input id="mileage-start-km" type="number" inputMode="decimal" min="0" max="10000000" step="0.1" required value={startKm} onChange={(event) => setStartKm(event.target.value)} placeholder="Ví dụ: 12580.5" />
-                  <button className="mileage-primary-button" type="submit" disabled={busy || startKm === ''}>{busy ? 'Đang lưu...' : 'Bắt đầu ca'}</button>
+                  <button className="mileage-primary-button" type="submit" disabled={busy || startKm === '' || !vehicle}>{busy ? 'Đang lưu...' : 'Bắt đầu ca'}</button>
                 </form>
               </>
             )}
@@ -485,12 +842,31 @@ function MileagePanel({ onClose }) {
             {history.length === 0 ? <p className="mileage-empty-copy">Chưa có lịch sử ca làm việc.</p> : (
               <div className="mileage-table-wrap">
                 <table className="mileage-table">
-                  <thead><tr><th>Thời gian</th><th>Đầu ca</th><th>Cuối ca</th><th>Quãng đường</th><th>Trạng thái</th></tr></thead>
+                  <thead>
+                    <tr>
+                      <th>Thời gian</th>
+                      <th>Đầu ca</th>
+                      <th>Cuối ca</th>
+                      <th>Quãng đường</th>
+                      <th>Nhiên liệu</th>
+                      <th>Chi phí</th>
+                      <th>Trạng thái</th>
+                    </tr>
+                  </thead>
                   <tbody>{history.map((shift) => (
                     <tr key={shift.id}>
                       <td>{formatDateTime(shift.started_at)}<small>{shift.ended_at ? `→ ${formatDateTime(shift.ended_at)}` : 'Chưa kết thúc'}</small></td>
                       <td>{formatKm(shift.start_km)}</td><td>{formatKm(shift.end_km)}</td>
                       <td><strong>{formatKm(shift.distance_km)}</strong></td>
+                      <td>{formatFuel(shift.fuel_consumed)}</td>
+                      <td>
+                        <strong>{formatVnd(shift.fuel_cost)}</strong>
+                        {shift.fuel_price_source && (
+                          <small>
+                            {shift.fuel_price_source === 'api' ? 'API' : 'Thủ công'}
+                          </small>
+                        )}
+                      </td>
                       <td><span className={`mileage-pill ${shift.status}`}>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</span></td>
                     </tr>
                   ))}</tbody>
@@ -552,6 +928,8 @@ function MileagePanel({ onClose }) {
                     <th>Bắt đầu</th>
                     <th>Kết thúc</th>
                     <th>Km</th>
+                    <th>Nhiên liệu</th>
+                    <th>Chi phí</th>
                     <th>Trạng thái</th>
                     <th>Thao tác</th>
                   </tr>
@@ -563,6 +941,8 @@ function MileagePanel({ onClose }) {
                       <td>{formatDateTime(shift.started_at)}</td>
                       <td>{formatDateTime(shift.ended_at)}</td>
                       <td>{formatKm(shift.distance_km)}</td>
+                      <td>{formatFuel(shift.fuel_consumed)}</td>
+                      <td>{formatVnd(shift.fuel_cost)}</td>
                       <td>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</td>
                       <td>
                         {shift.status === 'completed' && (
