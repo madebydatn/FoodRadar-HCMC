@@ -18683,5 +18683,4894 @@
       "close_time": null,
       "color": "#D3D3D3"
     }
+  },
+  {
+    "restaurant_id": "2507",
+    "delivery_id": 92630,
+    "name": "Quán Sóc Trăng 2 - Lẩu Cá Kèo",
+    "address": "2 Sư Thiện Chiếu, P. 7, Quận 3, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/lau-ca-keo-soc-trang",
+    "restaurant_url": "lau-ca-keo-soc-trang",
+    "banner_mms_img_id": "vn-11134513-7r98o-lstpvlchdfic38",
+    "logo_mms_img_id": "",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 100,
+    "latitude": 10.778021,
+    "longitude": 106.686151,
+    "city_id": 217,
+    "district_id": 5,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Nam"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "40613",
+    "delivery_id": 10320,
+    "name": "Quán Ăn Tâm Ký - Huỳnh Tấn Phát 2",
+    "address": "732 Huỳnh Tấn Phát, P. Tân Phú, Quận 7, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-an-tam-ky-huynh-tan-phat-2",
+    "restaurant_url": "quan-an-tam-ky-huynh-tan-phat-2",
+    "banner_mms_img_id": "vn-11134513-820l4-mfurekd5ysy066",
+    "logo_mms_img_id": "vn-11134513-820l4-mfurekd7vmrt18",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 500,
+    "latitude": 10.731725,
+    "longitude": 106.731474,
+    "city_id": 217,
+    "district_id": 9,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "09:45:00",
+      "close_time": "23:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "120504",
+    "delivery_id": 28815,
+    "name": "Hai Mập Quán - Quán Ăn Gia Đình - Phạm Văn Chí",
+    "address": "650 Phạm Văn Chí, P. 8, Quận 6, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/hai-map-quan",
+    "restaurant_url": "hai-map-quan",
+    "banner_mms_img_id": "vn-11134513-7r98o-lstteifj2jyxe9",
+    "logo_mms_img_id": "vn-11134513-7r98o-lstteixackhwef",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.740226,
+    "longitude": 106.638527,
+    "city_id": 217,
+    "district_id": 8,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "10:00:00",
+      "close_time": "23:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "130730",
+    "delivery_id": 51002,
+    "name": "Tiến Hải Quán - Bún Đậu Mắm Tôm Hà Nội",
+    "address": "409 Nguyễn Tri Phương, P. 5, Quận 10, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/tien-hai-quan-bun-dau-mam-tom-ha-noi",
+    "restaurant_url": "tien-hai-quan-bun-dau-mam-tom-ha-noi",
+    "banner_mms_img_id": "vn-11134259-7ra0g-m9r3rzhzfoyidd",
+    "logo_mms_img_id": "vn-11134259-7ra0g-m9r3rwftyani7d",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.763711,
+    "longitude": 106.667948,
+    "city_id": 217,
+    "district_id": 12,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Bắc"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "10:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "286061",
+    "delivery_id": 12835,
+    "name": "Bánh Bèo Hai Quân - Lê Thị Hà",
+    "address": "36/3A Lê Thị Hà, Thị Trấn Hóc Môn, Hóc Môn, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/banh-beo-hai-quan-le-thi-ha",
+    "restaurant_url": "banh-beo-hai-quan-le-thi-ha",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsty4qvqtqdg55",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsty4rhnxnlwdd",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 1000,
+    "latitude": 10.886951,
+    "longitude": 106.598312,
+    "city_id": 217,
+    "district_id": 695,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "05:45:00",
+      "close_time": "17:45:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "628002",
+    "delivery_id": 142353,
+    "name": "FamilyMart - Sala",
+    "address": "10 Mai Chí Thọ, P. An Lợi Đông, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/familymart-sala",
+    "restaurant_url": "familymart-sala",
+    "banner_mms_img_id": "vn-11134513-81ztc-mv4fyh28a0aqbe",
+    "logo_mms_img_id": "vn-11134513-81ztc-mv4fygk0nfupff",
+    "is_open": true,
+    "rating": 4.4,
+    "total_review": 100,
+    "latitude": 10.771403,
+    "longitude": 106.724411,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Nhật",
+      "Món Á"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "00:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "632674",
+    "delivery_id": 8869,
+    "name": "Nam An Market - Thực Phẩm Sạch - Thảo Điền",
+    "address": "21 Thảo Điền, P. Thảo Điền, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/nam-an-market-thuc-pham-sach-thao-dien",
+    "restaurant_url": "nam-an-market-thuc-pham-sach-thao-dien",
+    "banner_mms_img_id": "vn-11134513-7r98o-lstz3tpqtlmsf3",
+    "logo_mms_img_id": "",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.803268,
+    "longitude": 106.737578,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "20:30:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "672333",
+    "delivery_id": 142349,
+    "name": "FamilyMart - 16 Quốc Hương - WoWo",
+    "address": "16 Quốc Hương, P. Thảo Điền, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/familymart-16-quoc-huong",
+    "restaurant_url": "familymart-16-quoc-huong",
+    "banner_mms_img_id": "vn-11134513-81ztc-mv4fyh28a0aqbe",
+    "logo_mms_img_id": "vn-11134513-81ztc-mv4fygk0nfupff",
+    "is_open": true,
+    "rating": 4.6,
+    "total_review": 100,
+    "latitude": 10.803644,
+    "longitude": 106.732216,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Nhật",
+      "Món Á"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "00:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "694444",
+    "delivery_id": 36914,
+    "name": "Quán Hai Mập - Cơm Gà Da Giòn & Hủ Tiếu Mì Xào",
+    "address": "191 Phạm Phú Thứ, P. 4, Quận 6, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-map-com-ga-da-gion-hu-tieu-mi-xao",
+    "restaurant_url": "quan-hai-map-com-ga-da-gion-hu-tieu-mi-xao",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu1fa32agm14c",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu1falxiumxa8",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.744536,
+    "longitude": 106.643749,
+    "city_id": 217,
+    "district_id": 8,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "741049",
+    "delivery_id": 38060,
+    "name": "Cô Hai Quán - Bún Cá Nha Trang & Nem Nướng Nha Trang - Bàu Cát",
+    "address": "151 Bàu Cát, P. 14, Tân Bình, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/co-hai-quan-bun-ca-nha-trang-nem-nuong-nha-trang-bau-cat",
+    "restaurant_url": "co-hai-quan-bun-ca-nha-trang-nem-nuong-nha-trang-bau-cat",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu3dpj5yxsp4d",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu3dq2l6il593",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 1000,
+    "latitude": 10.792467,
+    "longitude": 106.642974,
+    "city_id": 217,
+    "district_id": 16,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Miền Trung",
+      "Nha Trang"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "06:50:00",
+      "close_time": "22:30:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "756132",
+    "delivery_id": 46718,
+    "name": "TH true mart - Nguyễn Duy Trinh - 70000165",
+    "address": "536 Nguyễn Duy Trinh, P. Bình Trưng Đông, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/th-true-mart-nguyen-duy-trinh-70000165",
+    "restaurant_url": "th-true-mart-nguyen-duy-trinh-70000165",
+    "banner_mms_img_id": "vn-11134513-820l4-mgnlx4kh2uj0f1",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu40ined47t86",
+    "is_open": false,
+    "rating": 4.9,
+    "total_review": 100,
+    "latitude": 10.788091,
+    "longitude": 106.774866,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Café/Dessert",
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "760382",
+    "delivery_id": 51007,
+    "name": "Tiến Hải Quán - Bún Đậu Mắm Tôm - Nguyễn Sơn",
+    "address": "39 Nguyễn Sơn, P. Phú Thạnh, Tân Phú, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/tien-hai-quan-bun-dau-mam-tom-nguyen-son",
+    "restaurant_url": "tien-hai-quan-bun-dau-mam-tom-nguyen-son",
+    "banner_mms_img_id": "vn-11134259-7ra0g-m9r3w4hxe9aa48",
+    "logo_mms_img_id": "vn-11134259-7ra0g-m9r3w1djyp1g86",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.781006,
+    "longitude": 106.632244,
+    "city_id": 217,
+    "district_id": 19,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Bắc"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "766628",
+    "delivery_id": 52042,
+    "name": "Fruit Land - Trái Cây & Thực Phẩm Nhập Khẩu - Mai Chí Thọ",
+    "address": "Shophouse Sarimi B1 - 00.08, Khu Đô Thị Sala, 10 Mai Chí Thọ, P. An Lợi Đông, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/fruit-land-trai-cay-nhap-khau-mai-chi-tho",
+    "restaurant_url": "fruit-land-trai-cay-nhap-khau-mai-chi-tho",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu4irxuhzmh3b",
+    "logo_mms_img_id": "",
+    "is_open": false,
+    "rating": 4.5,
+    "total_review": 50,
+    "latitude": 10.770591,
+    "longitude": 106.724715,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Quốc tế"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "789929",
+    "delivery_id": 67190,
+    "name": "Quán Vịt Ba Chiến 2",
+    "address": "70 Nguyễn Tư Nghiêm, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-vit-ba-chien-2",
+    "restaurant_url": "quan-vit-ba-chien-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu5jftwzz5wb5",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu5jgci8rt081",
+    "is_open": false,
+    "rating": 4.6,
+    "total_review": 100,
+    "latitude": 10.785689,
+    "longitude": 106.762503,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "791402",
+    "delivery_id": 63533,
+    "name": "Hải Phòng Quán - Đặc Sản Hải Phòng",
+    "address": "162 Nguyễn Hoàng, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/hai-phong-quan-dac-san-hai-phong",
+    "restaurant_url": "hai-phong-quan-dac-san-hai-phong",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu5le8jyu9w62",
+    "logo_mms_img_id": "",
+    "is_open": false,
+    "rating": 4.3,
+    "total_review": 100,
+    "latitude": 10.794295,
+    "longitude": 106.745358,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Bắc"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "796876",
+    "delivery_id": 195355,
+    "name": "GS25 - Gateway - VN0255",
+    "address": "A01.05 Tòa Tháp Aspen, 177 Xa Lộ Hà Nội, P. Thảo Điền, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/gs25-gateway-vn0255",
+    "restaurant_url": "gs25-gateway-vn0255",
+    "banner_mms_img_id": "vn-11134259-7r98o-lwg1i2y62kez88",
+    "logo_mms_img_id": "vn-11134259-7r98o-lwg1i2x246vvf9",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 100,
+    "latitude": 10.804008,
+    "longitude": 106.746015,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Hàn",
+      "Món Á"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "00:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "872421",
+    "delivery_id": 129603,
+    "name": "Quán Hải Dương - Gà Ta Tam Kỳ",
+    "address": "98/2E Nguyễn Ảnh Thủ, Ấp Tân Lăn, Hóc Môn, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-duong-ga-ta-tam-ky",
+    "restaurant_url": "quan-hai-duong-ga-ta-tam-ky",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu6gb47ejdl78",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu6gbpajohw81",
+    "is_open": false,
+    "rating": 5,
+    "total_review": 2,
+    "latitude": 10.842934,
+    "longitude": 106.600064,
+    "city_id": 217,
+    "district_id": 695,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "880821",
+    "delivery_id": 74514,
+    "name": "K Quán 2 - Kem Chuối & Yaourt Bịch",
+    "address": "511/20 Đường Số 5, P. 17, Gò Vấp, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/k-quan-2-kem-chuoi-yaourt-bich",
+    "restaurant_url": "k-quan-2-kem-chuoi-yaourt-bich",
+    "banner_mms_img_id": "vn-11134513-7ras8-m250du5tpwwu81",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu6sqwm49spe1",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 100,
+    "latitude": 10.848264,
+    "longitude": 106.677547,
+    "city_id": 217,
+    "district_id": 2,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "939497",
+    "delivery_id": 89380,
+    "name": "Quán Cơm 2 Món - Âu Cơ",
+    "address": "240 Âu Cơ, P. 9, Tân Bình, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-com-2-mon-au-co",
+    "restaurant_url": "quan-com-2-mon-au-co",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu82ap4hcckf6",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu82b9dnpac6b",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 1000,
+    "latitude": 10.772899,
+    "longitude": 106.649452,
+    "city_id": 217,
+    "district_id": 16,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "18:15:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "948348",
+    "delivery_id": 92431,
+    "name": "Quán Cơm Nhà - Đoàn Như Hài",
+    "address": "15/44 Đoàn Như Hài, P. 12, Quận 4, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/com-nha-doan-nhu-hai",
+    "restaurant_url": "com-nha-doan-nhu-hai",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu894zi2h1ge9",
+    "logo_mms_img_id": "vn-11134513-7ras8-md6cfv2ea7j0fd",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.765712,
+    "longitude": 106.706313,
+    "city_id": 217,
+    "district_id": 6,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "16:05:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "960424",
+    "delivery_id": 96442,
+    "name": "Cô Hai Quán - Bún Cá Nha Trang & Nem Nướng Nha Trang - Đường D5",
+    "address": "96 Đường D5, P. 25, Bình Thạnh, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/co-hai-quan-bun-ca-nha-trang-nem-nuong-nha-trang-duong-d5",
+    "restaurant_url": "co-hai-quan-bun-ca-nha-trang-nem-nuong-nha-trang-duong-d5",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu8hhvpqu9wda",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu8hig8wslga4",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 1000,
+    "latitude": 10.805754,
+    "longitude": 106.71574,
+    "city_id": 217,
+    "district_id": 15,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "07:00:00",
+      "close_time": "23:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "998075",
+    "delivery_id": 105829,
+    "name": "Quán Ăn 2 Chị Em",
+    "address": "14A Đường 297, P. Phước Long B, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-an-2-chi-em-14a",
+    "restaurant_url": "quan-an-2-chi-em-14a",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu9diromt21ed",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu9djbntkn88b",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 500,
+    "latitude": 10.824175,
+    "longitude": 106.771704,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1003836",
+    "delivery_id": 195361,
+    "name": "GS25 - Sadora - VN0034",
+    "address": "2 Đường số 13, P. Thủ Thiêm, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/gs25-sadora-vn0034",
+    "restaurant_url": "gs25-sadora-vn0034",
+    "banner_mms_img_id": "vn-11134259-7r98o-lwb4lin6a0gp7a",
+    "logo_mms_img_id": "vn-11134259-7r98o-lwb4lin6a09n54",
+    "is_open": true,
+    "rating": 4.5,
+    "total_review": 50,
+    "latitude": 10.776168,
+    "longitude": 106.724042,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "00:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1003838",
+    "delivery_id": 195360,
+    "name": "GS25 - Ascent - VN0033",
+    "address": "62 - 62A Quốc Hương, P. Thảo Điền, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/gs25-ascent-vn0033",
+    "restaurant_url": "gs25-ascent-vn0033",
+    "banner_mms_img_id": "vn-11134259-7r98o-lwbe7e65d7177c",
+    "logo_mms_img_id": "vn-11134259-7r98o-lwbe7e5l1dcp86",
+    "is_open": false,
+    "rating": 4.5,
+    "total_review": 100,
+    "latitude": 10.807076,
+    "longitude": 106.731001,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1004663",
+    "delivery_id": 108087,
+    "name": "Quán Bà Hai - Cháo Bào Ngư, Cháo Sò Điệp & Cháo Hàu",
+    "address": "304 Đường HT17, Khu Phố 2, P. Hiệp Thành, Quận 12, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-ba-hai-chao-bao-ngu-chao-so-diep-chao-hau",
+    "restaurant_url": "quan-ba-hai-chao-bao-ngu-chao-so-diep-chao-hau",
+    "banner_mms_img_id": "vn-11134513-820l4-mjtg8bfj2i9s10",
+    "logo_mms_img_id": "vn-11134513-820l4-mjwdzc3xruh1a0",
+    "is_open": false,
+    "rating": 4.6,
+    "total_review": 100,
+    "latitude": 10.8828,
+    "longitude": 106.643501,
+    "city_id": 217,
+    "district_id": 14,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1017219",
+    "delivery_id": 111263,
+    "name": "Quán 2 Cô - Cơm Trưa & Ăn Vặt Văn Phòng",
+    "address": "740 Đoàn Văn Bơ, P. 16, Quận 4, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-2-co-com-trua-an-vat-van-phong",
+    "restaurant_url": "quan-2-co-com-trua-an-vat-van-phong",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsu9re8rpnyx47",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsu9rer309sp21",
+    "is_open": false,
+    "rating": 5,
+    "total_review": 10,
+    "latitude": 10.757534,
+    "longitude": 106.713198,
+    "city_id": 217,
+    "district_id": 6,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1024118",
+    "delivery_id": 115622,
+    "name": "Quán Ăn Trúc Tre - Miến Xào Hải Sản",
+    "address": "144/33 Nguyễn Khoái, P. 2, Quận 4, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-an-truc-tre-mien-xao-hai-san",
+    "restaurant_url": "quan-an-truc-tre-mien-xao-hai-san",
+    "banner_mms_img_id": "vn-11134513-81ztc-moozz0vyi9sb73",
+    "logo_mms_img_id": "vn-11134513-81ztc-moozz8c7ufb471",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 500,
+    "latitude": 10.757284,
+    "longitude": 106.694497,
+    "city_id": 217,
+    "district_id": 6,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1026703",
+    "delivery_id": 117906,
+    "name": "Vạn Quán 2 - Lẩu Gà Lá É - Nguyễn Xí",
+    "address": "123/17C Nguyễn Xí, P. 26, Bình Thạnh, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/van-quan-2-lau-ga-la-e-nguyen-xi",
+    "restaurant_url": "van-quan-2-lau-ga-la-e-nguyen-xi",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsua9u6y3q1l6b",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsua9urh9oec5b",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 1000,
+    "latitude": 10.81282,
+    "longitude": 106.708246,
+    "city_id": 217,
+    "district_id": 15,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "09:30:00",
+      "close_time": "22:45:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1028660",
+    "delivery_id": 118959,
+    "name": "K-Market Island",
+    "address": "T3.B2.11, Tầng B2, Tháp Brilliant, 1 Đường Số 104, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/k-market-island",
+    "restaurant_url": "k-market-island",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsuacju57no942",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsuackgwad2184",
+    "is_open": false,
+    "rating": 5,
+    "total_review": 10,
+    "latitude": 10.778659,
+    "longitude": 106.745467,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1029365",
+    "delivery_id": 119740,
+    "name": "3SACH MART - Mai Chí Thọ",
+    "address": "Shophouse SAV2 - 00.002 The Sun Avenue, 28 Mai chí Thọ, (Mặt Sau Đường 51, Sảnh S2), P. An Khánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/3sach-mart-mai-chi-tho",
+    "restaurant_url": "3sach-mart-mai-chi-tho",
+    "banner_mms_img_id": "vn-11134513-81ztc-mv5w2twxoj5uff",
+    "logo_mms_img_id": "vn-11134513-81ztc-mro9qkqn4e840f",
+    "is_open": true,
+    "rating": 4.6,
+    "total_review": 1000,
+    "latitude": 10.784647,
+    "longitude": 106.746452,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "06:00:00",
+      "close_time": "21:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1033868",
+    "delivery_id": 123354,
+    "name": "Ăn Vặt Bò Bía Hai Ngàn - Quận 4",
+    "address": "Số 14 Đường 18, P. 4, Quận 4, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/an-vat-bo-bia-hai-ngan-quan-4",
+    "restaurant_url": "an-vat-bo-bia-hai-ngan-quan-4",
+    "banner_mms_img_id": "vn-11134513-820l4-me9jp7oepiir0c",
+    "logo_mms_img_id": "vn-11134513-81ztc-mtrnmipvb1mw40",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.755341,
+    "longitude": 106.704163,
+    "city_id": 217,
+    "district_id": 6,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "11:00:00",
+      "close_time": "22:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1034018",
+    "delivery_id": 122953,
+    "name": "Quán Năm Hạnh 2 - Bún Riêu Cua",
+    "address": "Số 76 Phan Đạt Đức, Khu Phố 1, P. Long Thạnh Mỹ, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-nam-hanh-2-bun-rieu-cua",
+    "restaurant_url": "quan-nam-hanh-2-bun-rieu-cua",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsuarcwp4lvo7e",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsuardhia5l0ed",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 1000,
+    "latitude": 10.84389,
+    "longitude": 106.826408,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "05:39:00",
+      "close_time": "19:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1035836",
+    "delivery_id": 124302,
+    "name": "Quán 2 Người Bạn - Hủ Tiếu Nam Vang - Đường 20",
+    "address": "2/3 Đường 20, KP4, P. Hiệp Bình Chánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-2-nguoi-ban-hu-tieu-nam-vang-duong-20",
+    "restaurant_url": "quan-2-nguoi-ban-hu-tieu-nam-vang-duong-20",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv0kgvq2il599",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv0khfp9a6c85",
+    "is_open": false,
+    "rating": 4.5,
+    "total_review": 100,
+    "latitude": 10.827271,
+    "longitude": 106.72254,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1036971",
+    "delivery_id": 125397,
+    "name": "Circle K - 83 Đường Số 3, Khu Phố 4 - SG0264",
+    "address": "B1.04 Chung Cư Bộ Công An, 83 Đường Số 3, P. Bình An, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/circle-k-83-duong-so-3-khu-pho-4-sg0264",
+    "restaurant_url": "circle-k-83-duong-so-3-khu-pho-4-sg0264",
+    "banner_mms_img_id": "vn-11134513-81ztc-mv5vv6k2cetk19",
+    "logo_mms_img_id": "vn-11134513-81ztc-mrvipolrxhxj78",
+    "is_open": true,
+    "rating": 4.6,
+    "total_review": 500,
+    "latitude": 10.795053,
+    "longitude": 106.736348,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Châu Mỹ",
+      "Mỹ"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "00:01:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1038731",
+    "delivery_id": 126459,
+    "name": "Quán Hai Chị Em - Bún Bò Huế & Bò Kho - Phạm Hữu Lầu",
+    "address": "53A Phạm Hữu Lầu, P. Phú Mỹ, Quận 7, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-chi-em-bun-bo-hue-bo-kho-pham-huu-lau",
+    "restaurant_url": "quan-hai-chi-em-bun-bo-hue-bo-kho-pham-huu-lau",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv0t4y9e4sk44",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv0t5hylays9e",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 10,
+    "latitude": 10.704924,
+    "longitude": 106.735554,
+    "city_id": 217,
+    "district_id": 9,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1039566",
+    "delivery_id": 127123,
+    "name": "Siam - Hải Sản Quán",
+    "address": "69 Nguyễn Văn Luông, P. 10, Quận 6, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/siam-hai-san-quan",
+    "restaurant_url": "siam-hai-san-quan",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv0x9de73q147",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv0x9ulhxg928",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.736418,
+    "longitude": 106.633624,
+    "city_id": 217,
+    "district_id": 8,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1040206",
+    "delivery_id": 127630,
+    "name": "Lộc Phát Mart",
+    "address": "280B1 Lương Định Của, P. An Phú, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/loc-phat-mart",
+    "restaurant_url": "loc-phat-mart",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv10grlbxs488",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv10hd8g9llb9",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.790639,
+    "longitude": 106.74738,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "18:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1042696",
+    "delivery_id": 129454,
+    "name": "Yến Sào Thượng Hạng Phúc An Khang - Yến Tươi & Yến Sào",
+    "address": "Tầng 3, Tầng 3, Phòng 8 Chung Cư Centana Thủ Thiêm, 36 Mai Chí Thọ, P. An Phú, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/yen-sao-thuong-hang-phuc-an-khang-yen-tuoi-yen-sao",
+    "restaurant_url": "yen-sao-thuong-hang-phuc-an-khang-yen-tuoi-yen-sao",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv16jqcz9uhcf",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv16kbqw3pgda",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.791068,
+    "longitude": 106.752727,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "18:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1043863",
+    "delivery_id": 130429,
+    "name": "G Kitchen - Quốc Hương",
+    "address": "48 Quốc Hương, P. Thảo Điền, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/g-kitchen-quoc-huong",
+    "restaurant_url": "g-kitchen-quoc-huong",
+    "banner_mms_img_id": "vn-11134513-81ztc-mpm4ksiavjsy61",
+    "logo_mms_img_id": "vn-11134513-81ztc-mqvt6luj02kocd",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 100,
+    "latitude": 10.806736,
+    "longitude": 106.731083,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1046765",
+    "delivery_id": 132709,
+    "name": "Hai Khôi Quán - Mực Khổng Lồ",
+    "address": "Số 1 Đường 41, P. Tam Bình, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/hai-khoi-quan-muc-khong-lo",
+    "restaurant_url": "hai-khoi-quan-muc-khong-lo",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv1in55qahl4e",
+    "logo_mms_img_id": "vn-11134513-820l4-miu97ach0cg494",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 100,
+    "latitude": 10.848655,
+    "longitude": 106.728976,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1051306",
+    "delivery_id": 137381,
+    "name": "G Kitchen - Nguyễn Duy Trinh",
+    "address": "407 Nguyễn Duy Trinh, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/g-kitchen-nguyen-duy-trinh",
+    "restaurant_url": "g-kitchen-nguyen-duy-trinh",
+    "banner_mms_img_id": "vn-11134513-820l4-mjfhz5wiwikne2",
+    "logo_mms_img_id": "vn-11134513-7r98o-lu0fynqqqs67cc",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 100,
+    "latitude": 10.788525,
+    "longitude": 106.768928,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "06:00:00",
+      "close_time": "20:30:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1052665",
+    "delivery_id": 137712,
+    "name": "Quán Ốc Hai Tân",
+    "address": "67/56 Nguyễn Thị Tú, P. Bình Hưng Hòa B, Bình Tân, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-oc-hai-tan",
+    "restaurant_url": "quan-oc-hai-tan",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv20ppxotjtc7",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv20qa6v6hle1",
+    "is_open": false,
+    "rating": 3.7,
+    "total_review": 10,
+    "latitude": 10.814036,
+    "longitude": 106.598826,
+    "city_id": 217,
+    "district_id": 18,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1055368",
+    "delivery_id": 139878,
+    "name": "Homefarm - Thực Phẩm Cao Cấp - Nguyễn Thị Định",
+    "address": "359 Nguyễn Thị Định, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/homefarm-thuc-pham-cao-cap-nguyen-thi-dinh",
+    "restaurant_url": "homefarm-thuc-pham-cao-cap-nguyen-thi-dinh",
+    "banner_mms_img_id": "vn-11134513-81ztc-mp1qrl4pf09ab3",
+    "logo_mms_img_id": "vn-11134513-81ztc-mp1qvbtpfv2m92",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 50,
+    "latitude": 10.782269,
+    "longitude": 106.760547,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1055559",
+    "delivery_id": 139983,
+    "name": "Quán 2 Chén - Bò Lá Lốt, Bò Mỡ Chài & Gỏi Cuốn",
+    "address": "822 Phạm Văn Đồng, P. Hiệp Bình Chánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-2-chen-bo-la-lot-bo-mo-chai-goi-cuon",
+    "restaurant_url": "quan-2-chen-bo-la-lot-bo-mo-chai-goi-cuon",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv29yyy0ngk7d",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv29zk18lok15",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 500,
+    "latitude": 10.8326,
+    "longitude": 106.727211,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1056287",
+    "delivery_id": 140600,
+    "name": "Cửa Hàng Siêu Chợ 3S",
+    "address": "35 Dương Văn An, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/cua-hang-sieu-cho-3s",
+    "restaurant_url": "cua-hang-sieu-cho-3s",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv2cyxo2b44aa",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv2czl92e2sb8",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 100,
+    "latitude": 10.79922,
+    "longitude": 106.743323,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1062842",
+    "delivery_id": 156475,
+    "name": "Homefarm - Thực Phẩm Cao Cấp - Nguyễn Duy Trinh",
+    "address": "129 Nguyễn Duy Trinh, KP1, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/homefarm-thuc-pham-cao-cap-nguyen-duy-trinh",
+    "restaurant_url": "homefarm-thuc-pham-cao-cap-nguyen-duy-trinh",
+    "banner_mms_img_id": "vn-11134513-81ztc-mp1qsmleslxo1a",
+    "logo_mms_img_id": "vn-11134513-81ztc-mp1qwddlf08x78",
+    "is_open": false,
+    "rating": 4.9,
+    "total_review": 100,
+    "latitude": 10.788114,
+    "longitude": 106.759164,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1064599",
+    "delivery_id": 158025,
+    "name": "Quán Ngon - Hủ Tiếu Nui Hoành Thánh - 933 Hương Lộ 2",
+    "address": "933 Hương Lộ 2, P. Bình Trị Đông A, Bình Tân, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-ngon-hu-tieu-nui-hoanh-thanh-933-huong-lo-2",
+    "restaurant_url": "quan-ngon-hu-tieu-nui-hoanh-thanh-933-huong-lo-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv32v9pnzk456",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv32vvwri6ce3",
+    "is_open": false,
+    "rating": 4.9,
+    "total_review": 1000,
+    "latitude": 10.76781,
+    "longitude": 106.596014,
+    "city_id": 217,
+    "district_id": 18,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": "06:30:00",
+      "close_time": "15:00:00",
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1069267",
+    "delivery_id": 161860,
+    "name": "Quán Gà Quê 2 - Nguyễn Thị Nhuần",
+    "address": "42/3 Nguyễn Thị Nhuần (Đường Cũ An Lộc), P. Thạnh Lộc, Quận 12, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-ga-que-2-nguyen-thi-nhuan",
+    "restaurant_url": "quan-ga-que-2-nguyen-thi-nhuan",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv3f3zypnes0c",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv3f4hpznwkd3",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 1,
+    "latitude": 10.858202,
+    "longitude": 106.68762,
+    "city_id": 217,
+    "district_id": 14,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1074091",
+    "delivery_id": 176317,
+    "name": "Quán Nhậu 2 Lực",
+    "address": "4 Đường Số 6, KDC Bình Hưng, P. Bình Hưng, Bình Chánh, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-nhau-2-luc",
+    "restaurant_url": "quan-nhau-2-luc",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv3uedzbn440e",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv3uf1kbq1l6a",
+    "is_open": false,
+    "rating": 3.9,
+    "total_review": 9,
+    "latitude": 10.725813,
+    "longitude": 106.651079,
+    "city_id": 217,
+    "district_id": 696,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1075391",
+    "delivery_id": 177689,
+    "name": "Quán Toàn - Vựa Hải Sản - Nguyễn Thị Tần",
+    "address": "94 Nguyễn Thị Tần, P. 2, Quận 8, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-toan-vua-hai-san-nguyen-thi-tan",
+    "restaurant_url": "quan-toan-vua-hai-san-nguyen-thi-tan",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv3xnofn6pw1a",
+    "logo_mms_img_id": "vn-11134513-7ras8-m2ke05nnss6s6e",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 100,
+    "latitude": 10.746803,
+    "longitude": 106.685709,
+    "city_id": 217,
+    "district_id": 10,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1076976",
+    "delivery_id": 179881,
+    "name": "Đặc Sản Bình Định - Quận 2",
+    "address": "61 Đường 39, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/dac-san-binh-dinh-quan-2",
+    "restaurant_url": "dac-san-binh-dinh-quan-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv43melf15lde",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv43mzyjrmh9c",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 100,
+    "latitude": 10.782113,
+    "longitude": 106.766691,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1080662",
+    "delivery_id": 185977,
+    "name": "Quán Ốc A.Viên 2",
+    "address": "7 Đường 59B, P. Tân Tạo, Bình Tân, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-oc-a-vien-2",
+    "restaurant_url": "quan-oc-a-vien-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv4ap16sty1f9",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv4apndwck9f8",
+    "is_open": false,
+    "rating": 5,
+    "total_review": 1,
+    "latitude": 10.754807,
+    "longitude": 106.595627,
+    "city_id": 217,
+    "district_id": 18,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1081652",
+    "delivery_id": 187760,
+    "name": "QUÁN LẨU DÊ CÂY DỪA 2",
+    "address": "332 An Dương Vương, P. 10, Quận 6, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-lau-de-cay-dua-2",
+    "restaurant_url": "quan-lau-de-cay-dua-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv4fx1dr7o9a5",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv4fxm6vct58f",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 100,
+    "latitude": 10.737739,
+    "longitude": 106.62208,
+    "city_id": 217,
+    "district_id": 8,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1085105",
+    "delivery_id": 193561,
+    "name": "Quán Hải Vịt - Đường Số 57",
+    "address": "89 Đường Số 57, P. 14, Gò Vấp, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-vit-duong-so-57",
+    "restaurant_url": "quan-hai-vit-duong-so-57",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv4nifvl3noab",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv4nj2mnt1g89",
+    "is_open": false,
+    "rating": 4,
+    "total_review": 2,
+    "latitude": 10.854322,
+    "longitude": 106.649101,
+    "city_id": 217,
+    "district_id": 2,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1085665",
+    "delivery_id": 194316,
+    "name": "Quán Hải Cua - Đặc Sản Cà Mau",
+    "address": "162 Phạm Văn Đồng, P. Hiệp Bình Chánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-cua-dac-san-ca-mau",
+    "restaurant_url": "quan-hai-cua-dac-san-ca-mau",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv4olv3w890d6",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv4omieziys53",
+    "is_open": true,
+    "rating": 5,
+    "total_review": 9,
+    "latitude": 10.830724,
+    "longitude": 106.723818,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Chợ"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "22:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1086559",
+    "delivery_id": 195441,
+    "name": "Nonglamfood - Trái Cây Sấy - Đường Số 8",
+    "address": "311-G9 Đường Số 8, P. An Phú, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/nonglamfood-trai-cay-say-duong-so-8",
+    "restaurant_url": "nonglamfood-trai-cay-say-duong-so-8",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv4tw0fmx7ddb",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv4twiqw4hw68",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.788611,
+    "longitude": 106.740891,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "17:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1088605",
+    "delivery_id": 197869,
+    "name": "Hia Corner Online - Trà Sữa Chai - Đường Số 16",
+    "address": "11 Đường Số 16, P. Thạnh Mỹ Lợi, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/hia-corner-online-tra-sua-chai-duong-so-16",
+    "restaurant_url": "hia-corner-online-tra-sua-chai-duong-so-16",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv4xw50q210dd",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv4xwo5y1fofa",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.777277,
+    "longitude": 106.764099,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "10:00:00",
+      "close_time": "21:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1090383",
+    "delivery_id": 199725,
+    "name": "Vũ Gia Tea & Farm - Từ Nông Trại Đến Bàn Ăn -  Quận 2",
+    "address": "14 Đường Số 41, P. Bình An, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/vu-gia-tea-farm-tu-nong-trai-den-ban-an-quan-2",
+    "restaurant_url": "vu-gia-tea-farm-tu-nong-trai-den-ban-an-quan-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv55fqv9cwpba",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv55gc8e3dl93",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 10,
+    "latitude": 10.788957,
+    "longitude": 106.726642,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Chợ"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "18:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1090608",
+    "delivery_id": 199946,
+    "name": "Mr. Bin - Trà Sữa Đóng Chai - Nguyễn Thị Định",
+    "address": "277 Nguyễn Thị Định, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/mr-bin-tra-sua-dong-chai-nguyen-thi-dinh",
+    "restaurant_url": "mr-bin-tra-sua-dong-chai-nguyen-thi-dinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv540ik89zt17",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv540zhjidg15",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.783374,
+    "longitude": 106.75812,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Chợ"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "10:00:00",
+      "close_time": "22:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1090834",
+    "delivery_id": 200179,
+    "name": "Deluxnuts - Hạt & Trái Cây Sấy - Đường 33",
+    "address": "1/13 Đường 33, P. An Khánh, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/deluxnuts-hat-trai-cay-say-duong-33",
+    "restaurant_url": "deluxnuts-hat-trai-cay-say-duong-33",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv536yhhfa1b7",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv537jamyzd78",
+    "is_open": false,
+    "rating": 5,
+    "total_review": 2,
+    "latitude": 10.788471,
+    "longitude": 106.728806,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1092434",
+    "delivery_id": 201829,
+    "name": "An Hào Food Mart - Mai Chí Thọ",
+    "address": "67 Mai Chí Thọ, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/an-hao-food-mart-mai-chi-tho",
+    "restaurant_url": "an-hao-food-mart-mai-chi-tho",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv57y2h30yh74",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv57ykie1ehd3",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.799082,
+    "longitude": 106.751768,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn",
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1093033",
+    "delivery_id": 202425,
+    "name": "Jennie Food - Thịt Đông Lạnh Nhập Khẩu",
+    "address": "47A Đường 26, P. Cát Lái, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/jennie-food-thit-dong-lanh-nhap-khau",
+    "restaurant_url": "jennie-food-thit-dong-lanh-nhap-khau",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv59tjybs0p93",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv59u5mqgm111",
+    "is_open": false,
+    "rating": 4.5,
+    "total_review": 4,
+    "latitude": 10.778867,
+    "longitude": 106.771717,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Shop Online"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1093902",
+    "delivery_id": 203272,
+    "name": "Nhím Sonic - Ăn Vặt & Trà Sữa Đóng Chai",
+    "address": "Chung cư Gia Hoà, P. Phước Long B, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/nhim-sonic-an-vat-tra-sua-dong-chai",
+    "restaurant_url": "nhim-sonic-an-vat-tra-sua-dong-chai",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv5dp7vy07t81",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv5dppx7m3dd6",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.81414,
+    "longitude": 106.777725,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "17:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1094265",
+    "delivery_id": 203637,
+    "name": "Miutea - Trà Sữa Đóng Chai - Nguyễn Thị Định",
+    "address": "193 Nguyễn Thị Định, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/miutea-tra-sua-dong-chai-nguyen-thi-dinh",
+    "restaurant_url": "miutea-tra-sua-dong-chai-nguyen-thi-dinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv5eelatc5gd0",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv5ef2i45vo55",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 10,
+    "latitude": 10.786371,
+    "longitude": 106.756269,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1095311",
+    "delivery_id": 204698,
+    "name": "Vua Thực Phẩm - Thực Phẩm Đóng Gói - Thân Văn Nhiếp",
+    "address": "306F Thân Văn Nhiếp, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/vua-thuc-pham-thuc-pham-dong-goi-than-van-nhiep",
+    "restaurant_url": "vua-thuc-pham-thuc-pham-dong-goi-than-van-nhiep",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv5h0ihddxg93",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv5h15ifop083",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.788945,
+    "longitude": 106.753287,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "18:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1097214",
+    "delivery_id": 206628,
+    "name": "Nhà Hàng Phố Ốc - Thực Phẩm Tươi Sống",
+    "address": "271 Nguyễn Duy Trinh, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/nha-hang-pho-oc-thuc-pham-tuoi-song",
+    "restaurant_url": "nha-hang-pho-oc-thuc-pham-tuoi-song",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv5mqv1elcpdd",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv5mregm655ca",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.788517,
+    "longitude": 106.770693,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "06:00:00",
+      "close_time": "21:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1100510",
+    "delivery_id": 209914,
+    "name": "Sushi Như Ý - Đường Số 9",
+    "address": "7 Đường Số 9, P. Thảo Điền, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/sushi-nhu-y-duong-so-9",
+    "restaurant_url": "sushi-nhu-y-duong-so-9",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv5vv66yowp07",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv5vvnya40401",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.80376,
+    "longitude": 106.745092,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "21:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1100800",
+    "delivery_id": 210200,
+    "name": "An Tín - Thực Phẩm Sạch - Đường 16",
+    "address": "33 Đường 16, P. Thạnh Mỹ Lợi, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/an-tin-thuc-pham-sach-duong-16",
+    "restaurant_url": "an-tin-thuc-pham-sach-duong-16",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv5y6bhbs9091",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv5y6vqgql598",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.776708,
+    "longitude": 106.763848,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1100851",
+    "delivery_id": 210254,
+    "name": "Uyên My Quán - Set Bún Bò Tự Chọn - Đường Số 2",
+    "address": "20 Khu Phố 6 Đường Số 2, P. Hiệp Bình Phước, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/uyen-my-quan-set-bun-bo-tu-chon-duong-so-2",
+    "restaurant_url": "uyen-my-quan-set-bun-bo-tu-chon-duong-so-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv5zm91aif807",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv5zmtug24k6f",
+    "is_open": false,
+    "rating": 4.9,
+    "total_review": 10,
+    "latitude": 10.836905,
+    "longitude": 106.714953,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1101335",
+    "delivery_id": 210748,
+    "name": "Ping+ Tea - Đường Số 39",
+    "address": "8 Đường Số 39, P. Bình Trưng Đông, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/ping-tea-duong-so-39",
+    "restaurant_url": "ping-tea-duong-so-39",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv5yqrbdkm112",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv5yr92rsucff",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.788229,
+    "longitude": 106.770575,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "23:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1102409",
+    "delivery_id": 211899,
+    "name": "O Hạnh - Gà Vịt Tươi Sống - Đường Số 42",
+    "address": "176 Đường Số 42, P. Bình Trưng Đông, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/o-hanh-ga-vit-tuoi-song-duong-so-42",
+    "restaurant_url": "o-hanh-ga-vit-tuoi-song-duong-so-42",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv63c55cuys58",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv63cq8i00p28",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 4,
+    "latitude": 10.78603,
+    "longitude": 106.775548,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1103128",
+    "delivery_id": 212695,
+    "name": "H&H Healthy - Nguyễn Thị Định",
+    "address": "385 Nguyễn Thị Định, P. Cát Lái, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/h-h-healthy-nguyen-thi-dinh",
+    "restaurant_url": "h-h-healthy-nguyen-thi-dinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv65i7b5xok54",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv65iso99jtd5",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.781851,
+    "longitude": 106.761322,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1103342",
+    "delivery_id": 212945,
+    "name": "Cửa Hàng Thịt Cá Số 4 - Lê Văn Thịnh",
+    "address": "4 Lê Văn Thịnh, P. Bình Trưng Tây, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/cua-hang-thit-ca-so-4-le-van-thinh",
+    "restaurant_url": "cua-hang-thit-ca-so-4-le-van-thinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv65axxr0k9dd",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv65bf538ux49",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.78801,
+    "longitude": 106.769086,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1105561",
+    "delivery_id": 215452,
+    "name": "Whatever Cafe - Cà Phê & Trà Sữa Đóng Chai - Quốc Hương",
+    "address": "33/9 Quốc Hương, P. Thảo Điền, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/whatever-cafe-ca-phe-tra-sua-dong-chai-quoc-huong",
+    "restaurant_url": "whatever-cafe-ca-phe-tra-sua-dong-chai-quoc-huong",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv6b9mzkhj809",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv6ba5atosk2c",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.804127,
+    "longitude": 106.731273,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "17:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1106849",
+    "delivery_id": 216934,
+    "name": "Quán Lưu Linh - Bánh Kẹo & Ăn Vặt - Huỳnh Thị Hai",
+    "address": "9/2A Huỳnh Thị Hai, P. Tân Chánh Hiệp, Quận 12, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-luu-linh-banh-keo-an-vat-huynh-thi-hai",
+    "restaurant_url": "quan-luu-linh-banh-keo-an-vat-huynh-thi-hai",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv6g3r6rqft78",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv6g4981cbd17",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.87156,
+    "longitude": 106.62052,
+    "city_id": 217,
+    "district_id": 14,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "17:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1107515",
+    "delivery_id": 217813,
+    "name": "BeeFresh - Thực Phẩm Tươi Sạch",
+    "address": "52 Đường Số 6, P. Bình Trưng Đông, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/beefresh-thuc-pham-tuoi-sach",
+    "restaurant_url": "beefresh-thuc-pham-tuoi-sach",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv6gsy7wekk92",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv6gtkyz3x5ef",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.786231,
+    "longitude": 106.775858,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1107562",
+    "delivery_id": 217850,
+    "name": "Tiệm Cafe Đóng Chai 8x - Nguyễn Thị Định",
+    "address": "360 Nguyễn Thị Định, P. Thạnh Mỹ Lợi, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/tiem-cafe-dong-chai-8x-nguyen-thi-dinh",
+    "restaurant_url": "tiem-cafe-dong-chai-8x-nguyen-thi-dinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv6h5cxqoqscc",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv6h5xqw8g44c",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.78261,
+    "longitude": 106.759812,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1108221",
+    "delivery_id": 218480,
+    "name": "Quán Nhà Thảo - Xiên Que & Ăn Vặt - Hương Lộ 2",
+    "address": "822/137B, Hương Lộ 2, P. Bình Trị Đông A, Bình Tân, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-nha-thao-xien-que-an-vat-huong-lo-2",
+    "restaurant_url": "quan-nha-thao-xien-que-an-vat-huong-lo-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv6k3uxxhnd22",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv6k4ex2umx9e",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.766794,
+    "longitude": 106.599907,
+    "city_id": 217,
+    "district_id": 18,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1109621",
+    "delivery_id": 220327,
+    "name": "Oni Beauty99 - Thực Phẩm & Ăn Vặt - Mai Chí Thọ",
+    "address": "Lô D Tòa Nhà Lexington, 67 Mai Chí Thọ, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/oni-beauty99-thuc-pham-an-vat-mai-chi-tho",
+    "restaurant_url": "oni-beauty99-thuc-pham-an-vat-mai-chi-tho",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv6ndm1ko9065",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv6ne4wt29wa4",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.797961,
+    "longitude": 106.750254,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1110153",
+    "delivery_id": 221129,
+    "name": "BaSang Fruits - Nguyễn Thị Định",
+    "address": "Citisoho, Đường Nguyễn Thị Định, P. Cát Lái, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/basang-fruits-nguyen-thi-dinh",
+    "restaurant_url": "basang-fruits-nguyen-thi-dinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv6qibomt2157",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv6qiutusgpfd",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.770505,
+    "longitude": 106.787518,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1110971",
+    "delivery_id": 222399,
+    "name": "Cửa Hàng Hải Sản Ào Ào - Lương Định Của",
+    "address": "280B4 Lương Định Của, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/cua-hang-hai-san-ao-ao-luong-dinh-cua",
+    "restaurant_url": "cua-hang-hai-san-ao-ao-luong-dinh-cua",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv6tmrm35i181",
+    "logo_mms_img_id": "vn-11134513-820l4-mh61wnjxc4qyf3",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 3,
+    "latitude": 10.790441,
+    "longitude": 106.747385,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1112664",
+    "delivery_id": 225012,
+    "name": "Cửa Hàng Xóm Hải Sản Quận 7 - Huỳnh Tấn Phát",
+    "address": "1360/1/2 Huỳnh Tấn Phát, P. Phú Mỹ, Quận 7, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/cua-hang-xom-hai-san-quan-7-huynh-tan-phat",
+    "restaurant_url": "cua-hang-xom-hai-san-quan-7-huynh-tan-phat",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv6vw53fogpc8",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv6vwo887mh9e",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.713013,
+    "longitude": 106.736841,
+    "city_id": 217,
+    "district_id": 9,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1113879",
+    "delivery_id": 226653,
+    "name": "Quán Hải - Bắp Xào & Hột Vịt Lộn - Chương Dương",
+    "address": "24A Chương Dương, P. Linh Chiểu, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-bap-xao-hot-vit-lon-chuong-duong",
+    "restaurant_url": "quan-hai-bap-xao-hot-vit-lon-chuong-duong",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv720hsjo2h79",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv7210xrnicc9",
+    "is_open": false,
+    "rating": 4.6,
+    "total_review": 100,
+    "latitude": 10.851021,
+    "longitude": 106.759734,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1114145",
+    "delivery_id": 226976,
+    "name": "Bảo Anh Food - Chuyên Thực Phẩm Chay và Rau Củ",
+    "address": "303 Thân Văn Nhiếp, P. An Phú, Quận 2, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/bao-anh-food-chuyen-thuc-pham-chay-va-rau-cu",
+    "restaurant_url": "bao-anh-food-chuyen-thuc-pham-chay-va-rau-cu",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv708k83qft1d",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv709657npg85",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.789248,
+    "longitude": 106.75318,
+    "city_id": 217,
+    "district_id": 4,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1116876",
+    "delivery_id": 230525,
+    "name": "Quán 2 Đô - Bánh Căn & Bánh Xèo Phan Rang",
+    "address": "20C Đường 5, P. Linh Chiểu, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-2-do-banh-can-banh-xeo-phan-rang",
+    "restaurant_url": "quan-2-do-banh-can-banh-xeo-phan-rang",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv7a8hje9w9ca",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv7a91il1hg0c",
+    "is_open": false,
+    "rating": 4.6,
+    "total_review": 50,
+    "latitude": 10.853813,
+    "longitude": 106.767236,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1119742",
+    "delivery_id": 235599,
+    "name": "Quán Dung - Chả Cá & Nem Nướng Nha Trang - Đường Số 2",
+    "address": "84 Đường Số 2, P. Trường Thọ, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-dung-cha-ca-nem-nuong-nha-trang-duong-so-2",
+    "restaurant_url": "quan-dung-cha-ca-nem-nuong-nha-trang-duong-so-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv7eq20yjt081",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv7eqj89dj801",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.836286,
+    "longitude": 106.753485,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "06:00:00",
+      "close_time": "19:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1120967",
+    "delivery_id": 240135,
+    "name": "Quán Hủ Tiếu Hải Sản - Hậu Giang",
+    "address": "502 Hậu Giang, P. 12, Quận 6, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hu-tieu-hai-san-hau-giang",
+    "restaurant_url": "quan-hu-tieu-hai-san-hau-giang",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv7g8tounyc69",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv7g9fvws043a",
+    "is_open": false,
+    "rating": 4.6,
+    "total_review": 500,
+    "latitude": 10.748793,
+    "longitude": 106.637161,
+    "city_id": 217,
+    "district_id": 8,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1127529",
+    "delivery_id": 248305,
+    "name": "Quán Gà Ác Cô Hai - Văn Cao",
+    "address": "117 Văn Cao, P. Phú Thọ Hòa, Tân Phú, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-ga-ac-co-hai-van-cao",
+    "restaurant_url": "quan-ga-ac-co-hai-van-cao",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv7xy0id2mxf0",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv7xyj3lvb811",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 10,
+    "latitude": 10.788799,
+    "longitude": 106.622926,
+    "city_id": 217,
+    "district_id": 19,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1129343",
+    "delivery_id": 251143,
+    "name": "Thịt Nhập Khẩu Taiducfood - Lê Văn Thịnh",
+    "address": "01 Lê Văn Thịnh, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/thit-nhap-khau-taiducfood-le-van-thinh",
+    "restaurant_url": "thit-nhap-khau-taiducfood-le-van-thinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv822cbax09c1",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv822w0i37oe5",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 10,
+    "latitude": 10.788191,
+    "longitude": 106.769231,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1135135",
+    "delivery_id": 258210,
+    "name": "Quán Ken Ken Quán 2 - Lò Lu",
+    "address": "311 Lò Lu, P. Trường Thạnh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-ken-ken-quan-2-lo-lu",
+    "restaurant_url": "quan-ken-ken-quan-2-lo-lu",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv8dltvachwa1",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv8dmeofw78b7",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.825993,
+    "longitude": 106.823587,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1140603",
+    "delivery_id": 265308,
+    "name": "Bơ Già Dừa Non - Hai Mình - Quận 4",
+    "address": "Chung Cư B2, Cầu Thang Số 3, P. 3, Quận 4, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/bo-gia-dua-non-hai-minh-quan-4",
+    "restaurant_url": "bo-gia-dua-non-hai-minh-quan-4",
+    "banner_mms_img_id": "vn-11134513-81ztc-mo1eim5a6juqeb",
+    "logo_mms_img_id": "vn-11134513-81ztc-mo1d8jucs7b4eb",
+    "is_open": false,
+    "rating": 4.9,
+    "total_review": 10,
+    "latitude": 10.755475,
+    "longitude": 106.70089,
+    "city_id": 217,
+    "district_id": 6,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1141967",
+    "delivery_id": 266318,
+    "name": "Dê Tươi Ngọc Dương Quán 2 - Đỗ Xuân Hợp",
+    "address": "429 Đỗ Xuân Hợp, P. Phước Long B, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/de-tuoi-ngoc-duong-quan-2-do-xuan-hop",
+    "restaurant_url": "de-tuoi-ngoc-duong-quan-2-do-xuan-hop",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv8v2verc90a8",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv8v3h1x2mx2d",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 3,
+    "latitude": 10.832514,
+    "longitude": 106.767086,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1146458",
+    "delivery_id": 271401,
+    "name": "Bebebop - Quán Ăn Hàn Quốc - Đường Số 2",
+    "address": "35 Đường Số 2, P. Phước Bình, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/bebebop-quan-an-han-quoc-duong-so-2",
+    "restaurant_url": "bebebop-quan-an-han-quoc-duong-so-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv9avq8b2dgf4",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv9aw9dj1qx2c",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.819867,
+    "longitude": 106.772027,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1151941",
+    "delivery_id": 278062,
+    "name": "Nem Nướng Đà Lạt Quế Quân - Quận 2",
+    "address": "110 Quốc Hương, P. Thảo Điền, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/nem-nuong-da-lat-que-quan-quan-2",
+    "restaurant_url": "nem-nuong-da-lat-que-quan-quan-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsv9n1744hax57",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsv9n1sr8t5l8d",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 1000,
+    "latitude": 10.810533,
+    "longitude": 106.729857,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "08:30:00",
+      "close_time": "21:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1156585",
+    "delivery_id": 283776,
+    "name": "Quán 72 - Mì Xào Hải Sản, Bò Lúc Lắc & Lẩu Thái Hải Sản",
+    "address": "588/62 Phan Thị Út, P. Tân Phú, Quận 7, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-72-mi-xao-hai-san-bo-luc-lac-lau-thai-hai-san",
+    "restaurant_url": "quan-72-mi-xao-hai-san-bo-luc-lac-lau-thai-hai-san",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsva2m0jfpacd6",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsva2ml2lnlw70",
+    "is_open": true,
+    "rating": 4.5,
+    "total_review": 10,
+    "latitude": 10.736141,
+    "longitude": 106.730137,
+    "city_id": 217,
+    "district_id": 9,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "15:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1160890",
+    "delivery_id": 288719,
+    "name": "CƠM GÀ NGON QUẬN 2",
+    "address": "243 Lương Định Của, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/com-ga-ngon-quan-2",
+    "restaurant_url": "com-ga-ngon-quan-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvacby9cgplf8",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvacch4kuro0f",
+    "is_open": false,
+    "rating": 4.2,
+    "total_review": 10,
+    "latitude": 10.792973,
+    "longitude": 106.750649,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1165382",
+    "delivery_id": 294390,
+    "name": "Bánh Mì Kebab & Burger Torki Quận 2 - Nguyễn Thị Định",
+    "address": "432 Nguyễn Thị Định, P. Thạnh Mỹ Lợi, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/banh-mi-kebab-burger-torki-quan-2-nguyen-thi-dinh",
+    "restaurant_url": "banh-mi-kebab-burger-torki-quan-2-nguyen-thi-dinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvas4pr129w21",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvas5aa70lg12",
+    "is_open": false,
+    "rating": 4.6,
+    "total_review": 100,
+    "latitude": 10.781592,
+    "longitude": 106.761084,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1168549",
+    "delivery_id": 298469,
+    "name": "Quán Hai Công Chúa - Hủ Tiếu Mì & Cháo, Dimsum - Đường 19",
+    "address": "Số 26 Đ. 19, KDC Phong Phú 4, X. Phong Phú, Bình Chánh, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-cong-chua-hu-tieu-mi-chao-dimsum-duong-19",
+    "restaurant_url": "quan-hai-cong-chua-hu-tieu-mi-chao-dimsum-duong-19",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvaznqif83ocf",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvazoc5jjyce0",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 6,
+    "latitude": 10.688568,
+    "longitude": 106.644361,
+    "city_id": 217,
+    "district_id": 696,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1180497",
+    "delivery_id": 313589,
+    "name": "Quán Bún Bò Chú Tèo - Ấp Chánh 2",
+    "address": "19/7 Ấp Chánh 2, X. Tân Xuân, Hóc Môn, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-bun-bo-chu-teo-ap-chanh-2",
+    "restaurant_url": "quan-bun-bo-chu-teo-ap-chanh-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvc01v17no905",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvc02fkdm1095",
+    "is_open": false,
+    "rating": 4.5,
+    "total_review": 100,
+    "latitude": 10.871283,
+    "longitude": 106.598573,
+    "city_id": 217,
+    "district_id": 695,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1182566",
+    "delivery_id": 316028,
+    "name": "Quán Hải Nam - Cơm Sườn, Bún Thịt Nướng & Nước Ép - Trường Chinh",
+    "address": "396 Trường Chinh, P. Tân Hưng Thuận, Quận 12, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-nam-com-suon-bun-thit-nuong-nuoc-ep-truong-chinh",
+    "restaurant_url": "quan-hai-nam-com-suon-bun-thit-nuong-nuoc-ep-truong-chinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvc6ckxfpnd01",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvc6d8ih76h9c",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 3,
+    "latitude": 10.834619,
+    "longitude": 106.620714,
+    "city_id": 217,
+    "district_id": 14,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1187247",
+    "delivery_id": 321470,
+    "name": "Quán Nem Chú Hai - Đường Số 2",
+    "address": "122, Đường số 2, P. Trường Thọ, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-nem-chu-hai-duong-so-2",
+    "restaurant_url": "quan-nem-chu-hai-duong-so-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvcjs5bsmo48d",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvcjsscwc04c4",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.838562,
+    "longitude": 106.750345,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1194957",
+    "delivery_id": 330821,
+    "name": "Dê Hai Cuộc - Quán Nhậu Bình Dân",
+    "address": "245/19A Đường 20, P. 5, Gò Vấp, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/de-hai-cuoc-quan-nhau-binh-dan",
+    "restaurant_url": "de-hai-cuoc-quan-nhau-binh-dan",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvd9voiwh3t82",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvd9w7o4gihd8",
+    "is_open": false,
+    "rating": 4.5,
+    "total_review": 10,
+    "latitude": 10.837473,
+    "longitude": 106.688847,
+    "city_id": 217,
+    "district_id": 2,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1195087",
+    "delivery_id": 330981,
+    "name": "AAANGON - Chay Khoẻ Chay Ngon - Quận 2",
+    "address": "26 Vành Đai Tây, P. An Khánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/aaangon-chay-khoe-chay-ngon-quan-2",
+    "restaurant_url": "aaangon-chay-khoe-chay-ngon-quan-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvdaelp7npgdc",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvdafao8ipw9f",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 500,
+    "latitude": 10.793544,
+    "longitude": 106.735174,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "10:00:00",
+      "close_time": "20:30:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1197463",
+    "delivery_id": 333913,
+    "name": "Dê Thui Đồng Cỏ - Dê Ngon Quận 2 - Đường Số 38",
+    "address": "17 Đường Số 38, P.An Khánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/de-thui-dong-co-de-ngon-quan-2-duong-so-38",
+    "restaurant_url": "de-thui-dong-co-de-ngon-quan-2-duong-so-38",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvdfqqw16s946",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvdfrbp6qise1",
+    "is_open": false,
+    "rating": 4.4,
+    "total_review": 50,
+    "latitude": 10.787064,
+    "longitude": 106.726779,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1198897",
+    "delivery_id": 335482,
+    "name": "Giò Heo Phá Lấu Gia Truyền - Quận 2",
+    "address": "22 Đoàn Hữu Trưng, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/gio-heo-pha-lau-gia-truyen-quan-2",
+    "restaurant_url": "gio-heo-pha-lau-gia-truyen-quan-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvdkkt5ba1l54",
+    "logo_mms_img_id": "vn-11134513-7r98o-lt3l98wko4gp0d",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 2,
+    "latitude": 10.8097,
+    "longitude": 106.75259,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1199260",
+    "delivery_id": 336028,
+    "name": "Quán Chay Song Hỷ - Tân Hoà 2",
+    "address": "21/2 Tân Hoà 2, P. Hiệp Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-chay-song-hy-tan-hoa-2",
+    "restaurant_url": "quan-chay-song-hy-tan-hoa-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvdl1segs6191",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvdl29lrlw9df",
+    "is_open": false,
+    "rating": 4.9,
+    "total_review": 100,
+    "latitude": 10.853018,
+    "longitude": 106.784766,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Ăn chay"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1202916",
+    "delivery_id": 340584,
+    "name": "Cơm Tấm Nhà Gỗ - Quận 2",
+    "address": "46 Đường Số 5, P.  An Khánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/com-tam-nha-go-quan-2",
+    "restaurant_url": "com-tam-nha-go-quan-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lteqewcastz8c0",
+    "logo_mms_img_id": "vn-11134513-7r98o-lteqewuw1ml5b6",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.795482,
+    "longitude": 106.737748,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "06:45:00",
+      "close_time": "19:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1210695",
+    "delivery_id": 350189,
+    "name": "Quán Chay Tịnh An Thủ Đức - Tân Lập 2",
+    "address": "6 Tân Lập 2, P. Hiệp Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-chay-tinh-an-thu-duc-tan-lap-2",
+    "restaurant_url": "quan-chay-tinh-an-thu-duc-tan-lap-2",
+    "banner_mms_img_id": "vn-11134513-7ra0g-m7llh58ekfb782",
+    "logo_mms_img_id": "vn-11134513-7ra0g-m7llg5jqqx8m8f",
+    "is_open": false,
+    "rating": 4.9,
+    "total_review": 100,
+    "latitude": 10.84637,
+    "longitude": 106.779338,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1221130",
+    "delivery_id": 362434,
+    "name": "TỨ HẢI QUÁN - LẨU NƯỚNG & HẢI SẢN",
+    "address": "Lô 21 Khu Phố Ẩm Thực 581, 581 Nguyễn Xiển, P. Long Thạnh Mỹ, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/tu-hai-quan-lau-nuong-hai-san",
+    "restaurant_url": "tu-hai-quan-lau-nuong-hai-san",
+    "banner_mms_img_id": "vn-11134259-7r98o-lynhd3ngjcm998",
+    "logo_mms_img_id": "vn-11134259-7r98o-lynhd0e3b3gt82",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.838816,
+    "longitude": 106.829414,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1222276",
+    "delivery_id": 363724,
+    "name": "Quán Phở Cô Hai Bình Tân",
+    "address": "44 Đường Số 5, P. Bình Hưng Hòa, Bình Tân, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-pho-co-hai-binh-tan",
+    "restaurant_url": "quan-pho-co-hai-binh-tan",
+    "banner_mms_img_id": "vn-11134259-7r98o-lyzzrl4wtv3512",
+    "logo_mms_img_id": "vn-11134259-7r98o-lyzzri813cf5fb",
+    "is_open": false,
+    "rating": 4.6,
+    "total_review": 10,
+    "latitude": 10.806122,
+    "longitude": 106.602154,
+    "city_id": 217,
+    "district_id": 18,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1227027",
+    "delivery_id": 369389,
+    "name": "Farmers Market - Lumiere Quận 2",
+    "address": "0.37 - 0.38 - 0.39 Tại Tầng Trệt + Lầu 1 (Căn thông tầng), Số 275 Đường Võ Nguyên Giáp, Khu phố 4, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/farmers-market-lumiere-quan-2",
+    "restaurant_url": "farmers-market-lumiere-quan-2",
+    "banner_mms_img_id": "vn-11134513-81ztc-mrpqgodbshs619",
+    "logo_mms_img_id": "vn-11134513-7ras8-m2byydilfdte59",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.803872,
+    "longitude": 106.748645,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "07:00:00",
+      "close_time": "22:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1228998",
+    "delivery_id": 371775,
+    "name": "Bún Riêu Tóp Mỡ Ngon Quán - Hương Lộ 2",
+    "address": "479/22/15 Hương Lộ 2, P. Bình Trị Đông, Bình Tân, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/bun-rieu-top-mo-ngon-quan-huong-lo-2",
+    "restaurant_url": "bun-rieu-top-mo-ngon-quan-huong-lo-2",
+    "banner_mms_img_id": "vn-11134259-7ras8-m1fe6retj4nscd",
+    "logo_mms_img_id": "vn-11134259-7ras8-m1fe6obk1xr0ed",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 100,
+    "latitude": 10.771089,
+    "longitude": 106.618535,
+    "city_id": 217,
+    "district_id": 18,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1229703",
+    "delivery_id": 372580,
+    "name": "Cơm Gà, Cháo Gỏi & Miến Gà Đất Quảng Quán 2 - Tân Sơn Nhì",
+    "address": "18 Tân Sơn Nhì, P. Tân Sơn Nhì, Tân Phú, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/com-ga-chao-goi-mien-ga-dat-quang-quan-2-tan-son-nhi",
+    "restaurant_url": "com-ga-chao-goi-mien-ga-dat-quang-quan-2-tan-son-nhi",
+    "banner_mms_img_id": "vn-11134259-7ras8-m1nniws9td1v2e",
+    "logo_mms_img_id": "vn-11134259-7ras8-m1nnityzjioj8d",
+    "is_open": false,
+    "rating": 4.3,
+    "total_review": 100,
+    "latitude": 10.802882,
+    "longitude": 106.63559,
+    "city_id": 217,
+    "district_id": 19,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": "00:00:00",
+      "close_time": "23:59:00",
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1241195",
+    "delivery_id": 386238,
+    "name": "1997 Quán - Bún Bò Huế - Hàn Hải Nguyên",
+    "address": "140/76, Đường Hàn Hải Nguyên, Quận 11, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/1997-quan-bun-bo-hue-han-hai-nguyen",
+    "restaurant_url": "1997-quan-bun-bo-hue-han-hai-nguyen",
+    "banner_mms_img_id": "vn-11134259-7ra0g-m6yrppri527b99",
+    "logo_mms_img_id": "vn-11134259-7ra0g-m6yrpmjsx7dtf2",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 1000,
+    "latitude": 10.75987,
+    "longitude": 106.647736,
+    "city_id": 217,
+    "district_id": 13,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "15:30:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1241572",
+    "delivery_id": 386684,
+    "name": "Quán Ăn Hai Anh Chú",
+    "address": "Số 2 Đường Số 19, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-an-hai-anh-chu",
+    "restaurant_url": "quan-an-hai-anh-chu",
+    "banner_mms_img_id": "vn-11134513-7ras8-mcioetfwqoik10",
+    "logo_mms_img_id": "vn-11134513-7ras8-mcioetfwp9y466",
+    "is_open": false,
+    "rating": 4.9,
+    "total_review": 100,
+    "latitude": 10.812985,
+    "longitude": 106.771182,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 3,
+      "open_time": "06:30:00",
+      "close_time": "20:00:00",
+      "color": "#FF0000"
+    }
+  },
+  {
+    "restaurant_id": "1244461",
+    "delivery_id": 390060,
+    "name": "Hải An Bakery Quận 2",
+    "address": "369 Nguyễn Duy Trinh, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/hai-an-bakery-quan-2",
+    "restaurant_url": "hai-an-bakery-quan-2",
+    "banner_mms_img_id": "vn-11134513-7ra0g-m8ks6fwxejk216",
+    "logo_mms_img_id": "vn-11134513-7ra0g-m8ks64w5oqyv3e",
+    "is_open": true,
+    "rating": 4.2,
+    "total_review": 10,
+    "latitude": 10.788592,
+    "longitude": 106.767537,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Tiệm bánh"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "06:00:00",
+      "close_time": "22:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1246983",
+    "delivery_id": 393185,
+    "name": "Quán Xứ Đông - Đoàn Như Hài",
+    "address": "8 Đoàn Như Hài, P. 13, Quận 4, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-xu-dong-doan-nhu-hai",
+    "restaurant_url": "quan-xu-dong-doan-nhu-hai",
+    "banner_mms_img_id": "vn-11134259-7ra0g-m8oj3vtzdpxe10",
+    "logo_mms_img_id": "vn-11134513-81ztc-mq2xngw5aq69b1",
+    "is_open": true,
+    "rating": 4.1,
+    "total_review": 10,
+    "latitude": 10.76694,
+    "longitude": 106.706005,
+    "city_id": 217,
+    "district_id": 6,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "06:00:00",
+      "close_time": "21:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1250616",
+    "delivery_id": 397687,
+    "name": "Quán Chay Thanh Lương 2 - Đường Số 4",
+    "address": "32 Đường Số 4, P. 7, Gò Vấp, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-chay-thanh-luong-2-duong-so-4",
+    "restaurant_url": "quan-chay-thanh-luong-2-duong-so-4",
+    "banner_mms_img_id": "vn-11134259-7ra0g-m9tzt7hn003m9b",
+    "logo_mms_img_id": "vn-11134259-7ra0g-m9tzt47psk78b5",
+    "is_open": true,
+    "rating": 4,
+    "total_review": 10,
+    "latitude": 10.832948,
+    "longitude": 106.684134,
+    "city_id": 217,
+    "district_id": 2,
+    "ward_id": 0,
+    "categories": [
+      "Ăn chay"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "07:30:00",
+      "close_time": "20:30:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1252753",
+    "delivery_id": 400760,
+    "name": "Bún Chả Hà Nội Cụ Hy Quận 2",
+    "address": "Số 16 Đường 30, P. An Khánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/bun-cha-ha-noi-cu-hy-quan-2",
+    "restaurant_url": "bun-cha-ha-noi-cu-hy-quan-2",
+    "banner_mms_img_id": "vn-11134513-7ra0g-makw7j2yohy0bd",
+    "logo_mms_img_id": "vn-11134513-7ra0g-makw75betoewa0",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 2,
+    "latitude": 10.791551,
+    "longitude": 106.7293,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1253142",
+    "delivery_id": 401302,
+    "name": "Lẩu Gà Lá É Quận 6 - Tao Ngộ 2",
+    "address": "Số 50 Bình Phú, P. 11, Quận 6, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/lau-ga-la-e-quan-6-tao-ngo-2",
+    "restaurant_url": "lau-ga-la-e-quan-6-tao-ngo-2",
+    "banner_mms_img_id": "vn-11134513-7ras8-mdjtf2l4ij0la7",
+    "logo_mms_img_id": "vn-11134513-7ras8-mdjtcvwrncmkfa",
+    "is_open": true,
+    "rating": 3,
+    "total_review": 9,
+    "latitude": 10.746045,
+    "longitude": 106.63121,
+    "city_id": 217,
+    "district_id": 8,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "00:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1253193",
+    "delivery_id": 401374,
+    "name": "Quán Ốc 606 - Đường 3/2",
+    "address": "668 Đường 3 Tháng 2, P. 14, Quận 10, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-oc-606-duong-3-2",
+    "restaurant_url": "quan-oc-606-duong-3-2",
+    "banner_mms_img_id": "vn-11134259-7ras8-map1618369y0cf",
+    "logo_mms_img_id": "vn-11134259-7ras8-map15y17udi0bd",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 50,
+    "latitude": 10.764981,
+    "longitude": 106.661345,
+    "city_id": 217,
+    "district_id": 12,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1253442",
+    "delivery_id": 401715,
+    "name": "Hải Phượng Quán - Đường Số 3",
+    "address": "19 Đường Số 3, P. Cát Lái, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/hai-phuong-quan-duong-so-3",
+    "restaurant_url": "hai-phuong-quan-duong-so-3",
+    "banner_mms_img_id": "vn-11134259-7ras8-marxqyqag24h10",
+    "logo_mms_img_id": "vn-11134259-7ras8-marxqvhh70011e",
+    "is_open": false,
+    "rating": 4.3,
+    "total_review": 10,
+    "latitude": 10.761641,
+    "longitude": 106.785523,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1254867",
+    "delivery_id": 403610,
+    "name": "Bún Đậu Hải Phòng Quán - Dương Thị Mười",
+    "address": "121/1 Dương Thị Mười, P. Tân Chánh Hiệp, Quận 12, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/bun-dau-hai-phong-quan-duong-thi-muoi",
+    "restaurant_url": "bun-dau-hai-phong-quan-duong-thi-muoi",
+    "banner_mms_img_id": "vn-11134259-7ras8-mbatz69rfowo41",
+    "logo_mms_img_id": "vn-11134259-7ras8-mbatz38ptuxk10",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 10,
+    "latitude": 10.861407,
+    "longitude": 106.631782,
+    "city_id": 217,
+    "district_id": 14,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "10:00:00",
+      "close_time": "21:30:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1256724",
+    "delivery_id": 406077,
+    "name": "Hải Đăng Quán - Đường Số 20",
+    "address": "188 Đường Số 20, P. 5, Gò Vấp, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/hai-dang-quan-duong-so-20",
+    "restaurant_url": "hai-dang-quan-duong-so-20",
+    "banner_mms_img_id": "vn-11134259-7ras8-mc206kv62bpx02",
+    "logo_mms_img_id": "vn-11134513-7ras8-mc6m36gfplud21",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 2,
+    "latitude": 10.836268,
+    "longitude": 106.689113,
+    "city_id": 217,
+    "district_id": 2,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "10:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1261681",
+    "delivery_id": 412718,
+    "name": "NHÀ HÀNG DOYA JJAMBBONG - CHI NHÁNH SUNAVENUE QUẬN 2",
+    "address": "82 Đường 51, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/nha-hang-doya-jjambbong-chi-nhanh-sunavenue-quan-2",
+    "restaurant_url": "nha-hang-doya-jjambbong-chi-nhanh-sunavenue-quan-2",
+    "banner_mms_img_id": "vn-11134259-7ras8-mdr68hiil6wf19",
+    "logo_mms_img_id": "vn-11134259-7ras8-mdr68e6ngnn002",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 4,
+    "latitude": 10.784371,
+    "longitude": 106.746733,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "11:00:00",
+      "close_time": "21:15:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1270066",
+    "delivery_id": 424263,
+    "name": "Sashimi Quận 2 - Online Foods - 129A Trần Não",
+    "address": "Số 129A Đường Trần Não, P. An Khánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/sashimi-quan-2-online-foods-129a-tran-nao",
+    "restaurant_url": "sashimi-quan-2-online-foods-129a-tran-nao",
+    "banner_mms_img_id": "vn-11134513-820l4-mh8rxqiwvk7e87",
+    "logo_mms_img_id": "vn-11134513-820l4-mi49quayxix3d0",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 4,
+    "latitude": 10.792327,
+    "longitude": 106.730771,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "19:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1270129",
+    "delivery_id": 424351,
+    "name": "Bún Chả Hà Nội & Nem Rán - Hải Hội Quán",
+    "address": "Số 12 Hòa Bình, P. Bình Thọ, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/bun-cha-ha-noi-nem-ran-hai-hoi-quan",
+    "restaurant_url": "bun-cha-ha-noi-nem-ran-hai-hoi-quan",
+    "banner_mms_img_id": "vn-11134259-820l4-mgymp8ui9gy5e0",
+    "logo_mms_img_id": "vn-11134259-820l4-mgymp82qt05n96",
+    "is_open": true,
+    "rating": 4.4,
+    "total_review": 10,
+    "latitude": 10.842979,
+    "longitude": 106.766998,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "07:20:00",
+      "close_time": "20:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1272947",
+    "delivery_id": 427874,
+    "name": "Bia Thủ Công - Cậu Hai Quán",
+    "address": "79/40A Phú Thọ Hoà, P. Phú Thọ Hòa, Tân Phú, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/bia-thu-cong-cau-hai-quan",
+    "restaurant_url": "bia-thu-cong-cau-hai-quan",
+    "banner_mms_img_id": "vn-11134513-81ztc-mthmv7fro6x493",
+    "logo_mms_img_id": "vn-11134513-81ztc-mthmvkiopuro9d",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 4,
+    "latitude": 10.781469,
+    "longitude": 106.633243,
+    "city_id": 217,
+    "district_id": 19,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "11:00:00",
+      "close_time": "22:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1273362",
+    "delivery_id": 428456,
+    "name": "Quán Mì Trộn Phủ Trứng - Hương Lộ 2",
+    "address": "544/29 Hương Lộ 2, P. Bình Trị Đông, Bình Tân, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-mi-tron-phu-trung-huong-lo-2",
+    "restaurant_url": "quan-mi-tron-phu-trung-huong-lo-2",
+    "banner_mms_img_id": "vn-11134259-820l4-mi158obwvd3673",
+    "logo_mms_img_id": "vn-11134259-820l4-mi158nkoosua0f",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 50,
+    "latitude": 10.770684,
+    "longitude": 106.614276,
+    "city_id": 217,
+    "district_id": 18,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "21:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1275681",
+    "delivery_id": 431562,
+    "name": "Cơm Tấm Quận 2 - Nguyễn Hoàng",
+    "address": "195 Nguyễn Hoàng, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/com-tam-quan-2-nguyen-hoang",
+    "restaurant_url": "com-tam-quan-2-nguyen-hoang",
+    "banner_mms_img_id": "vn-11134259-820l4-mizjua1e6804a1",
+    "logo_mms_img_id": "vn-11134259-820l4-mizju900p72a0b",
+    "is_open": false,
+    "rating": 3,
+    "total_review": 6,
+    "latitude": 10.79302,
+    "longitude": 106.745888,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1277613",
+    "delivery_id": 434219,
+    "name": "Quán Cơm Tấm Má 2",
+    "address": "77 Tôn Thất Thuyết, P. 3, Quận 4, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-com-tam-ma-2",
+    "restaurant_url": "quan-com-tam-ma-2",
+    "banner_mms_img_id": "vn-11134513-81ztc-mk3agit3btaadb",
+    "logo_mms_img_id": "vn-11134513-81ztc-mk3afxciv5kzf5",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 50,
+    "latitude": 10.753007,
+    "longitude": 106.69553,
+    "city_id": 217,
+    "district_id": 6,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "07:00:00",
+      "close_time": "20:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1284766",
+    "delivery_id": 443624,
+    "name": "Xôi Làng Gạ - An Phú Quận 2",
+    "address": "Số 3 Đường 31A, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/xoi-lang-ga-an-phu-quan-2",
+    "restaurant_url": "xoi-lang-ga-an-phu-quan-2",
+    "banner_mms_img_id": "vn-11134259-81ztc-mmsdmmt8lu6806",
+    "logo_mms_img_id": "vn-11134259-81ztc-mmsdmmde9v5sa1",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 2,
+    "latitude": 10.7924,
+    "longitude": 106.744797,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1288080",
+    "delivery_id": 447573,
+    "name": "VH Cafe Đặc Sản - Cafe, Matcha & Trà - Đường Số 10",
+    "address": "Số 8, Đường Số 10, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/vh-cafe-dac-san-cafe-matcha-tra-truong-chinh",
+    "restaurant_url": "vh-cafe-dac-san-cafe-matcha-tra-truong-chinh",
+    "banner_mms_img_id": "vn-11134513-81ztc-ms6mvs021seg52",
+    "logo_mms_img_id": "vn-11134513-81ztc-mtfcuuqwp3wq6f",
+    "is_open": false,
+    "rating": 4.4,
+    "total_review": 8,
+    "latitude": 10.777913,
+    "longitude": 106.764931,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Café/Dessert"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": "00:00:00",
+      "close_time": "23:59:00",
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1289305",
+    "delivery_id": 449213,
+    "name": "Quán Hải Âu - Vịt Cỏ Vân Đình Đặc Sản Hà Nội",
+    "address": "244 Phạm Thị Giây, X. Thới Tam Thôn, Hóc Môn, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-au-vit-co-van-dinh-dac-san-ha-noi",
+    "restaurant_url": "quan-hai-au-vit-co-van-dinh-dac-san-ha-noi",
+    "banner_mms_img_id": "vn-11134259-81ztc-mnxt2nx5ysxy51",
+    "logo_mms_img_id": "vn-11134259-81ztc-mnxt2nj6v2f9b1",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 1,
+    "latitude": 10.883232,
+    "longitude": 106.613602,
+    "city_id": 217,
+    "district_id": 695,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "11:00:00",
+      "close_time": "22:30:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1296764",
+    "delivery_id": 459511,
+    "name": "Em - Bánh Tráng & Cơm Cháy - Tôn Thất Thuyết - Q4",
+    "address": "92B/17/4A Tôn Thất Thuyết, P. 15, Quận 4, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/em-banh-trang-com-chay-ton-that-thuyet-q4",
+    "restaurant_url": "em-banh-trang-com-chay-ton-that-thuyet-q4",
+    "banner_mms_img_id": "vn-11134513-81ztc-mq27ymmvg7bf7b",
+    "logo_mms_img_id": "vn-11134513-81ztc-mq303l0iap7032",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 10,
+    "latitude": 10.754495,
+    "longitude": 106.7095,
+    "city_id": 217,
+    "district_id": 6,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1297575",
+    "delivery_id": 460620,
+    "name": "BỬU BỬU CHÈ - CHÈ HỒNG KÔNG Quận 2",
+    "address": "19 Trần Ngọc Diện, Khu Phố 7, P. Thảo Điền, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/buu-buu-che-che-hong-kong-quan-2",
+    "restaurant_url": "buu-buu-che-che-hong-kong-quan-2",
+    "banner_mms_img_id": "vn-11134513-81ztc-mq8xnzjx77rjfa",
+    "logo_mms_img_id": "vn-11134513-81ztc-mq8xogfqe3nwb8",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.804606,
+    "longitude": 106.73978,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1300865",
+    "delivery_id": 465419,
+    "name": "Cháo Lòng Miền Tây - Quán Anh Hai",
+    "address": "1646A Đường Võ Văn Kiệt, P. 16, Quận 8, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/chao-long-mien-tay-quan-anh-hai",
+    "restaurant_url": "chao-long-mien-tay-quan-anh-hai",
+    "banner_mms_img_id": "vn-11134513-81ztc-mrbfaam92z9c9c",
+    "logo_mms_img_id": "vn-11134513-81ztc-mrfmlulxatc48a",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.730762,
+    "longitude": 106.624492,
+    "city_id": 217,
+    "district_id": 10,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "08:00:00",
+      "close_time": "22:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1301345",
+    "delivery_id": 466107,
+    "name": "Hồng Hài Nhi Quán",
+    "address": "BS10 The Beverly Solari - Vinhomes Grand Park, P. Long Thạnh Mỹ, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/hong-hai-nhi-quan",
+    "restaurant_url": "hong-hai-nhi-quan",
+    "banner_mms_img_id": "vn-11134513-81ztc-mre7kqt15wcsb8",
+    "logo_mms_img_id": "vn-11134513-81ztc-mre7kc0rsiknf5",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.847123,
+    "longitude": 106.842682,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Café/Dessert"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1305203",
+    "delivery_id": 471520,
+    "name": "Ăn Vặt Béo Ngậy - Chân Gà & Nem Chua Rán - Quận 2",
+    "address": "2B Lê Văn Thịnh, P. Bình Trưng, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/an-vat-beo-ngay-chan-ga-nem-chua-ran-quan-2",
+    "restaurant_url": "an-vat-beo-ngay-chan-ga-nem-chua-ran-quan-2",
+    "banner_mms_img_id": "vn-11134259-81ztc-msnst2nu2ubqc2",
+    "logo_mms_img_id": "vn-11134513-81ztc-mtghrlvwe0w542",
+    "is_open": false,
+    "rating": 4.8,
+    "total_review": 10,
+    "latitude": 10.788064,
+    "longitude": 106.769034,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1307871",
+    "delivery_id": 475109,
+    "name": "BÁNH CUỐN NÓNG QUẬN 2 - NGUYỄN DUY TRINH",
+    "address": "617 Nguyễn Duy Trinh, P. Bình Trưng Đông, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/banh-cuon-nong-quan-2-nguyen-duy-trinh",
+    "restaurant_url": "banh-cuon-nong-quan-2-nguyen-duy-trinh",
+    "banner_mms_img_id": "vn-11134259-81ztc-mtdrdan231fk6f",
+    "logo_mms_img_id": "vn-11134259-81ztc-mtdrd6vtbo5k2b",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 2,
+    "latitude": 10.788231,
+    "longitude": 106.774352,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1311840",
+    "delivery_id": 476577,
+    "name": "Daisy Coffee & Tea Quận 2",
+    "address": "Lô B4 208 Chung Cư Thạnh Mỹ Lợi, P. Thạnh Mỹ Lợi, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/daisy-coffee-tea-quan-2",
+    "restaurant_url": "daisy-coffee-tea-quan-2",
+    "banner_mms_img_id": "vn-11134259-81ztc-mts1si2uoweib7",
+    "logo_mms_img_id": "vn-11134513-81ztc-mudexfs2ndvk4a",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.771442,
+    "longitude": 106.772312,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "23:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1313862",
+    "delivery_id": 479140,
+    "name": "Bánh Canh Cá Lóc Mạnh Quân 2",
+    "address": "108/24 Đường Nguyễn Thị Thích, P. Bình Chiểu, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/banh-canh-ca-loc-manh-quan-2",
+    "restaurant_url": "banh-canh-ca-loc-manh-quan-2",
+    "banner_mms_img_id": "vn-11134259-81ztc-mu8uuvn2q4nc04",
+    "logo_mms_img_id": "vn-11134259-81ztc-mu8uuv1hbls496",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.880878,
+    "longitude": 106.723939,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1314199",
+    "delivery_id": 479586,
+    "name": "Quán Ăn Hai Chị Em - Đoàn Văn Bơ",
+    "address": "601A Đoàn Văn Bơ, P. 18, Quận 4, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-an-hai-chi-em-doan-van-bo",
+    "restaurant_url": "quan-an-hai-chi-em-doan-van-bo",
+    "banner_mms_img_id": "vn-11134259-81ztc-muc2ci8rqepybc",
+    "logo_mms_img_id": "vn-11134513-81ztc-mug0nhlqk7b594",
+    "is_open": true,
+    "rating": 4,
+    "total_review": 7,
+    "latitude": 10.758159,
+    "longitude": 106.71219,
+    "city_id": 217,
+    "district_id": 6,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "06:30:00",
+      "close_time": "17:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1314791",
+    "delivery_id": 480324,
+    "name": "Quán Hai Anh Em  - Cơm Gà Xối Mỡ - Thạnh Lộc 17",
+    "address": "Số 168d, Đường Thạnh Lộc 17, Khu Phố 3b, Quận 12, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-anh-em-com-ga-xoi-mo-thanh-loc-17",
+    "restaurant_url": "quan-hai-anh-em-com-ga-xoi-mo-thanh-loc-17",
+    "banner_mms_img_id": "vn-11134259-81ztc-muhuyn0zpedkae",
+    "logo_mms_img_id": "vn-11134513-81ztc-muhxtfn70zrb38",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 1,
+    "latitude": 10.864296,
+    "longitude": 106.681732,
+    "city_id": 217,
+    "district_id": 14,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "23:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1316443",
+    "delivery_id": 482346,
+    "name": "Quán 2 Ní - Cơm Gà Xối Mỡ, Hủ Tiếu Xào & Miến Xào",
+    "address": "254 Đường Tam Bình, P. Tam Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-2-ni-com-ga-xoi-mo-hu-tieu-xao-mien-xao",
+    "restaurant_url": "quan-2-ni-com-ga-xoi-mo-hu-tieu-xao-mien-xao",
+    "banner_mms_img_id": "vn-11134259-81ztc-muvvfzly0d1df8",
+    "logo_mms_img_id": "vn-11134513-81ztc-muw1pqd09jpica",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 2,
+    "latitude": 10.861599,
+    "longitude": 106.742643,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "10:00:00",
+      "close_time": "22:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1317617",
+    "delivery_id": 483806,
+    "name": "Trà Sữa Hongkong - Quận 2",
+    "address": "4 Nguyễn Thị Định, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/tra-sua-hongkong-quan-2",
+    "restaurant_url": "tra-sua-hongkong-quan-2",
+    "banner_mms_img_id": "vn-11134259-81ztc-mv5jcg1vrwg451",
+    "logo_mms_img_id": "vn-11134513-81ztc-mvb6hhaq6yve2f",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.789556,
+    "longitude": 106.754583,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Café/Dessert"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:10:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1000012232",
+    "delivery_id": 162457,
+    "name": "Quán Hai Hổ - Bún Riêu & Canh Bún",
+    "address": "137/1 Đường 59, P. 14, Gò Vấp, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-ho-bun-rieu-canh-bun",
+    "restaurant_url": "quan-hai-ho-bun-rieu-canh-bun",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvduutxtwuxa1",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvduvdn1315d8",
+    "is_open": false,
+    "rating": 4,
+    "total_review": 10,
+    "latitude": 10.857028,
+    "longitude": 106.650764,
+    "city_id": 217,
+    "district_id": 2,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000031732",
+    "delivery_id": 209626,
+    "name": "Siêu Thị Trứng Quận 2 - Trứng Gà Sạch",
+    "address": "403 Nguyễn Duy Trinh, P. Bình Trưng Đông (Chung cư Homyland Riverside), Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/sieu-thi-trung-quan-2-trung-ga-sach",
+    "restaurant_url": "sieu-thi-trung-quan-2-trung-ga-sach",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsveop5zseqhd8",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsveopq8uk046e",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.788599,
+    "longitude": 106.768768,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Nam"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000035578",
+    "delivery_id": 225026,
+    "name": "2 - Shin - Rau Củ Quả & Trái Cây Sạch Quận 8 - Phạm Thế Hiển",
+    "address": "1262/8 Phạm Thế Hiển, P. 5, Quận 8, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/2-shin-rau-cu-qua-trai-cay-sach-quan-8.rqysme",
+    "restaurant_url": "2-shin-rau-cu-qua-trai-cay-sach-quan-8.rqysme",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvf4zordac9aa",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvf505p3yxla5",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.742205,
+    "longitude": 106.659984,
+    "city_id": 217,
+    "district_id": 10,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Đặc biệt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000036230",
+    "delivery_id": 226800,
+    "name": "Cô Hai Quán - Nui Xào Bò & Mì Xào Bò",
+    "address": "46 An Điềm, P. 10, Quận 5, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/co-hai-quan-nui-xao-bo-mi-xao-bo",
+    "restaurant_url": "co-hai-quan-nui-xao-bo-mi-xao-bo",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvf2opat2mx0e",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvf2pb7wzwk90",
+    "is_open": true,
+    "rating": 4.7,
+    "total_review": 1000,
+    "latitude": 10.75175,
+    "longitude": 106.665816,
+    "city_id": 217,
+    "district_id": 7,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Trung Hoa"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "06:30:00",
+      "close_time": "20:00:59",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1000038769",
+    "delivery_id": 233031,
+    "name": "Quán O Sen - Bún Bò - Đông Hưng Thuận 2",
+    "address": "222 Đông Hưng Thuận 2, P. Đông Hưng Thuận, Quận 12, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-o-sen-bun-bo-dong-hung-thuan-2.rq3tz5",
+    "restaurant_url": "quan-o-sen-bun-bo-dong-hung-thuan-2.rq3tz5",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvfci0jrzr8d4",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvfcijf0dqxf2",
+    "is_open": false,
+    "rating": 4.6,
+    "total_review": 100,
+    "latitude": 10.839049,
+    "longitude": 106.627623,
+    "city_id": 217,
+    "district_id": 14,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Trung"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000048573",
+    "delivery_id": 250554,
+    "name": "Quán Hai Thơ - Hủ Tiếu & Bánh Cuốn Bình Định - Huỳnh Văn Nghệ",
+    "address": "72/34/26 Huỳnh Văn Nghệ, P. 15, Tân Bình, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-tho-hu-tieu-banh-cuon-binh-dinh-huynh-van-nghe",
+    "restaurant_url": "quan-hai-tho-hu-tieu-banh-cuon-binh-dinh-huynh-van-nghe",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvfxcy6vj5wb1",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvfxdig1w2h59",
+    "is_open": false,
+    "rating": 3.6,
+    "total_review": 8,
+    "latitude": 10.830741,
+    "longitude": 106.6372,
+    "city_id": 217,
+    "district_id": 16,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Trung"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000048669",
+    "delivery_id": 250782,
+    "name": "Hải Sơn Quán - Ốc Ngon & Hải Sản - Cao Lỗ",
+    "address": "216 Cao Lỗ, P. 4, Quận 8, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/hai-son-quan-oc-ngon-hai-san-cao-lo",
+    "restaurant_url": "hai-son-quan-oc-ngon-hai-san-cao-lo",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvfv6knkiah44",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvfv71kvqo44a",
+    "is_open": false,
+    "rating": 3.9,
+    "total_review": 7,
+    "latitude": 10.737651,
+    "longitude": 106.679049,
+    "city_id": 217,
+    "district_id": 10,
+    "ward_id": 0,
+    "categories": [
+      "Quán nhậu"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000050645",
+    "delivery_id": 254891,
+    "name": "KA Coffee - Quận 2",
+    "address": "327D Lương Định Của, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/ka-coffee-quan-2",
+    "restaurant_url": "ka-coffee-quan-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvg0v7c49ehb8",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvg0vrva7r81a",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 2,
+    "latitude": 10.791915,
+    "longitude": 106.747556,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Café/Dessert"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Quốc tế"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000051606",
+    "delivery_id": 256975,
+    "name": "Chân Gà Nướng - Quán 2 Chị Em - Trần Văn Mười",
+    "address": "43 Trần Văn Mười, X. Xuân Thới Thượng, Hóc Môn, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/chan-ga-nuong-quan-2-chi-em-tran-van-muoi",
+    "restaurant_url": "chan-ga-nuong-quan-2-chi-em-tran-van-muoi",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvg5i6vr3d062",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvg5iod1ih0fa",
+    "is_open": false,
+    "rating": 4.9,
+    "total_review": 10,
+    "latitude": 10.851217,
+    "longitude": 106.588367,
+    "city_id": 217,
+    "district_id": 695,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Bắc"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000057108",
+    "delivery_id": 273239,
+    "name": "Nimofood - Yogurt & Ăn Vặt - Quận 2",
+    "address": "92/16/3 Nguyễn Tư Nghiêm, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/nimofood-yogurt-an-vat-quan-2",
+    "restaurant_url": "nimofood-yogurt-an-vat-quan-2",
+    "banner_mms_img_id": "vn-11134513-7r98o-lw0bw86ps0k9f8",
+    "logo_mms_img_id": "vn-11134513-7r98o-lw0zqwzcn8bfc1",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 1,
+    "latitude": 10.786318,
+    "longitude": 106.762386,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop/Cửa hàng",
+      "Mua sắm Online"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Bắc"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000060648",
+    "delivery_id": 283951,
+    "name": "TRUYỀN THUYẾT CHAMPONG - Quận 2 Mì Cay Hải Sản Hàn Quốc",
+    "address": "62 Nguyễn Hoàng, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/truyen-thuyet-champong-quan-2-my-cay-hai-san-62-nguyen-hoang.lwmkqf",
+    "restaurant_url": "truyen-thuyet-champong-quan-2-my-cay-hai-san-62-nguyen-hoang.lwmkqf",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvgu5r4znb899",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvgu6ci1km150",
+    "is_open": true,
+    "rating": 4.9,
+    "total_review": 1000,
+    "latitude": 10.796078,
+    "longitude": 106.744926,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Nhà hàng"
+    ],
+    "cuisines": [
+      "Món Hàn",
+      "Món Á"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "10:45:00",
+      "close_time": "14:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1000062217",
+    "delivery_id": 289586,
+    "name": "Organic Basket - Rau củ quả - Quận 2",
+    "address": "Chung cư An Lộc 2, P. An Phú, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/organic-basket-rau-cu-qua-quan-2.z5lb9p",
+    "restaurant_url": "organic-basket-rau-cu-qua-quan-2.z5lb9p",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvgwxr8kivt47",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvgwy9jtq6c20",
+    "is_open": true,
+    "rating": 0,
+    "total_review": 0,
+    "latitude": 10.798345,
+    "longitude": 106.743931,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Mua sắm Online"
+    ],
+    "cuisines": [],
+    "operating": {
+      "status": 1,
+      "open_time": "09:00:00",
+      "close_time": "21:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1000068286",
+    "delivery_id": 309389,
+    "name": "Quán Cô Tiên - Phở - 2 Nguyễn Phúc Chu",
+    "address": "2 Nguyễn Phúc Chu, P. 15, Tân Bình, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-co-tien-pho-2-nguyen-phuc-chu.nfxp0n",
+    "restaurant_url": "quan-co-tien-pho-2-nguyen-phuc-chu.nfxp0n",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvhhuuuhyv8e9",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvhhvhlko9098",
+    "is_open": true,
+    "rating": 3.9,
+    "total_review": 50,
+    "latitude": 10.821583,
+    "longitude": 106.6308,
+    "city_id": 217,
+    "district_id": 16,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn",
+      "Quán nhậu"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Bắc"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "00:00:00",
+      "close_time": "23:59:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1000068955",
+    "delivery_id": 312122,
+    "name": "Quán Ăn Cô Hai - Đặc Sản Bình Định",
+    "address": "20 Trần Thị Điệu, P. Phước Long B, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-an-co-hai-dac-san-binh-dinh",
+    "restaurant_url": "quan-an-co-hai-dac-san-binh-dinh",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvhkl9sharo34",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvhklvpl80419",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 100,
+    "latitude": 10.830002,
+    "longitude": 106.771957,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Trung"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000071352",
+    "delivery_id": 325068,
+    "name": "A Hai Lúa - Bánh Xèo Miền Tây - Quận 12",
+    "address": "Kho Hàng Nguyễn Kim Tân Thới Nhất 8, P. Tân Thới Nhất, Quận 12, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/a-hai-lua-banh-xeo-mien-tay-quan-12",
+    "restaurant_url": "a-hai-lua-banh-xeo-mien-tay-quan-12",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvhrjn8389led",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvhrk7r96l58c",
+    "is_open": false,
+    "rating": 3.9,
+    "total_review": 7,
+    "latitude": 10.829603,
+    "longitude": 106.610668,
+    "city_id": 217,
+    "district_id": 14,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn",
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Nam"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000073096",
+    "delivery_id": 332103,
+    "name": "Quán Ăn 297/2 - Võ Văn Hát",
+    "address": "297/2 Võ Văn Hát, P. Long Trường, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-an-297-2-vo-van-hat",
+    "restaurant_url": "quan-an-297-2-vo-van-hat",
+    "banner_mms_img_id": "vn-11134513-7r98o-lsvhv5rxnq2sf2",
+    "logo_mms_img_id": "vn-11134513-7r98o-lsvhv6bcvau1d9",
+    "is_open": false,
+    "rating": 4.7,
+    "total_review": 50,
+    "latitude": 10.815765,
+    "longitude": 106.808349,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Shop Online"
+    ],
+    "cuisines": [
+      "Món Việt"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000082124",
+    "delivery_id": 377778,
+    "name": "AT - Cơm, Mì Trộn & Ăn vặt - Quận 2",
+    "address": "Số 8 Đường 38, P. An Khánh, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/at-com-mi-tron-an-vat-quan-2",
+    "restaurant_url": "at-com-mi-tron-an-vat-quan-2",
+    "banner_mms_img_id": "vn-11134513-7ras8-m34m48v09c4bfa",
+    "logo_mms_img_id": "vn-11134513-7ras8-m35qqnsdnv0u94",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 2,
+    "latitude": 10.786432,
+    "longitude": 106.727172,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Bắc",
+      "Món Miền Trung"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000083234",
+    "delivery_id": 383872,
+    "name": "Ốc Ruốc Ngon - Quận 2",
+    "address": "Số 15 Đường Số 39, P. Bình Trưng Tây, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/oc-ruoc-ngon-quan-2",
+    "restaurant_url": "oc-ruoc-ngon-quan-2",
+    "banner_mms_img_id": "vn-11134513-7ra0g-m6gbu7bbpgtjda",
+    "logo_mms_img_id": "vn-11134513-7ra0g-m8c1mwwhfwjra2",
+    "is_open": false,
+    "rating": 4.3,
+    "total_review": 100,
+    "latitude": 10.783171,
+    "longitude": 106.764473,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Ăn vặt/vỉa hè"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Trung"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000086768",
+    "delivery_id": 399912,
+    "name": "Quán Hai Chị Em - 852 Đường Phạm Văn Đồng",
+    "address": "852 Đường Phạm Văn Đồng, Thành Phố Thủ Đức, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-hai-chi-em-852-duong-pham-van-dong.lpdqyl",
+    "restaurant_url": "quan-hai-chi-em-852-duong-pham-van-dong.lpdqyl",
+    "banner_mms_img_id": "vn-11134513-7ra0g-ma9bd4u4f697c5",
+    "logo_mms_img_id": "vn-11134513-7ra0g-ma9bd4u4dror65",
+    "is_open": false,
+    "rating": 0,
+    "total_review": 1,
+    "latitude": 10.833705,
+    "longitude": 106.728774,
+    "city_id": 217,
+    "district_id": 693,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Nam"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000088403",
+    "delivery_id": 405516,
+    "name": "Quán Cô Hai - Bún Riêu, Hủ Tiếu & Bánh Canh Hải Sản - Nguyễn Hữu Cảnh",
+    "address": "132/50 Nguyễn Hữu Cảnh, Bình Thạnh, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-co-hai-bun-rieu-hu-tieu-banh-canh-hai-san-nguyen-huu-canh",
+    "restaurant_url": "quan-co-hai-bun-rieu-hu-tieu-banh-canh-hai-san-nguyen-huu-canh",
+    "banner_mms_img_id": "vn-11134513-7ras8-mbxogmkqvm32b3",
+    "logo_mms_img_id": "vn-11134513-7ras8-mbxoaf33xdnuc1",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 500,
+    "latitude": 10.791889,
+    "longitude": 106.719306,
+    "city_id": 217,
+    "district_id": 15,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Nam"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "07:00:00",
+      "close_time": "21:00:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1000090104",
+    "delivery_id": 411737,
+    "name": "Quán Cơm Cầu Sơn - 311/2 Nguyễn Xí",
+    "address": "311/2 Nguyễn Xí, P. 13, Bình Thạnh, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/quan-com-cau-son-311-2-nguyen-xi",
+    "restaurant_url": "quan-com-cau-son-311-2-nguyen-xi",
+    "banner_mms_img_id": "vn-11134513-820l4-mehm0x7ipiit76",
+    "logo_mms_img_id": "vn-11134513-820l4-mehm0cwpl5hcc2",
+    "is_open": false,
+    "rating": 4.6,
+    "total_review": 10,
+    "latitude": 10.821638,
+    "longitude": 106.703598,
+    "city_id": 217,
+    "district_id": 15,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Miền Trung"
+    ],
+    "operating": {
+      "status": 2,
+      "open_time": null,
+      "close_time": null,
+      "color": "#D3D3D3"
+    }
+  },
+  {
+    "restaurant_id": "1000092108",
+    "delivery_id": 418585,
+    "name": "Phở Hải Mập - Quán Ăn -1338 Lê Văn Lương",
+    "address": "Số 1338, Lê Văn Lương, Ấp 2, Nhà Bè, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/pho-hai-map-quan-an-1338-le-van-luong",
+    "restaurant_url": "pho-hai-map-quan-an-1338-le-van-luong",
+    "banner_mms_img_id": "vn-11134513-820l4-mfajv7xiu1aiac",
+    "logo_mms_img_id": "vn-11134513-81ztc-mtphnmo565u010",
+    "is_open": true,
+    "rating": 4.6,
+    "total_review": 50,
+    "latitude": 10.696319,
+    "longitude": 106.704765,
+    "city_id": 217,
+    "district_id": 699,
+    "ward_id": 0,
+    "categories": [
+      "Quán ăn"
+    ],
+    "cuisines": [
+      "Món Á"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "06:15:00",
+      "close_time": "13:45:00",
+      "color": "#239839"
+    }
+  },
+  {
+    "restaurant_id": "1000099577",
+    "delivery_id": 447922,
+    "name": "Tiệm Hải Béo - Quán Cơm - Trần Thị Năm",
+    "address": "285/63 Trần Thị Năm, Quận 12, TP. HCM",
+    "url": "https://shopeefood.vn/ho-chi-minh/tiem-hai-beo-quan-com-tran-thi-nam.c5tjuf",
+    "restaurant_url": "tiem-hai-beo-quan-com-tran-thi-nam.c5tjuf",
+    "banner_mms_img_id": "vn-11134513-81ztc-mnac9tfmx1j88f",
+    "logo_mms_img_id": "vn-11134513-81ztc-mnac9tfmvmys5a",
+    "is_open": true,
+    "rating": 4.8,
+    "total_review": 10,
+    "latitude": 10.868381,
+    "longitude": 106.625574,
+    "city_id": 217,
+    "district_id": 14,
+    "ward_id": 0,
+    "categories": [
+      "Giao cơm văn phòng"
+    ],
+    "cuisines": [
+      "Món Việt",
+      "Món Bắc"
+    ],
+    "operating": {
+      "status": 1,
+      "open_time": "10:00:00",
+      "close_time": "22:00:00",
+      "color": "#239839"
+    }
   }
 ]
