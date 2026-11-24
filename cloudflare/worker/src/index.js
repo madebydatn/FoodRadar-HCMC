@@ -2,6 +2,137 @@ const PASSWORD_ITERATIONS = 100000
 const SESSION_TTL_SECONDS = 60 * 60 * 24 * 7
 const MAX_KM = 10000000
 
+const FUEL_API_URL =
+  'https://xangdau.nhatkhanhtech.com/api/fuel-prices/giaxanghomnay'
+
+const FUEL_TYPES = [
+  'Dầu hỏa 2-K',
+  'DO 0,001S Mức 5',
+  'DO 0,05S Mức 2',
+  'Xăng E10 RON 95 Mức 3',
+  'Xăng E10 RON 95 Mức 5',
+  'Xăng E5 RON 92 Mức 2',
+]
+
+function validVehicle(body) {
+  return (
+    body &&
+    FUEL_TYPES.includes(body.fuel_type) &&
+    typeof body.fuel_efficiency === 'number' &&
+    Number.isFinite(body.fuel_efficiency) &&
+    body.fuel_efficiency > 0
+  )
+}
+
+async function signFuelQuote(env, payload) {
+  if (!env.FUEL_QUOTE_SECRET) {
+    throw new Error('Chưa cấu hình FUEL_QUOTE_SECRET.')
+  }
+
+  const key = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(env.FUEL_QUOTE_SECRET),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  )
+
+  const encoded = bytesToBase64Url(
+    new TextEncoder().encode(JSON.stringify(payload))
+  )
+
+  const signature = await crypto.subtle.sign(
+    'HMAC',
+    key,
+    new TextEncoder().encode(encoded)
+  )
+
+  return `${encoded}.${bytesToBase64Url(new Uint8Array(signature))}`
+}
+
+async function verifyFuelQuote(env, token) {
+  if (!env.FUEL_QUOTE_SECRET || typeof token !== 'string') return null
+
+  const parts = token.split('.')
+  if (parts.length !== 2) return null
+
+  try {
+    const key = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(env.FUEL_QUOTE_SECRET),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['verify']
+    )
+
+    const valid = await crypto.subtle.verify(
+      'HMAC',
+      key,
+      base64UrlToBytes(parts[1]),
+      new TextEncoder().encode(parts[0])
+    )
+
+    if (!valid) return null
+
+    const payload = JSON.parse(
+      new TextDecoder().decode(base64UrlToBytes(parts[0]))
+    )
+
+    if (Number(payload.exp) <= nowSeconds()) return null
+
+    return payload
+  } catch {
+    return null
+  }
+}
+
+async function fetchFuelPrice(fuelType) {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 8000)
+
+  try {
+    const response = await fetch(FUEL_API_URL, {
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+      signal: controller.signal,
+    })
+
+    if (!response.ok) {
+      throw new Error(`API giá nhiên liệu trả HTTP ${response.status}.`)
+    }
+
+    const data = await response.json()
+
+    if (
+      data?.success !== true ||
+      data?.status !== 'ok' ||
+      data?.meta?.isStale === true ||
+      data?.meta?.blockedByProtection === true ||
+      !Array.isArray(data?.data)
+    ) {
+      throw new Error('Dữ liệu giá nhiên liệu không hợp lệ hoặc đã cũ.')
+    }
+
+    const item = data.data.find(
+      (entry) => entry?.name === fuelType
+    )
+
+    if (!item || item.unit !== 'VND/lít') {
+      throw new Error('Không tìm thấy loại nhiên liệu phù hợp trong API.')
+    }
+
+    const price = Number(item.region1)
+
+    if (!Number.isFinite(price) || price <= 0) {
+      throw new Error('Giá nhiên liệu Vùng 1 không hợp lệ.')
+    }
+
+    return price
+  } finally {
+    clearTimeout(timeout)
+  }
+}
+
 const json = (data, status = 200, headers = {}) =>
   new Response(JSON.stringify(data), {
     status,
@@ -259,7 +390,11 @@ async function handleLogin(request, env) {
 async function handleOwnShifts(env, user, url) {
   const limit = Math.min(Math.max(Number(url.searchParams.get('limit') || 100), 1), 200)
   const rows = await env.DB.prepare(`
-    SELECT id, start_km, end_km, distance_km, started_at, ended_at, status, created_at
+    SELECT
+      id, start_km, end_km, distance_km,
+      started_at, ended_at, status, created_at,
+      fuel_type, fuel_efficiency, fuel_price,
+      fuel_consumed, fuel_cost, fuel_price_source, fuel_price_at
     FROM shifts
     WHERE user_id = ?
     ORDER BY started_at DESC
@@ -268,8 +403,74 @@ async function handleOwnShifts(env, user, url) {
   return json({ shifts: rows.results || [] })
 }
 
-async function handleStartShift(request, env, auth) {
+async function handleGetVehicle(env, auth) {
+  const vehicle = await env.DB.prepare(`
+    SELECT vehicle_name, fuel_type, fuel_efficiency
+    FROM user_vehicles
+    WHERE user_id = ?
+    LIMIT 1
+  `).bind(auth.user.id).first()
+
+  return json({ vehicle: vehicle || null })
+}
+
+async function handleSaveVehicle(request, env, auth) {
   const body = await readJson(request)
+
+  if (!validVehicle(body)) {
+    return fail('Vui lòng chọn loại nhiên liệu và nhập mức tiêu hao hợp lệ lớn hơn 0.')
+  }
+
+  const vehicleName = String(body.vehicle_name || '').trim()
+
+  if (vehicleName.length > 80) {
+    return fail('Tên xe không được vượt quá 80 ký tự.')
+  }
+
+  const now = nowIso()
+
+  await env.DB.prepare(`
+    INSERT INTO user_vehicles (
+      user_id, vehicle_name, fuel_type, fuel_efficiency,
+      created_at, updated_at
+    )
+    VALUES (?, ?, ?, ?, ?, ?)
+    ON CONFLICT(user_id) DO UPDATE SET
+      vehicle_name = excluded.vehicle_name,
+      fuel_type = excluded.fuel_type,
+      fuel_efficiency = excluded.fuel_efficiency,
+      updated_at = excluded.updated_at
+  `).bind(
+    auth.user.id,
+    vehicleName || null,
+    body.fuel_type,
+    body.fuel_efficiency,
+    now,
+    now
+  ).run()
+
+  return handleGetVehicle(env, auth)
+}
+
+async function handleStartShift(request, env, auth) {
+  const vehicle = await env.DB.prepare(`
+    SELECT fuel_type, fuel_efficiency
+    FROM user_vehicles
+    WHERE user_id = ?
+    LIMIT 1
+  `).bind(auth.user.id).first()
+
+  if (
+    !vehicle ||
+    !FUEL_TYPES.includes(vehicle.fuel_type) ||
+    !Number.isFinite(Number(vehicle.fuel_efficiency)) ||
+    Number(vehicle.fuel_efficiency) <= 0
+  ) {
+    return fail('Bạn cần cấu hình xe hợp lệ trước khi bắt đầu ca.', 409)
+  }
+
+  const body = await readJson(request)
+  
   if (!validKm(body?.start_km)) return fail('Kilomet đầu ca phải là số hợp lệ, không âm và tối đa 1 chữ số thập phân.')
   const id = makeId()
   const now = nowIso()
@@ -291,26 +492,270 @@ async function handleStartShift(request, env, auth) {
   return json({ shift }, 201)
 }
 
+async function handleFuelPreview(request, env, auth, shiftId) {
+  const body = await readJson(request)
+
+  if (!validKm(body?.end_km)) {
+    return fail('Kilomet cuối ca không hợp lệ.')
+  }
+
+  const shift = await env.DB.prepare(`
+    SELECT id, start_km, status
+    FROM shifts
+    WHERE id = ? AND user_id = ?
+    LIMIT 1
+  `).bind(shiftId, auth.user.id).first()
+
+  if (!shift || shift.status !== 'active') {
+    return fail('Không tìm thấy ca đang hoạt động.', 404)
+  }
+
+  const endKm = Number(body.end_km)
+
+  if (endKm < Number(shift.start_km)) {
+    return fail('Kilomet cuối ca không được nhỏ hơn kilomet đầu ca.')
+  }
+
+  const vehicle = await env.DB.prepare(`
+    SELECT fuel_type, fuel_efficiency
+    FROM user_vehicles
+    WHERE user_id = ?
+    LIMIT 1
+  `).bind(auth.user.id).first()
+
+  if (
+    !vehicle ||
+    !FUEL_TYPES.includes(vehicle.fuel_type) ||
+    !Number.isFinite(Number(vehicle.fuel_efficiency)) ||
+    Number(vehicle.fuel_efficiency) <= 0
+  ) {
+    return fail('Bạn cần cấu hình xe hợp lệ trước khi kết thúc ca.', 409)
+  }
+
+  const distance = Math.round(
+    (endKm - Number(shift.start_km)) * 10
+  ) / 10
+
+  const efficiency = Number(vehicle.fuel_efficiency)
+  const manualPriceProvided = body.manual_fuel_price !== undefined
+
+  let fuelPrice
+  let priceSource
+
+  if (manualPriceProvided) {
+    fuelPrice = Number(body.manual_fuel_price)
+
+    if (!Number.isFinite(fuelPrice) || fuelPrice <= 0) {
+      return fail('Giá nhiên liệu nhập thủ công phải lớn hơn 0.')
+    }
+
+    priceSource = 'manual'
+  } else {
+    try {
+      fuelPrice = await fetchFuelPrice(vehicle.fuel_type)
+      priceSource = 'api'
+    } catch (error) {
+      return json({
+        price_available: false,
+        error: error.message || 'Không lấy được giá nhiên liệu.',
+        distance_km: distance,
+        fuel_type: vehicle.fuel_type,
+        fuel_efficiency: efficiency,
+      })
+    }
+  }
+
+  const fuelConsumed = distance / efficiency
+  const fuelCost = fuelConsumed * fuelPrice
+
+  if (
+    !Number.isFinite(fuelConsumed) ||
+    fuelConsumed < 0 ||
+    !Number.isFinite(fuelCost) ||
+    fuelCost < 0
+  ) {
+    return fail('Không thể tính toán chi phí nhiên liệu hợp lệ.', 422)
+  }
+
+  const priceAt = nowIso()
+
+  const quote = {
+    version: 1,
+    user_id: auth.user.id,
+    shift_id: shiftId,
+    end_km: endKm,
+    fuel_type: vehicle.fuel_type,
+    fuel_efficiency: efficiency,
+    fuel_price: fuelPrice,
+    fuel_consumed: fuelConsumed,
+    fuel_cost: fuelCost,
+    fuel_price_source: priceSource,
+    fuel_price_at: priceAt,
+    exp: nowSeconds() + 600,
+  }
+
+  let quoteToken
+
+  try {
+    quoteToken = await signFuelQuote(env, quote)
+  } catch {
+    return fail('Máy chủ chưa được cấu hình khóa xác thực báo giá.', 503)
+  }
+
+  return json({
+    price_available: true,
+    preview: {
+      distance_km: distance,
+      fuel_type: vehicle.fuel_type,
+      fuel_efficiency: efficiency,
+      fuel_price: fuelPrice,
+      fuel_consumed: fuelConsumed,
+      fuel_cost: fuelCost,
+      fuel_price_source: priceSource,
+      fuel_price_at: priceAt,
+    },
+    quote_token: quoteToken,
+  })
+}
+
+
 async function handleEndShift(request, env, auth, shiftId) {
   const body = await readJson(request)
-  if (!validKm(body?.end_km)) return fail('Kilomet cuối ca phải là số hợp lệ, không âm và tối đa 1 chữ số thập phân.')
+
+  if (!validKm(body?.end_km)) {
+    return fail('Kilomet cuối ca không hợp lệ.')
+  }
+
+  const quote = await verifyFuelQuote(env, body?.quote_token)
+
+  if (
+    !quote ||
+    quote.version !== 1 ||
+    quote.user_id !== auth.user.id ||
+    quote.shift_id !== shiftId ||
+    Number(quote.end_km) !== Number(body.end_km)
+  ) {
+    return fail('Báo giá không hợp lệ hoặc đã hết hạn. Vui lòng xem trước lại.', 409)
+  }
+
   const shift = await env.DB.prepare(`
-    SELECT id, start_km, status FROM shifts WHERE id = ? AND user_id = ? LIMIT 1
+    SELECT id, start_km, status
+    FROM shifts
+    WHERE id = ? AND user_id = ?
+    LIMIT 1
   `).bind(shiftId, auth.user.id).first()
-  if (!shift || shift.status !== 'active') return fail('Không tìm thấy ca đang hoạt động.', 404)
+
+  if (!shift || shift.status !== 'active') {
+    return fail('Không tìm thấy ca đang hoạt động.', 404)
+  }
+
+  const vehicle = await env.DB.prepare(`
+    SELECT fuel_type, fuel_efficiency
+    FROM user_vehicles
+    WHERE user_id = ?
+    LIMIT 1
+  `).bind(auth.user.id).first()
+
+  if (
+    !vehicle ||
+    vehicle.fuel_type !== quote.fuel_type ||
+    Number(vehicle.fuel_efficiency) !== Number(quote.fuel_efficiency)
+  ) {
+    return fail(
+      'Cấu hình xe đã thay đổi sau khi xem trước. Vui lòng xem trước chi phí lại.',
+      409
+    )
+  }
+
   const endKm = Number(body.end_km)
-  if (endKm < Number(shift.start_km)) return fail('Kilomet cuối ca không được nhỏ hơn kilomet đầu ca.')
+
+  if (endKm < Number(shift.start_km)) {
+    return fail('Kilomet cuối ca không được nhỏ hơn kilomet đầu ca.')
+  }
+
+  const distance = Math.round(
+    (endKm - Number(shift.start_km)) * 10
+  ) / 10
+
+  const fuelPrice = Number(quote.fuel_price)
+  const efficiency = Number(vehicle.fuel_efficiency)
+  const fuelConsumed = distance / efficiency
+  const fuelCost = fuelConsumed * fuelPrice
+
+  if (
+    !Number.isFinite(fuelPrice) ||
+    fuelPrice <= 0 ||
+    !Number.isFinite(efficiency) ||
+    efficiency <= 0 ||
+    !Number.isFinite(fuelConsumed) ||
+    fuelConsumed < 0 ||
+    !Number.isFinite(fuelCost) ||
+    fuelCost < 0 ||
+    !['api', 'manual'].includes(quote.fuel_price_source)
+  ) {
+    return fail('Thông tin nhiên liệu không hợp lệ.', 422)
+  }
+
   const endedAt = nowIso()
-  const distance = Math.round((endKm - Number(shift.start_km)) * 10) / 10
+
   const result = await env.DB.prepare(`
     UPDATE shifts
-    SET end_km = ?, distance_km = ?, ended_at = ?, status = 'completed', updated_at = ?
-    WHERE id = ? AND user_id = ? AND status = 'active'
-  `).bind(endKm, distance, endedAt, endedAt, shiftId, auth.user.id).run()
-  if (!result.meta?.changes) return fail('Ca đã được cập nhật ở một thiết bị khác. Hãy tải lại dữ liệu.', 409)
-  const updated = await env.DB.prepare('SELECT * FROM shifts WHERE id = ?').bind(shiftId).first()
+    SET
+      end_km = ?,
+      distance_km = ?,
+      ended_at = ?,
+      fuel_type = ?,
+      fuel_efficiency = ?,
+      fuel_price = ?,
+      fuel_consumed = ?,
+      fuel_cost = ?,
+      fuel_price_source = ?,
+      fuel_price_at = ?,
+      status = 'completed',
+      updated_at = ?
+    WHERE
+      id = ?
+      AND user_id = ?
+      AND status = 'active'
+      AND EXISTS (
+        SELECT 1
+        FROM user_vehicles v
+        WHERE v.user_id = shifts.user_id
+          AND v.fuel_type = ?
+          AND v.fuel_efficiency = ?
+      )
+  `).bind(
+    endKm,
+    distance,
+    endedAt,
+    vehicle.fuel_type,
+    efficiency,
+    fuelPrice,
+    fuelConsumed,
+    fuelCost,
+    quote.fuel_price_source,
+    quote.fuel_price_at,
+    endedAt,
+    shiftId,
+    auth.user.id,
+    vehicle.fuel_type,
+    efficiency
+  ).run()
+
+  if (!result.meta?.changes) {
+    return fail(
+      'Ca hoặc cấu hình xe đã thay đổi ở một thiết bị khác. Vui lòng tải lại và xem trước lại.',
+      409
+    )
+  }
+
+  const updated = await env.DB.prepare(
+    'SELECT * FROM shifts WHERE id = ? AND user_id = ?'
+  ).bind(shiftId, auth.user.id).first()
+
   return json({ shift: updated })
 }
+
 
 async function handleAdminOverview(env) {
   const today = new Date(Date.now() + 7 * 60 * 60 * 1000).toISOString().slice(0, 10)
@@ -355,14 +800,20 @@ async function handleAdminShifts(env, url) {
   if (userId) {
     result = await env.DB.prepare(`
       SELECT s.id, s.user_id, u.username, s.start_km, s.end_km, s.distance_km,
-        s.started_at, s.ended_at, s.status
+        s.started_at, s.ended_at, s.status,
+        s.fuel_type, s.fuel_efficiency, s.fuel_price,
+        s.fuel_consumed, s.fuel_cost,
+        s.fuel_price_source, s.fuel_price_at
       FROM shifts s JOIN users u ON u.id = s.user_id
       WHERE s.user_id = ? ORDER BY s.started_at DESC LIMIT ?
     `).bind(userId, limit).all()
   } else {
     result = await env.DB.prepare(`
       SELECT s.id, s.user_id, u.username, s.start_km, s.end_km, s.distance_km,
-        s.started_at, s.ended_at, s.status
+        s.started_at, s.ended_at, s.status,
+        s.fuel_type, s.fuel_efficiency, s.fuel_price,
+        s.fuel_consumed, s.fuel_cost,
+        s.fuel_price_source, s.fuel_price_at
       FROM shifts s JOIN users u ON u.id = s.user_id
       ORDER BY s.started_at DESC LIMIT ?
     `).bind(limit).all()
@@ -494,7 +945,17 @@ export default {
           } else if (method === 'POST' && path === '/api/auth/logout') {
             await env.DB.prepare('UPDATE sessions SET revoked_at = ? WHERE id = ?')
               .bind(nowSeconds(), auth.sessionId).run()
-            response = json({ success: true })
+            response = json({ success: true })          
+          } else if (method === 'GET' && path === '/api/vehicle') {
+            response = await handleGetVehicle(env, auth)
+          } else if (method === 'PUT' && path === '/api/vehicle') {
+            response = await handleSaveVehicle(request, env, auth)
+          } else if (
+            method === 'POST' &&
+            path.match(/^\/api\/shifts\/[^/]+\/preview$/)
+          ) {
+            const shiftId = path.split('/')[3]
+            response = await handleFuelPreview(request, env, auth, shiftId)            
           } else if (method === 'GET' && path === '/api/shifts/current') {
             const shift = await env.DB.prepare("SELECT * FROM shifts WHERE user_id = ? AND status = 'active' LIMIT 1")
               .bind(auth.user.id).first()
