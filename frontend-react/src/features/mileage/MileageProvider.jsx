@@ -985,6 +985,43 @@ export function MileageHeader() {
   const { user, logout, currentShift, loading } = useMileage()
   const [open, setOpen] = useState(false)
 
+  // Khóa cuộn trang chính khi mở modal
+  useEffect(() => {
+    if (!open) return
+
+    const scrollY = window.scrollY
+    const body = document.body
+    const html = document.documentElement
+
+    const previousBodyStyle = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      width: body.style.width,
+    }
+
+    const previousHtmlOverflow = html.style.overflow
+
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.left = '0'
+    body.style.right = '0'
+    body.style.width = '100%'
+    html.style.overflow = 'hidden'
+
+    return () => {
+      body.style.position = previousBodyStyle.position
+      body.style.top = previousBodyStyle.top
+      body.style.left = previousBodyStyle.left
+      body.style.right = previousBodyStyle.right
+      body.style.width = previousBodyStyle.width
+      html.style.overflow = previousHtmlOverflow
+
+      window.scrollTo(0, scrollY)
+    }
+  }, [open])
+
   return (
     <>
       <div className="mileage-header-controls">
