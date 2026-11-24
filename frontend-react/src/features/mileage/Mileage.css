@@ -301,3 +301,130 @@
   text-align: center;
   vertical-align: middle;
 }
+
+
+.mileage-vehicle-card,
+.mileage-preview-card,
+.mileage-manual-price {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 14px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 10px;
+  background: var(--surface, #fff);
+}
+
+.mileage-vehicle-card input,
+.mileage-vehicle-card select,
+.mileage-manual-price input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 11px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 8px;
+  background: var(--surface, #fff);
+  color: var(--text, #183b56);
+  font: inherit;
+}
+
+.mileage-vehicle-card label,
+.mileage-manual-price label {
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.mileage-vehicle-card .mileage-section-title {
+  margin: 0 0 4px;
+}
+
+.mileage-vehicle-card .mileage-section-title span {
+  color: #16834b;
+  font-size: 10px;
+}
+
+.mileage-preview-card {
+  margin-top: 18px;
+  border-color: #a7d5ef;
+  background: rgba(35, 137, 213, .035);
+}
+
+.mileage-preview-card h3 {
+  margin: 0 0 5px;
+  font-size: 14px;
+}
+
+.mileage-preview-card > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border, #dceaf4);
+  font-size: 11px;
+}
+
+.mileage-preview-card > div span {
+  color: var(--muted, #748b9e);
+}
+
+.mileage-preview-card > div strong {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.mileage-preview-card .mileage-preview-total {
+  padding: 12px 0;
+  border-bottom: 0;
+}
+
+.mileage-preview-total strong {
+  color: #16834b;
+  font-size: 20px;
+}
+
+.mileage-manual-edit-button {
+  align-self: flex-start;
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: #176da7;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.mileage-manual-price {
+  margin-top: 12px;
+}
+
+[data-theme="dark"] .mileage-vehicle-card,
+[data-theme="dark"] .mileage-preview-card,
+[data-theme="dark"] .mileage-manual-price {
+  background: #131e32;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .mileage-vehicle-card input,
+[data-theme="dark"] .mileage-vehicle-card select,
+[data-theme="dark"] .mileage-manual-price input {
+  background: #0b1320;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+@media (max-width: 600px) {
+  .mileage-vehicle-card,
+  .mileage-preview-card,
+  .mileage-manual-price {
+    padding: 11px;
+  }
+
+  .mileage-preview-card > div {
+    font-size: 10px;
+  }
+}
+
