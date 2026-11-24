@@ -949,17 +949,21 @@ function MileagePanel({ onClose }) {
                         {shift.status === 'completed' && (
                           <td>
                             {shift.status === 'completed' && (
-                              <span
-                                onClick={() => !busy && deleteShift(shift)}
+                              <button
+                                type="button"
+                                disabled={busy}
+                                onClick={() => deleteShift(shift)}
                                 style={{
                                   color: '#c62828',
                                   cursor: busy ? 'not-allowed' : 'pointer',
-                                  position: 'relative',
-                                  top: '-2px',
+                                  background: 'transparent',
+                                  border: 0,
+                                  padding: 0,
+                                  font: 'inherit',
                                 }}
                               >
                                 Xóa
-                              </span>
+                              </button>
                             )}
                           </td>
                         )}
