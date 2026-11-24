@@ -985,6 +985,7 @@
   overflow-wrap: anywhere;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .food-popup-category {
@@ -2405,5 +2406,114 @@
     padding-top: 5px;
     padding-bottom: 5px;
     line-height: 1.2;
+  }
+}
+
+/* MOBILE: Tăng nhẹ kích thước và đưa thông tin phụ sang bên phải */
+@media (max-width: 600px) {
+  .header-right {
+    grid-template-rows: 42px auto;
+  }
+
+  .header-weather,
+  .header-clock {
+    height: 42px;
+    min-height: 42px;
+    padding: 4px 5px;
+  }
+
+  .weather-icon,
+  .clock-icon {
+    font-size: 16px;
+  }
+
+  .weather-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 3px;
+    width: 100%;
+  }
+
+  .weather-info strong {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 11px;
+  }
+
+  .weather-info span {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 8px;
+  }
+
+  .weather-info small {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 0;
+    font-size: 8px;
+    text-align: right;
+  }
+
+  .clock-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 3px;
+    width: 100%;
+  }
+
+  .clock-time {
+    grid-column: 1;
+    font-size: 11px;
+  }
+
+  .clock-date {
+    grid-column: 2;
+    font-size: 8px;
+    text-align: right;
+  }
+
+  .mileage-header-button,
+  .mileage-logout-button {
+    height: 32px;
+    min-height: 32px;
+    padding: 4px 9px;
+    font-size: 10px;
+  }
+}
+
+/* Điện thoại nhỏ: giữ bố cục hai cột, tránh tràn nội dung */
+@media (max-width: 380px) {
+  .header-right {
+    grid-template-rows: 40px auto;
+  }
+
+  .header-weather,
+  .header-clock {
+    height: 40px;
+    min-height: 40px;
+    padding: 3px 4px;
+    gap: 3px;
+  }
+
+  .weather-info strong,
+  .clock-time {
+    font-size: 10px;
+  }
+
+  .weather-info span,
+  .weather-info small,
+  .clock-date {
+    font-size: 7px;
+  }
+
+  .mileage-header-button,
+  .mileage-logout-button {
+    height: 31px;
+    min-height: 31px;
+    padding: 4px 8px;
+    font-size: 10px;
   }
 }
