@@ -2471,7 +2471,7 @@
 
   .clock-date {
     grid-column: 2;
-    font-size: 8px;
+    font-size: 11px;
     text-align: right;
   }
 
@@ -2504,9 +2504,12 @@
   }
 
   .weather-info span,
-  .weather-info small,
-  .clock-date {
+  .weather-info small {
     font-size: 7px;
+  }
+
+  .clock-date {
+    font-size: 10px;
   }
 
   .mileage-header-button,
