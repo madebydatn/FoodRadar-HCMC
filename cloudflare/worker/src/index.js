@@ -856,6 +856,50 @@ async function handleAdminCompletedShiftDelete(env, auth, userId) {
   })
 }
 
+async function handleAdminShiftDelete(env, auth, shiftId) {
+  const shift = await env.DB.prepare(`
+    SELECT s.id, s.user_id, s.status, u.username
+    FROM shifts s
+    JOIN users u ON u.id = s.user_id
+    WHERE s.id = ?
+    LIMIT 1
+  `).bind(shiftId).first()
+
+  if (!shift) return fail('Không tìm thấy ca làm việc.', 404)
+
+  if (shift.status !== 'completed') {
+    return fail('Chỉ được xóa ca làm việc đã kết thúc.', 409)
+  }
+
+  const result = await env.DB.prepare(`
+    DELETE FROM shifts
+    WHERE id = ? AND status = 'completed'
+  `).bind(shiftId).run()
+
+  const deletedCount = Number(result.meta?.changes || 0)
+
+  if (deletedCount === 0) {
+    return fail('Ca làm việc không còn ở trạng thái đã kết thúc. Vui lòng tải lại danh sách.', 409)
+  }
+
+  await writeAudit(
+    env,
+    auth.user.id,
+    'shift_deleted',
+    shift.user_id,
+    {
+      shift_id: shift.id,
+      target_username: shift.username,
+      status: shift.status,
+    }
+  )
+
+  return json({
+    success: true,
+    message: `Đã xóa ca làm việc của ${shift.username}.`,
+  })
+}
+
 async function handleAdminUserUpdate(request, env, auth, userId) {
   const body = await readJson(request)
   const target = await env.DB.prepare('SELECT id, username, role, status FROM users WHERE id = ?').bind(userId).first()
@@ -972,7 +1016,17 @@ export default {
             if (denied) response = denied
             else if (method === 'GET' && path === '/api/admin/overview') response = await handleAdminOverview(env)
             else if (method === 'GET' && path === '/api/admin/users') response = await handleAdminUsers(env)
-            else if (method === 'GET' && path === '/api/admin/shifts') response = await handleAdminShifts(env, url)
+            else if (method === 'GET' && path === '/api/admin/shifts') response = await handleAdminShifts(env, url)            
+            else if (
+              method === 'DELETE' &&
+              path.match(/^\/api\/admin\/shifts\/[^/]+$/)
+            ) {
+              response = await handleAdminShiftDelete(
+                env,
+                auth,
+                path.split('/')[4]
+              )
+            }
             else if (
               method === 'DELETE' &&
               path.match(/^\/api\/admin\/users\/[^/]+\/shifts\/completed$/)
