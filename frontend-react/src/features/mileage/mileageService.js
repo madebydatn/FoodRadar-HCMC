@@ -77,9 +77,16 @@ export const mileageApi = {
   currentShift: (token) => request('/shifts/current', { token }),
   shifts: (token, limit = 100) => request(`/shifts?limit=${limit}`, { token }),
   startShift: (token, startKm) => request('/shifts/start', { method: 'POST', token, body: { start_km: startKm } }),
-  endShift: (token, shiftId, endKm) => request(`/shifts/${encodeURIComponent(shiftId)}/end`, {
-    method: 'POST', token, body: { end_km: endKm },
-  }),
+
+  endShift: (token, shiftId, endKm, quoteToken) =>
+    request(`/shifts/${encodeURIComponent(shiftId)}/end`, {
+      method: 'POST',
+      token,
+      body: {
+        end_km: endKm,
+        quote_token: quoteToken,
+      },
+    }),
   adminOverview: (token) => request('/admin/overview', { token }),
   adminUsers: (token) => request('/admin/users', { token }),
   adminShifts: (token, userId = '') => request(`/admin/shifts?limit=300${userId ? `&user_id=${encodeURIComponent(userId)}` : ''}`, { token }),
@@ -105,4 +112,22 @@ export const mileageApi = {
       token,
     }
   ),
+  
+  getVehicle: (token) => request('/vehicle', { token }),
+
+  saveVehicle: (token, vehicle) => request('/vehicle', {
+    method: 'PUT',
+    token,
+    body: vehicle,
+  }),
+
+  previewFuel: (token, shiftId, endKm, manualFuelPrice) =>
+    request(`/shifts/${encodeURIComponent(shiftId)}/preview`, {
+      method: 'POST',
+      token,
+      body: manualFuelPrice === undefined
+        ? { end_km: endKm }
+        : { end_km: endKm, manual_fuel_price: manualFuelPrice },
+    }),
+
 }
