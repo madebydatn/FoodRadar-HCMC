@@ -1052,5 +1052,5 @@ export default {
       console.error('FoodRadar Mileage API error:', error)
       return json({ error: 'Máy chủ gặp lỗi. Vui lòng thử lại.' }, 500, headers)
     }
-  },
+  }
 }
