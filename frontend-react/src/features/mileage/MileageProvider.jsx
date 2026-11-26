@@ -1,5 +1,5 @@
 
-import { Fragment, createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { mileageApi, getStoredToken, storeToken } from './mileageService'
 import './Mileage.css'
 
@@ -1475,25 +1475,21 @@ function MileagePanel({ onClose }) {
                       <td>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</td>
                       <td>
                         {shift.status === 'completed' && (
-                          <td>
-                            {shift.status === 'completed' && (
-                              <button
-                                type="button"
-                                disabled={busy}
-                                onClick={() => deleteShift(shift)}
-                                style={{
-                                  color: '#c62828',
-                                  cursor: busy ? 'not-allowed' : 'pointer',
-                                  background: 'transparent',
-                                  border: 0,
-                                  padding: 0,
-                                  font: 'inherit',
-                                }}
-                              >
-                                Xóa
-                              </button>
-                            )}
-                          </td>
+                          <button
+                            type="button"
+                            disabled={busy}
+                            onClick={() => deleteShift(shift)}
+                            style={{
+                              color: '#c62828',
+                              cursor: busy ? 'not-allowed' : 'pointer',
+                              background: 'transparent',
+                              border: 0,
+                              padding: 0,
+                              font: 'inherit',
+                            }}
+                          >
+                            Xóa
+                          </button>
                         )}
                       </td>
                     </tr>
