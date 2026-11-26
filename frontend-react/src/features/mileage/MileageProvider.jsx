@@ -309,7 +309,6 @@ function MileagePanel({ onClose }) {
   const [endKm, setEndKm] = useState('')
   const [history, setHistory] = useState([])
 
-  const [expandedHistoryShiftId, setExpandedHistoryShiftId] = useState(null)
   const [selectedHistoryShiftId, setSelectedHistoryShiftId] = useState(null)
   const [historyOrders, setHistoryOrders] = useState([])
   const [historyOrdersBusy, setHistoryOrdersBusy] = useState(false)
@@ -346,28 +345,6 @@ function MileagePanel({ onClose }) {
     const result = await mileageApi.shifts(token, 200)
     setHistory(result.shifts || [])
   }, [token])
-
-  const handleToggleHistoryOrders = async (shiftId) => {
-    if (expandedHistoryShiftId === shiftId) {
-      setExpandedHistoryShiftId(null)
-      setHistoryOrders([])
-      return
-    }
-
-    setExpandedHistoryShiftId(shiftId)
-    setHistoryOrders([])
-    setHistoryOrdersBusy(true)
-    setError('')
-
-    try {
-      const result = await mileageApi.shiftOrders(token, shiftId)
-      setHistoryOrders(result.orders || [])
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setHistoryOrdersBusy(false)
-    }
-  }
 
   const handleOpenHistoryDetails = async (shiftId) => {
     setSelectedHistoryShiftId(shiftId)
@@ -813,6 +790,19 @@ function MileagePanel({ onClose }) {
   const selectedHistoryShift = history.find(
     (shift) => shift.id === selectedHistoryShiftId
   )
+
+  const historyOrderTotals = historyOrders.reduce(
+    (totals, order) => ({
+      count: totals.count + 1,
+      fare: totals.fare + Number(order.fare || 0),
+      bonus: totals.bonus + Number(order.bonus || 0),
+      tip: totals.tip + Number(order.tip || 0),
+      income: totals.income + Number(order.total_income || 0),
+    }),
+    { count: 0, fare: 0, bonus: 0, tip: 0, income: 0 }
+  )
+
+  const historyFuelCost = Number(selectedHistoryShift?.fuel_cost || 0)
 
   return (
     <div className="mileage-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose() }}>
@@ -1372,69 +1362,44 @@ function MileagePanel({ onClose }) {
                     </div>
                   )}
                 </div>
+                <div className="mileage-history-income">
+                  <div>
+                    <span>Số đơn hàng</span>
+                    <strong>{historyOrderTotals.count}</strong>
+                  </div>
 
-                {(() => {
-                  const totalFare = historyOrders.reduce(
-                    (sum, order) => sum + Number(order.fare || 0),
-                    0
-                  )
+                  <div>
+                    <span>Tiền đơn</span>
+                    <strong>{formatVnd(historyOrderTotals.fare)}</strong>
+                  </div>
 
-                  const totalBonus = historyOrders.reduce(
-                    (sum, order) => sum + Number(order.bonus || 0),
-                    0
-                  )
+                  <div>
+                    <span>Tiền thưởng</span>
+                    <strong>{formatVnd(historyOrderTotals.bonus)}</strong>
+                  </div>
 
-                  const totalTip = historyOrders.reduce(
-                    (sum, order) => sum + Number(order.tip || 0),
-                    0
-                  )
+                  <div>
+                    <span>Tiền tip</span>
+                    <strong>{formatVnd(historyOrderTotals.tip)}</strong>
+                  </div>
 
-                  const totalIncome = historyOrders.reduce(
-                    (sum, order) => sum + Number(order.total_income || 0),
-                    0
-                  )
+                  <div>
+                    <span>Tổng thu nhập</span>
+                    <strong>{formatVnd(historyOrderTotals.income)}</strong>
+                  </div>
 
-                  const fuelCost = Number(selectedHistoryShift?.fuel_cost || 0)
+                  <div>
+                    <span>Chi phí nhiên liệu</span>
+                    <strong>{formatVnd(historyFuelCost)}</strong>
+                  </div>
 
-                  return (
-                    <div className="mileage-history-income">
-                      <div>
-                        <span>Số đơn hàng</span>
-                        <strong>{historyOrders.length}</strong>
-                      </div>
-
-                      <div>
-                        <span>Tiền đơn</span>
-                        <strong>{formatVnd(totalFare)}</strong>
-                      </div>
-
-                      <div>
-                        <span>Tiền thưởng</span>
-                        <strong>{formatVnd(totalBonus)}</strong>
-                      </div>
-
-                      <div>
-                        <span>Tiền tip</span>
-                        <strong>{formatVnd(totalTip)}</strong>
-                      </div>
-
-                      <div>
-                        <span>Tổng thu nhập</span>
-                        <strong>{formatVnd(totalIncome)}</strong>
-                      </div>
-
-                      <div>
-                        <span>Chi phí nhiên liệu</span>
-                        <strong>{formatVnd(fuelCost)}</strong>
-                      </div>
-
-                      <div className="mileage-history-net">
-                        <span>Thu nhập sau nhiên liệu</span>
-                        <strong>{formatVnd(totalIncome - fuelCost)}</strong>
-                      </div>
-                    </div>
-                  )
-                })()}
+                  <div className="mileage-history-net">
+                    <span>Thu nhập sau nhiên liệu</span>
+                    <strong>
+                      {formatVnd(historyOrderTotals.income - historyFuelCost)}
+                    </strong>
+                  </div>
+                </div>
               </div>
             )}
           </div>
