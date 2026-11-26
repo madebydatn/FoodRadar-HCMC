@@ -929,6 +929,17 @@ async function handleAdminShifts(env, url) {
 }
 
 async function handleAdminCompletedShiftDelete(env, auth, userId) {
+  const target = await env.DB.prepare(`
+    SELECT id, username
+    FROM users
+    WHERE id = ?
+    LIMIT 1
+  `).bind(userId).first()
+
+  if (!target) {
+    return fail('Không tìm thấy tài khoản.', 404)
+  }
+
   const hasOrders = await env.DB.prepare(`
     SELECT 1
     FROM shift_orders o
@@ -980,6 +991,22 @@ async function handleAdminCompletedShiftDelete(env, auth, userId) {
 }
 
 async function handleAdminShiftDelete(env, auth, shiftId) {
+  const shift = await env.DB.prepare(`
+    SELECT s.id, s.user_id, s.status, u.username
+    FROM shifts s
+    JOIN users u ON u.id = s.user_id
+    WHERE s.id = ?
+    LIMIT 1
+  `).bind(shiftId).first()
+
+  if (!shift) {
+    return fail('Không tìm thấy ca làm việc.', 404)
+  }
+
+  if (shift.status !== 'completed') {
+    return fail('Chỉ được xóa ca đã kết thúc.', 409)
+  }
+
   const hasOrders = await env.DB.prepare(`
     SELECT 1
     FROM shift_orders
@@ -1008,7 +1035,10 @@ async function handleAdminShiftDelete(env, auth, shiftId) {
   const deletedCount = Number(result.meta?.changes || 0)
 
   if (deletedCount === 0) {
-    return fail('Ca làm việc không còn ở trạng thái đã kết thúc. Vui lòng tải lại danh sách.', 409)
+    return fail(
+      'Ca làm việc không còn ở trạng thái đã kết thúc. Vui lòng tải lại danh sách.',
+      409
+    )
   }
 
   await writeAudit(
