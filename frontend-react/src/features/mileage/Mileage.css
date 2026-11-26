@@ -1285,3 +1285,30 @@
     width: 100%;
   }
 }
+
+
+/* ========================================
+   iOS - MILEAGE FORM CONTROL LAYOUT
+======================================== */
+
+@supports (-webkit-touch-callout: none) {
+  .mileage-auth-card input,
+  .mileage-form input,
+  .mileage-reset-row input,
+  .mileage-vehicle-card input,
+  .mileage-vehicle-card select,
+  .mileage-manual-price input,
+  .mileage-admin-history-title select {
+    min-height: 42px;
+    line-height: 1.4;
+  }
+
+  .mileage-reset-row input {
+    min-width: 0;
+  }
+
+  .mileage-admin-history-title select {
+    min-height: 40px;
+    max-width: 55%;
+  }
+}
