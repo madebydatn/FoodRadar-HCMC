@@ -1,5 +1,14 @@
 
-/* FoodRadar Mileage module - scoped styles */
+/* =========================================================
+   FOODRADAR - MILEAGE
+   Stylesheet được sắp xếp và gộp các quy tắc trùng lặp
+   ========================================================= */
+
+
+/* =========================================================
+   1. AUTHENTICATION & LOADING
+   ========================================================= */
+
 .mileage-auth-page,
 .mileage-loading-screen {
   min-height: 100vh;
@@ -24,57 +33,128 @@
   box-shadow: var(--shadow, 0 7px 24px rgba(35, 91, 130, .08));
 }
 
-.mileage-auth-brand { color: #176da7; font-size: 19px; font-weight: 850; letter-spacing: -.4px; }
-.mileage-auth-brand span { color: #7892a7; font-size: 11px; letter-spacing: 1px; }
-.mileage-auth-card h1 { margin: 8px 0 0; font-size: 25px; }
-.mileage-muted, .mileage-hint { color: var(--muted, #748b9e); font-size: 12px; line-height: 1.55; }
-.mileage-auth-card label, .mileage-form label { margin-top: 7px; font-size: 12px; font-weight: 700; }
-.mileage-auth-card input, .mileage-form input, .mileage-reset-row input, .mileage-admin-history-title select {
-  width: 100%; min-height: 42px; padding: 9px 11px;
-  border: 1px solid var(--border, #dceaf4); border-radius: 9px;
-  background: var(--surface, #fff); color: var(--text, #183b56); font: inherit;
+.mileage-auth-brand {
+  color: #176da7;
+  font-size: 19px;
+  font-weight: 850;
+  letter-spacing: -.4px;
 }
-.mileage-auth-card input:focus, .mileage-form input:focus, .mileage-reset-row input:focus {
-  outline: 2px solid rgba(35, 137, 213, .2); border-color: #2389d5;
-}
-.mileage-primary-button, .mileage-danger-button {
-  min-height: 42px; padding: 10px 14px; border: 0; border-radius: 9px;
-  color: #fff; font: inherit; font-size: 13px; font-weight: 750; cursor: pointer;
-}
-.mileage-primary-button { background: #1976bd; }
-.mileage-danger-button { background: #d64545; }
-.mileage-primary-button:disabled, .mileage-danger-button:disabled { opacity: .55; cursor: wait; }
-.mileage-auth-card > .mileage-primary-button { margin-top: 10px; }
-.mileage-auth-switch { margin-top: 5px; color: var(--muted, #748b9e); font-size: 12px; text-align: center; }
-.mileage-auth-switch button { padding: 0; border: 0; background: none; color: #176da7; font: inherit; font-weight: 750; cursor: pointer; }
-.mileage-loading-screen { gap: 12px; font-size: 13px; }
-.mileage-spinner { width: 22px; height: 22px; border: 3px solid #d9eaf5; border-top-color: #2389d5; border-radius: 50%; animation: mileage-spin .8s linear infinite; }
-@keyframes mileage-spin { to { transform: rotate(360deg); } }
 
+.mileage-auth-brand span {
+  color: #7892a7;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.mileage-auth-card h1 {
+  margin: 8px 0 0;
+  font-size: 25px;
+}
+
+.mileage-muted,
+.mileage-hint {
+  color: var(--muted, #748b9e);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.mileage-auth-card label,
+.mileage-form label {
+  margin-top: 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mileage-auth-card input,
+.mileage-form input,
+.mileage-reset-row input,
+.mileage-admin-history-title select {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 9px;
+  background: var(--surface, #fff);
+  color: var(--text, #183b56);
+  font: inherit;
+}
+
+.mileage-auth-card input:focus,
+.mileage-form input:focus,
+.mileage-reset-row input:focus {
+  outline: 2px solid rgba(35, 137, 213, .2);
+  border-color: #2389d5;
+}
+
+.mileage-auth-card > .mileage-primary-button {
+  margin-top: 10px;
+}
+
+.mileage-auth-switch {
+  margin-top: 5px;
+  color: var(--muted, #748b9e);
+  font-size: 12px;
+  text-align: center;
+}
+
+.mileage-auth-switch button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #176da7;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.mileage-loading-screen {
+  gap: 12px;
+  font-size: 13px;
+}
+
+.mileage-spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #d9eaf5;
+  border-top-color: #2389d5;
+  border-radius: 50%;
+  animation: mileage-spin .8s linear infinite;
+}
+
+@keyframes mileage-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   2. HEADER CONTROLS
+   ========================================================= */
 
 .mileage-header-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   min-width: 0;
 }
 
 .mileage-header-button,
 .mileage-logout-button {
   box-sizing: border-box;
-  min-height: 64px;
-  padding: 8px 14px;
+  min-height: 42px;
+  padding: 6px 10px;
   border: 1px solid #d5e8f5;
-  border-radius: 10px;
+  border-radius: 9px;
   background: #fff;
   color: var(--text);
-  box-shadow: 0 3px 12px rgba(40, 95, 130, 0.05);
+  box-shadow: 0 3px 12px rgba(40, 95, 130, .05);
   font-family: inherit;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 750;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.2s ease;
+  transition: all .2s ease;
 }
 
 .mileage-header-button:hover,
@@ -96,7 +176,7 @@
 }
 
 .mileage-header-button:disabled {
-  opacity: 0.6;
+  opacity: .6;
   cursor: not-allowed;
 }
 
@@ -113,112 +193,74 @@
   color: #a63a3a;
 }
 
+
+/* =========================================================
+   3. MODAL & MODAL HEADER
+   ========================================================= */
+
 .mileage-modal-backdrop {
-  position: fixed; inset: 0; z-index: 3000; display: flex; align-items: center; justify-content: center;
-  padding: 18px; background: rgba(10, 25, 40, .55); backdrop-filter: blur(3px);
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(10, 25, 40, .55);
+  backdrop-filter: blur(3px);
 }
+
 .mileage-modal {
-  width: min(920px, 100%); max-height: min(88vh, 900px); display: flex; flex-direction: column;
-  overflow: hidden; border: 1px solid var(--border, #dceaf4); border-radius: 16px;
-  background: var(--surface, #fff); color: var(--text, #183b56); box-shadow: 0 20px 70px rgba(0,0,0,.28);
-}
-.mileage-modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 19px 21px 13px; border-bottom: 1px solid var(--border, #dceaf4); }
-.mileage-modal-header h2 { margin: 3px 0 4px; font-size: 20px; }
-.mileage-modal-header p { margin: 0; color: var(--muted, #748b9e); font-size: 11px; }
-.mileage-kicker { color: #2389d5; font-size: 9px; font-weight: 850; letter-spacing: 1px; }
-.mileage-close-button { width: 32px; height: 32px; border: 0; border-radius: 8px; background: #f0f5f8; color: #567086; font-size: 23px; line-height: 1; cursor: pointer; }
-.mileage-tabs { display: flex; gap: 5px; padding: 10px 20px 0; border-bottom: 1px solid var(--border, #dceaf4); }
-.mileage-tabs button { padding: 9px 12px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--muted, #748b9e); font: inherit; font-size: 11px; font-weight: 750; cursor: pointer; }
-.mileage-tabs button.active { border-bottom-color: #2389d5; color: #176da7; }
-.mileage-panel-body { min-height: 180px; overflow: auto; padding: 19px 21px 22px; }
-.mileage-alert { margin: 12px 20px 0; padding: 9px 11px; border-radius: 8px; font-size: 11px; line-height: 1.5; }
-.mileage-alert-error { border: 1px solid #f2c5c5; background: #fff1f1; color: #a62e2e; }
-.mileage-alert-success { border: 1px solid #bde6ca; background: #effaf2; color: #176c3b; }
-.mileage-status-line { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; color: #16834b; font-size: 12px; font-weight: 800; }
-.mileage-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #22a45a; box-shadow: 0 0 0 4px rgba(34,164,90,.12); }
-.mileage-km-summary, .mileage-stats-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.mileage-km-summary > div, .mileage-stats-grid > div { display: flex; flex-direction: column; gap: 5px; min-width: 0; padding: 13px; border: 1px solid var(--border, #dceaf4); border-radius: 10px; background: rgba(35,137,213,.045); }
-.mileage-km-summary span, .mileage-stats-grid span { color: var(--muted, #748b9e); font-size: 10px; }
-.mileage-km-summary strong { color: var(--text, #183b56); font-size: 16px; overflow-wrap: anywhere; }
-.mileage-form { display: flex; flex-direction: column; gap: 9px; max-width: 440px; margin-top: 18px; }
-.mileage-form label { margin: 0; }
-.mileage-form .mileage-primary-button, .mileage-form .mileage-danger-button { margin-top: 3px; }
-.mileage-empty-state { display: flex; flex-direction: column; align-items: center; padding: 12px 10px 4px; text-align: center; }
-.mileage-empty-state > span { color: #2389d5; font-size: 31px; }
-.mileage-empty-state strong { margin-top: 5px; font-size: 15px; }
-.mileage-empty-state p, .mileage-empty-copy { margin: 5px 0 0; color: var(--muted, #748b9e); font-size: 11px; }
-.mileage-stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: 17px; }
-.mileage-stats-grid strong { color: #176da7; font-size: 17px; font-variant-numeric: tabular-nums; }
-.mileage-admin-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.mileage-section-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 12px 0 9px; font-size: 12px; }
-.mileage-section-title button, .mileage-user-actions button, .mileage-reset-row button { min-height: 29px; padding: 5px 9px; border: 1px solid var(--border, #dceaf4); border-radius: 7px; background: var(--surface, #fff); color: #176da7; font: inherit; font-size: 10px; font-weight: 750; cursor: pointer; }
-.mileage-table-wrap { width: 100%; overflow: auto; border: 1px solid var(--border, #dceaf4); border-radius: 9px; }
-.mileage-table { width: 100%; border-collapse: collapse; font-size: 10px; white-space: nowrap; }
-.mileage-table th, .mileage-table td { padding: 9px 10px; border-bottom: 1px solid var(--border, #dceaf4); text-align: left; vertical-align: top; }
-.mileage-table th { background: rgba(35,137,213,.06); color: #55748b; font-weight: 800; }
-.mileage-table td { color: var(--text, #183b56); }
-.mileage-table td small { display: block; margin-top: 3px; color: var(--muted, #748b9e); font-size: 9px; }
-.mileage-pill { display: inline-block; padding: 3px 7px; border-radius: 20px; background: #eaf7ee; color: #16834b; font-size: 9px; font-weight: 750; }
-.mileage-pill.active { background: #fff4e5; color: #a76812; }
-.mileage-admin-users { display: flex; flex-direction: column; gap: 8px; }
-.mileage-user-row { display: grid; grid-template-columns: minmax(140px, 1fr) auto; gap: 8px 12px; padding: 11px; border: 1px solid var(--border, #dceaf4); border-radius: 9px; }
-.mileage-user-main { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.mileage-user-main strong { font-size: 12px; }
-.mileage-user-main span { color: var(--muted, #748b9e); font-size: 10px; }
-.mileage-user-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 5px; }
-.mileage-user-actions button:disabled { opacity: .45; cursor: not-allowed; }
-.mileage-reset-row { grid-column: 1 / -1; display: flex; gap: 7px; }
-.mileage-reset-row input { min-height: 32px; font-size: 10px; }
-.mileage-reset-row button { flex-shrink: 0; }
-.mileage-admin-history-title { margin-top: 20px; }
-.mileage-admin-history-title select { width: auto; min-height: 30px; padding: 4px 8px; font-size: 10px; }
-
-@media (max-width: 900px) {
-  .mileage-header-controls { gap: 5px; }
-  .mileage-header-user { display: none; }
-  .mileage-header-button, .mileage-logout-button { min-height: 31px; padding: 5px 7px; font-size: 9px; }
-}
-@media (max-width: 600px) {
-  .mileage-auth-card { padding: 23px 19px; }
-  .mileage-modal-backdrop { align-items: flex-end; padding: 0; }
-  .mileage-modal { width: 100%; max-height: 94dvh; border-radius: 16px 16px 0 0; }
-  .mileage-modal-header { padding: 15px 16px 11px; }
-  .mileage-tabs { padding-left: 14px; }
-  .mileage-panel-body { padding: 15px 14px 20px; }
-  .mileage-stats-grid { grid-template-columns: 1fr; }
-  .mileage-admin-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .mileage-user-row { grid-template-columns: 1fr; }
-  .mileage-user-actions { justify-content: flex-start; }
-  .mileage-reset-row { flex-direction: column; }
-  .mileage-admin-history-title { align-items: flex-start; flex-direction: column; }
+  width: min(920px, 100%);
+  max-height: min(88vh, 900px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 16px;
+  background: var(--surface, #fff);
+  color: var(--text, #183b56);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, .28);
 }
 
-[data-theme="dark"] .mileage-auth-card,
-[data-theme="dark"] .mileage-modal { background: #131e32; color: #e2e8f0; }
-[data-theme="dark"] .mileage-header-button,
-[data-theme="dark"] .mileage-logout-button { border-color: #334155; background: #131e32; color: #dbeafe; }
-[data-theme="dark"] .mileage-close-button { background: #263449; color: #dbeafe; }
-[data-theme="dark"] .mileage-tabs button.active { color: #7dd3fc; }
-[data-theme="dark"] .mileage-km-summary > div,
-[data-theme="dark"] .mileage-stats-grid > div,
-[data-theme="dark"] .mileage-user-row { background: rgba(56,189,248,.06); }
-[data-theme="dark"] .mileage-km-summary strong,
-[data-theme="dark"] .mileage-table td { color: #e2e8f0; }
-[data-theme="dark"] .mileage-table th { background: #1e293b; color: #b6c7d8; }
-[data-theme="dark"] .mileage-auth-card input,
-[data-theme="dark"] .mileage-form input,
-[data-theme="dark"] .mileage-reset-row input,
-[data-theme="dark"] .mileage-admin-history-title select { border-color: #334155; background: #0b1320; color: #e2e8f0; }
-
-/* Keep the account controls on their own compact row on narrow headers. */
-@media (max-width: 900px) {
-  .header-right { flex-wrap: wrap; }
-  .mileage-header-controls { flex: 0 0 100%; justify-content: flex-end; }
-}
-@media (max-width: 600px) {
-  .mileage-header-controls { flex: 0 0 100%; justify-content: flex-end; }
+.mileage-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 19px 21px 13px;
+  border-bottom: 1px solid var(--border, #dceaf4);
 }
 
+.mileage-modal-header h2 {
+  margin: 3px 0 4px;
+  font-size: 20px;
+}
+
+.mileage-modal-header p {
+  margin: 0;
+  color: var(--muted, #748b9e);
+  font-size: 11px;
+}
+
+.mileage-kicker {
+  color: #2389d5;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 1px;
+}
+
+.mileage-close-button {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: #f0f5f8;
+  color: #567086;
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+}
 
 .mileage-auth-modal {
   position: relative;
@@ -240,39 +282,422 @@
   z-index: 2;
 }
 
-@media (max-width: 600px) {
-  .mileage-auth-modal {
-    width: 100%;
-    max-height: 94dvh;
-    border-radius: 16px 16px 0 0;
-  }
+
+/* =========================================================
+   4. TABS & PANEL CONTENT
+   ========================================================= */
+
+.mileage-tabs {
+  display: flex;
+  gap: 5px;
+  padding: 10px 20px 0;
+  border-bottom: 1px solid var(--border, #dceaf4);
 }
 
-/* Compact header action */
-.mileage-header-controls {
-  gap: 6px;
+.mileage-tabs button {
+  padding: 9px 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--muted, #748b9e);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 750;
+  cursor: pointer;
 }
 
-.mileage-header-button,
-.mileage-logout-button {
+.mileage-tabs button.active {
+  border-bottom-color: #2389d5;
+  color: #176da7;
+}
+
+.mileage-panel-body {
+  min-height: 180px;
+  overflow: auto;
+  padding: 19px 21px 22px;
+}
+
+
+/* =========================================================
+   5. ALERTS & STATUS
+   ========================================================= */
+
+.mileage-alert {
+  margin: 12px 20px 0;
+  padding: 9px 11px;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.mileage-alert-error {
+  border: 1px solid #f2c5c5;
+  background: #fff1f1;
+  color: #a62e2e;
+}
+
+.mileage-alert-success {
+  border: 1px solid #bde6ca;
+  background: #effaf2;
+  color: #176c3b;
+}
+
+.mileage-status-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: #16834b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.mileage-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22a45a;
+  box-shadow: 0 0 0 4px rgba(34, 164, 90, .12);
+}
+
+
+/* =========================================================
+   6. BUTTONS
+   ========================================================= */
+
+.mileage-primary-button,
+.mileage-danger-button {
   min-height: 42px;
-  padding: 6px 10px;
+  padding: 10px 14px;
+  border: 0;
   border-radius: 9px;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.mileage-primary-button {
+  background: #1976bd;
+}
+
+.mileage-danger-button {
+  background: #d64545;
+}
+
+.mileage-primary-button:disabled,
+.mileage-danger-button:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+.mileage-secondary-button {
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 9px;
+  background: var(--surface, #fff);
+  color: #176da7;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.mileage-secondary-button:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+.mileage-manual-edit-button {
+  align-self: flex-start;
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: #176da7;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.mileage-history-detail-button {
+  min-height: 28px;
+  padding: 5px 9px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 7px;
+  background: var(--surface, #fff);
+  color: #176da7;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   7. SUMMARY & STATISTICS
+   ========================================================= */
+
+.mileage-km-summary,
+.mileage-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mileage-km-summary > div,
+.mileage-stats-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 10px;
+  background: rgba(35, 137, 213, .045);
+}
+
+.mileage-km-summary span,
+.mileage-stats-grid span {
+  color: var(--muted, #748b9e);
+  font-size: 10px;
+}
+
+.mileage-km-summary strong {
+  color: var(--text, #183b56);
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.mileage-stats-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 17px;
+}
+
+.mileage-stats-grid strong {
+  color: #176da7;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mileage-admin-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+/* =========================================================
+   8. FORMS & EMPTY STATES
+   ========================================================= */
+
+.mileage-form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  max-width: 440px;
+  margin-top: 18px;
+}
+
+.mileage-form label {
+  margin: 0;
+}
+
+.mileage-form .mileage-primary-button,
+.mileage-form .mileage-danger-button {
+  margin-top: 3px;
+}
+
+.mileage-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 10px 4px;
+  text-align: center;
+}
+
+.mileage-empty-state > span {
+  color: #2389d5;
+  font-size: 31px;
+}
+
+.mileage-empty-state strong {
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.mileage-empty-state p,
+.mileage-empty-copy {
+  margin: 5px 0 0;
+  color: var(--muted, #748b9e);
   font-size: 11px;
 }
 
-@media (max-width: 900px) {
-  .mileage-header-button,
-  .mileage-logout-button {
-    min-height: 34px;
-    padding: 5px 8px;
-    font-size: 10px;
-  }
 
-  .mileage-header-user {
-    max-width: 75px;
-    font-size: 9px;
-  }
+/* =========================================================
+   9. SECTION TITLES
+   ========================================================= */
+
+.mileage-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 12px 0 9px;
+  font-size: 12px;
+}
+
+.mileage-section-title button,
+.mileage-user-actions button,
+.mileage-reset-row button {
+  min-height: 29px;
+  padding: 5px 9px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 7px;
+  background: var(--surface, #fff);
+  color: #176da7;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.mileage-admin-history-title {
+  margin-top: 20px;
+}
+
+.mileage-admin-history-title select {
+  width: auto;
+  min-height: 30px;
+  padding: 4px 8px;
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   10. TABLES
+   ========================================================= */
+
+.mileage-table-wrap {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 9px;
+}
+
+.mileage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.mileage-table th,
+.mileage-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border, #dceaf4);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.mileage-table th {
+  background: rgba(35, 137, 213, .06);
+  color: #55748b;
+  font-weight: 800;
+}
+
+.mileage-table td {
+  color: var(--text, #183b56);
+}
+
+.mileage-table td small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted, #748b9e);
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   11. STATUS PILL
+   ========================================================= */
+
+.mileage-pill {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 20px;
+  background: #eaf7ee;
+  color: #16834b;
+  font-size: 9px;
+  font-weight: 750;
+}
+
+.mileage-pill.active {
+  background: #fff4e5;
+  color: #a76812;
+}
+
+
+/* =========================================================
+   12. ADMIN - USERS & ACTIONS
+   ========================================================= */
+
+.mileage-admin-users {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mileage-user-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) auto;
+  gap: 8px 12px;
+  padding: 11px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 9px;
+}
+
+.mileage-user-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.mileage-user-main strong {
+  font-size: 12px;
+}
+
+.mileage-user-main span {
+  color: var(--muted, #748b9e);
+  font-size: 10px;
+}
+
+.mileage-user-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.mileage-user-actions button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.mileage-reset-row {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 7px;
+}
+
+.mileage-reset-row input {
+  min-height: 32px;
+  font-size: 10px;
+}
+
+.mileage-reset-row button {
+  flex-shrink: 0;
 }
 
 .mileage-user-actions .mileage-delete-history-button {
@@ -287,21 +712,14 @@
 }
 
 .mileage-user-actions .mileage-delete-history-button:disabled {
-  opacity: 0.45;
+  opacity: .45;
   cursor: not-allowed;
 }
 
-[data-theme="dark"] .mileage-user-actions .mileage-delete-history-button {
-  border-color: #713b43;
-  background: #351f27;
-  color: #ff9999;
-}
-.mileage-table th,
-.mileage-table td {
-  text-align: center;
-  vertical-align: middle;
-}
 
+/* =========================================================
+   13. VEHICLE CONFIGURATION & FUEL PREVIEW
+   ========================================================= */
 
 .mileage-vehicle-card,
 .mileage-preview-card,
@@ -385,66 +803,14 @@
   font-size: 20px;
 }
 
-.mileage-manual-edit-button {
-  align-self: flex-start;
-  padding: 5px 0;
-  border: 0;
-  background: transparent;
-  color: #176da7;
-  font: inherit;
-  font-size: 11px;
-  font-weight: 750;
-  cursor: pointer;
-}
-
 .mileage-manual-price {
   margin-top: 12px;
 }
 
-[data-theme="dark"] .mileage-vehicle-card,
-[data-theme="dark"] .mileage-preview-card,
-[data-theme="dark"] .mileage-manual-price {
-  background: #131e32;
-  border-color: #334155;
-}
 
-[data-theme="dark"] .mileage-vehicle-card input,
-[data-theme="dark"] .mileage-vehicle-card select,
-[data-theme="dark"] .mileage-manual-price input {
-  background: #0b1320;
-  border-color: #334155;
-  color: #e2e8f0;
-}
-
-@media (max-width: 600px) {
-  .mileage-vehicle-card,
-  .mileage-preview-card,
-  .mileage-manual-price {
-    padding: 11px;
-  }
-
-  .mileage-preview-card > div {
-    font-size: 10px;
-  }
-}
-
-.mileage-secondary-button {
-  min-height: 38px;
-  padding: 8px 12px;
-  border: 1px solid var(--border, #dceaf4);
-  border-radius: 9px;
-  background: var(--surface, #fff);
-  color: #176da7;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 750;
-  cursor: pointer;
-}
-
-.mileage-secondary-button:disabled {
-  opacity: .55;
-  cursor: wait;
-}
+/* =========================================================
+   14. ORDERS
+   ========================================================= */
 
 .mileage-order-section {
   margin-top: 20px;
@@ -528,18 +894,9 @@
 }
 
 
-.mileage-history-detail-button {
-  min-height: 28px;
-  padding: 5px 9px;
-  border: 1px solid var(--border, #dceaf4);
-  border-radius: 7px;
-  background: var(--surface, #fff);
-  color: #176da7;
-  font: inherit;
-  font-size: 10px;
-  font-weight: 750;
-  cursor: pointer;
-}
+/* =========================================================
+   15. HISTORY - ORDER DETAILS & INCOME
+   ========================================================= */
 
 .mileage-history-orders {
   min-width: 280px;
@@ -589,88 +946,11 @@
   font-size: 16px;
 }
 
-[data-theme="dark"] .mileage-history-income strong,
-[data-theme="dark"] .mileage-history-orders h4 {
-  color: #e2e8f0;
-}
 
-[data-theme="dark"] .mileage-history-detail-button {
-  border-color: #334155;
-  background: #131e32;
-  color: #7dd3fc;
-}
+/* =========================================================
+   16. HISTORY DETAIL SCREEN
+   ========================================================= */
 
-
-@media (max-width: 600px) {
-  /* Thẻ đơn hàng dùng chung cho hai vị trí */
-  .mileage-order-card {
-    padding: 10px;
-  }
-
-  .mileage-order-heading {
-    align-items: flex-start;
-  }
-
-  .mileage-order-heading small {
-    text-align: right;
-  }
-
-  .mileage-order-values {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-    margin: 12px 0;
-  }
-
-  .mileage-order-values span {
-    min-width: 0;
-    overflow-wrap: anywhere;
-    line-height: 1.5;
-  }
-
-  .mileage-order-total {
-    padding-top: 9px;
-  }
-
-  /* Thanh tổng kết 7 chỉ số cuộn ngang */
-  .mileage-history-orders {
-    min-width: 0;
-  }
-
-  .mileage-history-income {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 8px;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 8px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
-
-  .mileage-history-income > div {
-    flex: 0 0 112px;
-    min-width: 0;
-    padding: 9px;
-  }
-
-  .mileage-history-income span {
-    line-height: 1.4;
-  }
-
-  .mileage-history-income strong {
-    overflow-wrap: anywhere;
-  }
-
-  .mileage-history-income .mileage-history-net {
-    flex: 0 0 145px;
-    grid-column: auto;
-  }
-}
-
-
-/* Màn hình chi tiết đơn hàng trong lịch sử */
 .mileage-history-detail-screen {
   display: flex;
   flex-direction: column;
@@ -722,6 +1002,90 @@
   padding: 12px 0 0;
 }
 
+
+/* =========================================================
+   17. DARK MODE
+   ========================================================= */
+
+[data-theme="dark"] .mileage-auth-card,
+[data-theme="dark"] .mileage-modal {
+  background: #131e32;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .mileage-header-button,
+[data-theme="dark"] .mileage-logout-button {
+  border-color: #334155;
+  background: #131e32;
+  color: #dbeafe;
+}
+
+[data-theme="dark"] .mileage-close-button {
+  background: #263449;
+  color: #dbeafe;
+}
+
+[data-theme="dark"] .mileage-tabs button.active {
+  color: #7dd3fc;
+}
+
+[data-theme="dark"] .mileage-km-summary > div,
+[data-theme="dark"] .mileage-stats-grid > div,
+[data-theme="dark"] .mileage-user-row {
+  background: rgba(56, 189, 248, .06);
+}
+
+[data-theme="dark"] .mileage-km-summary strong,
+[data-theme="dark"] .mileage-table td {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .mileage-table th {
+  background: #1e293b;
+  color: #b6c7d8;
+}
+
+[data-theme="dark"] .mileage-auth-card input,
+[data-theme="dark"] .mileage-form input,
+[data-theme="dark"] .mileage-reset-row input,
+[data-theme="dark"] .mileage-admin-history-title select {
+  border-color: #334155;
+  background: #0b1320;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .mileage-user-actions .mileage-delete-history-button {
+  border-color: #713b43;
+  background: #351f27;
+  color: #ff9999;
+}
+
+[data-theme="dark"] .mileage-vehicle-card,
+[data-theme="dark"] .mileage-preview-card,
+[data-theme="dark"] .mileage-manual-price {
+  background: #131e32;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .mileage-vehicle-card input,
+[data-theme="dark"] .mileage-vehicle-card select,
+[data-theme="dark"] .mileage-manual-price input {
+  background: #0b1320;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .mileage-history-income strong,
+[data-theme="dark"] .mileage-history-orders h4 {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .mileage-history-detail-button {
+  border-color: #334155;
+  background: #131e32;
+  color: #7dd3fc;
+}
+
 [data-theme="dark"] .mileage-history-shift-meta > div {
   background: rgba(56, 189, 248, .06);
   border-color: #334155;
@@ -731,7 +1095,179 @@
   color: #e2e8f0;
 }
 
+
+/* =========================================================
+   18. RESPONSIVE - TABLET & SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .header-right {
+    flex-wrap: wrap;
+  }
+
+  .mileage-header-controls {
+    flex: 0 0 100%;
+    justify-content: flex-end;
+  }
+
+  .mileage-header-user {
+    display: none;
+  }
+
+  .mileage-header-button,
+  .mileage-logout-button {
+    min-height: 34px;
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================================
+   19. RESPONSIVE - MOBILE
+   ========================================================= */
+
 @media (max-width: 600px) {
+  /* Authentication */
+  .mileage-auth-card {
+    padding: 23px 19px;
+  }
+
+  .mileage-auth-modal {
+    width: 100%;
+    max-height: 94dvh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  /* Modal */
+  .mileage-modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .mileage-modal {
+    width: 100%;
+    max-height: 94dvh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .mileage-modal-header {
+    padding: 15px 16px 11px;
+  }
+
+  .mileage-tabs {
+    padding-left: 14px;
+  }
+
+  .mileage-panel-body {
+    padding: 15px 14px 20px;
+  }
+
+  /* Statistics */
+  .mileage-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mileage-admin-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Admin */
+  .mileage-user-row {
+    grid-template-columns: 1fr;
+  }
+
+  .mileage-user-actions {
+    justify-content: flex-start;
+  }
+
+  .mileage-reset-row {
+    flex-direction: column;
+  }
+
+  .mileage-admin-history-title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  /* Vehicle & fuel */
+  .mileage-vehicle-card,
+  .mileage-preview-card,
+  .mileage-manual-price {
+    padding: 11px;
+  }
+
+  .mileage-preview-card > div {
+    font-size: 10px;
+  }
+
+  /* Order cards */
+  .mileage-order-card {
+    padding: 10px;
+  }
+
+  .mileage-order-heading {
+    align-items: flex-start;
+  }
+
+  .mileage-order-heading small {
+    text-align: right;
+  }
+
+  .mileage-order-values {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .mileage-order-values span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+  }
+
+  .mileage-order-total {
+    padding-top: 9px;
+  }
+
+  /* History detail */
+  .mileage-history-orders {
+    min-width: 0;
+  }
+
+  .mileage-history-income {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .mileage-history-income > div {
+    flex: 0 0 112px;
+    min-width: 0;
+    padding: 9px;
+  }
+
+  .mileage-history-income span {
+    line-height: 1.4;
+  }
+
+  .mileage-history-income strong {
+    overflow-wrap: anywhere;
+  }
+
+  .mileage-history-income .mileage-history-net {
+    flex: 0 0 145px;
+    grid-column: auto;
+  }
+
+  /* History detail screen */
   .mileage-history-shift-meta {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
@@ -749,4 +1285,3 @@
     width: 100%;
   }
 }
-
