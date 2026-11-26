@@ -669,3 +669,84 @@
   }
 }
 
+
+/* Màn hình chi tiết đơn hàng trong lịch sử */
+.mileage-history-detail-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mileage-history-detail-screen > .mileage-section-title {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+}
+
+.mileage-history-detail-screen > .mileage-section-title strong {
+  font-size: 15px;
+}
+
+.mileage-history-shift-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.mileage-history-shift-meta > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 9px;
+  background: rgba(35, 137, 213, .045);
+}
+
+.mileage-history-shift-meta span {
+  color: var(--muted, #748b9e);
+  font-size: 10px;
+}
+
+.mileage-history-shift-meta strong {
+  color: var(--text, #183b56);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.mileage-history-detail-screen .mileage-history-orders {
+  min-width: 0;
+  padding: 12px 0 0;
+}
+
+[data-theme="dark"] .mileage-history-shift-meta > div {
+  background: rgba(56, 189, 248, .06);
+  border-color: #334155;
+}
+
+[data-theme="dark"] .mileage-history-shift-meta strong {
+  color: #e2e8f0;
+}
+
+@media (max-width: 600px) {
+  .mileage-history-shift-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .mileage-history-shift-meta > div {
+    padding: 10px;
+  }
+
+  .mileage-history-detail-screen > .mileage-section-title {
+    align-items: flex-start;
+  }
+
+  .mileage-history-detail-screen > .mileage-section-title strong {
+    width: 100%;
+  }
+}
+
