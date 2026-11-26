@@ -600,12 +600,72 @@
   color: #7dd3fc;
 }
 
+
 @media (max-width: 600px) {
+  /* Thẻ đơn hàng dùng chung cho hai vị trí */
+  .mileage-order-card {
+    padding: 10px;
+  }
+
+  .mileage-order-heading {
+    align-items: flex-start;
+  }
+
+  .mileage-order-heading small {
+    text-align: right;
+  }
+
+  .mileage-order-values {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .mileage-order-values span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+  }
+
+  .mileage-order-total {
+    padding-top: 9px;
+  }
+
+  /* Thanh tổng kết 7 chỉ số cuộn ngang */
+  .mileage-history-orders {
+    min-width: 0;
+  }
+
   .mileage-history-income {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .mileage-history-income > div {
+    flex: 0 0 112px;
+    min-width: 0;
+    padding: 9px;
+  }
+
+  .mileage-history-income span {
+    line-height: 1.4;
+  }
+
+  .mileage-history-income strong {
+    overflow-wrap: anywhere;
   }
 
   .mileage-history-income .mileage-history-net {
+    flex: 0 0 145px;
     grid-column: auto;
   }
 }
+
