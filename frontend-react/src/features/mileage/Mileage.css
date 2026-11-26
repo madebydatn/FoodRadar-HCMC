@@ -1312,3 +1312,134 @@
     max-width: 55%;
   }
 }
+
+
+/* ========================================
+   MILEAGE - FORM DESIGN SYSTEM
+   Đồng bộ kích thước biểu mẫu
+======================================== */
+
+/* Nhãn nhập liệu */
+.mileage-auth-card label,
+.mileage-form label,
+.mileage-vehicle-card label,
+.mileage-manual-price label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text, #183b56);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+/* Các ô nhập liệu */
+.mileage-auth-card input,
+.mileage-form input,
+.mileage-reset-row input,
+.mileage-vehicle-card input,
+.mileage-vehicle-card select,
+.mileage-manual-price input,
+.mileage-admin-history-title select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 10px;
+  background: var(--surface, #fff);
+  color: var(--text, #183b56);
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: inherit;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+/* Trạng thái focus */
+.mileage-auth-card input:focus,
+.mileage-form input:focus,
+.mileage-reset-row input:focus,
+.mileage-vehicle-card input:focus,
+.mileage-vehicle-card select:focus,
+.mileage-manual-price input:focus,
+.mileage-admin-history-title select:focus {
+  outline: none;
+  border-color: #2389d5;
+  box-shadow: 0 0 0 3px rgba(35, 137, 213, .10);
+}
+
+/* Khoảng cách trong các form */
+.mileage-form,
+.mileage-vehicle-card,
+.mileage-auth-card {
+  gap: 11px;
+}
+
+/* Ô mật khẩu quản trị */
+.mileage-reset-row input {
+  min-height: 44px;
+}
+
+/* Bộ lọc tài khoản */
+.mileage-admin-history-title select {
+  width: min(100%, 320px);
+  min-height: 44px;
+}
+
+/* Nút chính */
+.mileage-primary-button,
+.mileage-danger-button {
+  min-height: 44px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* Nút phụ */
+.mileage-secondary-button {
+  min-height: 40px;
+  border-radius: 9px;
+}
+
+/* Nút thao tác quản trị */
+.mileage-user-actions button,
+.mileage-reset-row button,
+.mileage-section-title button,
+.mileage-history-detail-button {
+  min-height: 38px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .mileage-auth-card {
+    gap: 11px;
+    padding: 22px 18px;
+  }
+
+  .mileage-vehicle-card,
+  .mileage-manual-price {
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .mileage-reset-row {
+    gap: 9px;
+  }
+
+  .mileage-reset-row input,
+  .mileage-reset-row button {
+    width: 100%;
+  }
+
+  .mileage-admin-history-title select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mileage-primary-button,
+  .mileage-danger-button {
+    width: 100%;
+  }
+}

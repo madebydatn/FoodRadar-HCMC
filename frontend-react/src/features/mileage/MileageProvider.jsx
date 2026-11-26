@@ -318,8 +318,8 @@ function MileagePanel({ onClose }) {
 
   const [orders, setOrders] = useState([])
   const [orderFare, setOrderFare] = useState('')
-  const [orderBonus, setOrderBonus] = useState('0')
-  const [orderTip, setOrderTip] = useState('0')
+  const [orderBonus, setOrderBonus] = useState('')
+  const [orderTip, setOrderTip] = useState('')
   const [orderBusy, setOrderBusy] = useState(false)
 
   const [overview, setOverview] = useState(null)
@@ -584,7 +584,11 @@ function MileagePanel({ onClose }) {
   const handleAddOrder = async (event) => {
     event.preventDefault()
 
-    const values = [orderFare, orderBonus, orderTip]
+  const values = [
+    orderFare,
+    orderBonus === '' ? '0' : orderBonus,
+    orderTip === '' ? '0' : orderTip,
+  ]
 
     const valid = values.every(value =>
       /^\d+$/.test(String(value)) &&
@@ -598,8 +602,8 @@ function MileagePanel({ onClose }) {
 
     const order = {
       fare: Number(orderFare),
-      bonus: Number(orderBonus),
-      tip: Number(orderTip),
+      bonus: Number(orderBonus || 0),
+      tip: Number(orderTip || 0),
     }
 
     if (!Number.isSafeInteger(
@@ -623,8 +627,8 @@ function MileagePanel({ onClose }) {
       await loadOrders(currentShift.id)
 
       setOrderFare('')
-      setOrderBonus('0')
-      setOrderTip('0')
+      setOrderBonus('')
+      setOrderTip('')
 
       setMessage('Đã lưu đơn hàng.')
     } catch (err) {
@@ -917,9 +921,9 @@ function MileagePanel({ onClose }) {
                       type="number"
                       min="0"
                       step="1"
-                      required
                       value={orderBonus}
                       onChange={(event) => setOrderBonus(event.target.value)}
+                      placeholder="Không có"
                     />
 
                     <label htmlFor="order-tip">Tiền tip (VNĐ)</label>
@@ -928,9 +932,9 @@ function MileagePanel({ onClose }) {
                       type="number"
                       min="0"
                       step="1"
-                      required
                       value={orderTip}
                       onChange={(event) => setOrderTip(event.target.value)}
+                      placeholder="Không có"
                     />
 
                     <button

@@ -2540,3 +2540,26 @@
   }
 }
 
+
+/* ========================================
+   SEARCH - FORM SIZE BALANCE
+======================================== */
+
+.search-box {
+  min-height: 44px;
+  height: 44px;
+  border-radius: 10px;
+}
+
+.search-box input {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .search-box {
+    min-height: 44px;
+    height: 44px;
+  }
+}
+
