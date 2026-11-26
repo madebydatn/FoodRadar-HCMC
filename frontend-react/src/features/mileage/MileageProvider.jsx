@@ -308,6 +308,16 @@ function MileagePanel({ onClose }) {
   const [startKm, setStartKm] = useState('')
   const [endKm, setEndKm] = useState('')
   const [history, setHistory] = useState([])
+
+  const [lastShiftBusy, setLastShiftBusy] = useState(false)
+  const [lastShiftMessage, setLastShiftMessage] = useState('')
+
+  const [orders, setOrders] = useState([])
+  const [orderFare, setOrderFare] = useState('')
+  const [orderBonus, setOrderBonus] = useState('0')
+  const [orderTip, setOrderTip] = useState('0')
+  const [orderBusy, setOrderBusy] = useState(false)
+
   const [overview, setOverview] = useState(null)
   const [users, setUsers] = useState([])
   const [allShifts, setAllShifts] = useState([])
@@ -465,6 +475,132 @@ function MileagePanel({ onClose }) {
       setMessage('Đã bắt đầu ca làm việc.')
     } catch (err) { setError(err.message) }
     finally { setBusy(false) }
+  }
+
+  const handleLoadLastOdo = async () => {
+    setLastShiftBusy(true)
+    setLastShiftMessage('')
+    setError('')
+
+    try {
+      const result = await mileageApi.lastCompletedShift(token)
+      const lastShift = result.last_shift
+
+      if (!lastShift || lastShift.end_km === null || lastShift.end_km === undefined) {
+        setLastShiftMessage(
+          'Chưa có ca hoàn tất trước đó. Bạn có thể nhập ODO thủ công.'
+        )
+        return
+      }
+
+      setStartKm(String(lastShift.end_km))
+
+      setLastShiftMessage(
+        `Đã lấy ODO cuối ca trước: ${formatKm(lastShift.end_km)}`
+      )
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLastShiftBusy(false)
+    }
+  }
+
+  const loadOrders = useCallback(async (shiftId = currentShift?.id) => {
+    if (!shiftId) {
+      setOrders([])
+      return
+    }
+
+    const result = await mileageApi.shiftOrders(token, shiftId)
+    setOrders(result.orders || [])
+  }, [token, currentShift?.id])
+
+  useEffect(() => {
+    if (!currentShift?.id) {
+      setOrders([])
+      return
+    }
+
+    loadOrders(currentShift.id).catch((err) => {
+      setError(err.message)
+    })
+  }, [currentShift?.id, loadOrders])
+
+  const handleAddOrder = async (event) => {
+    event.preventDefault()
+
+    const values = [orderFare, orderBonus, orderTip]
+
+    const valid = values.every(value =>
+      /^\d+$/.test(String(value)) &&
+      Number.isSafeInteger(Number(value))
+    )
+
+    if (!valid) {
+      setError('Các khoản tiền phải là số nguyên không âm.')
+      return
+    }
+
+    const order = {
+      fare: Number(orderFare),
+      bonus: Number(orderBonus),
+      tip: Number(orderTip),
+    }
+
+    if (!Number.isSafeInteger(
+      order.fare + order.bonus + order.tip
+    )) {
+      setError('Tổng thu nhập vượt giới hạn cho phép.')
+      return
+    }
+
+    setOrderBusy(true)
+    setError('')
+    setMessage('')
+
+    try {
+      await mileageApi.createShiftOrder(
+        token,
+        currentShift.id,
+        order
+      )
+
+      await loadOrders(currentShift.id)
+
+      setOrderFare('')
+      setOrderBonus('0')
+      setOrderTip('0')
+
+      setMessage('Đã lưu đơn hàng.')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setOrderBusy(false)
+    }
+  }
+
+  const handleDeleteOrder = async (order) => {
+    const confirmed = window.confirm(
+      'Bạn có chắc chắn muốn xóa đơn này khỏi lịch sử ca? Thu nhập của ca sẽ bị giảm tương ứng.'
+    )
+
+    if (!confirmed) return
+
+    setOrderBusy(true)
+    setError('')
+    setMessage('')
+
+    try {
+      await mileageApi.deleteShiftOrder(token, order.id)
+
+      await loadOrders(currentShift.id)
+
+      setMessage('Đã xóa đơn hàng.')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setOrderBusy(false)
+    }
   }
 
   const handleEnd = async (event) => {
@@ -684,6 +820,103 @@ function MileagePanel({ onClose }) {
                   <div><span>Kilomet đầu ca</span><strong>{formatKm(currentShift.start_km)}</strong></div>
                   <div><span>Bắt đầu lúc</span><strong>{formatDateTime(currentShift.started_at)}</strong></div>
                 </div>
+                <div className="mileage-order-section">
+                  <div className="mileage-section-title">
+                    <strong>Quản lý đơn hàng</strong>
+                    <span>{orders.length} đơn</span>
+                  </div>
+
+                  <form className="mileage-form" onSubmit={handleAddOrder}>
+                    <label htmlFor="order-fare">Tiền đơn hàng (VNĐ)</label>
+                    <input
+                      id="order-fare"
+                      type="number"
+                      min="0"
+                      step="1"
+                      required
+                      value={orderFare}
+                      onChange={(event) => setOrderFare(event.target.value)}
+                      placeholder="Ví dụ: 35000"
+                    />
+
+                    <label htmlFor="order-bonus">Tiền thưởng (VNĐ)</label>
+                    <input
+                      id="order-bonus"
+                      type="number"
+                      min="0"
+                      step="1"
+                      required
+                      value={orderBonus}
+                      onChange={(event) => setOrderBonus(event.target.value)}
+                    />
+
+                    <label htmlFor="order-tip">Tiền tip (VNĐ)</label>
+                    <input
+                      id="order-tip"
+                      type="number"
+                      min="0"
+                      step="1"
+                      required
+                      value={orderTip}
+                      onChange={(event) => setOrderTip(event.target.value)}
+                    />
+
+                    <button
+                      type="submit"
+                      className="mileage-primary-button"
+                      disabled={orderBusy || orderFare === ''}
+                    >
+                      {orderBusy ? 'Đang lưu...' : '+ Thêm đơn'}
+                    </button>
+                  </form>
+
+                  <div className="mileage-order-list">
+                    {orders.length === 0 ? (
+                      <p className="mileage-empty-copy">
+                        Chưa có đơn hàng trong ca này.
+                      </p>
+                    ) : (
+                      orders.map((order, index) => (
+                        <article className="mileage-order-card" key={order.id}>
+                          <div className="mileage-order-heading">
+                            <strong>Đơn #{index + 1}</strong>
+                            <small>{formatDateTime(order.created_at)}</small>
+                          </div>
+
+                          <div className="mileage-order-values">
+                            <span>Tiền đơn: {formatVnd(order.fare)}</span>
+                            <span>Thưởng: {formatVnd(order.bonus)}</span>
+                            <span>Tip: {formatVnd(order.tip)}</span>
+                          </div>
+
+                          <div className="mileage-order-total">
+                            <strong>{formatVnd(order.total_income)}</strong>
+
+                            <button
+                              type="button"
+                              disabled={orderBusy}
+                              onClick={() => handleDeleteOrder(order)}
+                            >
+                              Xóa
+                            </button>
+                          </div>
+                        </article>
+                      ))
+                    )}
+                  </div>
+
+                  <div className="mileage-order-summary">
+                    <span>Tổng thu nhập đơn hàng</span>
+                    <strong>
+                      {formatVnd(
+                        orders.reduce(
+                          (sum, order) => sum + Number(order.total_income || 0),
+                          0
+                        )
+                      )}
+                    </strong>
+                  </div>
+                </div>  
                   <form className="mileage-form" onSubmit={handleEnd}>
                     <label htmlFor="mileage-end-km">
                       Kilomet hiện tại khi kết thúc ca
@@ -823,9 +1056,43 @@ function MileagePanel({ onClose }) {
                   </p>
                 )}
                 <form className="mileage-form" onSubmit={handleStart}>
-                  <label htmlFor="mileage-start-km">Kilomet hiện tại khi bắt đầu ca</label>
-                  <input id="mileage-start-km" type="number" inputMode="decimal" min="0" max="10000000" step="0.1" required value={startKm} onChange={(event) => setStartKm(event.target.value)} placeholder="Ví dụ: 12580.5" />
-                  <button className="mileage-primary-button" type="submit" disabled={busy || startKm === '' || !vehicle}>{busy ? 'Đang lưu...' : 'Bắt đầu ca'}</button>
+                  <label htmlFor="mileage-start-km">
+                    Kilomet hiện tại khi bắt đầu ca
+                  </label>
+
+                  <input
+                    id="mileage-start-km"
+                    type="number"
+                    inputMode="decimal"
+                    min="0"
+                    max="10000000"
+                    step="0.1"
+                    required
+                    value={startKm}
+                    onChange={(event) => setStartKm(event.target.value)}
+                    placeholder="Ví dụ: 12580.5"
+                  />
+
+                  <button
+                    type="button"
+                    className="mileage-secondary-button"
+                    disabled={lastShiftBusy}
+                    onClick={handleLoadLastOdo}
+                  >
+                    {lastShiftBusy ? 'Đang lấy ODO...' : 'Lấy ODO từ ca trước'}
+                  </button>
+
+                  {lastShiftMessage && (
+                    <p className="mileage-hint">{lastShiftMessage}</p>
+                  )}
+
+                  <button
+                    className="mileage-primary-button"
+                    type="submit"
+                    disabled={busy || startKm === '' || !vehicle}
+                  >
+                    {busy ? 'Đang lưu...' : 'Bắt đầu ca'}
+                  </button>
                 </form>
               </>
             )}

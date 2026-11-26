@@ -76,6 +76,26 @@ export const mileageApi = {
   logout: (token) => request('/auth/logout', { method: 'POST', token }),
   currentShift: (token) => request('/shifts/current', { token }),
   shifts: (token, limit = 100) => request(`/shifts?limit=${limit}`, { token }),
+
+  lastCompletedShift: (token) =>
+    request('/shifts/last-completed', { token }),
+
+  shiftOrders: (token, shiftId) =>
+    request(`/shifts/${encodeURIComponent(shiftId)}/orders`, { token }),
+
+  createShiftOrder: (token, shiftId, order) =>
+    request(`/shifts/${encodeURIComponent(shiftId)}/orders`, {
+      method: 'POST',
+      token,
+      body: order,
+    }),
+
+  deleteShiftOrder: (token, orderId) =>
+    request(`/orders/${encodeURIComponent(orderId)}`, {
+      method: 'DELETE',
+      token,
+    }),
+  
   startShift: (token, startKm) => request('/shifts/start', { method: 'POST', token, body: { start_km: startKm } }),
 
   endShift: (token, shiftId, endKm, quoteToken) =>
@@ -128,6 +148,25 @@ export const mileageApi = {
       body: manualFuelPrice === undefined
         ? { end_km: endKm }
         : { end_km: endKm, manual_fuel_price: manualFuelPrice },
+    }),
+
+  lastCompletedShift: (token) =>
+    request('/shifts/last-completed', { token }),
+
+  shiftOrders: (token, shiftId) =>
+    request(`/shifts/${encodeURIComponent(shiftId)}/orders`, { token }),
+
+  createShiftOrder: (token, shiftId, order) =>
+    request(`/shifts/${encodeURIComponent(shiftId)}/orders`, {
+      method: 'POST',
+      token,
+      body: order,
+    }),
+
+  deleteShiftOrder: (token, orderId) =>
+    request(`/orders/${encodeURIComponent(orderId)}`, {
+      method: 'DELETE',
+      token,
     }),
 
 }

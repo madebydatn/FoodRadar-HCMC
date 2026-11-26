@@ -403,6 +403,113 @@ async function handleOwnShifts(env, user, url) {
   return json({ shifts: rows.results || [] })
 }
 
+async function handleLastCompletedShift(env, auth) {
+  const shift = await env.DB.prepare(`
+    SELECT end_km, ended_at
+    FROM shifts
+    WHERE user_id = ?
+      AND status = 'completed'
+      AND end_km IS NOT NULL
+    ORDER BY ended_at DESC
+    LIMIT 1
+  `).bind(auth.user.id).first()
+
+  return json({ last_shift: shift || null })
+}
+
+async function handleGetShiftOrders(env, auth, shiftId) {
+  const shift = await env.DB.prepare(`
+    SELECT id
+    FROM shifts
+    WHERE id = ? AND user_id = ?
+    LIMIT 1
+  `).bind(shiftId, auth.user.id).first()
+
+  if (!shift) return fail('Không tìm thấy ca làm việc.', 404)
+
+  const result = await env.DB.prepare(`
+    SELECT id, shift_id, fare, bonus, tip, total_income, created_at
+    FROM shift_orders
+    WHERE shift_id = ?
+    ORDER BY created_at ASC
+  `).bind(shiftId).all()
+
+  return json({ orders: result.results || [] })
+}
+
+async function handleCreateShiftOrder(request, env, auth, shiftId) {
+  const body = await readJson(request)
+
+  const values = [body?.fare, body?.bonus, body?.tip]
+
+  if (!values.every(value =>
+    Number.isSafeInteger(value) && value >= 0
+  )) {
+    return fail('Tiền đơn hàng, thưởng và tiền tip phải là số nguyên không âm.')
+  }
+
+  const [fare, bonus, tip] = values
+  const totalIncome = fare + bonus + tip
+
+  if (!Number.isSafeInteger(totalIncome)) {
+    return fail('Tổng thu nhập vượt giới hạn cho phép.')
+  }
+
+  const id = makeId()
+  const createdAt = nowIso()
+
+  const result = await env.DB.prepare(`
+    INSERT INTO shift_orders (
+      id, shift_id, fare, bonus, tip, total_income, created_at
+    )
+    SELECT ?, id, ?, ?, ?, ?, ?
+    FROM shifts
+    WHERE id = ?
+      AND user_id = ?
+      AND status = 'active'
+  `).bind(
+    id,
+    fare,
+    bonus,
+    tip,
+    totalIncome,
+    createdAt,
+    shiftId,
+    auth.user.id
+  ).run()
+
+  if (Number(result.meta?.changes || 0) === 0) {
+    return fail('Ca không tồn tại hoặc đã kết thúc. Không thể thêm đơn.', 409)
+  }
+
+  const order = await env.DB.prepare(`
+    SELECT id, shift_id, fare, bonus, tip, total_income, created_at
+    FROM shift_orders
+    WHERE id = ?
+  `).bind(id).first()
+
+  return json({ order }, 201)
+}
+
+async function handleDeleteShiftOrder(env, auth, orderId) {
+  const result = await env.DB.prepare(`
+    DELETE FROM shift_orders
+    WHERE id = ?
+      AND EXISTS (
+        SELECT 1
+        FROM shifts s
+        WHERE s.id = shift_orders.shift_id
+          AND s.user_id = ?
+      )
+  `).bind(orderId, auth.user.id).run()
+
+  if (Number(result.meta?.changes || 0) === 0) {
+    return fail('Đơn hàng không tồn tại hoặc bạn không có quyền xóa.', 404)
+  }
+
+  return json({ success: true })
+}
+
 async function handleGetVehicle(env, auth) {
   const vehicle = await env.DB.prepare(`
     SELECT vehicle_name, fuel_type, fuel_efficiency
@@ -822,18 +929,34 @@ async function handleAdminShifts(env, url) {
 }
 
 async function handleAdminCompletedShiftDelete(env, auth, userId) {
-  const target = await env.DB.prepare(
-    'SELECT id, username FROM users WHERE id = ?'
-  ).bind(userId).first()
+  const hasOrders = await env.DB.prepare(`
+    SELECT 1
+    FROM shift_orders o
+    JOIN shifts s ON s.id = o.shift_id
+    WHERE s.user_id = ?
+      AND s.status = 'completed'
+    LIMIT 1
+  `).bind(userId).first()
 
-  if (!target) return fail('Không tìm thấy tài khoản.', 404)
+  if (hasOrders) {
+    return fail(
+      'Không thể xóa lịch sử vì vẫn còn ca đã hoàn tất có đơn hàng. Hãy xóa các đơn hàng trước.',
+      409
+    )
+  }
 
-  // Chỉ xóa ca đã kết thúc.
   const result = await env.DB.prepare(`
     DELETE FROM shifts
     WHERE user_id = ?
       AND status = 'completed'
-  `).bind(userId).run()
+      AND NOT EXISTS (
+        SELECT 1
+        FROM shift_orders o
+        JOIN shifts s ON s.id = o.shift_id
+        WHERE s.user_id = ?
+          AND s.status = 'completed'
+      )
+  `).bind(userId, userId).run()
 
   const deletedCount = Number(result.meta?.changes || 0)
 
@@ -857,23 +980,29 @@ async function handleAdminCompletedShiftDelete(env, auth, userId) {
 }
 
 async function handleAdminShiftDelete(env, auth, shiftId) {
-  const shift = await env.DB.prepare(`
-    SELECT s.id, s.user_id, s.status, u.username
-    FROM shifts s
-    JOIN users u ON u.id = s.user_id
-    WHERE s.id = ?
+  const hasOrders = await env.DB.prepare(`
+    SELECT 1
+    FROM shift_orders
+    WHERE shift_id = ?
     LIMIT 1
   `).bind(shiftId).first()
 
-  if (!shift) return fail('Không tìm thấy ca làm việc.', 404)
-
-  if (shift.status !== 'completed') {
-    return fail('Chỉ được xóa ca làm việc đã kết thúc.', 409)
+  if (hasOrders) {
+    return fail(
+      'Không thể xóa ca vì vẫn còn đơn hàng. Hãy xóa các đơn hàng trước.',
+      409
+    )
   }
 
   const result = await env.DB.prepare(`
     DELETE FROM shifts
-    WHERE id = ? AND status = 'completed'
+    WHERE id = ?
+      AND status = 'completed'
+      AND NOT EXISTS (
+        SELECT 1
+        FROM shift_orders o
+        WHERE o.shift_id = shifts.id
+      )
   `).bind(shiftId).run()
 
   const deletedCount = Number(result.meta?.changes || 0)
@@ -999,7 +1128,33 @@ export default {
             path.match(/^\/api\/shifts\/[^/]+\/preview$/)
           ) {
             const shiftId = path.split('/')[3]
-            response = await handleFuelPreview(request, env, auth, shiftId)            
+            response = await handleFuelPreview(request, env, auth, shiftId)          
+          } else if (
+              method === 'GET' &&
+              path === '/api/shifts/last-completed'
+            ) {
+              response = await handleLastCompletedShift(env, auth)
+            } else if (
+              method === 'GET' &&
+              path.match(/^\/api\/shifts\/[^/]+\/orders$/)
+            ) {
+              response = await handleGetShiftOrders(
+                env, auth, path.split('/')[3]
+              )
+            } else if (
+              method === 'POST' &&
+              path.match(/^\/api\/shifts\/[^/]+\/orders$/)
+            ) {
+              response = await handleCreateShiftOrder(
+                request, env, auth, path.split('/')[3]
+              )
+            } else if (
+              method === 'DELETE' &&
+              path.match(/^\/api\/orders\/[^/]+$/)
+            ) {
+              response = await handleDeleteShiftOrder(
+                env, auth, path.split('/')[3]
+              )  
           } else if (method === 'GET' && path === '/api/shifts/current') {
             const shift = await env.DB.prepare("SELECT * FROM shifts WHERE user_id = ? AND status = 'active' LIMIT 1")
               .bind(auth.user.id).first()
