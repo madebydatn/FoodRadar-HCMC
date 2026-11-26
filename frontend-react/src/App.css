@@ -2531,13 +2531,6 @@
     min-width: 0;
     line-height: 1.4;
   }
-
-  .map-tools select {
-    min-width: 112px;
-    max-width: 140px;
-    min-height: 36px;
-    padding: 5px 8px;
-  }
 }
 
 
