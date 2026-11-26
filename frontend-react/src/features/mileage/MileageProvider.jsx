@@ -1,5 +1,5 @@
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { Fragment, createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { mileageApi, getStoredToken, storeToken } from './mileageService'
 import './Mileage.css'
 
@@ -309,6 +309,10 @@ function MileagePanel({ onClose }) {
   const [endKm, setEndKm] = useState('')
   const [history, setHistory] = useState([])
 
+  const [expandedHistoryShiftId, setExpandedHistoryShiftId] = useState(null)
+  const [historyOrders, setHistoryOrders] = useState([])
+  const [historyOrdersBusy, setHistoryOrdersBusy] = useState(false)
+
   const [lastShiftBusy, setLastShiftBusy] = useState(false)
   const [lastShiftMessage, setLastShiftMessage] = useState('')
 
@@ -342,6 +346,56 @@ function MileagePanel({ onClose }) {
     setHistory(result.shifts || [])
   }, [token])
 
+  const handleToggleHistoryOrders = async (shiftId) => {
+    if (expandedHistoryShiftId === shiftId) {
+      setExpandedHistoryShiftId(null)
+      setHistoryOrders([])
+      return
+    }
+
+    setExpandedHistoryShiftId(shiftId)
+    setHistoryOrders([])
+    setHistoryOrdersBusy(true)
+    setError('')
+
+    try {
+      const result = await mileageApi.shiftOrders(token, shiftId)
+      setHistoryOrders(result.orders || [])
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setHistoryOrdersBusy(false)
+    }
+  }
+
+  const handleDeleteHistoryOrder = async (order) => {
+    const confirmed = window.confirm(
+      'Bạn có chắc chắn muốn xóa đơn này khỏi lịch sử ca? Thu nhập của ca sẽ bị giảm tương ứng.'
+    )
+
+    if (!confirmed) return
+
+    setHistoryOrdersBusy(true)
+    setError('')
+    setMessage('')
+
+    try {
+      await mileageApi.deleteShiftOrder(token, order.id)
+
+      const result = await mileageApi.shiftOrders(
+        token,
+        expandedHistoryShiftId
+      )
+
+      setHistoryOrders(result.orders || [])
+      setMessage('Đã xóa đơn hàng khỏi lịch sử.')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setHistoryOrdersBusy(false)
+    }
+  }
+  
   const loadVehicle = useCallback(async () => {
     const result = await mileageApi.getVehicle(token)
     const saved = result.vehicle
@@ -1102,12 +1156,35 @@ function MileagePanel({ onClose }) {
         {tab === 'history' && (
           <div className="mileage-panel-body">
             <div className="mileage-stats-grid">
-              <div><span>Hôm nay</span><strong>{formatKm(sumDistance(history, today))}</strong></div>
-              <div><span>7 ngày gần nhất</span><strong>{formatKm(sumDistance(history, weekStart))}</strong></div>
-              <div><span>Tháng này</span><strong>{formatKm(sumDistance(history, monthStart))}</strong></div>
+              <div>
+                <span>Hôm nay</span>
+                <strong>{formatKm(sumDistance(history, today))}</strong>
+              </div>
+              <div>
+                <span>7 ngày gần nhất</span>
+                <strong>{formatKm(sumDistance(history, weekStart))}</strong>
+              </div>
+              <div>
+                <span>Tháng này</span>
+                <strong>{formatKm(sumDistance(history, monthStart))}</strong>
+              </div>
             </div>
-            <div className="mileage-section-title"><strong>Lịch sử ca làm việc</strong><button type="button" onClick={() => loadHistory().catch((err) => setError(err.message))}>Làm mới</button></div>
-            {history.length === 0 ? <p className="mileage-empty-copy">Chưa có lịch sử ca làm việc.</p> : (
+
+            <div className="mileage-section-title">
+              <strong>Lịch sử ca làm việc</strong>
+              <button
+                type="button"
+                onClick={() => loadHistory().catch((err) => setError(err.message))}
+              >
+                Làm mới
+              </button>
+            </div>
+
+            {history.length === 0 ? (
+              <p className="mileage-empty-copy">
+                Chưa có lịch sử ca làm việc.
+              </p>
+            ) : (
               <div className="mileage-table-wrap">
                 <table className="mileage-table">
                   <thead>
@@ -1119,25 +1196,211 @@ function MileagePanel({ onClose }) {
                       <th>Nhiên liệu</th>
                       <th>Chi phí</th>
                       <th>Trạng thái</th>
+                      <th>Đơn hàng</th>
                     </tr>
                   </thead>
-                  <tbody>{history.map((shift) => (
-                    <tr key={shift.id}>
-                      <td>{formatDateTime(shift.started_at)}<small>{shift.ended_at ? `→ ${formatDateTime(shift.ended_at)}` : 'Chưa kết thúc'}</small></td>
-                      <td>{formatKm(shift.start_km)}</td><td>{formatKm(shift.end_km)}</td>
-                      <td><strong>{formatKm(shift.distance_km)}</strong></td>
-                      <td>{formatFuel(shift.fuel_consumed)}</td>
-                      <td>
-                        <strong>{formatVnd(shift.fuel_cost)}</strong>
-                        {shift.fuel_price_source && (
-                          <small>
-                            {shift.fuel_price_source === 'api' ? 'API' : 'Thủ công'}
-                          </small>
+
+                  <tbody>
+                    {history.map((shift) => (
+                      <Fragment key={shift.id}>
+                        <tr key={shift.id}>
+                          <td>
+                            {formatDateTime(shift.started_at)}
+                            <small>
+                              {shift.ended_at
+                                ? `→ ${formatDateTime(shift.ended_at)}`
+                                : 'Chưa kết thúc'}
+                            </small>
+                          </td>
+
+                          <td>{formatKm(shift.start_km)}</td>
+                          <td>{formatKm(shift.end_km)}</td>
+
+                          <td>
+                            <strong>{formatKm(shift.distance_km)}</strong>
+                          </td>
+
+                          <td>{formatFuel(shift.fuel_consumed)}</td>
+
+                          <td>
+                            <strong>{formatVnd(shift.fuel_cost)}</strong>
+                            {shift.fuel_price_source && (
+                              <small>
+                                {shift.fuel_price_source === 'api'
+                                  ? 'API'
+                                  : 'Thủ công'}
+                              </small>
+                            )}
+                          </td>
+
+                          <td>
+                            <span className={`mileage-pill ${shift.status}`}>
+                              {shift.status === 'active'
+                                ? 'Đang chạy'
+                                : 'Đã chốt'}
+                            </span>
+                          </td>
+
+                          <td>
+                            {shift.status === 'completed' && (
+                              <button
+                                type="button"
+                                className="mileage-history-detail-button"
+                                onClick={() =>
+                                  handleToggleHistoryOrders(shift.id)
+                                }
+                              >
+                                {expandedHistoryShiftId === shift.id
+                                  ? 'Thu gọn'
+                                  : 'Xem đơn'}
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+
+                        {expandedHistoryShiftId === shift.id && (
+                          <tr key={`${shift.id}-orders`}>
+                            <td colSpan={8}>
+                              <div className="mileage-history-orders">
+                                <h4>Chi tiết đơn hàng</h4>
+
+                                {historyOrdersBusy ? (
+                                  <p className="mileage-empty-copy">
+                                    Đang tải đơn hàng...
+                                  </p>
+                                ) : historyOrders.length === 0 ? (
+                                  <p className="mileage-empty-copy">
+                                    Ca này chưa có đơn hàng.
+                                  </p>
+                                ) : (
+                                  <>
+                                    <div className="mileage-order-list">
+                                      {historyOrders.map((order, index) => (
+                                        <article
+                                          className="mileage-order-card"
+                                          key={order.id}
+                                        >
+                                          <div className="mileage-order-heading">
+                                            <strong>Đơn #{index + 1}</strong>
+                                            <small>
+                                              {formatDateTime(order.created_at)}
+                                            </small>
+                                          </div>
+
+                                          <div className="mileage-order-values">
+                                            <span>
+                                              Tiền đơn: {formatVnd(order.fare)}
+                                            </span>
+                                            <span>
+                                              Thưởng: {formatVnd(order.bonus)}
+                                            </span>
+                                            <span>
+                                              Tip: {formatVnd(order.tip)}
+                                            </span>
+                                          </div>
+
+                                          <div className="mileage-order-total">
+                                            <strong>
+                                              {formatVnd(order.total_income)}
+                                            </strong>
+
+                                            <button
+                                              type="button"
+                                              disabled={historyOrdersBusy}
+                                              onClick={() =>
+                                                handleDeleteHistoryOrder(order)
+                                              }
+                                            >
+                                              Xóa
+                                            </button>
+                                          </div>
+                                        </article>
+                                      ))}
+                                    </div>
+
+                                    {(() => {
+                                      const totalIncome = historyOrders.reduce(
+                                        (sum, order) =>
+                                          sum + Number(order.total_income || 0),
+                                        0
+                                      )
+
+                                      const fuelCost = Number(shift.fuel_cost || 0)
+
+                                      return (
+                                        <div className="mileage-history-income">
+                                          <div>
+                                            <span>Số đơn hàng</span>
+                                            <strong>{historyOrders.length}</strong>
+                                          </div>
+
+                                          <div>
+                                            <span>Tiền đơn</span>
+                                            <strong>
+                                              {formatVnd(
+                                                historyOrders.reduce(
+                                                  (sum, order) =>
+                                                    sum + Number(order.fare || 0),
+                                                  0
+                                                )
+                                              )}
+                                            </strong>
+                                          </div>
+
+                                          <div>
+                                            <span>Tiền thưởng</span>
+                                            <strong>
+                                              {formatVnd(
+                                                historyOrders.reduce(
+                                                  (sum, order) =>
+                                                    sum + Number(order.bonus || 0),
+                                                  0
+                                                )
+                                              )}
+                                            </strong>
+                                          </div>
+
+                                          <div>
+                                            <span>Tiền tip</span>
+                                            <strong>
+                                              {formatVnd(
+                                                historyOrders.reduce(
+                                                  (sum, order) =>
+                                                    sum + Number(order.tip || 0),
+                                                  0
+                                                )
+                                              )}
+                                            </strong>
+                                          </div>
+
+                                          <div>
+                                            <span>Tổng thu nhập</span>
+                                            <strong>{formatVnd(totalIncome)}</strong>
+                                          </div>
+
+                                          <div>
+                                            <span>Chi phí nhiên liệu</span>
+                                            <strong>{formatVnd(fuelCost)}</strong>
+                                          </div>
+
+                                          <div className="mileage-history-net">
+                                            <span>Thu nhập sau nhiên liệu</span>
+                                            <strong>
+                                              {formatVnd(totalIncome - fuelCost)}
+                                            </strong>
+                                          </div>
+                                        </div>
+                                      )
+                                    })()}
+                                  </>
+                                )}
+                              </div>
+                            </td>
+                          </tr>
                         )}
-                      </td>
-                      <td><span className={`mileage-pill ${shift.status}`}>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</span></td>
-                    </tr>
-                  ))}</tbody>
+                      </Fragment>
+                    ))}
+                  </tbody>
                 </table>
               </div>
             )}

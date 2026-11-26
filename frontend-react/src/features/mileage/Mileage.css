@@ -526,3 +526,86 @@
 .mileage-order-summary strong {
   color: #16834b;
 }
+
+
+.mileage-history-detail-button {
+  min-height: 28px;
+  padding: 5px 9px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 7px;
+  background: var(--surface, #fff);
+  color: #176da7;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.mileage-history-orders {
+  min-width: 280px;
+  padding: 8px 2px;
+}
+
+.mileage-history-orders h4 {
+  margin: 0 0 12px;
+  color: var(--text, #183b56);
+  font-size: 12px;
+}
+
+.mileage-history-income {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.mileage-history-income > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid var(--border, #dceaf4);
+  border-radius: 8px;
+}
+
+.mileage-history-income span {
+  color: var(--muted, #748b9e);
+  font-size: 10px;
+}
+
+.mileage-history-income strong {
+  color: var(--text, #183b56);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.mileage-history-income .mileage-history-net {
+  grid-column: 1 / -1;
+  background: rgba(35, 137, 213, .06);
+}
+
+.mileage-history-net strong {
+  color: #16834b;
+  font-size: 16px;
+}
+
+[data-theme="dark"] .mileage-history-income strong,
+[data-theme="dark"] .mileage-history-orders h4 {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .mileage-history-detail-button {
+  border-color: #334155;
+  background: #131e32;
+  color: #7dd3fc;
+}
+
+@media (max-width: 600px) {
+  .mileage-history-income {
+    grid-template-columns: 1fr;
+  }
+
+  .mileage-history-income .mileage-history-net {
+    grid-column: auto;
+  }
+}
