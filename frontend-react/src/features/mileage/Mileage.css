@@ -1614,3 +1614,34 @@
   }
 }
 
+/* =====================================================
+   iOS - HISTORY ORDER DETAILS REFINEMENTS
+===================================================== */
+
+@media (max-width: 600px) {
+  /* Nhãn thông tin ca */
+  .mileage-history-shift-meta span {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  /* Thời gian đơn hàng */
+  .mileage-order-heading small {
+    font-size: 11px;
+  }
+
+  /* Nút xóa đơn: tăng nhẹ vùng chạm */
+  .mileage-history-detail-screen .mileage-order-total button {
+    min-height: 36px;
+  }
+
+  /* Nhãn tổng kết thu nhập */
+  .mileage-history-income span {
+    font-size: 11px;
+  }
+
+  /* Khoảng đệm cuối dải cuộn ngang */
+  .mileage-history-income {
+    padding-right: 14px;
+  }
+}
