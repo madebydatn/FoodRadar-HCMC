@@ -255,26 +255,6 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
   
   popup.append(footer)
 
-  if (typeof url === 'string') {
-    try {
-      const safeUrl = new URL(url)
-
-      if (['http:', 'https:'].includes(safeUrl.protocol)) {
-        const link = document.createElement('a')
-
-        link.className = 'food-popup-link'
-        link.href = safeUrl.href
-        link.target = '_blank'
-        link.rel = 'noopener noreferrer'
-        link.textContent = 'Xem quán ăn →'
-
-        popup.append(link)
-      }
-    } catch {
-      // Bỏ qua URL không hợp lệ
-    }
-  }
-
   return popup
 }
 
