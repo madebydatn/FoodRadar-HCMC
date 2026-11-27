@@ -3313,3 +3313,43 @@
   }
 }
 
+
+/* ========================================
+   PHASE 4.5 - MOBILE INTERACTION FEEDBACK
+======================================== */
+
+@media (max-width: 600px) {
+  /* Phản hồi khi nhấn bộ lọc */
+  .filter-buttons button {
+    -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+  }
+
+  .filter-buttons button:active {
+    transform: scale(0.96);
+    filter: brightness(0.96);
+  }
+
+  /* Focus rõ ràng khi thao tác bằng bàn phím */
+  .filter-buttons button:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+
+  /* Phản hồi khi nhấn nút xóa tìm kiếm */
+  .clear-search {
+    transition:
+      background 0.15s ease,
+      color 0.15s ease,
+      transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .clear-search:active {
+    transform: scale(0.88);
+    background: var(--primary-soft);
+    color: var(--primary);
+  }
+}
+
+
