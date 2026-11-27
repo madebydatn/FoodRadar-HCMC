@@ -1575,15 +1575,14 @@ function MileagePanel({ onClose }) {
                         <td>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</td>
                         <td>
                           {shift.status === 'completed' && (
-                            {shift.status === 'completed' && (
-                              <button
-                                type="button"
-                                className="mileage-admin-delete-shift-button"
-                                disabled={busy}
-                                onClick={() => deleteShift(shift)}
-                              >
-                                Xóa
-                              </button>
+                            <button
+                              type="button"
+                              className="mileage-admin-delete-shift-button"
+                              disabled={busy}
+                              onClick={() => deleteShift(shift)}
+                            >
+                              Xóa
+                            </button>
                           )}
                         </td>
                       </tr>
