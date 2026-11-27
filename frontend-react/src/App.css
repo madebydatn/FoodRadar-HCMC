@@ -3353,3 +3353,131 @@
 }
 
 
+/* ========================================
+   PHASE 3.3 REFINEMENT - COMPACT IOS POPUP
+======================================== */
+
+/* Kích thước popup mặc định */
+.leaflet-popup.foodradar-popup .leaflet-popup-content {
+  width: 228px !important;
+  max-width: calc(100vw - 64px);
+  margin: 0;
+}
+
+/* Nội dung gọn và thoáng */
+.food-popup {
+  padding: 10px 11px 9px;
+  font-size: 11px;
+}
+
+/* Tên quán */
+.food-popup-header {
+  gap: 6px;
+  padding-right: 17px;
+}
+
+.food-popup-name {
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.food-popup-status {
+  padding: 4px 7px;
+  font-size: 9px;
+}
+
+/* Ảnh */
+.food-popup-image {
+  height: 116px !important;
+  max-height: 116px;
+  margin-top: 8px;
+  border-radius: 9px;
+}
+
+/* Địa chỉ */
+.food-popup-address {
+  margin-top: 7px;
+  font-size: 10px;
+  line-height: 1.4;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+/* Danh mục */
+.food-popup-category {
+  margin-top: 4px;
+  font-size: 9px;
+  line-height: 1.35;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Giờ hoạt động */
+.food-popup-hours {
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 10px;
+}
+
+.food-popup-icon {
+  font-size: 15px;
+}
+
+/* Đánh giá */
+.food-popup-rating {
+  gap: 5px;
+  margin-top: 7px;
+  font-size: 10px;
+}
+
+.food-popup-star {
+  font-size: 13px;
+}
+
+/* Liên kết */
+.food-popup-link {
+  min-height: 36px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 7px;
+  padding: 7px 0 0;
+  font-size: 10px;
+}
+
+/* Điện thoại */
+@media (max-width: 600px) {
+  .leaflet-popup.foodradar-popup .leaflet-popup-content {
+    width: 212px !important;
+    max-width: calc(100vw - 64px);
+  }
+
+  .food-popup-image {
+    height: 108px !important;
+    max-height: 108px;
+  }
+}
+
+/* Điện thoại nhỏ */
+@media (max-width: 380px) {
+  .leaflet-popup.foodradar-popup .leaflet-popup-content {
+    width: 200px !important;
+    max-width: calc(100vw - 56px);
+  }
+
+  .food-popup {
+    padding: 9px 10px 8px;
+  }
+
+  .food-popup-image {
+    height: 100px !important;
+    max-height: 100px;
+  }
+}
+
+
+
