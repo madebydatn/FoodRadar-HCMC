@@ -778,9 +778,47 @@ function MileagePanel({ onClose }) {
     finally { setBusy(false) }
   }
 
+  const handleToggleStatus = (account) => {
+    const isActive = account.status === 'active'
+    const nextAction = isActive ? 'khóa' : 'mở khóa'
+  
+    if (!window.confirm(
+      `Bạn có chắc muốn ${nextAction} tài khoản "${account.username}"?`
+    )) return
+  
+    updateAccount(account, {
+      status: isActive ? 'locked' : 'active',
+    })
+  }
+
+  const handleToggleRole = (account) => {
+    const isAdmin = account.role === 'admin'
+    const nextRole = isAdmin ? 'Tài xế' : 'Admin'
+    const nextAction = isAdmin ? 'hạ quyền' : 'cấp quyền Admin'
+  
+    if (!window.confirm(
+      `Bạn có chắc muốn ${nextAction} cho tài khoản "${account.username}"?\n\nVai trò mới: ${nextRole}.`
+    )) return
+  
+    updateAccount(account, {
+      role: isAdmin ? 'user' : 'admin',
+    })
+  }
+  
   const resetPassword = async (target) => {
     const password = resetPasswords[target.id] || ''
-    if (password.length < 8) { setError('Mật khẩu mới phải có ít nhất 8 ký tự.'); return }
+  
+    if (password.length < 8) {
+      setError('Mật khẩu mới phải có ít nhất 8 ký tự.')
+      return
+    }
+  
+    const confirmed = window.confirm(
+      `Bạn có chắc muốn đặt lại mật khẩu cho tài khoản "${target.username}"?\n\nCác phiên đăng nhập hiện tại của tài khoản này sẽ bị thu hồi.`
+    )
+  
+    if (!confirmed) return
+  
     setBusy(true); setError(''); setMessage('')
     try {
       await mileageApi.resetPassword(token, target.id, password)
@@ -789,7 +827,7 @@ function MileagePanel({ onClose }) {
     } catch (err) { setError(err.message) }
     finally { setBusy(false) }
   }
-
+  
   const today = new Date(Date.now() + 7 * 60 * 60 * 1000).toISOString().slice(0, 10)
   const weekStart = new Date(Date.now() + 7 * 60 * 60 * 1000 - 6 * 86400000).toISOString().slice(0, 10)
   const monthStart = `${today.slice(0, 7)}-01`
@@ -1437,9 +1475,25 @@ function MileagePanel({ onClose }) {
                     <span>{account.role === 'admin' ? 'Admin' : 'Tài xế'} · {account.status === 'active' ? 'Đang hoạt động' : 'Đã khóa'} · {formatKm(account.distance_today)} hôm nay</span>
                   </div>
                   <div className="mileage-user-actions">
-                    <button type="button" disabled={busy || account.id === user.id} onClick={() => updateAccount(account, { status: account.status === 'active' ? 'locked' : 'active' })}>{account.status === 'active' ? 'Khóa' : 'Mở khóa'}</button>
-                    <button type="button" disabled={busy || account.id === user.id} onClick={() => updateAccount(account, { role: account.role === 'admin' ? 'user' : 'admin' })}>{account.role === 'admin' ? 'Hạ quyền' : 'Cấp admin'}</button>
+                    
+                    <button
+                      type="button"
+                      disabled={busy || account.id === user.id}
+                      onClick={() => handleToggleStatus(account)}
+                    >
+                      {account.status === 'active' ? 'Khóa' : 'Mở khóa'}
+                    </button>
+                    
+                    <button
+                      type="button"
+                      disabled={busy || account.id === user.id}
+                      onClick={() => handleToggleRole(account)}
+                    >
+                      {account.role === 'admin' ? 'Hạ quyền' : 'Cấp admin'}
+                    </button>
+                    
                     <button type="button" onClick={() => setSelectedUser(account.id)}>Xem ca</button>
+                    
                     <button
                       type="button"
                       className="mileage-delete-history-button"
@@ -1479,36 +1533,44 @@ function MileagePanel({ onClose }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {allShifts.map((shift) => (
-                    <tr key={shift.id}>
-                      <td>{shift.username}</td>
-                      <td>{formatDateTime(shift.started_at)}</td>
-                      <td>{formatDateTime(shift.ended_at)}</td>
-                      <td>{formatKm(shift.distance_km)}</td>
-                      <td>{formatFuel(shift.fuel_consumed)}</td>
-                      <td>{formatVnd(shift.fuel_cost)}</td>
-                      <td>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</td>
-                      <td>
-                        {shift.status === 'completed' && (
-                          <button
-                            type="button"
-                            disabled={busy}
-                            onClick={() => deleteShift(shift)}
-                            style={{
-                              color: '#c62828',
-                              cursor: busy ? 'not-allowed' : 'pointer',
-                              background: 'transparent',
-                              border: 0,
-                              padding: 0,
-                              font: 'inherit',
-                            }}
-                          >
-                            Xóa
-                          </button>
-                        )}
+                  {allShifts.length === 0 ? (
+                    <tr>
+                      <td colSpan={8} className="mileage-admin-empty">
+                        Không có ca làm việc nào.
                       </td>
                     </tr>
-                  ))}
+                  ) : (
+                    allShifts.map((shift) => (
+                      <tr key={shift.id}>
+                        <td>{shift.username}</td>
+                        <td>{formatDateTime(shift.started_at)}</td>
+                        <td>{formatDateTime(shift.ended_at)}</td>
+                        <td>{formatKm(shift.distance_km)}</td>
+                        <td>{formatFuel(shift.fuel_consumed)}</td>
+                        <td>{formatVnd(shift.fuel_cost)}</td>
+                        <td>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</td>
+                        <td>
+                          {shift.status === 'completed' && (
+                            <button
+                              type="button"
+                              disabled={busy}
+                              onClick={() => deleteShift(shift)}
+                              style={{
+                                color: '#c62828',
+                                cursor: busy ? 'not-allowed' : 'pointer',
+                                background: 'transparent',
+                                border: 0,
+                                padding: 0,
+                                font: 'inherit',
+                              }}
+                            >
+                              Xóa
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
