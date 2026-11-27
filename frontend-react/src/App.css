@@ -3141,5 +3141,58 @@
 }
 
 
+/* ========================================
+   PHASE 4.1 - MOBILE TOUCH TARGET
+   Chuẩn hóa vùng chạm tối thiểu 44px
+======================================== */
+
+@media (max-width: 600px) {
+  /* Nút bản đồ nhiệt và định vị */
+  .map-tool {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+  }
+
+  /* Nút zoom Leaflet */
+  .leaflet-control-zoom a {
+    width: 44px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+  }
+
+  /* Nút xóa nội dung tìm kiếm */
+  .clear-search {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+
+  /* Nút chuyển giao diện */
+  .desktop-theme-toggle {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Điện thoại rất nhỏ */
+@media (max-width: 380px) {
+  .map-tool {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+  }
+
+  .leaflet-control-zoom a {
+    width: 44px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+  }
+}
+
 
 
