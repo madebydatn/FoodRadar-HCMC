@@ -3480,4 +3480,39 @@
 }
 
 
+/* Popup footer: status + restaurant link */
+.food-popup-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px solid #edf2f6;
+}
+
+.food-popup-footer .food-popup-status {
+  flex-shrink: 0;
+  padding: 4px 7px;
+  font-size: 9px;
+}
+
+.food-popup-footer .food-popup-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 36px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  font-size: 10px;
+}
+
+[data-theme="dark"] .food-popup-footer {
+  border-top-color: #1e293b;
+}
+
+
+
 
