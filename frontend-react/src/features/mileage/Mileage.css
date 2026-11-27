@@ -1673,3 +1673,85 @@
   text-align: center;
   font-size: 12px;
 }
+
+
+/* =====================================================
+   ADMIN – REFINEMENTS & TOUCH TARGETS (ĐỢT 4.2.2)
+   ===================================================== */
+
+/* Nút xóa ca */
+.mileage-admin-delete-shift-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(214, 69, 69, 0.08);
+  color: #c62828;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mileage-admin-delete-shift-button:hover:not(:disabled) {
+  background: rgba(214, 69, 69, 0.16);
+}
+
+.mileage-admin-delete-shift-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Dark Mode */
+[data-theme="dark"] .mileage-admin-delete-shift-button {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .mileage-admin-delete-shift-button:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.25);
+}
+
+/* Tối ưu vùng chạm trên mobile */
+@media (max-width: 600px) {
+  .mileage-admin-refresh-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 9px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mileage-admin-refresh-button:active {
+    transform: scale(0.97);
+    opacity: 0.7;
+  }
+
+  .mileage-admin-panel-body .mileage-user-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: 9px;
+    font-size: 13px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mileage-admin-panel-body .mileage-user-actions button:active {
+    transform: scale(0.97);
+    opacity: 0.7;
+  }
+
+  .mileage-admin-panel-body .mileage-reset-row button {
+    min-height: 44px;
+    font-size: 13px;
+  }
+}
