@@ -97,7 +97,7 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
   status.className = `food-popup-status ${statusInfo.className}`
   status.textContent = statusInfo.text
 
-  header.append(name, status)
+  header.append(name)
   popup.append(header)
 
   // Ảnh
@@ -224,8 +224,36 @@ const createRestaurantPopup = (restaurant, operatingStatus) => {
     popup.append(ratingRow)
   }
 
+// Footer: trạng thái + link quán
+  const footer = document.createElement('div')
+  footer.className = 'food-popup-footer'
+  
+  footer.append(status)
+  
   // Link quán
   const url = restaurant.url || restaurant.restaurant_url
+  
+  if (typeof url === 'string') {
+    try {
+      const safeUrl = new URL(url)
+  
+      if (['http:', 'https:'].includes(safeUrl.protocol)) {
+        const link = document.createElement('a')
+  
+        link.className = 'food-popup-link'
+        link.href = safeUrl.href
+        link.target = '_blank'
+        link.rel = 'noopener noreferrer'
+        link.textContent = 'Xem quán ăn →'
+  
+        footer.append(link)
+      }
+    } catch {
+      // Bỏ qua URL không hợp lệ
+    }
+  }
+  
+  popup.append(footer)
 
   if (typeof url === 'string') {
     try {
