@@ -1660,3 +1660,16 @@
     text-align: center;
   }
 }
+
+/* Admin: màu số liệu trong Dark Mode */
+[data-theme="dark"] .mileage-admin-stats strong {
+  color: #e2e8f0;
+}
+
+/* Admin: thông báo khi chưa có lịch sử */
+.mileage-admin-empty {
+  padding: 24px 12px !important;
+  color: var(--muted, #748b9e);
+  text-align: center;
+  font-size: 12px;
+}
