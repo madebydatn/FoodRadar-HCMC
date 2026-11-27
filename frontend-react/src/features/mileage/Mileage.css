@@ -1230,11 +1230,11 @@
     margin: 12px 0;
   }
 
-  .mileage-order-values span {
-    min-width: 0;
-    overflow-wrap: anywhere;
-    line-height: 1.5;
-  }
+   .mileage-order-values span {
+     min-width: 0;
+     white-space: nowrap;
+     line-height: 1.5;
+   }
 
   .mileage-order-total {
     padding-top: 9px;
