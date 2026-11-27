@@ -3195,4 +3195,43 @@
 }
 
 
+/* ========================================
+   PHASE 4.2 - FIX HEADER THEME OVERLAP
+   Dành đủ không gian cho nút sáng/tối
+======================================== */
+
+@media (max-width: 600px) {
+  .header-right {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      44px;
+  }
+
+  .desktop-theme-toggle {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-right {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      44px;
+  }
+
+  .desktop-theme-toggle {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+  }
+}
+
+
 
