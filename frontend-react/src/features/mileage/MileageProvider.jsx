@@ -1478,23 +1478,28 @@ function MileagePanel({ onClose }) {
               <div><span>Ca đã chốt hôm nay</span><strong>{overview.completed_shifts_today}</strong></div>
               <div><span>Kilomet hôm nay</span><strong>{formatKm(overview.distance_today)}</strong></div>
             </div>}
-            <div className="mileage-section-title"><strong>Quản lý tài khoản ({users.length})</strong>
-                <button
-                  type="button"
-                  className="mileage-admin-refresh-button"
-                  onClick={() => loadAdmin().catch((err) => setError(err.message))}
-                >
-                  Làm mới
-                </button>
+            <div className="mileage-section-title">
+              <strong>Quản lý tài khoản ({users.length})</strong>
+              <button
+                type="button"
+                className="mileage-admin-refresh-button"
+                onClick={() => loadAdmin().catch((err) => setError(err.message))}
+              >
+                Làm mới
+              </button>
+            </div>
+            
             <div className="mileage-admin-users">
               {users.map((account) => (
                 <article className="mileage-user-row" key={account.id}>
                   <div className="mileage-user-main">
                     <strong>{account.username}</strong>
-                    <span>{account.role === 'admin' ? 'Admin' : 'Tài xế'} · {account.status === 'active' ? 'Đang hoạt động' : 'Đã khóa'} · {formatKm(account.distance_today)} hôm nay</span>
+                    <span>
+                      {account.role === 'admin' ? 'Admin' : 'Tài xế'} · {account.status === 'active' ? 'Đang hoạt động' : 'Đã khóa'} · {formatKm(account.distance_today)} hôm nay
+                    </span>
                   </div>
+            
                   <div className="mileage-user-actions">
-                    
                     <button
                       type="button"
                       disabled={busy || account.id === user.id}
@@ -1502,7 +1507,7 @@ function MileagePanel({ onClose }) {
                     >
                       {account.status === 'active' ? 'Khóa' : 'Mở khóa'}
                     </button>
-                    
+            
                     <button
                       type="button"
                       disabled={busy || account.id === user.id}
@@ -1510,14 +1515,14 @@ function MileagePanel({ onClose }) {
                     >
                       {account.role === 'admin' ? 'Hạ quyền' : 'Cấp admin'}
                     </button>
-                    
+            
                     <button
                       type="button"
                       onClick={() => handleViewAccountShifts(account.id)}
                     >
                       Xem ca
                     </button>
-                    
+            
                     <button
                       type="button"
                       className="mileage-delete-history-button"
@@ -1526,11 +1531,33 @@ function MileagePanel({ onClose }) {
                     >
                       Xóa lịch sử
                     </button>
-                    
                   </div>
+            
                   <div className="mileage-reset-row">
-                    <input type="password" autoComplete="new-password" minLength="8" placeholder="Mật khẩu mới (ít nhất 8 ký tự)" value={resetPasswords[account.id] || ''} onChange={(event) => setResetPasswords((current) => ({ ...current, [account.id]: event.target.value }))} />
-                    <button type="button" disabled={busy || account.id === user.id || (resetPasswords[account.id] || '').length < 8} onClick={() => resetPassword(account)}>Đặt lại mật khẩu</button>
+                    <input
+                      type="password"
+                      autoComplete="new-password"
+                      minLength="8"
+                      placeholder="Mật khẩu mới (ít nhất 8 ký tự)"
+                      value={resetPasswords[account.id] || ''}
+                      onChange={(event) =>
+                        setResetPasswords((current) => ({
+                          ...current,
+                          [account.id]: event.target.value,
+                        }))
+                      }
+                    />
+                    <button
+                      type="button"
+                      disabled={
+                        busy ||
+                        account.id === user.id ||
+                        (resetPasswords[account.id] || '').length < 8
+                      }
+                      onClick={() => resetPassword(account)}
+                    >
+                      Đặt lại mật khẩu
+                    </button>
                   </div>
                 </article>
               ))}
