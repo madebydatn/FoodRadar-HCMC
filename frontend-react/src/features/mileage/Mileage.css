@@ -1645,3 +1645,18 @@
     padding-right: 14px;
   }
 }
+
+.mileage-income-scroll-note {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .mileage-income-scroll-note {
+    display: block;
+    margin-top: -8px;
+    color: var(--muted, #748b9e);
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: center;
+  }
+}
