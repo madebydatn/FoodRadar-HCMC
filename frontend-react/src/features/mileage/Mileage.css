@@ -1585,3 +1585,32 @@
   }
 }
 
+/* =====================================================
+   iOS - HISTORY TABLE TYPOGRAPHY
+===================================================== */
+
+@media (max-width: 600px) {
+  /* Tiêu đề cột */
+  .mileage-table th {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  /* Dữ liệu trong bảng */
+  .mileage-table td {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  /* Thông tin phụ: API, Thủ công */
+  .mileage-table td small {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  /* Trạng thái */
+  .mileage-table .mileage-pill {
+    font-size: 11px;
+  }
+}
+
