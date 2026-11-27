@@ -32,6 +32,46 @@
 
   /* Shadows */
   --shadow: 0 7px 24px rgba(35, 91, 130, 0.08);
+
+  /* ========================================
+     iOS DESIGN SYSTEM
+  ======================================== */
+
+  /* Typography */
+  --font-system: -apple-system, BlinkMacSystemFont,
+    "SF Pro Display", "Segoe UI", sans-serif;
+
+  /* Text hierarchy */
+  --text-strong: #183b56;
+  --text-secondary: #748b9e;
+
+  /* Surface */
+  --surface-elevated: #ffffff;
+  --border-strong: #c8dce9;
+
+  /* Interaction */
+  --focus-ring: rgba(35, 137, 213, 0.25);
+
+  /* Radius */
+  --radius-small: 8px;
+  --radius-medium: 12px;
+  --radius-large: 16px;
+
+  /* Touch targets */
+  --tap-target: 44px;
+  --input-height: 48px;
+  --button-height: 48px;
+
+  /* Spacing */
+  --spacing-small: 8px;
+  --spacing-medium: 12px;
+  --spacing-large: 16px;
+
+  /* iPhone Safe Area */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
 }
 
 [data-theme="dark"] {
@@ -53,6 +93,18 @@
 
   /* Shadows */
   --shadow: 0 7px 24px rgba(0, 0, 0, 0.4);
+
+  /* ========================================
+     iOS DESIGN SYSTEM - DARK MODE
+  ======================================== */
+
+  --text-strong: #f1f5f9;
+  --text-secondary: #94a3b8;
+
+  --surface-elevated: #1a2740;
+  --border-strong: #334155;
+
+  --focus-ring: rgba(56, 189, 248, 0.3);
 }
 
 /* RESET */
