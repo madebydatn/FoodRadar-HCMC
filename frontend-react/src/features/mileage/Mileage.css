@@ -1160,7 +1160,16 @@
   }
 
   .mileage-panel-body {
-    padding: 15px 14px 20px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: 15px 14px calc(20px + var(--safe-bottom, 0px));
+  }
+
+  .mileage-auth-modal .mileage-auth-card {
+    padding-bottom: calc(23px + var(--safe-bottom, 0px));
   }
 
   /* Statistics */
