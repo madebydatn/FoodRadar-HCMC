@@ -1755,3 +1755,64 @@
     font-size: 13px;
   }
 }
+
+
+/* =====================================================
+   iOS - MILEAGE TYPOGRAPHY REFINEMENT
+   Tối ưu phân cấp tiêu đề trên màn hình nhỏ
+===================================================== */
+
+@media (max-width: 600px) {
+  /* Tiêu đề từng khu vực */
+  .mileage-section-title > strong {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Tiêu đề xem trước chi phí */
+  .mileage-preview-card h3 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  /* Tiêu đề danh sách đơn hàng trong chi tiết ca */
+  .mileage-history-orders h4 {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Tên từng đơn hàng */
+  .mileage-order-heading strong {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Tên tài khoản trong Admin */
+  .mileage-user-main strong {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Giá trị thông tin ca */
+  .mileage-history-shift-meta strong {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Giá trị tổng kết thu nhập */
+  .mileage-history-income strong {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Nhãn trạng thái cấu hình xe */
+  .mileage-vehicle-card .mileage-section-title span {
+    font-size: 11px;
+  }
+
+  /* Tab điều hướng */
+  .mileage-tabs button {
+    font-size: 12px;
+  }
+}
+
