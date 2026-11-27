@@ -566,6 +566,8 @@ export default function RestaurantMap({
         closeButton: true,
       })
 
+      popup.setContent(popupContent)
+
       marker.options.restaurantPopup = popup
 
       // Marker chỉ cập nhật lựa chọn.
