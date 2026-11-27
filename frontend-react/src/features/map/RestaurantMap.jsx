@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import L from 'leaflet'
 import { HeatLayer } from 'leaflet.heat'
 import 'leaflet/dist/leaflet.css'
@@ -318,7 +318,7 @@ const calculatePopupTargetCenter = (
 // COMPONENT BẢN ĐỒ
 // =====================================================
 
-export default function RestaurantMap({
+function RestaurantMap({
   restaurants = [],
   selectedRestaurant,
   onSelectRestaurant,
@@ -932,3 +932,5 @@ export default function RestaurantMap({
     </div>
   )
 }
+
+export default memo(RestaurantMap)
