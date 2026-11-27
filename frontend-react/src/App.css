@@ -2930,3 +2930,74 @@
 }
 
 
+/* ========================================
+   PHASE 3 - MAP TOOL ICON ONLY
+   Chỉ áp dụng cho điện thoại
+======================================== */
+
+@media (max-width: 600px) {
+
+  .map-tools {
+    gap: 7px;
+    max-width: calc(100% - 100px);
+  }
+
+  /* Nút chỉ hiển thị biểu tượng */
+  .map-tool {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+
+    padding: 0 !important;
+    border-radius: 12px;
+
+    font-size: 0 !important;
+    line-height: 1;
+  }
+
+  /* Biểu tượng bản đồ nhiệt */
+  .map-tool:not(.locate-button)::before {
+    content: '🔥';
+    font-size: 19px;
+  }
+
+  /* Biểu tượng vị trí */
+  .map-tool.locate-button::before {
+    content: '⌖';
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  /* Hộp chọn chế độ nhiệt vẫn giữ chữ */
+  .map-tools select {
+    height: 40px;
+    min-height: 40px;
+    padding: 5px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+}
+
+/* Điện thoại nhỏ */
+@media (max-width: 380px) {
+  .map-tool {
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
+  }
+
+  .map-tools select {
+    height: 36px;
+    min-height: 36px;
+    max-width: 88px;
+  }
+}
+
+
+
