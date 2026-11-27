@@ -63,9 +63,9 @@ function AuthScreen({ onClose }) {
             onChange={(event) => setUsername(event.target.value)}
             minLength={3}
             maxLength={24}
-            pattern="[A-Za-z0-9._-]{3,24}"
+            pattern="[A-Za-z0-9._\-]{3,24}"
             required
-            placeholder="Ví dụ: nguyenvana"
+            placeholder="Ví dụ: ngodat123"
           />
 
           <label htmlFor="mileage-password">Mật khẩu</label>
