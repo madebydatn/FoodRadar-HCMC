@@ -3234,4 +3234,54 @@
 }
 
 
+/* ========================================
+   PHASE 4.3 - MOBILE BUTTONS & MAP SIZE
+======================================== */
+
+@media (max-width: 600px) {
+  /* Nút dữ liệu tài xế và đăng xuất */
+  .mileage-header-controls {
+    gap: 8px;
+    align-items: center;
+  }
+
+  .mileage-header-button,
+  .mileage-logout-button {
+    box-sizing: border-box;
+    min-height: 44px;
+    height: 44px;
+    padding: 0 12px;
+    border-radius: 10px;
+    font-size: 11px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* Kích thước bản đồ */
+  .map-panel {
+    height: clamp(340px, 52vh, 460px);
+    min-height: 340px;
+  }
+}
+
+/* Điện thoại màn hình nhỏ */
+@media (max-width: 380px) {
+  .mileage-header-controls {
+    gap: 7px;
+  }
+
+  .mileage-header-button,
+  .mileage-logout-button {
+    min-height: 44px;
+    height: 44px;
+    padding: 0 10px;
+    font-size: 10px;
+  }
+
+  .map-panel {
+    height: clamp(320px, 48vh, 400px);
+    min-height: 320px;
+  }
+}
+
 
