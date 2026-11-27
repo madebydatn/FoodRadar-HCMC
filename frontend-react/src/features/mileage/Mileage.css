@@ -1509,3 +1509,79 @@
     opacity: 0.7;
   }
 }
+
+
+/* =========================================================
+   iOS - MILEAGE HISTORY TOUCH TARGET REFINEMENTS
+   ========================================================= */
+
+@media (max-width: 600px) {
+  /* 1. Nút quay lại lịch sử: 44px */
+  .mileage-history-detail-screen > .mileage-section-title > .mileage-secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mileage-history-detail-screen > .mileage-section-title > .mileage-secondary-button:active {
+    transform: scale(0.97);
+    opacity: 0.7;
+  }
+
+  /* 2. Nút Làm mới: chỉ áp dụng cho lịch sử ca */
+  .mileage-panel-body > .mileage-stats-grid:not(.mileage-admin-stats) + .mileage-section-title button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 9px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mileage-panel-body > .mileage-stats-grid:not(.mileage-admin-stats) + .mileage-section-title button:active {
+    transform: scale(0.97);
+    opacity: 0.7;
+  }
+
+  /* 3. Nút Xem đơn: giữ nguyên 38px */
+  .mileage-history-detail-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mileage-history-detail-button:active {
+    opacity: 0.6;
+  }
+
+  /* 4. Nút Xóa đơn: tăng vùng chạm lên 34px */
+  .mileage-history-detail-screen .mileage-order-total button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 7px;
+    background: rgba(214, 69, 69, 0.08);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mileage-history-detail-screen .mileage-order-total button:active {
+    background: rgba(214, 69, 69, 0.18);
+  }
+
+  /* Dark Mode */
+  [data-theme="dark"] .mileage-history-detail-screen .mileage-order-total button {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+  }
+
+  [data-theme="dark"] .mileage-history-detail-screen .mileage-order-total button:active {
+    background: rgba(239, 68, 68, 0.28);
+  }
+}
+
