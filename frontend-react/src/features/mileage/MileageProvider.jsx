@@ -1412,6 +1412,9 @@ function MileagePanel({ onClose }) {
                     </strong>
                   </div>
                 </div>
+                <div className="mileage-income-scroll-note">
+                  ← Vuốt ngang để xem thêm các khoản thu nhập →
+                </div>
               </div>
             )}
           </div>
