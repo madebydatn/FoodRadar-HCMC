@@ -59,6 +59,9 @@ function AuthScreen({ onClose }) {
           <input
             id="mileage-username"
             autoComplete="username"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
             value={username}
             onChange={(event) => setUsername(event.target.value)}
             minLength={3}
@@ -869,6 +872,7 @@ function MileagePanel({ onClose }) {
               <input
                 id="mileage-fuel-efficiency"
                 type="number"
+                inputMode="decimal"
                 min="0.01"
                 step="0.01"
                 required
@@ -907,6 +911,7 @@ function MileagePanel({ onClose }) {
                     <input
                       id="order-fare"
                       type="number"
+                      inputMode="numeric"
                       min="0"
                       step="1"
                       required
@@ -919,6 +924,7 @@ function MileagePanel({ onClose }) {
                     <input
                       id="order-bonus"
                       type="number"
+                      inputMode="numeric"
                       min="0"
                       step="1"
                       value={orderBonus}
@@ -930,6 +936,7 @@ function MileagePanel({ onClose }) {
                     <input
                       id="order-tip"
                       type="number"
+                      inputMode="numeric"
                       min="0"
                       step="1"
                       value={orderTip}
@@ -1032,6 +1039,7 @@ function MileagePanel({ onClose }) {
                       <input
                         id="mileage-manual-price"
                         type="number"
+                        inputMode="numeric"
                         min="1"
                         step="1"
                         value={manualPrice}
