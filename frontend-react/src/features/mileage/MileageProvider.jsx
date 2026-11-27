@@ -1,5 +1,5 @@
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { mileageApi, getStoredToken, storeToken } from './mileageService'
 import './Mileage.css'
 
@@ -329,6 +329,18 @@ function MileagePanel({ onClose }) {
   const [users, setUsers] = useState([])
   const [allShifts, setAllShifts] = useState([])
   const [selectedUser, setSelectedUser] = useState('')
+  
+  const adminHistoryRef = useRef(null)
+  const handleViewAccountShifts = (accountId) => {
+    setSelectedUser(accountId)  
+    requestAnimationFrame(() => {
+      adminHistoryRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    })
+  }  
+  
   const [resetPasswords, setResetPasswords] = useState({})
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState('')
@@ -1459,14 +1471,21 @@ function MileagePanel({ onClose }) {
         )}
 
         {tab === 'admin' && user.role === 'admin' && (
-          <div className="mileage-panel-body">
+          <div className="mileage-panel-body mileage-admin-panel-body">
             {overview && <div className="mileage-stats-grid mileage-admin-stats">
               <div><span>Tài khoản hoạt động</span><strong>{overview.active_users}</strong></div>
               <div><span>Đang trong ca</span><strong>{overview.active_shifts}</strong></div>
               <div><span>Ca đã chốt hôm nay</span><strong>{overview.completed_shifts_today}</strong></div>
               <div><span>Kilomet hôm nay</span><strong>{formatKm(overview.distance_today)}</strong></div>
             </div>}
-            <div className="mileage-section-title"><strong>Quản lý tài khoản ({users.length})</strong><button type="button" onClick={() => loadAdmin().catch((err) => setError(err.message))}>Làm mới</button></div>
+            <div className="mileage-section-title"><strong>Quản lý tài khoản ({users.length})</strong>
+                <button
+                  type="button"
+                  className="mileage-admin-refresh-button"
+                  onClick={() => loadAdmin().catch((err) => setError(err.message))}
+                >
+                  Làm mới
+                </button>
             <div className="mileage-admin-users">
               {users.map((account) => (
                 <article className="mileage-user-row" key={account.id}>
@@ -1492,7 +1511,12 @@ function MileagePanel({ onClose }) {
                       {account.role === 'admin' ? 'Hạ quyền' : 'Cấp admin'}
                     </button>
                     
-                    <button type="button" onClick={() => setSelectedUser(account.id)}>Xem ca</button>
+                    <button
+                      type="button"
+                      onClick={() => handleViewAccountShifts(account.id)}
+                    >
+                      Xem ca
+                    </button>
                     
                     <button
                       type="button"
@@ -1511,7 +1535,7 @@ function MileagePanel({ onClose }) {
                 </article>
               ))}
             </div>
-            <div className="mileage-section-title mileage-admin-history-title">
+            <div ref={adminHistoryRef} className="mileage-section-title mileage-admin-history-title">
               <strong>Lịch sử toàn hệ thống</strong>
               <select value={selectedUser} onChange={(event) => setSelectedUser(event.target.value)} aria-label="Lọc theo tài khoản">
                 <option value="">Tất cả tài khoản</option>
@@ -1551,21 +1575,15 @@ function MileagePanel({ onClose }) {
                         <td>{shift.status === 'active' ? 'Đang chạy' : 'Đã chốt'}</td>
                         <td>
                           {shift.status === 'completed' && (
-                            <button
-                              type="button"
-                              disabled={busy}
-                              onClick={() => deleteShift(shift)}
-                              style={{
-                                color: '#c62828',
-                                cursor: busy ? 'not-allowed' : 'pointer',
-                                background: 'transparent',
-                                border: 0,
-                                padding: 0,
-                                font: 'inherit',
-                              }}
-                            >
-                              Xóa
-                            </button>
+                            {shift.status === 'completed' && (
+                              <button
+                                type="button"
+                                className="mileage-admin-delete-shift-button"
+                                disabled={busy}
+                                onClick={() => deleteShift(shift)}
+                              >
+                                Xóa
+                              </button>
                           )}
                         </td>
                       </tr>
