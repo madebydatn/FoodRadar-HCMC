@@ -1,5 +1,5 @@
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { getRestaurants } from './services/restaurantService'
 import RestaurantMap from './features/map/RestaurantMap'
 import { MileageHeader } from './features/mileage/MileageProvider'
@@ -137,6 +137,15 @@ function App() {
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
   }
+
+  // Giữ callback ổn định để RestaurantMap không render thừa.
+  const handleUserLocationChange = useCallback((location) => {
+    setWeatherLocation({
+      latitude: location.latitude,
+      longitude: location.longitude,
+      label: 'Vị trí của tôi',
+    })
+  }, [])
   
   // Chọn quán và tự cuộn lên bản đồ trên điện thoại
   const handleSelectRestaurant = (item) => {
@@ -416,13 +425,7 @@ function App() {
               restaurants={filteredRestaurants}
               selectedRestaurant={selectedRestaurant}
               onSelectRestaurant={setSelectedRestaurant}
-              onUserLocationChange={(location) =>
-                setWeatherLocation({
-                  latitude: location.latitude,
-                  longitude: location.longitude,
-                  label: 'Vị trí của tôi',
-                })
-              }
+              onUserLocationChange={handleUserLocationChange}
             />
           </div>
 
