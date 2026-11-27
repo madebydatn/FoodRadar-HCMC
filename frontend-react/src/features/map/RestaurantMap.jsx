@@ -560,11 +560,11 @@ export default function RestaurantMap({
 
       const popup = L.popup({
         className: 'foodradar-popup',
-        minWidth: 220,
-        maxWidth: 270,
+        minWidth: 200,
+        maxWidth: 250,
         autoPan: false,
         closeButton: true,
-      }).setContent(popupContent)
+      })
 
       marker.options.restaurantPopup = popup
 
