@@ -3285,3 +3285,31 @@
 }
 
 
+/* ========================================
+   PHASE 4.4 - MOBILE RESTAURANT CARD
+   Tối ưu thẻ quán trên điện thoại nhỏ
+======================================== */
+
+@media (max-width: 380px) {
+  .restaurant-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .restaurant-card-top > strong {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .restaurant-card .open,
+  .restaurant-card .closed,
+  .restaurant-card .unknown {
+    align-self: flex-start;
+    min-height: 28px;
+    padding: 5px 9px;
+    font-size: 10px;
+  }
+}
+
