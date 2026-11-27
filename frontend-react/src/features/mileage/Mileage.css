@@ -1816,3 +1816,37 @@
   }
 }
 
+@media (max-width: 600px) {
+  /* Nhãn thống kê Admin */
+  .mileage-admin-stats span {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  /* Số liệu thống kê Admin */
+  .mileage-admin-stats strong {
+    font-size: 19px;
+  }
+
+  /* Thông tin phụ tài khoản */
+  .mileage-user-main span {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  /* Tiêu đề cột bảng Admin */
+  .mileage-admin-panel-body .mileage-table th {
+    font-size: 12px;
+  }
+
+  /* Nội dung bảng Admin */
+  .mileage-admin-panel-body .mileage-table td {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  /* Thông tin phụ trong bảng Admin */
+  .mileage-admin-panel-body .mileage-table td small {
+    font-size: 11px;
+  }
+}
