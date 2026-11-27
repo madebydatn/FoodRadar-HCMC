@@ -1452,3 +1452,60 @@
     width: 100%;
   }
 }
+
+/* =========================================================
+   iOS - AUTH & MODAL TOUCH TARGET REFINEMENTS
+========================================================= */
+
+/* Căn giữa nội dung chuyển đổi đăng nhập / đăng ký */
+.mileage-auth-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-height: 44px;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.mileage-auth-switch button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--primary-dark, #176da7);
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mileage-auth-switch button:active {
+  opacity: 0.65;
+}
+
+/* Đồng bộ nút đóng của cả hai modal trên mobile */
+@media (max-width: 600px) {
+  .mileage-close-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0; /* Ngăn flex container ép nhỏ nút trên màn hình hẹp */
+    font-size: 24px;
+    line-height: 1;
+    border-radius: 12px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mileage-close-button:active {
+    transform: scale(0.94);
+    opacity: 0.7;
+  }
+}
