@@ -3,7 +3,7 @@ const TOKEN_KEY = 'foodradar-mileage-token'
 
 export function getStoredToken() {
   try {
-    return sessionStorage.getItem(TOKEN_KEY) || ''
+    return localStorage.getItem(TOKEN_KEY) || ''
   } catch {
     return ''
   }
@@ -11,8 +11,8 @@ export function getStoredToken() {
 
 export function storeToken(token) {
   try {
-    if (token) sessionStorage.setItem(TOKEN_KEY, token)
-    else sessionStorage.removeItem(TOKEN_KEY)
+    if (token) localStorage.setItem(TOKEN_KEY, token)
+    else localStorage.removeItem(TOKEN_KEY)
   } catch {
     throw new Error('Trình duyệt không cho phép lưu phiên đăng nhập. Hãy kiểm tra cài đặt quyền riêng tư.')
   }
