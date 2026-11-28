@@ -1676,7 +1676,6 @@ export function MileageHeader() {
           disabled={loading}
           onClick={() => setOpen(true)}
         >
-          <span aria-hidden="true">◷</span>{' '}
           {loading ? 'Đang tải...' : user ? 'Dữ liệu tài xế' : 'Đăng nhập'}    
         </button>
 
