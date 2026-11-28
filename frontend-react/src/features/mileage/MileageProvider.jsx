@@ -1681,12 +1681,12 @@ export function MileageHeader() {
 
         {user && (
           <>
-            <span className="mileage-header-user" title={user.username}>
-              {user.username}{user.role === 'admin' ? ' · Admin' : ''}
-            </span>
             <button className="mileage-logout-button" type="button" onClick={logout}>
               Đăng xuất
             </button>
+            <span className="mileage-header-user" title={user.username}>
+              {user.username}{user.role === 'admin' ? ' · Admin' : ''}
+            </span>
           </>
         )}
       </div>
