@@ -484,7 +484,7 @@ function RestaurantMap({
 
       map.flyTo(
         event.latlng,
-        Math.max(map.getZoom(), 16),
+        14,
         {
           duration: 0.7,
         }
