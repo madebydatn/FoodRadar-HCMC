@@ -371,7 +371,7 @@ function App() {
           </div>
         
           <div className="header-clock">
-            <span className="clock-icon">◷</span>
+            <span className="clock-icon">🕒</span>
             <div className="clock-info">
               <strong className="clock-time">{clockText}</strong>
               <span className="clock-date">{dateText}</span>
