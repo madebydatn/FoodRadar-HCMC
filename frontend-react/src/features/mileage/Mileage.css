@@ -1110,10 +1110,6 @@
     justify-content: flex-end;
   }
 
-  .mileage-header-user {
-    display: none;
-  }
-
   .mileage-header-button,
   .mileage-logout-button {
     min-height: 34px;
